@@ -1,0 +1,387 @@
+\chapter{Azione}
+Capito come costruire degli invarianti per trasformazioni di Poincarè, l'obiettivo adesso è di usarli per formulare delle azioni che descrivono le teorie fisiche a cui ci si interessa. Tuttavia, la richiesta di invarianza per trasformazioni di Poincarè non è sufficiente a determinare una sola azione, ma ne genera un classe intera. Sono pertanto necessarie altre richieste, alcune ad hoc, per ottenere un'azione univoca per una data teoria. In generale, l'azione $S$ è un funzionale definito come l'integrale della densità di lagrangiana $\mathcal{L}$ che a sua volta è funzione dei campi e delle loro derivate, ricordando quanto fatto in \eqref{eq: azione}, si ha
+\begin{equation}
+    S \equiv \int\mathcal{L}\,d^4x,
+\end{equation}
+dove in questo caso, la $\dL$ dipende unicamente dalle coordinate $x^\mu$ dato che si vuole formulare una teoria locale. L'azione deve poi essere reale in modo da poter conservare la probabilità, infatti se così non fosse si potrebbe dare origine a fenomeni dove le particelle compaiono e scompaiono dal vuoto, conseguenza inaccettabile per una teoria di campo. Inoltre, l'azione dà origine alle equazioni del moto che contengono al più derivate di secondo ordine, poiché derivate di ordine maggiore violano la causalità degli eventi. Quindi, al massimo come operatore agente sui campi $\phi$ si può avere $\p^\mu\p_\mu$, il quale può essere identificato come l'operatore di Casimir del gruppo di Poincarè $P^2$ che a sua volta corrisponde all'energia di una particella libera. Se l'unico termine presente è proprio $\p^\mu\p_\mu$, allora si parla di ``teoria di campo libera''. 
+
+\section{Equazioni di Eulero - Lagrange}
+Per simmetria interna si intende una simmetria che non coinvolge le coordinate $x^\mu$, ma provoca unicamente una variazione della forma funzionale del campo $\phi$, che a sua volta provoca una variazione di $\dL$ e quindi in $S$, quindi
+\begin{equation}
+\label{eq: variazione azione simmetria interna}
+    \delta S = \int\delta\dL\,d^4x = \int\bigg[\frac{\p\dL}{\p\phi}\delta\phi + \frac{\p\dL}{\p(\p_\mu\phi)}\delta(\p_\mu\phi)\bigg]\,d^4x.
+\end{equation}
+Dato che $x^\mu$ non varia, allora la derivata della differenza è uguale alla differenza delle derivate, cioè
+\begin{equation}
+\label{eq: relazione simmetria interna}
+    \p_\mu(\delta\phi) = \delta(\p_\mu\phi).
+\end{equation}
+Quindi, usando \eqref{eq: relazione simmetria interna} in \eqref{eq: variazione azione simmetria interna}, si ha
+\begin{equation}
+    \begin{split}
+        \delta S &= \int\bigg[\frac{\p\dL}{\p\phi}\delta\phi + \frac{\p\dL}{\p(\p_\mu\phi)}\p_\mu(\delta\phi)\bigg]\,d^4x \\
+        &= \int\bigg[\frac{\p\dL}{\p\phi}\delta\phi + \p_\mu\bigg(\frac{\p\dL}{\p(\p_\mu\phi)}\delta\phi\bigg) - \p_\mu\bigg(\frac{\p\dL}{\p(\p_\mu\phi)}\bigg)\delta\phi\bigg]\,d^4x \\
+        &= \int\bigg[\frac{\p\dL}{\p\phi}\delta\phi - \p_\mu\bigg(\frac{\p\dL}{\p(\p_\mu\phi)}\bigg)\delta\phi\bigg]\,d^4x + \int \p_\mu\bigg(\frac{\p\dL}{\p(\p_\mu\phi)}\delta\phi\bigg)\,d^4x,
+    \end{split}
+\end{equation}
+dove il secondo integrale è un termine di superficie e quindi può essere riscritto come integrale di superficie 
+\begin{equation}
+\label{eq: termine di superficie azione}
+    \oint_\sigma\frac{\p\dL}{\p(\p_\mu\phi)}\delta\phi\,d\sigma_\mu
+\end{equation}
+che tende a zero se si richiede la condizione che $\delta\phi$ sia zero ai bordi della superficie $\sigma_\mu$ delimitata dal volume quadridimensionale sul quale si sta integrando. Quindi, la variazione $\delta S$ si riduce a 
+\begin{equation}
+    \delta S = \int\bigg[\frac{\p\dL}{\p\phi}\delta\phi - \p_\mu\bigg(\frac{\p\dL}{\p(\p_\mu\phi)}\bigg)\delta\phi\bigg]\,d^4x,
+\end{equation}
+che a questo punto per il principio di minima azione si deve imporre la condizione $\delta S = 0$ in modo che $S$ sia invariante per trasformazioni infinitesime $\delta\phi$ del campo, affinché questo sia verificato necessariamente deve essere
+\begin{equation}
+\label{eq: EEL}
+    \p_\mu\bigg(\frac{\p\dL}{\p(\p_\mu\phi)}\bigg) - \frac{\p\dL}{\p\phi} = 0,
+\end{equation}
+che corrispondono alle equazioni di campo classiche per il sistema descritto dall'azione $S$, ossia alle equazioni di Eulero - Lagrange.
+
+Le equazioni \eqref{eq: EEL} sono valide solamente quando le variazioni $\delta\phi$ sono nulle ai bordi e il termine di superficie \eqref{eq: termine di superficie azione} è nullo. Un'altra conseguenza dell'annullarsi del termine di superficie è che le stesse equazioni del moto si ottengono da una qualsiasi lagrangiana $\dL'$ che differisca da quella di partenza $\dL$ per la derivata totale di una funzione arbitraria $\ML^\mu$, cioè per
+\begin{equation}
+    \dL' = \dL + \p_\mu\ML^\mu.
+\end{equation}
+Infatti, la lagrangiana $\dL'$ induce una variazione su $S$ che dipende solamente dalle condizioni ai bordi imposte su $\delta\phi$ e $\delta\p_\mu\phi$. In particolare, in Meccanica classica la trasformazione $\dL\to\dL'$ prende il nome di ``trasformazione canonica''. Inoltre, anche l'aggiunta di una costante $C$ ad $\dL$, e quindi la trasformazione $\dL' = \dL + C$, non modifica la natura del sistema.
+
+\section{Teorema di Nother}
+Un elemento fondamentale per costruire una qualsivoglia teoria volta a descrivere sistemi fisici è il teorema di Noether, il quale a partire dalle simmetrie del sistema, ossia le invarianze,  permette di ricavare le leggi di conservazione. Si affronta prima il caso di simmetrie interne, per poi passare direttamente al caso più generale.
+
+\subsubsection{Simmetria interna}
+Si supponga che $S$ sia invariante per una trasformazione di simmetria interna
+\begin{equation}
+    \phi^\alpha \to \phi^\alpha +\epsilon^\alpha,\quad\epsilon^\alpha\equiv\delta\phi^\alpha\ll1.
+\end{equation}
+Come conseguenza di questa variazione, l'azione subisce una variazione $\delta S$ data da
+\begin{equation}
+    \begin{split}
+        \delta S &= \int\bigg[\frac{\p\dL}{\p\phi^\alpha}\delta\phi^\alpha + \frac{\p\dL}{\p(\p_\mu\phi^\alpha)}\delta(\p_\mu\phi^\alpha)\bigg]\,d^4x \\
+        &= \int\bigg[\frac{\p\dL}{\p\phi^\alpha}\delta\phi^\alpha + \frac{\p\dL}{\p(\p_\mu\phi^\alpha)}\p_\mu(\delta\phi^\alpha)\bigg]\,d^4x \\
+        &= \int\bigg[\frac{\p\dL}{\p\phi^\alpha}\delta\phi^\alpha - \p_\mu\bigg(\frac{\p\dL}{\p(\p_\mu\phi^\alpha)}\bigg)\delta\phi^\alpha + \p_\mu\bigg(\frac{\p\dL}{\p(\p_\mu\phi^\alpha)}\delta\phi^\alpha\bigg) \bigg]\,d^4x \\
+        &=  \int\p_\mu\bigg(\frac{\p\dL}{\p(\p_\mu\phi^\alpha)}\delta\phi^\alpha\bigg)\,d^4x,
+    \end{split}
+\end{equation}
+dove si sono usate le relazioni \eqref{eq: relazione simmetria interna} e \eqref{eq: EEL} viste prima\footnote{In un certo senso adesso si sta operando ``al contrario'': si assume che valgano le equazioni \eqref{eq: EEL} e si determinano le conseguenze dell'ipotesi sul termine di superficie.}. Quindi, la relazione 
+\begin{equation}
+\label{eq: variazione azione TdN simmetria interna}
+    \delta S = \int\p_\mu\bigg(\frac{\p\dL}{\p(\p_\mu\phi^\alpha)}\delta\phi^\alpha\bigg)\,d^4x
+\end{equation}
+può essere riscritta interpretando la quantità tra parentesi come una corrente $J^\mu$, per cui
+\begin{equation}
+    \delta S = \int \p_\mu J^\mu\,d^4x.
+\end{equation}
+Se si richiede di nuovo che l'azione $S$ sia invariante sotto trasformazioni $\phi^\alpha \to \phi^\alpha + \delta\phi^\alpha$, allora la corrente $J^\mu$ è conservata e soddisfa appunto la legge di continuità
+\begin{equation}
+\label{eq: eq. continuità simmetria interna}
+    \p_\mu J^\mu = 0.
+\end{equation}
+Si può inoltre definire una carica conservata $Q_\alpha$ definita come l'integrale della componente temporale di $J^\mu$, ossia
+\begin{equation}
+    Q_\alpha \equiv \int J^0\,d^3x,
+\end{equation}
+dove l'indice $\alpha$ indica che se è presente più di un campo, allora esiste una corrente conservata associata ad ogni campo.
+
+Infatti, se si integra su un volume tridimensionale infinito l'equazione \eqref{eq: eq. continuità simmetria interna} si ha 
+\begin{equation}
+    \begin{split}
+        0 = \int \p_\mu J^\mu\,d^3x &= \int \p_0 J^0\,d^3x + \int \p_i J^i\,d^3x \\
+        &= \frac{\p}{\p t}\int J^0\,d^3x + \int J^i\,d\sigma_i \\
+        &\simeq\frac{\p Q}{\p t},
+    \end{split}
+\end{equation}
+dove si è supposto nell'ultimo passaggio che il termine di superficie vada a zero abbastanza rapidamente all'infinito. Così facendo si trova che $Q$ è una quantità conservata nel tempo, infatti $\p_0Q = 0$.
+
+\subsubsection{Traslazione}
+Si supponga che $S$ sia invariante per traslazioni spaziotemporali
+\begin{equation}
+    x^\mu\to x^\mu + a^\mu,\quad a^\mu \equiv \delta x^\mu\ll1,
+\end{equation}
+per cui di conseguenza si ha la trasformazione $\phi\to\phi(x+a)$. Si consideri quindi una traslazione infinitesima $\phi(x+a) = \phi(x) + \delta\phi$, si ha
+\begin{equation}
+    \delta\phi = \phi(x+a) -\phi(x) \simeq \phi(x) + a^\mu\p_\mu\phi(x) - \phi(x) = a^\mu\p_\mu\phi(x),
+\end{equation}
+dove si è sviluppato in serie di Taylor il termine $\phi(x+a)$. Quindi, in seguito alla variazione $\delta x^\mu \equiv a^\mu$, i campi variano come
+\begin{equation}
+    \delta\phi = a^\mu\p_\mu\phi(x),\quad\delta(\p_\mu\phi) = a^\nu\p_\nu(\p_\mu\phi),
+\end{equation}
+dato che $\delta(\p_\mu\phi) = \p_\mu\delta\phi = \p_\mu a^\nu\p_\nu\phi$. Ora si deve tenere conto che una trasformazione agente sulle coordinate $x^\mu$ induce una variazione della lagrangiana stessa
+\begin{equation}
+    \begin{split}
+        \delta\dL = \p_\mu\dL\delta x^\mu &= \frac{\p\dL}{\p\phi}\delta\phi + \frac{\p\dL}{\p(\p_\mu\phi)}\delta(\p_\mu\phi) \\
+        &= \frac{\p\dL}{\p\phi}a^\nu\p_\nu\phi + \frac{\p\dL}{\p(\p_\mu\phi)}a^\nu\p_\nu\p_\mu\phi \\
+        &= a^\nu\bigg[\p_\mu\bigg(\frac{\p\dL}{\p(\p_\mu\phi)}\p_\nu\phi\bigg) - \bigg(\p_\mu\frac{\p\dL}{\p(\p_\mu\phi)}\bigg)\p_\nu\phi + \frac{\p\dL}{\p\phi}\p_\nu\phi\bigg] \\
+        a^\mu\p_\mu\dL &= a^\nu\p_\mu\bigg(\frac{\p\dL}{\p(\p_\mu\phi)}\p_\nu\phi\bigg),
+    \end{split}
+\end{equation}
+da cui si ricava l'equazione di conservazione di un tensore $T^\mu_\nu$ di rango due che prende il nome di ``tensore energia - impulso'' o ``tensore canonico''
+\begin{equation}
+\label{eq: legge di conservazione TEI in L}
+    \p_\mu\bigg(\dL\delta^\mu_\nu - \frac{\p\dL}{\p(\p_\mu\phi)}\p_\nu\phi\bigg) = 0,
+\end{equation}
+che quindi viene definito come
+\begin{equation}
+\label{eq: tensore energia - impulso}
+    - T_{\mu\nu} \equiv \dL\delta^\mu_\nu - \frac{\p\dL}{\p(\p_\mu\phi)}\p_\nu\phi,
+\end{equation}
+riducendo l'equazione trovata a
+\begin{equation}
+\label{eq: legge di conservazione del TEI}
+    \p_\mu T^\mu_\nu = 0.
+\end{equation}
+La scelta del segno in \eqref{eq: tensore energia - impulso} ha a che fare con la definita positività di $T_0^0$, ossia della densità di energia. Dall'equazione \eqref{eq: legge di conservazione del TEI} si deduce direttamente che esistono delle quantità conservate, ad esempio ponendo $\mu = 0$ si ha
+\begin{equation}
+    \p_0T^0_0 + \p_i T^i_0 = 0,
+\end{equation}
+spostando il secondo termine a secondo membro e integrando su un volume $V$ infinito si ha
+\begin{equation}
+    \int \p_0T^0_0\,d^3x = -\int \nabla T^i_0\,d^3x,
+\end{equation}
+che usando il teorema della divergenza diventa
+\begin{equation}
+    \int \p_0T^0_0\,d^3x = -\int \nabla T^i_0\,d^3x = \int_{\p V} T^i_0\,d^2x = 0,
+\end{equation}
+dato che i campi tendono a zero all'infinito. Insomma, si è trovata la legge di conservazione
+\begin{equation}
+    \p_0\int T^0_0\,d^3x = 0.
+\end{equation}
+Si deduce quindi che l'invarianza rispetto a traslazioni nello spaziotempo porta a quattro leggi di conservazione, una per ogni componenti $\mu$; queste sono
+\begin{equation}
+    E = \int T_0^0\,d^3x,\quad P^i = \int T_0^i\,d^3x,
+\end{equation}
+dove $E$ è l'energia totale del sistema, conservata perché si ha invarianza rispetto a traslazioni temporali, mentre $P_i$ è il momento totale del campo, conservato perché si ha invarianza rispetto a traslazioni spaziali.
+
+\subsubsection{Trasformazione di Lorentz}
+Si supponga che $S$ sia invariante per un trasformazione di Lorentz 
+\begin{equation}
+    x^\mu\to x^\mu + M^{\mu\sigma} x_\sigma,\quad M^{\mu\sigma} x_\sigma \equiv \delta x^\mu \ll 1,
+\end{equation}
+dove gli $M_\mu^\sigma$ sono i generatori del gruppo di Lorentz. Sostituendo $\delta x^\mu \equiv M_\mu^\sigma x_\sigma$ in \eqref{eq: legge di conservazione TEI in L}, usando la definizione di tensore energia - impulso \eqref{eq: tensore energia - impulso} porta a 
+\begin{equation}
+    \p_\nu T^\nu_\mu M^{\mu\sigma}x_\sigma = 0,
+\end{equation}
+che può essere riscritta in una forma più convenzionale 
+\begin{equation}
+    \begin{split}
+        \p_\nu T^\nu_\mu M^{\mu\sigma}x_\sigma &= \frac{1}{2}(\p^\nu T^\mu_\nu M_{\mu\sigma}x^\sigma - \p^\nu T_\nu^\mu M_{\sigma\mu}x^\sigma) \\
+        &= \frac{1}{2}(\p^\nu T_\nu^\mu x^\sigma - \p^\nu T_\nu ^\sigma x^\mu)M_{\mu\sigma} \\
+        &= \frac{1}{2}\p^\nu(T_\nu^\mu x^\sigma - T_\nu ^\sigma x^\mu)M_{\mu\sigma},
+    \end{split} 
+\end{equation}
+per cui si arriva a
+\begin{equation}
+    \p^\nu(T_\nu^\mu x^\sigma - T_\nu ^\sigma x^\mu)M_{\mu\sigma} = 0.
+\end{equation}
+Essendo quella trovata una legge di conservazione, si definisce la corrente di Noether $(J_\nu)^{\sigma\mu}$ come
+\begin{equation}
+    (J_\nu)^{\sigma\mu} \equiv T_\nu^\mu x^\sigma - T_\nu ^\sigma x^\mu,
+\end{equation}
+ottenendo dunque la legge di conservazione
+\begin{equation}
+    \p_\nu(J^\nu)^{\sigma\mu}M_{\mu\sigma} = 0.
+\end{equation}
+La carica conservata invece è
+\begin{equation}
+    Q^{\mu\sigma} = \int (T^{\mu0}x^\sigma - T^{\sigma0}x^\mu)\,d^3x.
+\end{equation}
+Per l'invarianza rotazione, la carica conservata è il momento angolare orbitale
+\begin{equation}
+    L^i = \frac{1}{2}\epsilon^{ijk}Q^{jk} = \frac{1}{2}\epsilon^{ijk}\int (T^{j0}x^k - T^{k0}x^j)\,d^3x,
+\end{equation}
+mentre per l'invarianza rispetto ai boost la carica conservata è 
+\begin{equation}
+    Q^{0i} = \int (T^{00}x^i - T^{i0}x^0)\,d^3x.
+\end{equation}
+
+\subsubsection{Trasformazione generale}
+Si considera ora il caso più generale di una trasformazione agente sia sulla forma funzionale dei campi che sulle coordinate spaziotemporali $x^\mu$. Una trasformazione infinitesima del genere induce le variazioni
+\begin{equation}
+    \begin{cases}
+        x'^\mu = x^\mu + \delta x^\mu \\
+        \phi'(x') = \phi(x) + \Delta\phi(x)
+    \end{cases},\quad\Delta\phi(x) = \phi'(x') - \phi(x),
+\end{equation}
+dove in $\Delta\phi$ è inclusa sia la variazione della forma funzionale sia quella delle coordinate spaziotemporali, infatti è data da
+\begin{equation}
+\label{eq: variazione totale campo TdN generale}
+    \begin{split}
+        \Delta \phi(x) &= \phi'(x + \delta x) - \phi(x) \\
+        &= \phi'(x) - \phi(x) + \p_\mu\phi'\delta x \\
+        &= \delta\phi(x) + \p_\mu\phi'\delta x \\
+        &\simeq \delta\phi(x) + \p_\mu\phi(x)\delta x,
+    \end{split}
+\end{equation}
+dove nell'ultimo passaggio si è approssimato $\p_\mu\phi'\simeq\p_\mu\phi$ all'ordine $O(\delta x^0)$. La lagrangiana, di conseguenza, subisce la seguente variazione
+\begin{equation}
+    \delta\dL = \frac{\p\dL}{\p\phi}\delta\phi + \frac{\p\dL}{\p(\p_\mu\phi)}\delta(\p_\mu\phi) + (\p_\mu\dL)\delta x^\mu,
+\end{equation}
+per cui l'azione subisce la variazione 
+\begin{equation}
+\label{eq: variazione azione TdN generale}
+    \delta S = \int\delta\dL\,d^4x + \int(\delta d^4x)\dL.
+\end{equation}
+Ricordando la relazione \eqref{eq: relazione simmetria interna} e usando la regola di derivazione del prodotto, $\delta\dL$ diventa
+\begin{equation}
+\label{eq: variazione lagrangiana TdN generale}
+    \begin{split}
+        \delta\dL &= \bigg(\frac{\p\dL}{\p\phi} - \p_\mu\frac{\p\dL}{\p(\p_\mu\phi)}\bigg)\delta\phi + \p_\mu\bigg(\frac{\p\dL}{\p(\p_\mu\phi)}\delta\phi\bigg) + (\p_\mu\dL)\delta x^\mu \\
+        &= \p_\mu\bigg(\frac{\p\dL}{\p(\p_\mu\phi)}\delta\phi\bigg) + (\p_\mu\dL)\delta x^\mu,
+    \end{split}
+\end{equation}
+dove si sono usate le equazioni \eqref{eq: EEL} a secondo membro. 
+
+Per determinare $\delta(d^4x)$ si deve ricordare che il differenziale $d^4x$ trasforma con lo jacobiano e quindi
+\begin{equation}
+    d^4x' = |J(x)|d^4x = \bigg|\det{\frac{\p x'^\mu}{\p x^\nu}}\bigg|d^4x,
+\end{equation}
+dove 
+\begin{equation}
+    \frac{\p x'^\mu}{\p x^\nu} = \frac{\p}{\p x^\nu}(x^\mu + \delta x^\mu) = g^\mu_\nu + \p_\nu\delta x^\mu.
+\end{equation}
+Ricordando che $\det{e^A} = e^{\Tr{(A)}}$, si ha
+\begin{equation}
+    \det{(g^\mu_\nu + \p_\nu\delta x^\mu)} = e^{\Tr{[\ln{(g^\mu_\nu + \p_\nu\delta x^\mu)}]}} \simeq e^{\Tr{(\p_\nu\delta x^\mu)}} \simeq 1 + \p_\mu\delta x^\mu,
+\end{equation}
+dove prima si è sviluppato secondo Taylor il logaritmo considerando $\delta x^\mu$ infinitesimo per poi sviluppare nuovamente con Taylor l'esponenziale al primo ordine. Quindi, si ha
+\begin{equation}
+    d^4x' = \bigg|\det{\frac{\p x'^\mu}{\p x^\nu}}\bigg|d^4x = |1+\p_\mu\delta x^\mu|d^4x.
+\end{equation}
+Pertanto, $\delta(d^4x)$ è dato da
+\begin{equation}
+\label{eq: variazione d4x}
+    \delta(d^4x) = d^4x' - d^4x = (|1+\p_\mu\delta x^\mu| - 1)d^4x \simeq \p_\mu\delta x^\mu d^4x.
+\end{equation}
+Quindi, combinando le equazioni \eqref{eq: variazione lagrangiana TdN generale} e \eqref{eq: variazione d4x} in \eqref{eq: variazione azione TdN generale} si ottiene
+\begin{equation}
+    \begin{split}
+        \delta S &= \int \bigg[\p_\mu\bigg(\frac{\p\dL}{\p(\p_\mu\phi)}\delta\phi\bigg) + (\p_\mu\dL)\delta x^\mu + \dL\p_\mu\delta x^\mu \bigg]\,d^4x \\
+        &= \int \p_\mu\bigg(\frac{\p\dL}{\p(\p_\mu\phi)}\delta\phi + \dL\delta x^\mu\bigg)d^4x.
+    \end{split}
+\end{equation}
+Dunque, se l'azione $S$ è invariante per trasformazioni che inducono una variazione $\delta\phi$ sul campo e una variazione $\delta x^\mu$ sulle coordinate spaziotemporali, allora la corrente 
+\begin{equation}
+\label{eq: corrente TdN generale}
+    J^\mu \equiv \frac{\p\dL}{\p(\p_\mu\phi)}\delta\phi + \dL\delta x^\mu
+\end{equation}
+è conservata e quindi rispetta l'equazione di continuità $\p_\mu J^\mu = 0$, già ricavata in \eqref{eq: eq. continuità simmetria interna}. Chiaramente, se si pone $\delta x^\mu = 0$ si ritrova il risultato ricavato in \eqref{eq: variazione azione simmetria interna}. Si può riscrivere l'espressione \eqref{eq: corrente TdN generale} in funzione della variazione totale del campo $\Delta\phi$, invece che in funzione di $\delta\phi$, ricordando la relazione \eqref{eq: variazione totale campo TdN generale}, da cui segue che
+\begin{equation}
+    J^\mu \equiv \bigg(\dL g^\mu_\nu - \frac{\p\dL}{\p(\p_\mu\phi)}\p_\nu\phi\bigg)\delta x^\nu + \frac{\p\dL}{\p(\p_\mu\phi)}\Delta\phi,
+\end{equation}
+dove 
+\begin{equation}
+    \dL g^\mu_\nu - \frac{\p\dL}{\p(\p_\mu\phi)}\p_\nu\phi \equiv -T^\mu_\nu
+\end{equation}
+è di nuovo il tensore energia - impulso, dove la scelta del segno in ha sempre a che fare con la definita positività di $T_0^0$, ossia della densità di energia. 
+
+\section{Azione per un campo scalare}
+La forma più generale di una lagrangiana che contiene un solo campo scalare è
+\begin{equation}
+\label{eq: lagrangiana campo scalare}
+    \dL = \frac{1}{2}\p_\mu\phi(x)\p^\mu\phi(x) - V[\phi(x)],
+\end{equation}
+dove il primo è un termine cinetico, mentre il secondo $V[\phi(x)]$ è un termine di potenziale, in particolare è una funzione scalare del campo $\phi(x)$ ma non delle sue derivate $\p_\mu\phi(x)$. Il termine cinetico appartiene ad un gruppo più restrittivo, infatti $\p_\mu\phi(x)$ non è invariante solo rispetto a trasformazioni di Poincarè, ma anche rispetto a simmetrie interne $\phi\to\phi'=\phi + \delta\phi$ e a simmetrie discrete come quella di parità $\phi\to\phi'=-\phi$. Dato che la dimensione della lagrangiana è $[\dL] = \mathrm{L}^{-4}$, allora la dimensione del campo deve essere $[\phi] = \mathrm{L}^{-1}$, si ricordi anche che $[\p_\mu] = \mathrm{L}^{-1}$. Non esistono particolari restrizioni sul potenziale in una teoria classica, ma esistono alcuni casi di particolare interesse, ad esempio se il sistema in esame consiste in un particella libera di massa $m$, allora il termine di potenziale assume la forma
+\begin{equation}
+\label{eq: potenziale particella libera}
+    V[\phi(x)] = \frac{1}{2}m^2\phi^2(x).
+\end{equation}
+A partire dall'equazione \eqref{eq: lagrangiana campo scalare} le equazioni di Eulero - Lagrange \eqref{eq: EEL} restituiscono
+\begin{equation}
+    \p_\mu\p^\mu\phi(x) = -\frac{\p V(\phi)}{\p \phi}.
+\end{equation}
+In particolare, se il potenziale ha la forma \eqref{eq: potenziale particella libera} si ottiene
+\begin{equation}
+\label{eq: eq. Klein-Gordon campo scalare}
+    (\square + m^2)\phi(x) = 0,
+\end{equation}
+cioè l'equazione di Klein - Gordon che si era trovata in \eqref{eq: eq. Klein-Gordon U.N.}. Tuttavia, la grande differenza dell'equazione \eqref{eq: eq. Klein-Gordon campo scalare} rispetto alla \eqref{eq: eq. Klein-Gordon U.N.} è che la ``funzione'' su cui agisce l'operatore di Klein - Gordon non è più la funzione d'onda di Schr\"odinger, ma un campo. 
+
+Per traslazioni infinitesime, la corrente di Noether è il tensore di energia - impulso
+\begin{equation}
+    J_{\mu\nu} \equiv T_{\mu\nu} = -g_{\mu\nu}\dL +\p_\mu\phi\p_\nu\phi
+\end{equation}
+e la carica conservata è data da 
+\begin{equation}
+    P_\mu = \int J_{\mu 0}\,d^3x = \int[-g_{\mu 0}\dL + (\p_\mu\phi)(\p_0\phi)]\,d^3x.
+\end{equation}
+In particolare, la componente $T_{00}$ coincide con la densità di energia $\SH$, infatti
+\begin{equation}
+    T_{00} = -\dL + (\p_0\phi)(\p_0\phi) =\frac{1}{2}(\p_0\phi)(\p_0\phi) + \frac{1}{2}(\p_i\phi)(\p_i\phi) + V(\phi) \equiv \SH.
+\end{equation}
+La corrispondenza $T_{00} \equiv \SH$ è valida in quanto $T_{00}$ è un quantità definita positiva se $V[\phi(x)] > 0$. Da questo si nota come il teorema di Noether permetta di superare il problema delle energie negative che si trovavano quando si tentava di estendere l'equazione di Schr\"odinger al caso relativistico. L'equazione che si otteneva era l'equazione di Klein - Gordon che però presentava il grande problema di non poter essere interpretata in termini probabilistici. 
+
+\section{Azione per un campo spinoriale}
+Per costruire l'azione di un campo spinoriale si parte dagli invarianti
+\begin{equation}
+    \dL_L := \frac{1}{2}\psi_L^\dagger\sigma^\mu\p_\mu\psi_L,\quad\dL_R := \frac{1}{2}\psi_R^\dagger\bar{\sigma}^\mu\p_\mu\psi_R,
+\end{equation}
+che possono essere riassunti nel termine cinetico invariante
+\begin{equation}
+    \dL_K = \dL_L + \dL_R = \frac{1}{2}\psib\gamma^\mu\p_\mu\psi \equiv \psib\gamma^\mu\p_\mu\psi.
+\end{equation}
+Il termine $\dL_K$ è invariante per trasformazioni conformi, cioè quelle che conservano gli angoli, la scala, che variano la metrica in modo locale con $g^{\mu\nu}\to\Omega(x)g^{\mu\nu}$, le dilatazioni e le trasformazioni di Poincarè, così come lo era il termine cinetico della \eqref{eq: lagrangiana campo scalare}. Tuttavia, $\dL_K$ è invariante anche per trasformazioni di fase del gruppo $U(1)$
+\begin{equation}
+    \psi\to\psi' = e^{i\alpha}\psi,
+\end{equation}
+infatti
+\begin{equation}
+    \dL'_K = \psib e^{-i\alpha}\gamma^\mu\p_\mu(e^{i\alpha}\psi) = \psib\gamma^\mu\p_\mu\psi = \dL_K.
+\end{equation}
+Un'altra invarianza particolare di $\dL_K$ è quella per trasformazioni di chiralità
+\begin{equation}
+    \psi\to\psi' = e^{i\beta\gamma^5}\psi,
+\end{equation}
+che non agiscono sulle coordinate $x^\mu$. Le correnti di Noether corrispondenti alle rispettive trasformazioni di fase e di chiralità sono
+\begin{equation}
+\label{eq: correnti di Noether fase e chiralità campo spinoriale}
+    J^\mu_F = i\psib\gamma^\mu\psi,\quad J^\mu_C = i\psib\gamma^\mu\gamma^5\psi.
+\end{equation}
+Il fattore moltiplicativo $i$ nelle espressioni in \eqref{eq: correnti di Noether fase e chiralità campo spinoriale} deriva dalla rimozione dell'elemento infinitesimo delle trasformazioni, per esempio considerando la trasformazione di fase si ha che la corrente di Noether è data da
+\begin{equation}
+    J^\mu_F = \frac{\p \dL}{\p(\p_\mu\psi)}\delta\psi = \psib\gamma^\mu\delta\psi,
+\end{equation}
+dove la variazione dello spinore $\delta\psi$ è data da
+\begin{equation}
+    \delta\psi = \psi' - \psi = e^{i\alpha}\psi - \psi \simeq (1+i\alpha)\psi - \psi = i\alpha\psi,
+\end{equation}
+il quale derivato rispetto al parametro della trasformazione $\alpha$ restituisce 
+\begin{equation}
+    \frac{\p(\delta\psi)}{\p\alpha} = i\psi,
+\end{equation}
+ottenendo dunque la corrente di Noether
+\begin{equation}
+    J^\mu_F = i\psib\gamma^\mu\psi.
+\end{equation}
+Invece, le cariche conservate rispettivamente dalla trasformazioni di fase e di chiralità sono
+\begin{align}
+    Q_F &= i\int\psib\gamma^0\psi\,d^3x = i\int(\psi_L^\dagger\psi_L + \psi^\dagger_R\psi_R), \\
+    Q_C &= i\int\psib\gamma^0\gamma^5\psi\,d^3x = i\int(\psi_L^\dagger\psi_L - \psi^\dagger_R\psi_R).
+\end{align}
+Ora, il termine di potenziale della lagrangiana di un campo spinoriale è
+\begin{equation}
+    \dL_U = im\psib\psi.
+\end{equation}
+Il termine $\dL_U$, a differenza di $\dL_K$, non è invariante per trasformazioni chirali dato che non lo è $\psib\psi$, infatti
+\begin{equation}
+    \psib\psi\to\psib'\psi' = e^{-i\beta\gamma^5}\psib e^{i\beta\gamma^5}\psi\neq\psib\psi,
+\end{equation}
+in quanto la matrice $\gamma^5$ non commuta con $\gamma^0$, anzi anticommuta. Ad ogni modo, la lagrangiana di un campo spinoriale è
+\begin{equation}
+\label{eq: lagrangiana campo spinoriale}
+    \dL = \dL_K - \dL_U = \psib\gamma^\mu\p_\mu\psi - im\psib\psi = \psib(i\gamma^\mu\p_\mu - m)\psi.
+\end{equation}
+Rispetto alla variazione di $\psib$, le equazioni \eqref{eq: EEL} restituiscono l'equazione del moto di un campo spinoriale, ovvero l'equazione di Dirac
+\begin{equation}
+\label{eq: equazione di Dirac}
+    (i\gamma^\mu\p_\mu - m)\psi = 0.
+\end{equation}
+\begin{obs}
+    Le equazioni \eqref{eq: EEL} per lo spinore $\psi$ restituiscono l'equazione di Dirac aggiunta del tutto equivalente
+    \begin{equation}
+        (-i\p_\mu\gamma^\mu -m)\psib = 0.
+    \end{equation}
+\end{obs}
+
+
+
+

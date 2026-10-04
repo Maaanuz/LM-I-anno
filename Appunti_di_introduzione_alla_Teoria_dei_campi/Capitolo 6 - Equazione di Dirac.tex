@@ -1,0 +1,447 @@
+\chapter{Equazione di Dirac}
+La richiesta fondamentale che deve essere formulata per l'equazione di Dirac è che questa sia invariante per trasformazioni di Lorentz in quanto l'obiettivo è costruire una teoria in accordo con la Relatività speciale, per cui le equazioni del moto devono avere la stessa in ogni sistema di riferimento inerziale. 
+
+Gli spinori $\psi(x)$ che compaiono in \eqref{eq: equazione di Dirac} sono espressi in rappresentazione di spin $1/2$ del gruppo di Lorentz, che sotto trasformazioni di Lorentz trasformano come
+\begin{equation}
+    \psi(x)\to\psi'(x') = e^{-i\omega_{\rho\sigma}M^{\rho\sigma}/2}\psi(\ML x) \equiv S(\ML)\psi(x),
+\end{equation}
+dove gli $M^{\rho\sigma}$ sono i generatori del gruppo di Lorentz in rappresentazione di campo, ossia
+\begin{equation}
+    M^{\rho\sigma} = M^{\rho\sigma}_{(fin)} + M^{\rho\sigma}_{(inf)},
+\end{equation}
+con gli $M^{\rho\sigma}_{(fin)}$ definiti come visto nella \eqref{eq: generatori gruppo di Lorentz} agenti sulle componenti del campo spinoriale $\psi(x)$ appartenenti ad uno spazio vettoriale di dimensionalità finita, mentre gli $M^{\rho\sigma}_{(inf)}$ definiti come $M^{\rho\sigma}_{(inf)} := i(x_\rho\p_\sigma - x_\sigma\p_\rho)$ agenti sugli argomenti delle componenti del campo spinoriale, ossia le coordinate $x^\mu$ che invece variano con continuità in uno spazio vettoriale di dimensionalità infinita. Moltiplicando l'equazione di Dirac \eqref{eq: equazione di Dirac} per $S(\ML)^{-1}$ segue che
+\begin{equation}
+    S(\ML)^{-1}[(i\gamma^\mu\p'_\mu - m)\psi'(x')] = (iS(\ML)^{-1}\gamma^\mu S(\ML)\p_\mu' - m)\psi(x) = 0,
+\end{equation}
+ma dato che $\p_\mu'= (\ML^{-1})_\mu^\nu\p_\nu \equiv \ML_\mu^\nu\p_\nu$, allora affinché l'equazione di Dirac sia invariante per trasformazioni di Lorentz deve essere verificata la condizione
+\begin{equation}
+    S(\ML)^{-1}\gamma^\mu S(\ML) = \gamma^\rho\ML^\mu_\rho,
+\end{equation}
+infatti in questo modo si ha
+\begin{equation}
+    \begin{split}
+        (iS(\ML)^{-1}\gamma^\mu S(\ML)\p_\mu' - m)\psi(\ML x) &= (i\gamma^\rho\ML^\mu_\rho\ML_\mu^\nu\p_\nu - m)\psi(x) \\
+        &= (i\gamma^\rho\delta^\nu_\rho\p_\nu -m)\psi(x) \\
+        &= (i\gamma^\nu\p_\nu - m)\psi(x).
+        \end{split}
+\end{equation}
+Si può anche dimostrare che l'equazione di Dirac implica quella di Klein - Gordon, infatti usando la regola di anticommutazione definente l'algebra di Clifford \eqref{eq: algebra di Clifford} si ha
+\begin{equation}
+    \begin{split}
+        (i\gamma^\nu \p_\nu - m)\psi &= (-i\gamma^\mu\p_\mu - m)(i\gamma^\nu\p_\nu - m)\psi \\
+        &=(\gamma^\mu\gamma^\nu\p_\mu\p_\nu + m^2)\psi \\
+        &= \bigg(\frac{1}{2}\acomm{\gamma^\mu}{\gamma^\nu}\p_\mu\p_\nu + m^2\bigg)\psi \\
+        &=(\p_\mu\p^\mu + m^2)\psi, \\
+    \end{split}
+\end{equation}
+dove nel quarto passaggio si è simmetrizzato il termine $\gamma^\mu\gamma^\nu\p_\mu\p_\nu$, dato che $\p_\mu\p_\nu$ è un oggetto completamente simmetrico per cui l'unica componente di $\gamma^\mu\gamma^\nu\p_\mu\p_\nu$ non nulla è proprio quella simmetrica.
+
+Per quanto riguarda gli invarianti, è interessante notare come $\psi^\dagger\psi$ non sia invariante per trasformazioni di Lorentz, infatti
+\begin{equation}
+    \psi^\dagger\psi\to\psi'^\dagger\psi' = \psi^\dagger S^\dagger(\ML)S(\ML)\psi \neq \psi^\dagger\psi,
+\end{equation}
+in quanto la matrice di trasformazione $S(\ML)$ non è hermitiana. Tuttavia, un invariante possibile è $\psib\psi$, infatti
+\begin{equation}
+\label{eq_: psi bar * psi invariante}
+    \psib\psi\to\psib'\psi' = \psi^\dagger S^\dagger(\ML)\gamma^0 S(\ML)\psi = \psib\psi,
+\end{equation}
+dove però per spiegare l'ultima uguaglianza è necessario qualche elemento in più. 
+
+\subsubsection{Trasformazione di parità}
+Un'inversione spaziale trasforma le coordinate $x^\mu$ come
+\begin{equation}
+\label{eq: trasformazione di parità}
+    x^\mu\to x'^\mu = (x^0,-x^i)
+\end{equation}
+Si vuole ora determinare come trasforma il campo spinoriale per la trasformazione \eqref{eq: trasformazione di parità}. In generale, si ha
+\begin{equation}
+    \psi(x)\to\psi'(-x) = S_p\psi(x),
+\end{equation}
+per cui l'equazione di Dirac trasforma come
+\begin{equation}
+    (i\gamma^0\p_0 -i\gamma^i\p_i -m)S_p\psi(x) = 0,
+\end{equation}
+la quale affinché sia invariante per trasformazioni di parità è necessario che vengano soddisfatte le condizioni
+\begin{equation}
+    \begin{cases}
+        S_p^{-1}\gamma^0S_p = \gamma^0 \\
+        S_p^{-1}\gamma^iS_p = -\gamma^i
+    \end{cases}.
+\end{equation}
+Queste condizioni possono essere verificate semplicemente ponendo
+\begin{equation}
+    S_p:=\eta_p\gamma^0,\quad\eta_p\in\mathbb{C}.
+\end{equation}
+Non è complesso vedere che $\psi^\dagger\psi$ è invariante per inversione di parità purché sia $|\eta_p| = 1$, ossia che $\eta_p = e^{i\phi}$, con $\phi\in\R$; infatti
+\begin{equation}
+    \begin{split}
+        \psi^\dagger(x)\psi(x)\to\psi'^\dagger(x')\psi'(x') &=  [\eta_p\gamma^0\psi(x)]^\dagger[\eta_p\gamma^0\psi(x)] \\
+        &=|\eta_p|^2\psi^\dagger\gamma^0\gamma^0\psi \\
+        &= \psi^\dagger\psi,
+    \end{split}
+\end{equation}
+dove infatti si è dovuto porre $|\eta|^2 = 1$. Il fattore di fase $\eta_p$ dipende unicamente dalla natura dello spinore $\psi$ di spin $1/2$ ed è chiamato parità intrinseca. Inoltre, è da notare che $\psib\psi$ non è invariante per inversione di parità, mentre $\psib\gamma^\mu\psi$ trasforma come
+\begin{equation}
+    \psib\gamma^0\psi\to\psib'\gamma^0\psi' = \psib\gamma^0\psi,\quad \psib\gamma^i\psi\to\psib'\gamma^i\psi' = -\psib\gamma^i\psi.
+\end{equation}
+
+\subsubsection{Trasformazioni di Lorentz}
+A questo punto è interessante dare una rappresentazione delle matrici di $S(\ML)$ in termini delle matrici di Dirac $\gamma^\mu$. Per farlo, si definiscono le matrici $\sigma^{\mu\nu}$ di dimensione $4 \times 4$ come
+\begin{equation}
+    \sigma^{\mu\nu} := \frac{i}{2}\comm{\gamma^\mu}{\gamma^\nu}.
+\end{equation}
+Le matrici $\sigma^{\mu\nu}/2$ sono i generatori del gruppo di Lorentz in questa rappresentazione quadridimensionale che si erano in precedenza indicate in generale come $M^{\mu\nu}$ e che nella rappresentazione $\mathfrak{su}(2)\otimes\mathfrak{su}(2)$ vengono rappresentate dalla matrici di Pauli. Quindi, una trasformazione di Lorentz si può scrivere come
+\begin{equation}
+\label{eq: S(lambda) in funzione delle gamma}
+    S(\ML) = e^{-i\omega_{\mu\nu}\sigma^{\mu\nu}/4},
+\end{equation}
+che effettivamente è una rappresentazione esplicita di $S(\ML)$ che induce una trasformazione di Lorentz sul campo spinoriale $\psi$ in termini delle matrici di Dirac $\gamma^\mu$.
+
+Avendo dato una rappresentazione di $S(\ML)$, è possibile spiegare l'invarianza di $\psib\psi$ per trasformazioni di Lorentz come accennato nella \eqref{eq_: psi bar * psi invariante}, infatti
+\begin{equation}
+\label{eq: inizio dimostrazione trasformazione psi bar}
+    \psib\to\psib' = \psi^\dagger S^\dagger(\ML)\gamma^0 = \psib\gamma^0S^\dagger(\ML)\gamma^0,
+\end{equation}
+che considerando una trasformazione di Lorentz infinitesima, ossia se $S(\ML) = e^{-i\omega_{\mu\nu}\sigma^{\mu\nu}/4}\simeq\MI - i\omega_{\mu\nu}\sigma^{\mu\nu}/4$, diventa
+\begin{equation}
+    \psib\to\psib' = \psib\gamma^0\bigg[\MI + \frac{i}{4}\omega_{\mu\nu}(\sigma^{\mu\nu})^\dg\bigg]\gamma^0,
+\end{equation}
+e poiché
+\begin{equation}
+    \begin{split}
+        \gamma^0(\sigma^{\mu\nu})^\dagger\gamma^0 &= -\frac{i}{2}\gamma^0\comm{(\gamma^\nu)^\dagger}{(\gamma^\mu)^\dagger}\gamma^0 \\
+        &= -\frac{i}{2}\gamma^0\comm{\gamma^0\gamma^\nu\gamma^0}{\gamma^0\gamma^\mu\gamma^0}\gamma^0 \\
+        &= -\frac{i}{2}(\gamma^0)^2\comm{\gamma^\nu}{\gamma^\mu}(\gamma^0)^2 \\
+        &=-\sigma^{\nu\mu} \\
+        &= \sigma^{\mu\nu},
+    \end{split}
+\end{equation}
+essendo le matrici $\sigma^{\mu\nu}$ completamente antisimmetriche, si ha per una trasformazione finita che
+\begin{equation}
+\label{eq: fine dimostrazione trasformazione psi bar}
+    \psib\to\psib' = \psib e^{i\omega_{\mu\nu}\sigma^{\mu\nu}/4} = \psib S^{-1}(\ML).
+\end{equation}
+Quindi, confrontando la \eqref{eq: inizio dimostrazione trasformazione psi bar} con la \eqref{eq: fine dimostrazione trasformazione psi bar} si può porre
+\begin{equation}
+    S^{-1}(\ML) = \gamma^0S(\ML)^\dg\gamma^0,
+\end{equation}
+verificando dunque l'uguaglianza introdotta nella \eqref{eq_: psi bar * psi invariante} e dimostrando l'invarianza per trasformazioni di Lorentz di $\psib\psi$. Inoltre, il prodotto $\psib\gamma^\mu\psi$ trasforma come un quadrivettore, ovvero
+\begin{equation}
+    \psib\gamma^\mu\psi\to\psib'\gamma^\mu\psi' = \ML_\rho^\mu\psib\gamma^\mu\psi.
+\end{equation}
+
+\section{Forme bilineari spinoriali}
+Ricapitolando, si è visto che $\psib\psi$ è un invariante di Lorentz mentre $\psib\gamma^\mu\psi$ trasforma come un quadrivettore, di fatto questi due termini compongono la lagrangiana di un campo spinoriale ricavata nella \eqref{eq: lagrangiana campo spinoriale}. Ora è possibile dimostrare che esistono sedici matrici $4\times4$ con proprietà di trasformazioni per operazioni del gruppo di Lorentz ben definite che costituiscono una base dello spazio spinoriale. Qualsiasi combinazione $\psib\Gamma\psi$ con $\Gamma\in\R^{4,4}$ ad elementi costanti può essere scritta in termini di questa base di matrici, definite come combinazioni antisimmetriche di matrici $\gamma^\mu$. Queste sono:
+\begin{enumerate}
+    \item la matrice identità $\MI$, uno scalare di Lorentz;
+    \item le quattro matrici di Dirac $\gamma^\mu$, vettori dello spazio di Dirac;
+    \item le sei matrici che definiscono il tensore di rango due $\sigma^{\mu\nu}$;
+    \item le quattro matrici $\gamma^\mu\gamma^5$ che trasformano come pseudo-vettori;
+    \item la matrice di chiralità $\gamma^5$ che trasforma come uno pseudo-scalare.
+\end{enumerate}
+Queste matrici vengono racchiuse sotto un unico simbolo $\Gamma^a$, dove l'indice $a$ indica a quale famiglia ci si sta riferendo e i cui valori, in questo caso, sono decisi in base all'elenco in cui si sono presentate. Le $\Gamma^a$ hanno le seguenti proprietà:
+\begin{enumerate}
+    \item $(\Gamma^a)^2 = \pm\MI$, $\forall a$;
+    \item Ogni $\Gamma^a$ può essere espressa come prodotto di al più quattro matrici $\gamma^\mu$ diverse con coefficienti $\pm1$ o $\pm i$;
+    \item $\forall\Gamma^a,\Gamma^b$, $a\neq b$, $\exists\,\Gamma^c\neq\MI : \Gamma^a\Gamma^b = \alpha\Gamma^c$, $\alpha = \{\pm1,\pm i\}$;
+    \item $\forall\Gamma^a\neq\MI$, $\exists!\,\Gamma^b : \{\Gamma^a,\Gamma^b\} = 0$;
+    \item $\forall\Gamma^a\neq\MI$, $\Tr{(\Gamma^a)} = 0$;
+    \item $\forall\Gamma^a,\Gamma^b$, $a\neq b$, $\Tr{(\Gamma^a\Gamma^b)} = 0$.
+\end{enumerate}
+Pertanto, il set completo di forme bilineari è:
+\begin{enumerate}
+    \item lo scalare $\psib\psi$;
+    \item i quattro vettori $\psib\gamma^\mu\psi$;
+    \item il tensore di rango due $\psib\sigma^{\mu\nu}\psi$;
+    \item i quattro pseudo-vettori $\psib\gamma^\mu\gamma^5\psi$;
+    \item lo pseudo-scalare\footnote{Pseudo-scalari e pseudo-vettori trasformano rispettivamente come scalari e vettori per trasformazioni di Lorentz ma cambiano il segno per inversioni di parità.} $\psib\gamma^5\psi$.
+\end{enumerate}
+
+\section{Soluzioni dell'equazione di Dirac}
+L'equazione di Dirac per il campo $\psi(x)$ ammette come soluzioni combinazioni lineari di onde piane che necessariamente devono avere quattro componenti date le dimensioni $\psi(x)$; infatti le soluzioni sono
+\begin{equation}
+    \psi(x) = 
+    \begin{cases}
+        u_s(p)e^{-ip_\mu x^\mu} \\
+        v_s(p)e^{ip_\mu x^\mu}
+    \end{cases},
+\end{equation}
+dove $s$ è un indice a due valori legato allo spin associato allo spinore e dove $u_s$ e $v_s$ sono spinori a quattro componenti. Inserendo queste soluzioni nell'equazione di Dirac \eqref{eq: equazione di Dirac} si ottengono
+\begin{equation}
+    \begin{cases}
+        (\gamma^\mu p_\mu - m)u_s(p) = 0 \\
+        (\gamma^\mu p_\mu + m)v_s(p) = 0
+    \end{cases},
+\end{equation}
+da cui si deduce che gli spinori $u_s$ e $v_s$ devono soddisfare le condizioni
+\begin{equation}
+\label{eq: equazioni spinori u e v}
+    \begin{cases}
+        (\slp - m)u_s(p) = 0 \\
+        (\slp + m)v_s(p) = 0
+    \end{cases},\quad\slp := \gamma^\mu\p_\mu.
+\end{equation}
+Ponendosi nel sistema di riferimento di riposo, in cui $p_\mu = (m,\bm{0})$, si sceglie come base per gli spinori $u_s$ e $v_s$ 
+\begin{equation}
+    \left\{u_1(0) = 
+    \begin{pmatrix}
+        1 \\
+        0 \\
+        0 \\
+        0
+    \end{pmatrix},\
+    u_2(0) = 
+    \begin{pmatrix}
+        0 \\
+        1 \\
+        0 \\
+        0
+    \end{pmatrix},\
+    v_1(0) = 
+    \begin{pmatrix}
+        0 \\
+        0 \\
+        0 \\
+        1
+    \end{pmatrix},\
+    v_2(0) = 
+    \begin{pmatrix}
+        0 \\
+        0 \\
+        1 \\
+        0
+    \end{pmatrix}\right\},
+\end{equation}
+che può essere scritta in maniera più compatta usando gli spinori di Weyl a due componenti
+\begin{equation}
+    \left\{u_1(0) = 
+    \begin{pmatrix}
+        \chi^\ua \\
+        \bm{0}
+    \end{pmatrix},\
+    u_2(0) = 
+    \begin{pmatrix}
+        \chi^\da \\
+        \bm{0}
+    \end{pmatrix},\
+    v_1(0) = 
+    \begin{pmatrix}
+        \bm{0} \\
+        \phi^\ua
+    \end{pmatrix},\
+    v_2(0) = 
+    \begin{pmatrix}
+        \bm{0} \\
+        \phi^\da
+    \end{pmatrix}\right\}.
+\end{equation}
+Ora si considera un boost su $u_s(0)$ e $v_s(0)$ in modo da trovare la loro espressione in un sistema di riferimento generico diverso da quello di riposo dove $p_\mu = (E,\vp)$. Ricordando che i boost sono generati dagli operatori
+\begin{equation}
+    M^{0i} = K^i = \frac{1}{2}\sigma^{0i} = \frac{i}{4}\comm{\gamma^0}{\gamma^i},
+\end{equation}
+si ha che la matrice di trasformazione $S(\ML) = e^{-i\omega_{0i}\sigma^{0i}/4}$ è
+\begin{equation}
+    S(\ML) = \MI\cosh{\frac{\eta}{2}} - i\sinh{\frac{\eta}{2}}K^3,\quad K^3 = -i
+    \begin{pmatrix}
+        0 & 0 & 0 & 1 \\
+        0 & 0 & 0 & 0 \\
+        0 & 0 & 0 & 0 \\
+        1 & 0 & 0 & 0 \\
+    \end{pmatrix}.
+\end{equation}
+Quindi, in una generica direzione $\bm{n}$ si ha
+\begin{equation}
+    S(\ML) = 
+    \begin{pmatrix}
+        \MI\cosh{\dfrac{\eta}{2}} & \sigma^i\cdot\hat{n}\sinh{\dfrac{\eta}{2}} \\
+        \sigma^i\cdot\hat{n}\sinh{\dfrac{\eta}{2}} & \MI\cosh{\dfrac{\eta}{2}}
+    \end{pmatrix},
+\end{equation}
+i cui elementi possono essere riscritti in termine dell'energia e del momento, infatti valgono le relazioni
+\begin{equation}
+    \begin{cases}
+        \cosh^2{\dfrac{\eta}{2}} = \dfrac{1}{2}(1 + \gamma) = \dfrac{1}{2}\dfrac{mc^2}{mc^2}(1 + \gamma) = \dfrac{1}{2}\dfrac{mc^2 + E}{mc^2} = \dfrac{E + m}{2m} \\[2ex]
+        \sinh^2{\dfrac{\eta}{2}} = \dfrac{E - m}{2m}
+    \end{cases}.
+\end{equation}
+Per cui, si può scrivere
+\begin{equation}
+    S(\ML) = \sqrt{\frac{E + m}{2m}}
+    \begin{pmatrix}
+        \MI & \dfrac{\sigma^ip_i}{E + m} \\
+        \dfrac{\sigma^ip_i}{E + m} & \MI
+    \end{pmatrix}.
+\end{equation}
+Quindi, gli spinori $u_s$ e $v_s$ possono essere scritti come
+\begin{equation}
+\label{eq: spinori u e v in un SdR generico}
+    u_s(p) = \sqrt{E + m}
+    \begin{pmatrix}
+        \chi^s \\
+        \dfrac{\sigma^ip_i}{E + m}\chi^s
+    \end{pmatrix},\quad v_s(p) = \sqrt{E + m}
+    \begin{pmatrix}
+        \dfrac{\sigma^ip_i}{E + m}\phi^s \\
+        \phi^s
+    \end{pmatrix}.
+\end{equation}
+Gli spinori $u_s$ e $v_s$ definiti dalla \eqref{eq: spinori u e v in un SdR generico} soddisfano opportune regole di normalizzazione e ortogonalità. Per quanto riguarda la normalizzazione, questa risulta fissata imponendo le condizioni
+\begin{equation}
+    \begin{cases}
+        u_s^\dg(p)u_{s'}(p) = 2E\delta_{ss'} \\
+        v_s^\dg(p)v_{s'}(p) = 2E\delta_{ss'}
+    \end{cases},
+\end{equation}
+a cui si aggiungono, definendo gli spinori aggiunti $\sdub := \sdud\gamma^0$ e $\sdvb = \sdvd\gamma^0$, le ulteriori due condizioni
+\begin{equation}
+    \begin{cases}
+        \sdub(p)\sdup(p) = 2m\delta_{ss'} \\
+        \sdvb(p)\sdvp(p) = -2m\delta_{ss'}
+    \end{cases}.
+\end{equation}
+Per quanto riguarda l'ortogonalità invece le condizioni da rispettare sono
+\begin{equation}
+    \sdub(p)\sdvp(p) = \sdvb(p)\sdup(p) = 0.
+\end{equation}
+Non è difficile verificare che gli spinori \eqref{eq: spinori u e v in un SdR generico} soddisfano le equazioni \eqref{eq: equazioni spinori u e v}, ad esempio considerando l'equazione per $u_s$, lasciando da parte il fattore $\sqrt{E + m}$ e usando la rappresentazione di Dirac per la $\gamma^0$, si ha
+\begin{equation}
+    \begin{split}
+        (\slp - m)u_s &= (E\gamma^0 - p_i\gamma^i - m\MI)
+        \begin{pmatrix}
+            \chi^s \\
+            \dfrac{\sigma^ip_i}{E + m}\chi^s
+        \end{pmatrix} \\
+        &=\bigg[E
+        \begin{pmatrix}
+            \MI & \MO \\
+            \MO & -\MI
+        \end{pmatrix}
+        - p_i
+        \begin{pmatrix}
+            \MO & \sigma^i \\
+            -\sigma^i & \MO
+        \end{pmatrix}
+        -m\MI\bigg]
+        \begin{pmatrix}
+            \chi^s \\
+            \dfrac{\sigma^ip_i}{E + m}\chi^s
+        \end{pmatrix} \\
+        &= 
+        \begin{pmatrix}
+            E - m & -p_i\sigma^i \\
+            p_i\sigma^i & - E - m
+        \end{pmatrix}
+        \begin{pmatrix}
+            \chi^s \\
+            \dfrac{\sigma^ip_i}{E + m}\chi^s
+        \end{pmatrix} \\
+        &= 
+        \begin{pmatrix}
+            \bigg[E - m - \dfrac{\vp^2}{E + m}\bigg]\chi^s \\
+            p_i\sigma^i\bigg[1 - \dfrac{E + m}{E - m}\bigg]\chi^s
+        \end{pmatrix} \\
+        &= 0,
+    \end{split}
+\end{equation}
+dove si è tenuto conto della relazione $(\sigma^ip_i)^2 = \vp^2\MI$. Chiaramente, un calcolo analogo porta alla verifica che $v_s(p)$ soddisfa la rispettiva relazione in \eqref{eq: equazioni spinori u e v}.
+
+\subsubsection{Proiettori su stati di energia}
+Chiaro il fatto che il prodotto $\sdub(p)\sdup(p)$ è un numero, ci si chiede quale possano essere le informazioni contenute nel prodotto $\sdu(p)\sdubp(p)$ che invece risulta essere una matrice $4\times4$ a cui si associano gli indici $\alpha$ e $\beta$. A tal proposito, si definisce l'operatore
+\begin{equation}
+    [\ML_+(\vp)]_{\alpha\beta} = \nsum_s\frac{\sdu^\alpha(p)\sdub^\beta(p)}{2m},
+\end{equation}
+il quale applicato allo spinore $\sdup$ restituisce
+\begin{equation}
+    \ML_+\sdup(p) = \nsum_{s,\beta}\frac{\sdu^\alpha(p)\sdub^\beta(p)\sdup^\beta(p)}{2m} = \nsum_{s,\beta}\frac{\sdu^\alpha(p)2m\delta_{ss'}}{2m} = \sdup(p),
+\end{equation}
+mentre applicato allo spinore $\sdvp$, per l'ortogonalità di $\sdu$ e $\sdv$ restituisce
+\begin{equation}
+    \ML_+\sdvp(p) = 0.
+\end{equation}
+Inoltre, l'operatore $\ML_+$ è idempotente, ossia dotato della proprietà $\ML_+^2 = \ML_+$. Abbastanza immediato è notare che $(\slp - m)\ML_+(\vp) = 0$ come conseguenza di $(\slp - m)\sdu(p) = 0$, quindi ricordando che $(\slp + m)(\slp - m) = 0$ si può rappresentare $\ML_+$ come 
+\begin{equation}
+    \ML_+(\vp) = \frac{\slp + m}{2m}.
+\end{equation}
+Pertanto $\ML_+$ è un proiettore su stati di energia positiva, ossia su stati di tipo $u$. Analogamente, si può definire l'operatore
+\begin{equation}
+    [\ML_-(\vp)]_{\alpha\beta} = \nsum_s\frac{\sdv^\alpha(p)\sdvb^\beta(p)}{2m} = \frac{-\slp + m}{2m},
+\end{equation}
+come un proiettore su stati ad energia negativa, o meglio su stati di tipo $v$. Valgono inoltre le seguenti proprietà di completezza
+\begin{equation}
+    \ML_+(\vp) + \ML_-(\vp) = \MI,
+\end{equation}
+e di ortogonalità 
+\begin{equation}
+    \ML_+(\vp)\ML_-(\vp) = \ML_-(\vp)\ML_+(\vp) = 0.
+\end{equation}
+
+\subsubsection{Autostati e proiettori di chiralità}
+Nella rappresentazione di chiralità le matrici $\gamma^0$ e $\gamma^5$ sono definite da
+\begin{equation}
+    \gamma^0 = 
+    \begin{pmatrix}
+        \MO & \MI \\
+        \MI & \MO
+    \end{pmatrix},\quad \gamma^5 = 
+    \begin{pmatrix}
+        -\MI & \MO \\
+        \MO & \MI
+    \end{pmatrix}.
+\end{equation}
+Nella \eqref{eq: proiettori rappr. Dirac} si erano definiti i proiettori $P_{L,R}$ che consentono di selezionare le componenti sinistrorse e destrorse dello spinore $\psi = (\phi_L\,\phi_R)^T$ nella rappresentazione di Dirac. Comunque, la distinzione tra gli spinori sinistrorsi e destrorsi vale in qualsiasi rappresentazione dell'algebra di Clifford ed è invariante poiché $\comm{\gamma^5}{\sigma^{\mu\nu}} = 0$. Quindi, in analogia a quanto fatto nella \eqref{eq: proiettori rappr. Dirac} si definiscono i proiettori $u_L$ e $u_R$ come
+\begin{equation}
+    u_L(\vp) := \hatP_Lu(p),\quad u_R(\vp) := \hatP_Ru(p),
+\end{equation}
+da cui si ottiene
+\begin{equation}
+    \bar{u}_L(\vp) = u^\dg_L\gamma^0 = \bigg(\frac{\MI - \gamma^5}{2}u\bigg)^\dg\gamma^0 = u^\dg\frac{\MI - \gamma^5}{2}\gamma^0 = \bar{u}(p)\hatP_R,
+\end{equation}
+per cui
+\begin{equation}
+    \begin{cases}
+        \bar{u}_L(\vp) = \bar{u}(p)\hatP_R \\ \bar{u}_R(\vp) = \bar{u}(p)\hatP_L
+    \end{cases},\quad \hatP_L\gamma^\mu = \gamma^\mu\hatP_R.
+\end{equation}
+
+\subsubsection{Fermioni chirali}
+Un fenomeno è detto chirale quando non è identico alla sua immagine ``speculare'' indotta da una trasformazione di parità. Nella rappresentazione chirale (o di Weyl) lo spinore di Dirac $\psi = (\psi_L\,\psi_R)^T$ è dotato di due componenti che trasformano in modo diverso sotto trasformazioni di Lorentz dato che infatti le due componenti sono legate da un'operazione di complessa coniugazione. L'equazione di Dirac può essere riscritta in termini di $\psi_L$ e $\psi_R$ tramite la rappresentazione matriciale 
+\begin{equation}
+    \begin{pmatrix}
+        -m\MI & i(\p_0 + \sigma_i\p^i) \\
+        i(\p_0 -\sigma_i\p^i) & -m\MI
+    \end{pmatrix}
+    \begin{pmatrix}
+        \psi_L \\
+        \psi_R
+    \end{pmatrix}
+    = 0,
+\end{equation}
+da cui si ottengono
+\begin{equation}
+\label{eq: equazioni psi_L e psi_R con m}
+    \begin{cases}
+        i(\p_0 + \sigma_i\p^i)\psi_R(x) - m\psi_L(x) = 0 \\
+        i(\p_0 - \sigma_i\p^i)\psi_L(x) - m\psi_R(x) = 0
+    \end{cases}.
+\end{equation}
+Dalle equazioni \eqref{eq: equazioni psi_L e psi_R con m} si deve che queste sono accoppiate tramite il termine di massa che ``mescola'' le componenti sinistrorse e destrorse dello spinore $\psi$. Tuttavia, nel limite $m\to0$ le equazioni si disaccoppiano risultando nelle equazioni di Weyl per particelle massless
+\begin{equation}
+\label{eq: equazioni psi_L e psi_R senza m}
+    \begin{cases}
+        i(\p_0 + \sigma_i\p^i)\psi_R(x) = 0 \\
+        i(\p_0 - \sigma_i\p^i)\psi_L(x) = 0
+    \end{cases}.
+\end{equation}
+Per particelle, che sono autostati dell'impulso, si può porre
+\begin{equation}
+    \psi(x) = \psi(\vp)e^{-ip_\mu x^\mu} = \psi(\vp)e^{-i(Et + \vp\cdot\vx)}
+\end{equation}
+e se la loro massa è nulla si ha $E^2 - |\vp|^2 = 0$ e quindi $E = |\vp|$. Quindi, per particelle libere le equazioni \eqref{eq: equazioni psi_L e psi_R senza m} diventano $(E \pm \sigma_ip^i)\psi_{L,R}(\vp) = 0$, che dividendo per $|\vp|$ si possono riscrivere come
+\begin{equation}
+\label{eq: eq: equazioni psi_L e psi_R senza m con h}
+    \begin{cases}
+        \hath\psi_R = \psi_R \\
+        \hath\psi_L = -\psi_L
+    \end{cases},\quad\hath = \sigma^i\cdot\hatp,
+\end{equation}
+dove si è definito l'operatore elicità $\hath$ di cui quindi le componenti $\psi_R$ e $\psi_L$ sono gli autostati con autovalori rispettivamente $1$ e $-1$. Le equazioni \eqref{eq: eq: equazioni psi_L e psi_R senza m con h} racchiudono l'informazione che per particelle libere massless hanno ``spin'' completamente allineato o anti-allineato alla direzione del momento. Tuttavia, questa interpretazione vale solo per particelle massless dato che lo spin per particelle a massa nulla non è ben definito. Per particelle con massa $m\neq0$ gli autostati di chiralità, cioè quelli di $\gamma^5$ che nella rappresentazione di Weyl è diagonale, $\phi_L$ e $\phi_R$ non sono autostati dell'elicità, che oltretutto non è un invariante di Lorentz dato che è sempre possibile effettuare un boost in un sistema di riferimento dove il verso del momento è invertito, invertendo così anche l'elicità. Tuttavia, per una particella relativistica l'elicità, e non lo spin, è una costante del moto, o in altre parole, se una particelle relativistica o massless possiede una certa elicità in un istante $t$ rimarrà sempre nello stesso stato di elicità a qualsiasi istante $t'$ successivo. La chiralità $\gamma^5$ invece è un invariante di Lorentz dato che $\comm{\gamma^5}{\sigma^{\mu\nu}} = 0$, ma non viene conservata nel caso di fermioni liberi se $m\neq0$. Infine, per $m = 0$ i concetti di chiralità ed elicità coincidono.

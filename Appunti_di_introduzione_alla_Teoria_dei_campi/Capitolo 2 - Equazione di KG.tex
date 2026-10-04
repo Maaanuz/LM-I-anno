@@ -1,0 +1,83 @@
+\chapter{Equazione di Klein-Gordon}
+L'obiettivo è quello di trovare un'equazione del moto quantistica che sia in accordo con la teoria della Relatività. Già Schr\"odinger aveva tentato questa impresa, ma abbandonò l'idea a causa di alcune conseguenze problematiche che l'eventuale soluzione implicava. Non considerando le questioni relativistiche, arrivò alla formulazione dell'equazione di Schr\"odinger, la quale funziona perfettamente ma non è in accordo con la Relatività, in primis il tempo non viene considerato come una coordinata ma come un semplice parametro.
+
+In Meccanica quantistica non relativistica ogni stato è definito da un vettore $\ket{\psi}$ appartenente ad uno spazio di Hilbert $\SH$ e ogni misura di un'osservabile $O$ restituisce come risultato l'autovalore del corrispondente operatore hermitiano $\hatO$. L'evoluzione temporale di un sistema quantistico è codificato nell'equazione di Schr\"odinger, informazione che può poi essere convenientemente racchiusa in un operatore hermitiano di evoluzione temporale $\hatU$ definito a posteriori. L'equazione di Schr\"odinger nella sua forma più generale è
+\begin{equation}
+\label{eq: eq. schro. forma generale generale}
+    i\hbar\frac{\p}{\p t}\ket{\psi} = \hatH\ket{\psi},\quad\ket{\psi}\in\SH.
+\end{equation}
+Considerando una particella libera, se si proietta l'equazione \eqref{eq: eq. schro. forma generale generale} sullo spazio delle coordinate considerando il prodotto scalare con $\bra{\vx}$, si associa all'osservabile $p$ l'operatore hermitiano $\hatp=-i\hbar\nabla$ e si ricorda che l'hamiltoniana di una particella libera è 
+\begin{equation}
+\label{eq: hamiltoniana particella libera}
+    \hatH = \frac{\hatp^2}{2m},
+\end{equation}
+allora si ottiene l'equazione di Schr\"odinger per la particella libera
+\begin{equation}
+\label{eq: eq. schro. particella libera}
+    i\hbar\frac{\p\vpsi}{\p t} = -\frac{\hbar^2}{2m}\nabla^2\vpsi,\quad\vpsi = \mybraket{\vx}{\psi}.
+\end{equation}
+Le funzioni d'onda soluzioni dell'equazione \eqref{eq: eq. schro. particella libera} sono onde piane della forma $\ipsi=Ne^{-i(\omega t-\vk\cdot\vx)}$. Per rendere relativistica l'equazione \eqref{eq: eq. schro. particella libera} si potrebbe pensare di sostituire la relazione di dispersione della particella libera relativistica
+\begin{equation}
+\label{eq: eq. mass-shell}
+    E^2=p^2c^2+m^2c^4.
+\end{equation}
+Quindi, considerando la radice di \eqref{eq: eq. mass-shell} si può pensare di porre
+\begin{equation}
+\label{eq: hamiltoniana KG}
+    \hatH\equiv (E^2)^{1/2} = \sqrt{p^2c^2+m^2c^4}.
+\end{equation}
+In linea di principio, il secondo membro di \eqref{eq: hamiltoniana KG} può essere sia positivo che negativo, nulla a priori permette di eliminare uno dei due casi. Sorgono quindi due problemi: il primo è che prendendo la radice della relazione di dispersione di ottengono energie negative; il secondo è che la radice quadrata di un operatore differenziale non è un'operazione matematicamente ben definita. Per il momento, il discorso sulle energie negative viene lasciato da parte e si considerano solo quelle positive di \eqref{eq: hamiltoniana KG}, mentre per aggirare il secondo problema si può pensare di sviluppare in serie l'hamiltoniana in \eqref{eq: hamiltoniana KG}, per cui si ha
+\begin{equation}
+\label{eq: sviluppo in serie hamiltoniana KG}
+    \hatH = \sqrt{p^2c^2+m^2c^4} = mc^2 + mc^2\frac{p^2}{2m^2c^2} + \cdots = mc^2 + \frac{p^2}{2m} + \cdots.
+\end{equation}
+In questo modo, almeno al primo ordine, l'hamiltoniana \eqref{eq: sviluppo in serie hamiltoniana KG} corrisponde all'hamiltoniana di particella libera \eqref{eq: hamiltoniana particella libera}, somma dell'energia a riposo e del termine cinetico della Meccanica quantistica. Si può ora pensare di scrivere una nuova equazione di Schr\"odinger di forma
+\begin{equation}
+\label{eq: eq. pre-KG}
+    i\hbar\frac{\p\vpsi}{\p t} = (\sqrt{\hbar^2c^2\nabla^2 + m^2c^4})\vpsi.
+\end{equation}
+Tuttavia, l'equazione \eqref{eq: eq. pre-KG} presenta un grande problema che coinvolge proprio lo sviluppo in serie dell'hamiltoniana. Definendo $\hatH$ in quel modo si ottiene un operatore che corrisponde ad una serie infinita di derivate di ordini sempre crescenti, ma così facendo l'operatore che ne risulta non è più locale, ovvero al posto che restituire una variazione infinitesima, ne restituisce una finita. In ogni caso comunque non si è risolto il problema delle energie negative, per ora solo accantonato, ma anche se si provasse a considerarle si avrebbe a che fare con un sistema ``unbounded from below'', ossia non limitato inferiormente. L'energia infatti se si permette che possa essere negativa, può allora assumere qualsiasi valore senza un limite inferiore che permetta di avere uno stato fondamentale del sistema. 
+
+Osservando l'equazione \eqref{eq: eq. pre-KG} si nota uno ``sbilanciamento'' nell'ordine delle derivate spaziali e temporali, ispirandosi all'equazione di d'Alembert, si può pensare di usare come hamiltoniana direttamente $E^2$ senza prederne la radice, così facendo si ricava l'equazione di Klein-Gordon
+\begin{equation}
+\label{eq: eq. Klein-Gordon}
+    -\hbar^2\frac{\p^2\ipsi}{\p t^2}=(-\hbar^2c^2\nabla^2+m^2c^4)\ipsi.
+\end{equation}
+In unità naturali, l'equazione \eqref{eq: eq. Klein-Gordon}, arrangiandola opportunamente, diventa
+\begin{equation}
+\label{eq: eq. Klein-Gordon U.N.}
+    (\square+m^2)\vpsi=0,
+\end{equation}
+le cui soluzioni sono\footnote{In unità naturali, $E=\omega$ e $\vp=\vk$.}
+\begin{equation}
+    \psi(x^\mu)=Ne^{-i(Et-\vp\cdot\vx)}=Ne^{-ip^\mu x_\mu},\quad E=\pm\sqrt{p^2+m^2}.
+\end{equation}
+L'equazione \eqref{eq: eq. Klein-Gordon U.N.} è in accordo con la Relatività speciale, infatti se si opera una trasformazione $(\square,\psi(x^\mu))\to(\bar{\square},\bar{\psi(}\bx^\mu))$ l'equazione mantiene la medesima forma dato che 
+\begin{equation}
+    \psi(x^\mu) = \bar{\psi(}\bx^\mu),\quad \square = \bar{\square}.
+\end{equation}
+Infatti, il primo principio della Relatività speciale richiede che ogni fenomeno fisico sia lo stesso in ogni sistema di riferimento inerziali, ovvero che due osservatori $A$ e $B$ in due sistemi di riferimento inerziali diversi ottengono gli stessi risultati per ogni possibile esperimento, oltre ad essere d'accordo sulle predizioni dei risultati i tali esperimenti. Quindi, se $A$ afferma che un sistema che si trova nel punto $x^\mu$ del suo sistema di riferimento inerziale è descritto dalla funzione d'onda $\psi(x^\mu)$ e $B$ afferma che lo stesso sistema, che si trova nel punto $\bx^\mu$ del suo sistema di riferimento è descritto dalla funzione d'onda $\bar{\psi}(\bx)$, allora necessariamente deve essere 
+\begin{equation}
+    \psi(x^\mu) = \bar{\psi}(\bx^\mu).
+\end{equation}
+L'invarianza del D'Alembertiano per trasformazioni di Lorentz invece si era verificata in \eqref{eq: invarianza per TdL di OD'AL}. Tuttavia, l'equazione \eqref{eq: eq. Klein-Gordon U.N.}, per quanto elegante, presenta un grave problema: la densità di probabilità non è definita positiva. Questo è il motivo per cui Schr\"odinger abbandonò l'equazione dopo averla derivata, in quanto tutta l'interpretazione probabilistica della Meccanica quantistica viene invalidata se non è possibile definire una densità di probabilità. Per verificarlo si considerano l'equazione \eqref{eq: eq. Klein-Gordon U.N.} e la sua coniugata, moltiplicate rispettivamente per $\vpsi^*$ e $\vpsi$, 
+\begin{equation}
+    \begin{cases}
+        \vpsi^*(\square+m^2)\vpsi=0 \\
+        \vpsi(\square+m^2)\vpsi^*=0
+    \end{cases},
+\end{equation}
+calcolando la differenza tra la prima e la seconda equazione si trova
+\begin{equation}
+    \begin{split}
+        \psi^*\square\psi + \vpsi^*m^2\psi - \psi\square\psi^* - \psi m^2\psi^* &= 0 \\
+        \psi^*\square\psi - \psi\square\psi^* &= 0 \\
+        \p^\mu(\psi^*\p_\mu\psi - \psi\p_\mu\psi^*) &= 0 \\
+        \frac{\p}{\p t}\bigg(\psi^*\frac{\p}{\p t}\psi - \psi\frac{\p}{\p t}\psi^*\bigg) - \nabla\bigg(\psi^*\nabla\psi - \psi\nabla\psi^*\bigg) &= 0, \\
+    \end{split}
+\end{equation}
+che apparentemente sembra avere la forma di un'equazione di continuità, tuttavia, anche se il termine $\psi^*\nabla\psi - \psi\nabla\psi^*$ ha effettivamente la forma di una corrente di probabilità $\vj$, il termine 
+\begin{equation}
+    \psi^*\frac{\p}{\p t}\psi - \psi\frac{\p}{\p t}\psi^*
+\end{equation}
+non può essere interpretato come una densità di probabilità dato che la differenza non è obbligatoriamente positiva. Pertanto, dall'equazione \eqref{eq: eq. Klein-Gordon U.N.} non è possibile derivare un'equazione di continuità dato che la densità di probabilità $\rho$ non è definita positiva, impedendo la definizione di una quadricorrente di probabilità $j^\mu = (j^0,j^i) = (\rho,\vj)$.

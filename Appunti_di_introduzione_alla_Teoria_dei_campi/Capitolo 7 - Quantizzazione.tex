@@ -1,0 +1,314 @@
+\chapter{Quantizzazione canonica}
+A questo punto si sono sviluppati tutti gli strumenti necessari per costruire i funzionali di azione in termini di invarianti per trasformazioni di Poincarè in modo da assicurare la consistenza con i principi della Relatività speciale. Questo passaggio costringe a ``tornare indietro'' e considerare una teoria classica, non applicata alla descrizione di una particella singola ma piuttosto ad un campo, ossia ad un oggetto esteso. Ora si propone di affrontare il problema della quantizzazione della teoria di campo sviluppata per campi scalari, spinoriali e, più in avanti, anche per il campo elettromagnetico. Il metodo formalmente più elegante consiste nella quantizzazione tramite i path integrals che pur essendo basato su principi molto semplici ed intuitivi, comporta una serie di calcoli molto complessi: l'integrazione funzionale è un'operazione matematicamente molto delicata, che a rigore non esiste nello spazio di Minkowski. Per il momento quindi ci si limita all'uso di un metodo più diretto detto ``quantizzazione canonica'', che ricalca i passaggi storici dello sviluppo delle teorie di campo quantistiche e mette in luce in modo esplicito la natura di questo procedimento. Anche se funziona alla perfezione per campi scalari e spinoriali, purtroppo diventa lungo e proibitivo per sistemi che richiedono lagrangiane più complesse. Ad ogni modo, il protocollo di quantizzazione canonica si articola seguendo questi passi:
+\begin{enumerate}
+    \item si scrive la lagrangiana $\dL$ in funzione degli invarianti di Lorentz costruiti tramite i campi, dato che esistono più combinazioni di invarianti non tutte portano a teorie interessanti o fisicamente accettabili;
+    \item si calcola il campo di impulso coniugato $\pi(x)$ e l'hamiltoniana $\hatH$;
+    \item si promuovono i campi e i loro impulsi coniugati al ruolo di operatori e si impongono le opportune condizioni di commutazione tra i campi e i momenti coniugati in modo da renderli operativamente quantistici;
+    \item si sviluppano i campi in funzione degli operatori di creazione e distruzione di particelle, permettendo quindi di lavorare con il formalismo dei numeri di occupazione in uno spazio di Fock;
+    \item si risolve la teoria determinando gli autovalori e gli autostati dell'hamiltoniana $\hatH$ con la prescrizione del ``normal ordering''.
+\end{enumerate}
+
+\section{Campo scalare neutro}
+L'esempio più semplice della quantizzazione canonica è quella un campo scalare neutro $\phi(x)$. Data la lagrangiana $\dL(\phi(x),\p_\mu\phi(x))$ si definisce il campo $\pi(x)$ canonicamente coniugato a $\phi(x)$ come
+\begin{equation}
+    \pi(x) = \frac{\p\dL}{\p[\p_0\phi(x)]}.
+\end{equation}
+La lagrangiana più semplice associata ad un campo scalare è quella vista in \eqref{eq: lagrangiana campo scalare} che per comodità si riporta qui
+\begin{equation}
+\label{eq: lagrangiana campo scalare neutro (per refs)}
+    \dL = \frac{1}{2}\p_\mu\phi\p^\mu\phi - \frac{1}{2}m^2\phi^2,
+\end{equation}
+da cui si determina il campo coniugato $\pi(x)$ che risulta essere
+\begin{equation}
+    \pi(x) = \p_0\phi(x).
+\end{equation}
+Di conseguenza, l'hamiltoniana associata ad un campo scalare è
+\begin{equation}
+    \SH = \pi\p_0\phi - \dL = \frac{1}{2}[\pi^2 + (\p_i\phi)^2 + m^2\phi^2].
+\end{equation}
+Promuovendo i campi $\phi(x)$ e $\pi(x)$ agli operatori $\hatphi(x)$ e $\hatpi(x)$ si definiscono le relative regole di commutazione 
+\begin{equation}
+\label{eq: regole di commutazione campo scalare quantizzato}
+    \comm{\hatphi(x)}{\hatpi(y)} = i\delta^3(\vx - \vy),\quad \comm{\hatphi(x)}{\hatphi(y)} = \comm{\hatpi(x)}{\hatpi(y)} = 0,
+\end{equation}
+dove i campi si considerano valutati ad istanti uguali ma in diversi punti dello spazio. Fatto questo, adesso si deve trovare la forma esplicita dei campi in termini della trasformata di Fourier, in questo caso
+\begin{equation}
+    \hatphi(x) = \int \frac{d^4k}{(2\pi)^{3/2}}\delta(k^2 - m^2)\Theta(k^0)[\hatA e^{-ik_\mu x^\mu} + \hatA^\dg e^{ik_\mu x^\mu}],
+\end{equation}
+dove la delta di Dirac assicura che l'equazione di Klein - Gordon \eqref{eq: eq. Klein-Gordon campo scalare} sia sempre verificata, dove la Theta di Heaviside garantisce che la massa e l'energia siano positive e dove i coefficienti dello sviluppo di Fourier $\hatA$ e $\hatA^\dg$ sono operatori. Questa espressione può essere ulteriormente semplificata ricordando che in generale $\delta(f(x))$ è data da
+\begin{equation}
+    \delta[f(x)] = \frac{\nsum_a\delta(x - a)}{|f'(a)|},\quad f(a) = 0.
+\end{equation}
+Quindi, dato che in questo caso $f(x) \equiv f(k) = k^2 - m^2$ gli zeri della funzione sono $k^0 \equiv \pm\omega_k = \pm\sqrt{\vk^2 + m^2}$, per cui
+\begin{equation}
+    \delta(k^2 - m^2) = \frac{\delta(k^0 - \omega_k)}{2k^0} + \frac{\delta(k^0 + \omega_k)}{2k^0},
+\end{equation}
+ma allora 
+\begin{equation}
+    \delta(k^2 - m^2)\Theta(k^0) = \frac{\delta(k^0 - \omega_k)}{2k^0},
+\end{equation}
+quindi l'espressione del campo diventa
+\begin{equation}
+\label{eq: campo scalare quantizzato}
+    \hatphi(x) = \int\frac{d^3k}{(2\pi)^{3/2}}\frac{1}{(2\omega_k)^{1/2}}(\hata_ke^{-ik_\mu x^\mu} + \hata_k^\dg e^{ik_\mu x^\mu}).
+\end{equation}
+Derivando l'espressione \eqref{eq: campo scalare quantizzato} si ottiene il campo coniugato 
+\begin{equation}
+\label{eq: campo scalare coniugato quantizzato}
+    \hatpi(x) = \int\frac{d^3k}{(2\pi)^{3/2}}\frac{i\omega_k}{(2\omega_k)^{1/2}}(-\hata_ke^{-ik_\mu x^\mu} + \hataT_k e^{ik_\mu x^\mu}),
+\end{equation}
+da cui si può già dedurre che se le regole di commutazione \eqref{eq: regole di commutazione campo scalare quantizzato} per i campi $\hatphi(x)$ e $\hatpi(x)$, allora anche gli operatori $\hata$ e $\hataT$ soddisfano regole analoghe
+\begin{equation}
+\label{eq: regole commutazione operatori a campo scalare}
+    \comm{\hata_p}{\hata_{p'}} = \comm{\hataT_p}{\hataT_{p'}} = 0,\quad\comm{\hata_p}{\hataT_{p'}} = i\delta^3(\vp - \vp'),
+\end{equation}
+che sono proprio le regole di commutazione soddisfatte dagli operatori di scala dell'oscillatore armonico quantistico. Si potrebbe quindi immaginare di interpretare il campo come una sovrapposizione infinita di oscillatori armonici. Quindi, l'hamiltoniana del campo scalare è
+\begin{equation}
+\label{eq: hamiltoniana campo scalare neutro pre-sostituzione campi}
+    \hatH = \frac{1}{2}\int(\hatpi^2 + \p_i\hatphi\p^i\hatphi + m^2\hatphi^2)\,d^3x,\quad\hatpi=\p_0\hatphi.
+\end{equation}
+Sostituendo le espressioni dei campi \eqref{eq: campo scalare quantizzato} e \eqref{eq: campo scalare coniugato quantizzato}, la \eqref{eq: hamiltoniana campo scalare neutro pre-sostituzione campi} diventa
+\begin{equation}
+    \begin{split}
+        \hatH &= \frac{1}{2}\int d^3x\iint\frac{d^3k\,d^3k'}{(2\pi)^3(2\omega_k)^{1/2}(2\omega_{k'})^{1/2}}[-(\omega_k\omega_{k'} + \vk\cdot\vk') \\
+        &\times (\hata_ke^{-ik_\mu x^\mu} - \hataT_ke^{ik_\mu x^\mu})(\hata_{k'}e^{-ik'_\mu x^\mu} - \hataT_{k'}e^{ik'_\mu x^\mu}) + m^2 \\
+        &\times(\hata_ke^{-ik_\mu x^\mu} + \hataT_ke^{ik_\mu x^\mu})(\hata_{k'}e^{-ik'_\mu x^\mu} + \hataT_{k'}e^{ik'_\mu x^\mu})] \\
+        &=\frac{1}{2}\iint\frac{d^3k\,d^3k'}{(2\omega_k)^{1/2}(2\omega_{k'})^{1/2}}[\delta(\vk - \vk')(\omega_k\omega_{k'} + \vk\cdot\vk' + m^2) \\
+        &\times(\hataT_k\hata_{k'}e^{i(\omega_k-\omega_{k'})t} + \hata_k\hataT_{k'}e^{-i(\omega_k-\omega_{k'})t}) - \delta^3(\vk + \vk') \\
+        &\times(\omega_k\omega_{k'} + \vk\cdot\vk' - m^2)(\hataT_k\hataT_{k'}e^{i(\omega_k+\omega_{k'})t} + \hata_k\hata_{k'}e^{-i(\omega_k+\omega_{k'})t}) \\
+        &= \frac{1}{2}\int\frac{d^3k}{2\omega_k}[(\omega_k^2 + \vk^2 + m^2)(\hataT_k\hata_k + \hata_k\hataT_k) \\
+        &+ (-\omega_k^2 + \vk^2 + m^2)(\hataT_k\hataT_k + \hata_k\hata_k)] \\
+        &= \frac{1}{2}\int d^3k\,\omega_k(\hata_k\hataT_k + \hataT_k\hata_k).
+    \end{split}
+\end{equation}
+Usando ancora le regole di commutazione \eqref{eq: regole commutazione operatori a campo scalare} si può riscrivere l'hamiltoniana come
+\begin{equation}
+    \hatH = \int d^3k\,\omega_k[\hataT_k\hata_k + \frac{1}{2}\delta^3(0)],
+\end{equation}
+dato che appunto in questo caso $[\hata_k,\hataT_{k}] = \delta^3(\vk - \vk) = \delta^3(0)$. Tuttavia, proprio questo secondo termine dell'integrale dà un contributo divergente all'integrale dell'hamiltoniana che si potrebbe considerare un grave problema, eppure si deve considerare che sperimentalmente è possibile osservare solo differenze di energia, per cui si elimina la divergenza con uno shift infinito del valore dell'energia dello stato fondamentale. In realtà la presenza di tale divergenza è prevedibile dato che si tratta semplicemente della somma su tutti i possibili valori di energia dello stato fondamentale $\nsum_k\omega_k/2$, consistente con l'interpretazione di ``campo'' come la somma di infiniti oscillatori armonici estesa al continuo. Dunque, finalmente si trova che l'hamiltoniana del campo scalare è
+\begin{equation}
+\label{eq: hamiltoniana campo scalare}
+    \hatH = \int d^3k\,\omega_k(\hataT_k\hata_k).
+\end{equation}
+Anche se la $\delta(0)$ nell'espressione dell'hamiltoniana non risulta essere un vero problema, è evidente come questa abbia origine dal commutatore e che quindi sia legata all'ordinamento degli operatori $\hata$ e $\hataT$ all'interno delle espressioni di $\hatphi$ e $\hatpi$. Quindi, per eliminare tali contributi si può imporre una prescrizione sull'ordinamento degli operatori. Questa operazione prende il nome di ``normal ordering'' e consiste nel posizionare tutti gli operatori di distruzione a destra e tutti quelli di creazione a sinistra, in modo da eliminare tutti i contributi privi di significato fisico da un prodotto di operatori di campo quantizzati. Il normal ordering viene eseguito applicando l'operatore $N$ agente come
+\begin{equation}
+    N[\hata\hataT] := \hataT\hata.
+\end{equation}
+Quindi, il processo di quantizzazione canonica viene completato interpretando $\hatH$ considerando il normal ordering di
+\begin{equation}
+    \hatH = \frac{1}{2}\int d^3k\,\omega_k(\hata_k\hataT_k + \hataT_k\hata_k)
+\end{equation}
+chiaramente ottenendo di nuovo
+\begin{equation}
+    \hatH = \int d^3k\,\omega_k(\hataT_k\hata_k) = \int d^3x\, \hatn_k,\quad \hatn_k := \hataT_k\hata_k,
+\end{equation}
+dove si è definito l'operatore numero $\hatn_k$, il cui integrale $\int d^3k\,\hatn_k$ restituisce il numero di particelle, o meglio quante eccitazioni del campo corrispondenti ad un certo modo normale $k$ ci sono in un generico stato.
+
+Con un calcolo analogo a quanto fatto per ricavare l'hamiltoniana, è possibile trovare l'impulso canonicamente coniugato. Il teorema di Noether applicato al campo scalare afferma che le tre componenti dell'impulso sono le cariche conservate associate alle traslazioni spaziali
+\begin{equation}
+    \begin{split}
+        P^i = \int d^3x\,T^i_0 = -\int d^3x\,\pi(x)\p_i\phi(x) = \int d^3k\,\vk[\hataT_k\hata_k + \frac{1}{2}\delta^3(0)],
+    \end{split}
+\end{equation}
+e, come fatto per l'hamiltoniana, si applica il normal ordering per eliminare i contributi divergenti
+\begin{equation}
+    N[P^i] = \frac{1}{2}\int d^3k\,\vk(\hataT_k\hata_k).
+\end{equation}
+
+\subsubsection{Autostati dell'hamiltoniana}
+Ora che è nota l'espressione esplicita dell'hamiltoniana di un campo scalare si può determinare lo spettro dei suoi autostati. Per prima cosa, si definisce lo stato di vuoto $\sv$ come
+\begin{equation}
+    \hata_k\sv = 0,
+\end{equation}
+ossia come lo stato dove non è presente alcuna particella o, in altre parole, nessuna eccitazione del campo scalare. Si definisce poi lo stato di una particella con impulso definito $k$ come
+\begin{equation}
+    \hataT_k\sv = \ket{k}.
+\end{equation}
+Pertanto, uno stato di $n$ particelle è dato da
+\begin{equation}
+    \hataT_{k_1}\cdots\hataT_{k_n}\sv = \ket{k_1,\dots,k_n},
+\end{equation}
+dove l'insieme degli stati con $i$ particelle $\ket{i}$ con $i=1,\dots,n$ genera uno spazio di Fock, definito in generale come
+\begin{equation}
+    \Hfock = \SH_1 \oplus \cdots \oplus \SH_n = \bigoplus_{i=1}^{n}\SH_i,
+\end{equation}
+dove in generale la base di $\SH_i$ è $\{\ket{i}\}$ e dove il generico spazio $\SH_i$ può essere scritto come il prodotto diretto di $i$ volte $\SH_1$, ossia
+\begin{equation}
+    \SH_i = \SH_1\underbrace{\oplus\cdots\oplus}_{i\,times}\SH_1.
+\end{equation}
+Con l'operatore $\hatn$ è possibile poi ``contare'' quante particelle popolano un certo stato.
+
+In precedenza, si è definita la misura di integrazione Lorentz invariante per il campo scalare $\phi(x)$ come
+\begin{equation}
+    \frac{d^4k}{(2\pi)^{3/2}}\delta(k^2 - m^2)\Theta(k^0) \Rightarrow \frac{d^3k}{(2\pi)^{3/2}}\frac{1}{(2\omega_k)^{1/2}},
+\end{equation}
+ora per gli autostati ad impulso definito $\ket{k}$ si richiede che 
+\begin{equation}
+    \int\frac{d^3k}{(2\pi)^3}\frac{1}{2\omega_k}\ket{k}\bra{k} = \MI,
+\end{equation}
+che a sua volta richiede che lo spazio degli stati a quadrimpulso definito sia anch'esso Lorentz invariante. Quindi, se la norma per gli stati a impulso fissato è
+\begin{equation}
+    \mybraket{\vk}{\vk'} = \delta^3(\vk - \vk'),
+\end{equation}
+allora per gli stati a quadrimpulso definito si deve avere
+\begin{equation}
+    \ket{k} = (2\pi)^{3/2}(2\omega_k)^{1/2}\ket{\vk},
+\end{equation}
+e di conseguenza se $\hataT_k\sv = \ket{k}$ anche $\hataT$ deve essere opportunamente normalizzato
+\begin{equation}
+    \hatA^\dg\to(2\omega_k)^{1/2}\hataT
+\end{equation}
+in modo che tutto sia consistente con la definizione di campo scalare
+\begin{equation}
+    \hatphi(x) = \int\frac{d^3k}{(2\pi)^{3/2}}\frac{1}{(2\omega_k)^{1/2}}(\hata_ke^{-ik_\mu x^\mu} + \hataT_k e^{ik_\mu x^\mu}).
+\end{equation}
+
+\section{Campo scalare carico}
+La discussione fatta per il campo scalare neutro può essere generalizzata per quantizzare un campo scalare carico immaginando di avere più di un campo neutro. Si supponga quindi di avere due campi scalari neutri $\phi_1(x)$ e $\phi_2(x)$  indipendenti, ossia tali che $\comm{\phi_1}{\phi_2} = 0$, e reali, si può allora definire le combinazioni 
+\begin{equation}
+    \begin{cases}
+        \phi(x) = \dfrac{1}{\sqrt{2}}[\phi_1(x) + i\phi_2(x)] \\[1.5ex]
+        \phi^\dg(x)= \dfrac{1}{\sqrt{2}}[\phi_1(x) - i\phi_2(x)]
+    \end{cases},
+\end{equation}
+che rappresentano il campo scalare carico e il suo aggiunto rispettivamente. Quindi, la lagrangiana di questo sistema è
+\begin{equation}
+\label{eq: lagrangiana campo scalare carico}
+    \dL = \p_\mu\phi^\dg\p^\mu\phi - m^2\phi^\dg\phi,
+\end{equation}
+da cui si ricavano i momenti coniugati
+\begin{equation}
+    \pi_\phi(x) = \frac{\p\dL}{\p(\p_0\phi)} = \p_0\phi^\dg,\quad \pi_{\phi^\dg}(x) = \frac{\p\dL}{\p(\p_0\phi^\dg)} = \p_0\phi.
+\end{equation}
+Dunque, l'hamiltoniana è la somma dei contributi dei relativi due campi 
+\begin{equation}
+\label{eq: hamiltoniana campo scalare carico pre-sostituzione campi}
+    \hatH = \pi_\phi\p_0\phi + \pi_{\phi^\dg}\p_0\phi^\dg - \dL = \p_0\phi\p_0\phi^\dg + \p_i\phi\p^i\phi + m^2\phi^\dg\phi.
+\end{equation}
+Promuovendo ora i campi $\phi(x)$, $\pi(x)$ e i loro aggiunti al ruolo di operatori, si determinano le opportune regole di commutazione 
+\begin{equation}
+    \comm{\hatphi(x)}{\hatpi_\phi(x)} = i\delta^3(\vx - \vy),\quad\comm{\hatphi^\dg(x)}{\hatpi_{\phi^\dg}(x)} = i\delta^3(\vx - \vy).
+\end{equation}
+A questo punto, si possono scrivere le espressioni esplicite dei campi
+\begin{align}
+\label{eq: campo scalare carico quantizzato}
+    \hatphi(x) &= \int\frac{d^3k}{(2\pi)^{3/2}}\frac{1}{(2\omega_k)^{1/2}}(\hata_k e^{-ik_\mu x^\mu} + \hatb^\dg_k e^{ik_\mu x^\mu}), \\
+    \hatphid(x) &= \int\frac{d^3k}{(2\pi)^{3/2}}\frac{1}{(2\omega_k)^{1/2}}(\hataT_k e^{ik_\mu x^\mu} + \hatb_k e^{-ik_\mu x^\mu}),
+\end{align}
+dove la grande differenza con l'espressione del campo scalare \eqref{eq: campo scalare quantizzato} e che ora si devono usare due operatori differenti per la creazione e distruzione di particelle. Come si era dedotto dal campo scalare, gli operatori $\hata$ e $\hatb$ soddisfano le regole di commutazione
+\begin{equation}
+    \comm{\hata_k}{\hataT_{k'}} = \comm{\hatb_k}{\hatbT_{k'}} = \delta^3(\vk - \vk').
+\end{equation}
+Sostituendo le espressioni dei campi \eqref{eq: campo scalare carico quantizzato} nella \eqref{eq: hamiltoniana campo scalare carico pre-sostituzione campi} e applicando ora il normal ordering si ottiene l'hamiltoniana di un campo scalare carico
+\begin{equation}
+\label{eq: hamiltoniana campo scalare carico}
+    N[\hatH] = \int d^3k\,\omega_k(\hataT_k\hata_k + \hatbT_k\hatb_k) = \int d^3k\,\omega_k(\hatn^a_k + \hatn_k^b),
+\end{equation}
+dove gli integrali degli operatori numero $\int d^3k\,\hatn^a_k$ e $\int d^3k\,\hatn_k^b$ ``contano'' rispettivamente il numero di particelle di tipo $a$ e di particelle di tipo $b$. In particolare, si nota che le particelle associate al termine $\hata e^{-ik_\mu x^\mu}$ hanno la medesima energia $E_k = \omega_k$ delle particelle associate al termine $\hatbT e^{ik_\mu x^\mu}$, ma queste ultime con impulso opposto alle prime. Pertanto, convenzionalmente si associa agli operatori $\hata$ e $\hataT$ le particelle, mentre a $\hatb$ e $\hatbT$ le antiparticelle. Secondo questa definizione, il campo $\hatphi(x)$ annichila particelle e crea antiparticelle, mentre $\hatphid$ crea particelle e annichila antiparticelle.
+
+\subsubsection{Simmetrie e correnti di Noether}
+Il campo scalare carico è invariante per trasformazioni di fase del gruppo $U(1)$, quindi la lagrangiana è invariante per trasformazioni finite
+\begin{equation}
+    \hatphi\to\hatphi' = e^{i\alpha}\hatphi,\quad\hatphid\to\hatphi'^\dg = e^{-i\alpha}\hatphid,
+\end{equation}
+ovvero per trasformazioni infinitesime
+\begin{equation}
+    \hatphi\to\hatphi' = \hatphi + i\alpha\hatphi,\quad\hatphid\to\hatphi'^\dg = \hatphid - i\alpha\hatphid.
+\end{equation}
+Per cui, la corrente di Noether è
+\begin{equation}
+\label{eq: corrente di Noether campo scalare carico}
+    \hatJ^\mu = i[(\p_\mu\hatphid)\hatphi - (\p_\mu\hatphi)\hatphid],
+\end{equation}
+da cui si ricava la carica conservata
+\begin{equation}
+    \hatQ = \int d^3x\,\hatJ^0 = i\int d^3x\,[(\p^0\hatphid)\hatphi - (\p^0\hatphi)\hatphid],
+\end{equation}
+che, sostituendo le espressioni dei campi \eqref{eq: campo scalare carico quantizzato} e applicando il normal ordering, diventa
+\begin{equation}
+\label{eq: carica conservata campo scalare carico}
+    N[\hatQ] = \int d^3k\,(\hatbT_k\hatb_k - \hataT_k\hata_k) = \int d^3k (\hatn_k^b - \hatn^a_k),
+\end{equation}
+la quale, ricordando le definizioni degli integrali degli operatori di numero, coincide con la differenza tra il numero di antiparticelle e quello di particelle, che a sua volta è proporzionale alla carica totale del sistema la quale viene dunque conservata. Si noti poi che particelle ed antiparticelle contribuiscono con lo stesso segno all'energia totale data dalla \eqref{eq: hamiltoniana campo scalare carico}, ossia all'hamiltoniana, ma con segno opposto alla corrente di Noether data dalla \eqref{eq: corrente di Noether campo scalare carico}.
+
+\subsubsection{Statistica bosonica}
+Il formalismo di quantizzazione che si sta seguendo permette anche di determinare quale statistica seguono le particelle che si stanno descrivendo tramite i campi scalari neutri e carichi. Infatti, considerando uno stato a due particelle con diverso impulso $k$ e $k'$ dato da $\hataT_k\hataT_{k'}\sv$, dato che $\comm{\hataT_k}{\hataT_{k'}} = 0$, allora questo stato è perfettamente identico allo stato $\hataT_{k'}\hataT_k\sv$, cioè a quello dove le due particelle sono scambiate di posto. Questo permette di dedurre che il campo scalare di Klein - Gordon, sia neutro che carico, descrive bosoni, ossia particelle che obbediscono alla statistica di Bose - Einstein.
+
+\section{Campo spinoriale}
+Per la quantizzazione del campo spinoriale $\psi(x)$ a spin $1/2$ si segue la medesima procedura usato per i campi scalari neutro e carico. Prima di tutto, si scrive la lagrangiana del sistema che risulta essere
+\begin{equation}
+    \dL = \psib(i\gamma^\mu\p_\mu - m)\psi,
+\end{equation}
+da cui si ricavano i momenti coniugati
+\begin{equation}
+    \pi_\psi(x) = \frac{\p\dL}{\p(\p_0\psi)} = i\psi^\dg,\quad\pi_{\psib}(x) = \frac{\p\dL}{\p(\p_0\psib)} = 0.
+\end{equation}
+Dunque, l'hamiltoniana è semplicemente
+\begin{equation}
+    \hatH = \pi_\psi\p_0\psi + \pi_{\psib}\p_0\psib -\dL = \pi_\psi\p_0\psi -\dL = \psib(-i\gamma^i\p_i + m)\psi,
+\end{equation}
+la cui espressione può ulteriormente essere semplificata usando l'equazione di Dirac \eqref{eq: equazione di Dirac} da cui si ha
+\begin{equation}
+    i\gamma^i\p_i\psi = m\psi - i\gamma^0\p_0\psi,
+\end{equation}
+ottenendo
+\begin{equation}
+\label{eq: hamiltoniana campo spinoriale pre-sostituzione campi}
+    \hatH = i\psib\gamma^0\p_0\psi = i\psi^\dg\p_0\psi.
+\end{equation}
+Come al solito, si promuovono i campi $\psi(x)$, $\pi(x)$ e i loro aggiunti al ruolo di operatori, tuttavia ora le regole che devono soddisfare non sono di commutazione, bensì di anticommutazione. L'equazione di Dirac infatti descrive campi fermionici, per i quali ci si aspettano appunto regole di anticommutazione. I campi devono quindi soddisfare
+\begin{equation}
+    \begin{cases}
+        \acomm{\hatpsi_a(x)}{\hatpsid_{b}(y)} = \delta^3(\vx - \vy)\delta_{ab} \\
+        \acomm{\hatpsi_a(x)}{\hatpsi_{b}(y)} = 0 \\
+        \acomm{\hatpsid_a(x)}{\hatpsid_{b}(y)} = 0.
+    \end{cases}
+\end{equation}
+Inoltre, la scelta di imporre relazioni di anticommutazione è anche obbligata per avere l'hamitoniana, e quindi l'energia del sistema, definita positiva. Si scrivono ora le espressioni dei campi tramite l'analisi di Fourier
+\begin{align}
+\label{eq: campo spinoriale quantizzato}
+    \hatpsi(x) = \int\frac{d^3p}{(2\pi)^{3/2}}\frac{1}{(2E_p)^{1/2}}\nsum_s(\sdu(p)\hata^s_p e^{-ip_\mu x^\mu} + \sdv(p)\hatb_p^{s\dg} e^{ip_\mu x^\mu}) \\
+    \hatpsib(x) = \int\frac{d^3p}{(2\pi)^{3/2}}\frac{1}{(2E_p)^{1/2}}\nsum_s(\sdub(p)\hata^{s\dg}_p e^{ip_\mu x^\mu} + \sdvb(p)\hatb_p^s e^{-ip_\mu x^\mu}),
+\end{align}
+dove gli operatori di creazione e distruzione soddisfano le regole di anticommutazione
+\begin{equation}
+    \acomm{\hata^s_p}{\hata^{s'\dg}_{p'}} = \acomm{\hatb^s_p}{\hatb^{s'\dg}_{p'}} = \delta^3(\vp - \vp')\delta_{ss'}.
+\end{equation}
+Sostituendo le espressioni \eqref{eq: campo spinoriale quantizzato} nell'espressione \eqref{eq: hamiltoniana campo spinoriale pre-sostituzione campi} e applicando il normal ordering si ottiene
+\begin{equation}
+\label{eq: hamiltoniana campo spinoriale}
+    N[\hatH] = \int d^3p\nsum_s E_p(\hata^{s\dg}_p\hata^s_p + \hatb^{s\dg}_p\hatb^s_p).
+\end{equation}
+
+\subsubsection{Simmetrie e correnti di Noether}
+Come quella del campo scalare, la lagrangiana di Dirac è invariante per trasformazioni di fase del gruppo $U(1)$, ossia per trasformazioni finite
+\begin{equation}
+    \hatpsi\to\hatpsi' = e^{i\alpha}\hatpsi.
+\end{equation}
+La corrente di Noether corrispondente a questa simmetria è
+\begin{equation}
+\label{eq: corrente di Noether campo spinoriale}
+    \hatJ^\mu = \hatpsib\gamma^\mu\hatpsi,
+\end{equation}
+da cui, sostituendo le espressioni dei campi \eqref{eq: campo spinoriale quantizzato} e applicando il normal ordering, si ricava la corrente conservata
+\begin{equation}
+\label{eq: carica conservata campo spinoriale}
+    Q = \int d^3p\nsum_s(\hata_p^{s\dg}\hata_p^s - \hatb_p^{s\dg}\hatb_p^s) = \int d^3p\nsum_s (\hatn_p^{s,a} - \hatn^{s,b}_p),
+\end{equation}
+che, come per il campo scalare, corrisponde alla carica elettrica totale del sistema.
+
+\subsubsection{Statistica fermionica}
+Come per il campo scalare, le regole di anticommutazione soddisfatte dagli operatori di creazione e distruzione permettono di determinate la statistica seguita dalle particelle descritte dai campi spinoriali. Infatti, le condizioni 
+\begin{equation}
+    \acomm{\hata^{s\dg}_p}{\hata^{s'\dg}_{p'}} = \acomm{\hatb^{s\dg}_p}{\hatb^{s'\dg}_{p'}} = 0
+\end{equation}
+implicano che $\hata^{s\dg}_p\hata^{s\dg}_p\sv = 0$ e $\hatb^{s\dg}_p\hatb^{s\dg}_p\sv = 0$, ossia che gli stati possono contenere al più una sola particelle con spin, impulso ed energia definite. Quindi, il campo spinoriale di Dirac descrive fermioni, come già si sapeva, ossia particelle che obbediscono alla statistica di Fermi - Dirac.
+
+
+
+
+
+
+
+
+

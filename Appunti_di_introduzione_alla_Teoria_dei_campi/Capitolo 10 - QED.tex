@@ -1,0 +1,350 @@
+\chapter{QED}
+Ora che si è capito come quantizzare il campo fermionico libero e ne si è determinata la sua evoluzione spaziotemporale, si hanno tutti gli elementi necessari per studiare l'accoppiamento del fermione carico con il campo elettromagnetico. La teoria che ne deriva è l'Elettrodinamica quantistica (QED), uno dei più grandi successi in Teoria dei campi.
+
+\section{Richiami di Elettromagnetismo}
+Nell'Elettromagnetismo classico, le equazioni che descrivono il campo elettromagnetico sono ovviamente le equazioni di Maxwell. In particolare, il campo elettromagnetico è definito dal quadrivettore $A_\mu = (\phi,\vA)$, dove $\phi$ è un campo scalare e $\vA$ è un potenziale vettore. In particolare, $A_\mu$ è un campo vettoriale, quindi a spin unitario, e descrive particelle aventi massa nulla. Le equazioni di Maxwell in termini dei campi elettrico $\vE$ e magnetico $\vB$ in presenza di sorgenti sono
+\begin{equation}
+\label{eq: equazioni Maxwell in E e B}
+    \begin{cases}
+        \nabla\cdot\vE = \rho \\
+        \nabla\times\vB - \dfrac{\p \vE}{\p t} = \vj \\
+        \nabla\cdot\vB = 0 \\
+        \nabla\times\vE + \dfrac{\p \vB}{\p t} = 0
+    \end{cases}.
+\end{equation}
+La densità di corrente $\vj$ soddisfa l'equazione di continuità
+\begin{equation}
+\label{eq: equazione di continuità Maxwell}
+    \frac{\p \rho}{\p t} + \nabla\cdot\vj = 0.
+\end{equation}
+Sfruttando poi il fatto che il rotore di un gradiente e la divergenza di un rotore sono sempre quantità nulle, allora si possono sostituire i campi $\vE$ e $\vB$ aventi sei componenti indipendenti con le quattro componenti indipendenti di un quadrivettore $A^\mu = (A^0,A^i) \equiv (\phi,\vA)$, come prima anticipato, tale che
+\begin{equation}
+\label{eq: definizione A_mu}
+    \begin{cases}
+        \vE = -\nabla A^0 - \dfrac{\p \vA}{\p t} \\
+        \vB = \nabla\times\vA
+    \end{cases}\Rightarrow\quad
+    \begin{cases}
+        E^i = -\p^iA^0 - \p^0A^i \\
+        B^i = \epsilon^{ijk}\p_jA_k
+    \end{cases}.
+\end{equation}
+Definendo poi la quadricorrente come $j^\mu = (j^0,j^i) \equiv (\rho,\vj)$, le equazioni di Maxwell \eqref{eq: equazioni Maxwell in E e B} e l'equazione di continuità possono essere espresse in forma covariante
+\begin{equation}
+\label{eq: equazione continuità covariante}
+    \p_\mu j^\mu = 0,
+\end{equation}
+\begin{equation}
+\label{eq: equazioni Maxwell covarianti}
+    \p_\mu F^{\mu\nu} = j^\nu,\quad F_{\mu\nu} = \p_\mu A_\nu - \p_\nu A_\mu.
+\end{equation}
+Il tensore elettromagnetico $F_{\mu}$ ha rango due ed è completamente antisimmetrico, quindi sotto una trasformazione di Lorentz trasforma secondo la rappresentazione $\bm{(1,0)}\oplus\bm{(0,1)}$ del gruppo di Lorentz come
+\begin{equation}
+    F^{\mu\nu}\to\ML^\mu_\alpha\ML^\nu_\beta F^{\alpha\beta}.
+\end{equation}
+La lagrangiana del campo elettromagnetico è
+\begin{equation}
+\label{eq: lagrangiana campo EM}
+    \dL = -\frac{1}{4}F^{\mu\nu}F_{\mu\nu} = \frac{1}{2}(|\vE|^2 - |\vB|^2),
+\end{equation}
+da cui, applicando le equazioni \eqref{eq: EEL}, si trova l'equazione $\p_\mu F^{\mu\nu} = 0$, ossia le equazioni di Maxwell nel vuoto, ovvero con $j^\mu = (0,\bm{0})$. Infatti, da
+\begin{equation}
+\label{eq: EEL per campo EM}
+    \p_\mu\bigg(\frac{\p\dL}{\p(\p_\mu A^\nu)}\bigg) - \frac{\p\dL}{\p A^\nu} = 0,
+\end{equation}
+considerando che in questo caso
+\begin{equation}
+    \frac{\p\dL}{\p A_\mu} = \frac{\p\dL}{\p A^\mu} = 0
+\end{equation}
+e che
+\begin{equation}
+    \begin{split}
+        \frac{\p\dL}{\p(\p_\mu A^\nu)} &= \frac{\p\dL}{\p F_{\alpha\beta}}\frac{\p F_{\alpha\beta}}{\p(\p_\mu A^\nu)} \\
+        &=-\frac{1}{2}F^{\alpha\beta}\frac{\p}{\p(\p_\mu A^\nu)}(\p_\alpha A_\beta - \p_\beta A_\alpha) \\
+        &= -\frac{1}{2}F^{\alpha\beta}(\delta^\mu_\alpha\delta^\nu_\beta - \delta^\mu_\beta\delta^\nu_\alpha) \\
+        &= -\frac{1}{2}F^{\mu\nu} + \frac{1}{2}F^{\nu\mu} \\
+        &= -F^{\mu\nu},
+    \end{split}
+\end{equation}
+si ha, sostituendo nelle \eqref{eq: EEL per campo EM}, proprio
+\begin{equation}
+    \p_\mu F^{\mu\nu} = 0.
+\end{equation}
+\begin{obs}
+    Si deve ricordare che le equazioni di Maxwell in generale non descrivono campi massivi, quindi le sorgenti vengono aggiunte a posteriori dall'esterno, ma non sono contenute nella teoria finché alla lagrangiana \eqref{eq: lagrangiana campo EM} non si aggiunge un termine che descriva particelle cariche scalari o fermioniche. 
+\end{obs}
+
+\section{Trasformazioni di gauge}
+Come detto, la lagrangiana del campo elettromagnetico è data da \eqref{eq: lagrangiana campo EM}, quindi la teoria è invariante per trasformazioni locali date da
+\begin{equation}
+    A^\mu \to A'^\mu = A^\mu + \p^\mu\chi(x),
+\end{equation}
+ossia il quadrivettore $A^\mu$ è definito a meno del quadrigradiente di una funzione scalare arbitraria $\chi(x)$. Infatti, il tensore del campo elettromagnetico trasforma come
+\begin{equation}
+    \begin{split}
+        F^{\mu\nu} \to F'^{\mu\nu} &= \p^\mu(A^\nu + \p^\nu\chi) - \p^\nu(A^\mu + \p^\mu\chi) \\
+        &=(\p^\mu A^\nu - \p^\nu A^\mu) + \p^\mu\p^\nu\chi - \p^\nu\p^\mu\chi \\
+        &= F^{\mu\nu},
+    \end{split} 
+\end{equation}
+dove nell'ultimo passaggio si è usato il fatto che il termine $\p^\mu\p^\nu$ è completamente simmetrico per lo scambio degli indici. In generale, le trasformazioni locali sono dette ``trasformazioni di gauge''. Se si applicano più trasformazioni di gauge una successivamente all'altra si trova che esse formano un gruppo con la semplice le di composizione additiva $\chi_3 = \chi_1 + \chi_2$, che coincide con la legge di composizione del gruppo $U(1)$. Sotto queste trasformazioni il tensore $F^{\mu\nu}$ è invariante, nel senso che $\delta F^{\mu\nu} = 0$, e quindi anche la lagrangiana \eqref{eq: lagrangiana campo EM} per cui si ha anche $\delta\dL = 0$.
+
+L'invarianza delle equazioni di Maxwell e della lagrangiana del campo elettromagnetico per trasformazioni di gauge implica che ci sia una forte ridondanza nella teoria. In particolare, passando dai vettori $\vE$ e $\vB$ al quadrivettore $A^\mu$ si era già ridotto il numero di componenti indipendenti da sei a quattro; ora però si deve sfruttare l'invarianza di gauge per ridurre ulteriormente i gradi di libertà attraverso un'operazione di ``gauge fixing''. Dall'equazione \eqref{eq: equazioni Maxwell covarianti} si ricava
+\begin{equation}
+    \begin{split}
+        j^\mu &= \p_\mu(\p^\mu A^\nu - \p^\nu A^\mu)\\
+        &= \square A^\nu - \p_\mu\p^\nu A^\mu\\
+        &= \square A^\nu - \p^\nu\p_\mu A^\mu.
+    \end{split} 
+\end{equation}
+Siccome $\chi(x^\mu)$ è funzione scalare arbitraria, si fissa $\chi(x^\mu)$ tale che sia verificata $\p_\mu A^\mu = 0$, in questo modo le equazioni di Maxwell in presenza di sorgenti diventano
+\begin{equation}
+\label{eq: equazioni di Maxwell gauge Lorenz}
+    \square A^\mu = j^\mu.
+\end{equation}
+La condizione $\p_\mu A^\mu = 0$ è proprio l'operazione di gauge fixing prima citata, in particolare questa prende il nome di gauge di Lorenz.  
+\begin{obs}
+    Esistono altre condizioni di gauge significative che vengono utilizzate per rimuovere ridondanze di $A^\mu$ dato che le sue componenti non sono tutte fisicamente rilevanti; alcuni esempi sono il ``gauge temporale'' $A_0 = 0$ e il ``gauge di Coulomb'' $\nabla\cdot\vA = 0$.
+\end{obs}
+Usando il teorema di Noether è possibile calcolare il tensore energia - impulso come
+\begin{equation}
+\label{eq: tensore energia - impulso campo EM}
+    T^\mu_\nu = \frac{\p\dL}{\p(\p_\mu A_\lambda)}\p_\nu A^\lambda - \dL g^\mu_\nu = -F^{\mu\lambda}\p_\nu A_\lambda + \frac{1}{4}g^\mu_\nu F_{\rho\sigma}F^{\rho\sigma}.
+\end{equation}
+L'espressione \eqref{eq: tensore energia - impulso campo EM} di tale tensore non è simmetrica, come invece dovrebbe essere, implicando quindi che non c'è alcun momento angolare conservato. Inoltre, non è gauge invariante dato che non è scritto in termini del solo tensore $F^{\mu\nu}$. Tuttavia, dato che il tensore $T^\mu_\nu$ non è una quantità misurabile, ossia non è un'osservabile, si può modificare la sua espressione tramite un termine aggiuntivo tale che
+\begin{equation}
+    \begin{split}
+        T^\mu_\nu \to T'^\mu_\nu &= T^\mu_\nu + \p_\lambda(F^{\mu\lambda}\p_\nu) \\
+        &= -F^{\mu\lambda}\p_\nu A_\lambda + \frac{1}{4}g^\mu_\nu F_{\rho\sigma}F^{\rho\sigma} + F^{\mu\lambda}\p_\lambda A_\nu + \p_\lambda(F^{\mu\lambda})A_\nu \\
+        &= \frac{1}{4}g^\mu_\nu F_{\rho\sigma}F^{\rho\sigma} + F^{\mu\lambda}(\p_\lambda A\nu - \p_\nu A_\lambda) \\
+        &= \frac{1}{4}g^\mu_\nu F_{\rho\sigma}F^{\rho\sigma} + F^{\mu\lambda}F_{\mu\lambda}.
+    \end{split}
+\end{equation}
+In questo modo il nuovo tensore energia impulso $T'^\mu_\nu \equiv T^\mu_\nu$ è definito simmetrico, invariante di Lorenz e invariante di gauge. Le cariche conservate associate a tale tensore sono 
+\begin{equation}
+    T^{00} = \frac{1}{2}(|\vE|^2 + |\vB|^2), \quad T^{0i} = (\vE \times \vB)^i,
+\end{equation}
+che coincidono rispettivamente alla conservazione della densità di energia e del vettore di Poynting, a cui è legato il trasporto dell'energia. 
+
+In conclusione, l'invarianza di gauge fornisce anche una guida nel calcolo delle proprietà fisiche della teoria in esame. Inoltre, sono importanti i seguenti fatti:
+\begin{enumerate}
+    \item il meccanismo di rinormalizzazione, che permette la rimozione delle divergenze ordine per ordine nello sviluppo perturbativo della teoria, dipende in modo cruciale dall'invarianza di gauge;
+    \item l'unitarietà della teoria, che assicura l'assenza di ``ghost'' ossia stati a norma negativa, dipende anch'essa in modo importante dall'invarianza di gauge;
+    \item la prova che la teoria rimanga Lorentz invariante anche dopo aver fissato un gauge non Lorentz invariante richiede l'uso della simmetria di gauge. 
+\end{enumerate}
+
+\section[Quantizzazione del campo elettromagnetico]{Quantizzazione del campo \\ elettromagnetico}
+Si passa adesso alla quantizzazione del campo elettromagnetico con l'obiettivo di sviluppare una teoria che descriva i fotoni, a loro volta rappresentati da un campo vettoriale come $A_\mu$. La lagrangiana del campo elettromagnetico si è già incontrata in \eqref{eq: lagrangiana campo EM}, dove in particolare si nota che $E^i = F^{i0} = -F^{0i}$ e $B^i = -\epsilon^{ijk}F_{jk}/2$, oltre a ricordare le definizioni \eqref{eq: definizione A_mu}. Quindi, si definiscono i momenti coniugati come
+\begin{align}
+    \pi^0 &= \frac{\p\dL}{\p(\p_0 A_0)} = F^{00} = 0, \\
+    \pi^i &= \frac{\p\dL}{\p(\p_0 A_i)} = -F^{0i} = E^i.
+\end{align}
+Tuttavia, bisogna fare attenzione. La lagrangiana \eqref{eq: lagrangiana campo EM} definita in termini di $A^\mu$ sembra descrivere un sistema con quattro gradi di libertà, ma è già noto che se il campo è vettoriale è massivo allora i gradi di libertà, che corrispondono alle possibili polarizzazioni, si riducono a tre, essenzialmente riconducibili alle tre componenti spaziali di $A^\mu$: due stati di polarizzazione trasversa rispetto a quella di propagazione determinata da $\vp$ e uno stato di polarizzazione longitudinale. Nel caso dei fotoni, invece, si sa che esistono solo due stati di polarizzazione, quelli trasversi, quindi solo due delle componenti di $A^\mu$ hanno significato fisico. Questo fatto crea alcuni problemi con la quantizzazione del campo elettromagnetico. 
+
+Ad ogni modo, per ora si segue il protocollo di quantizzazione promuovendo ad operatori i campi $A^\mu$ e i momenti coniugati $\pi^\mu$ e si determinano le relazioni di commutazione
+\begin{equation}
+\label{eq: regole commutazione campo EM errate}
+    \begin{split}
+        \comm{A^\mu(x)}{A^\nu(y)} &= 0,\quad \comm{\pi^i(x)}{\pi^j(y)} = 0, \\
+        \comm{\pi^i(x)}{A^0(y)} &= 0,\quad \comm{\pi^i(x)}{A^j(y)} = -i\delta^{ij}\delta^3(\vx - \vy).
+    \end{split}
+\end{equation}
+Inoltre, dato che $\pi^0 = 0$, l'unico altro commutatore che poteva essere nullo, ossia $\comm{\pi^0(x)}{A^0(y)}$, è nullo banalmente. Quindi, $A^0$ commuta con tutti gli altri campi e per questo $A^0\in\C$. Ora si deve verificare che le relazioni di commutazione appena definite siano consistenti con l'Elettromagnetismo di Maxwell. In particolare, in assenza di sorgenti si ha $\nabla\cdot\vE = 0$, per verificare se tale equazione viene soddisfatta si deriva il commutatore $\comm{\pi^i(x)}{A^j(y)}$ rispetto ad $x^i$
+\begin{equation}
+    \frac{\p}{\p x^i}(\comm{\pi^i(x)}{A^j(y)}) = \comm{\p_i\pi^i(x)}{A^j(y)} = \comm{\p_i E^i(x)}{A^j(y)} = 0,
+\end{equation}
+dove si è sfruttata la relazione $\pi^i = E^i$ e che che $\p_i E^i = \nabla\cdot\vE = 0$. Ora si deriva per $x^i$ anche il secondo membro del commutatore $\comm{\pi^i(x)}{A^j(y)}$, usando la rappresentazione integrale della delta di Dirac si trova
+\begin{equation}
+    -i\frac{\p}{\p x^i}\bigg[\frac{\delta^{ij}}{(2\pi)^3}\int d^3k\,e^{i\vk\cdot(\vx - \vy)}\bigg] = \int \frac{d^3k}{(2\pi)^3}\,k^je^{i\vk\cdot(\vx - \vy)} \neq 0.
+\end{equation}
+Così facendo, si è quindi trovata un'inconsistenza nella relazione di commutazione $\comm{\pi^i(x)}{A^j(y)} = -i\delta^{ij}\delta^3(\vx - \vy)$: derivando per $x^i$ il primo membro si annulla, il secondo no. Questa incongruenza è dovuta al fatto che in $A^\mu$ si hanno ancora tutte e quattro le componenti, mentre come detto prima soltanto due di queste hanno significato fisico. Si deve dunque trovare il modo di disfarsi delle componenti irrilevanti di $A^\mu$ e ridefinire il commutatore in modo opportuno. Per farlo si introduce una delta di Dirac ``trasversale'' $\delta^{ij}_T$ tale che 
+\begin{equation}
+\label{eq: delta di Dirac trasversale}
+    \delta_T^{ij}(\vx - \vy) := \int\frac{d^3k}{(2\pi)^3}e^{i\vk\cdot(\vx - \vy)}\bigg(\delta^{ij} - \frac{k^ik^j}{|\vk|^2}\bigg).
+\end{equation}
+Se ora si prova a derivare l'espressione \eqref{eq: delta di Dirac trasversale} si ottiene il risultato desiderato
+\begin{equation}
+    \begin{split}
+        \frac{\p}{\p x^i}[\delta_T^{ij}(\vx - \vy)] &= \int\frac{d^3k}{(2\pi)^3}ik_ie^{i\vk\cdot(\vx - \vy)}\bigg(\delta^{ij} - \frac{k^ik^j}{|\vk|^2}\bigg) \\
+        &= \int\frac{d^3k}{(2\pi)^3}ie^{i\vk\cdot(\vx - \vy)}\bigg(k^j - \frac{\cancel{k_ik^i}k^j}{\cancel{|\vk|^2}}\bigg) \\
+        &= 0.
+    \end{split}
+\end{equation}
+Si può quindi definire il commutatore problematico come 
+\begin{equation}
+\label{eq: ridefinizione commutatore campo EM}
+    \comm{\pi^i(x)}{A^j(y)} := -i\delta^{ij}_T(\vx - \vy).
+\end{equation}
+Nella definizione \eqref{eq: ridefinizione commutatore campo EM} si osserva una perfetta simmetria tra $\vx$ e $\vy$, quindi anche le derivate rispetto a $\vy$ del primo e del secondo membro devono restituire zero, il che restituisce 
+\begin{equation}
+    \comm{\pi^i(x)}{\p_i A^i(y)} = 0.
+\end{equation}
+Quindi, le regole di commutazione \eqref{eq: regole commutazione campo EM errate} diventano
+\begin{equation}
+\label{eq: regole commutazione campo EM}
+    \begin{split}
+        \comm{A^\mu(x)}{A^\nu(y)} &= 0,\quad \comm{\pi^i(x)}{\pi^j(y)} = 0, \\
+        \comm{\pi^i(x)}{A^0(y)} &= 0,\quad \comm{\pi^i(x)}{A^j(y)} = -i\delta^{ij}_T(\vx - \vy).
+    \end{split}
+\end{equation}
+Dunque, non solo $A^0\in\C$, ma anche $\nabla\cdot\vA\in\C$, in quanto commuta con tutti i campi. In questo modo vengono eliminati due gradi di libertà lasciandone di conseguenza solo due, che sono proprio di quelli di rilevanza fisica. Da ciò consegue che non esistono fotoni scalari e esistono soltanto due stati di polarizzazione trasversi, senza la possibilità di una polarizzazione longitudinale. 
+
+Si ricorda adesso che il campo $A_\mu$ gode di una simmetria di gauge data da $A_\mu \to A_\mu' = A_\mu + \p_\mu\chi(x)$, la quale può essere sfruttata per definire 
+\begin{equation}
+    A_\mu'(x) = A_\mu(x) -\p_\mu\int_0^td\tau\,A_0(\vx,\tau) : A_0' = 0.
+\end{equation}
+Si considera poi $\vA'' = \vA' - \nabla\chi$ e si assume che valga la relazione
+\begin{equation}
+    \nabla\cdot\vA'' = \nabla\cdot(\vA' - \nabla\chi) = \nabla\cdot\vA' - \Delta\chi = 0.
+\end{equation}
+Il nuovo campo, che descrive la medesima fisica descritta da $A^\mu$ e soddisfa le stesse equazioni, e quindi la stessa lagrangiana, è tale da soddisfare il ``gauge di radiazione''
+\begin{equation}
+\label{eq: gauge di radiazione}
+    \begin{cases}
+        A_0' = 0\\
+        \nabla\cdot\vA' = \Delta\chi
+    \end{cases}.
+\end{equation}
+Si procede ora a promuovere il campo $A^\mu$ ad operatore e definire il suo sviluppo in serie di Fourier
+\begin{equation}
+\label{eq: operatore campo EM}
+    \hatA^\mu(x) = \int\frac{d^3k}{(2\pi)^{3/2}}\frac{1}{(2E_k)^{1/2}}\sum_{\lambda = 1}^2[\epsilon_\lambda^\mu(k)\hata_k^\lambda e^{-ik_\mu x^\mu} + \epsilon_\lambda^{\mu*}(k)\hata_k^{\lambda\dg} e^{ik_\mu x^\mu}].
+\end{equation}
+In base alle regole di commutazione \eqref{eq: regole commutazione campo EM}, quelle relative agli operatori $\hata_k^\lambda$ e $\hata_k^{\lambda\dg}$ sono
+\begin{equation}
+    \comm{\hata^\lambda_k}{\hata_k^{\lambda'\dg}} = \delta^3(\vk - \vk)\delta_{\lambda\lambda'}.
+\end{equation}
+Dunque, l'hamiltoniana diagonalizzata del campo elettromagnetico è
+\begin{equation}
+    N[\hatH] = \int d^3k\nsum_\lambda E_k\hata_k^{\lambda\dg}\hata_k^\lambda,\quad E_k = |\vk|,
+\end{equation}
+dato che $m = 0$. Quindi, i quanti del campo elettromagnetico, ossia le sue eccitazioni, sono particelle a massa nulla, di spin unitario e che possono presentarsi in due possibili stati di polarizzazione trasversa. 
+
+\section{Teorie e campi di gauge}
+Quando una teoria possiede delle simmetrie, automaticamente include delle arbitrarietà nella definizione dei campi, per cui configurazioni diverse dei campi portano alla medesima teoria. In questo caso, è possibile scegliere una particolare configurazione tra le molteplici possibili da adottare in un certo frangente. 
+\begin{center}
+\begin{tikzpicture}[
+  box/.style={rectangle,draw,rounded corners=2mm,thin,
+              minimum width=2.5cm, minimum height=1.4cm, align=center},
+  node distance=1.2cm
+]
+  \node[box]                 (a) {SIMMETRIA\\DI GAUGE};
+  \node[box, right=of a]     (b) {TRASFORMAZIONE\\DI GAUGE};
+  \node[box, right=of b,
+        minimum width=2.5cm] (c) {GAUGE\\FIXING};
+
+  \draw[<->] (a) -- (b);
+  \draw[<->]  (b) -- (c);
+\end{tikzpicture}
+\end{center}
+Le teorie di campo scalari e spinoriali sono invarianti per trasformazioni di gauge globali dove il campo viene trasformato nello stesso modo in tutti i punti dello spaziotempo, per cui
+\begin{equation}
+\label{eq: trasformazione gauge globale}
+    \psi(x) \to \psi'(x) = e^{i\alpha}\psi(x),\quad \p_\mu\alpha = 0.
+\end{equation}
+Esiste invece una categoria di trasformazioni dette ``trasformazioni di gauge locali'' che trasformano il campo in modo diverso punto per punto nello spaziotempo, definite pertanto da
+\begin{equation}
+\label{eq: trasformazione gauge locale}
+    \psi(x) \to \psi'(x) = e^{i\alpha(x)}\psi(x).
+\end{equation}
+Nessuna teoria di campo è invariante per trasformazioni di gauge locali se considerata singolarmente. In particolare:
+\begin{enumerate}
+    \item se nella lagrangiana $\dL$ è presente un termine di massa questo non viene modificato da una trasformazione di gauge locale in quanto $\phi^\dg\phi$ o $\psib\psi$ le fasi si cancellano anche se $\alpha$ dipende dalle coordinate $x^\mu$;
+    \item nella lagrangiana $\dL$ il termine che contiene le derivate non è mai invariante, infatti
+    \begin{equation}
+        \begin{split}
+            \p_\mu\psi(x) \to \p_\mu\psi'(x) &= \p_\mu[\psi(x)e^{i\alpha(x)}] \\
+            &= e^{i\alpha(x)}\p_\mu\psi(x) + [i\p_\mu\alpha(x)]e^{i\alpha(x)\psi(x)} \\
+            &= e^{i\alpha(x)}[\p_\mu + i\p_\mu\alpha(x)]\psi(x),
+        \end{split}
+    \end{equation}
+    \begin{equation}
+        \p_\mu\psi^\dg \to \p_\mu\psi^{\dg'}(x) = e^{-i\alpha(x)}[\p_\mu - i\p_\mu\alpha(x)]\psi^\dg(x),
+    \end{equation}
+    per cui il termine cinetico $\dL_K$ diventa
+    \begin{multline}
+        \dL_K = (\p_\mu\psi^\dg)(\p^\mu\psi) - i(\p^\mu\alpha)\psi^\dg(\p_\mu\psi) + \\ +i(\p^\mu\psi^\dg)(\p_\mu\alpha)\psi + (\p^\mu\alpha)(\p_\mu\alpha)\psi^\dg\psi,
+    \end{multline}
+    che è evidentemente diverso da $\p^\mu\psi^\dg\p_\mu\psi$.
+\end{enumerate}
+Tuttavia, esiste un espediente che permette di sfruttare la simmetria di gauge del campo vettoriale $A_\mu$ per ristabilire l'invarianza della lagrangiana. Naturalmente, il prezzo da pagare è l'obbligo di inserire nella lagrangiana sia il campo di materia, $\phi$ o $\psi$, sia il campo elettromagnetico $A^\mu$. La prescrizione in questione per ristabilire la simmetria della teoria consiste nello stabilire una nuova definizione di derivata: la derivata covariante
+\begin{equation}
+\label{eq: definizione derivata covariante}
+    D_\mu = \p_\mu + iqA_\mu(x),
+\end{equation}
+a cui sono associate, allo stesso tempo, le trasformazioni di gauge 
+\begin{equation}
+\label{eq: trasformazioni di gauge}
+    \begin{cases}
+        \psi(x) \to \psi'(x) = e^{i\alpha(x)}\psi(x) \\
+        A^\mu(x) \to A'^\mu(x) = A^\mu(x) - \dfrac{1}{q}\p_\mu\alpha(x).
+    \end{cases}
+\end{equation}
+In generale, una teoria in cui il campo vettoriale $A^\mu$ è introdotto per generare un'invarianza di gauge locale è detta ``teoria di gauge'', mentre il campo $A^\mu$ è detto ``campo di gauge''. 
+
+Si consideri quindi la lagrangiana del campo spinoriale \eqref{eq: lagrangiana campo spinoriale} e si applichi una trasformazione locale \eqref{eq: trasformazione gauge locale} sul campo $\psi(x)$, come varia la suddetta lagrangiana $\dL$? In questo si ha
+\begin{equation}
+\label{eq: trasformazione locale lagrangiana spinoriale}
+    \begin{split}
+        \psib(i\gamma^\mu\p_\mu - m)\psi \to \psib'(i\gamma^\mu\p_\mu - m)\psi' &= e^{-i\alpha(x)}\psib\{i\gamma^\mu(\p_\mu\psi)e^{i\alpha(x)} + \\
+        &+ i\gamma^\mu[i\p_\mu\alpha(x)]\psi e^{i\alpha(x)} - m\psi e^{i\alpha(x)}\} \\
+        &= \psib(i\gamma^\mu\p_\mu - m) - [\p_\mu\alpha(x)]\psib\gamma^\mu\psi,
+    \end{split}
+\end{equation}
+che chiaramente non è invariante per tale trasformazione. Tuttavia, è possibile creare una teoria invariante per trasformazioni locali se si inserisce un campo vettoriale ausiliario $A_\mu$ che si trasformi contestualmente e simultaneamente a $\psi$ in modo da eliminare il termine proporzionale a $\p_\mu\alpha(x)$ in \eqref{eq: trasformazione locale lagrangiana spinoriale}. Usando quindi le trasformazioni di gauge \eqref{eq: trasformazioni di gauge} si ridefinisce la lagrangiana come 
+\begin{equation}
+    \dL = \psib(i\gamma^\mu\p_\mu - m - q\gamma^\mu A_\mu)\psi = \psib(i\gamma^\mu D_\mu - m)\psi,
+\end{equation}
+la quale risulta essere invariante di gauge locale come si desiderava, infatti
+\begin{equation}
+    \begin{split}
+        \psib(i\gamma^\mu D_\mu - m)\psi \to \psib'(i\gamma^\mu D'_\mu - m)\psi' &= e^{-i\alpha(x)}\psib(i\gamma^\mu\p_\mu - q\gamma^\mu A'_\mu - m)\times \\
+        &\times e^{i\alpha(x)}\psi \\
+        &= e^{-i\alpha(x)}\psib(- q\gamma^\mu A_\mu- m)e^{i\alpha(x)}\psi + \\
+        &+ e^{-i\alpha(x)}\psib(i\gamma^\mu e^{i\alpha(x)}\p_\mu\psi) \\
+        &= \psib(i\gamma^\mu D_\mu - m)\psi
+    \end{split}
+\end{equation}
+\begin{obs}
+    La costante di accoppiamento scelta è proprio la carica elettromagnetica dato che è una quantità conservata, come garantisce il teorema di Noether. L'interazione elettromagnetica avviene tra cariche $q$ e non mescola settori di carica diversa.
+\end{obs}
+Per osservare gli effetti dell'elettromagnetismo, $A^\mu$ deve essere accoppiato ad un campo di materia, ad esempio ad un campo scalare carico $\phi$ e il suo hermitiano $\phi^\dg$. La prescrizione per ottenere la teoria di interazione tra materia e campo elettromagnetico è quella più semplice possibile, detta ``di accoppiamento minimale'', che prevede semplicemente la sostituzione nella lagrangiana di $\p_\mu$ con $D_\mu$. Quindi, dalla somma delle lagrangiane \eqref{eq: lagrangiana campo scalare carico} e \eqref{eq: lagrangiana campo EM}, ossia da 
+\begin{equation}
+    \dL = (\p_\mu\phi^\dg)(\p^\mu\phi) - m^2\phi^\dg\phi - \frac{1}{4}F_{\mu\nu}F^{\mu\nu},
+\end{equation}
+si passa alla lagrangiana
+\begin{equation}
+\label{eq: lagrangiana campo scalare carico + campo di gauge}
+    \begin{split}
+        \dL &= (D_\mu^\dg\phi^\dg)(D^\mu\phi) - m^2\phi^\dg\phi - \frac{1}{4}F_{\mu\nu}F^{\mu\nu} \\
+        &= (\p_\mu\phi^\dg - iqA_\mu\phi^\dg)(\p^\mu\phi + iqA^\mu\phi) - m^2\phi^\dg\phi - \frac{1}{4}F_{\mu\nu}F^{\mu\nu} \\
+        &= (\p_\mu\phi^\dg)(\p^\mu\phi) - m^2\phi^\dg\phi - \frac{1}{4}F_{\mu\nu}F^{\mu\nu} - \\
+        &- iqA_\mu\phi^\dg\p^\mu\phi + iq\p_\mu\phi^\dg A^\mu\phi + q^2A_\mu A^\mu\phi^\dg\phi,
+    \end{split}
+\end{equation}
+dove gli ultimi tre termini determinano come il campo di materia $\phi$ intergisce con il campo di gauge $A_\mu$, con costante di accoppiamento sempre la carica elettrica $q$. Ovviamente si può scrivere la lagrangiana che descrive l'interazione tra il campo spinoriale $\psi$ e il campo di gauge $A_\mu$ in maniera analoga a quanto fatto per il campo scalare carico; tale lagrangiana è
+\begin{equation}
+\label{eq: lagrangiana campo spinoriale + campo di gauge}
+    \dL = \psib(i\gamma^\mu D_\mu - m)\psi - \frac{1}{4}F_{\mu\nu}F^{\mu\nu}.
+\end{equation}
+In generale, si segue il ``principio di gauge'':
+\begin{quote}
+    ``il campo di gauge $A_\mu$ introdotto per garantire l'invarianza per trasformazioni locali detremina la forma dell'accoppiamento, o meglio delle sue interazioni con il campo di materia.''
+\end{quote}
+
+\subsubsection{Campo vettoriale massivo}
+In ultima istanza, è naturale generalizzare il campo vettoriale per particelle di massa nulla a quello per particelle massive. Per farlo, si aggiunge semplicemente un termine di massa alla lagrangiana \eqref{eq: lagrangiana campo EM} ottenendo
+\begin{equation}
+\label{eq: lagrangiana campo vettoriale massivo}
+    \dL = -\frac{1}{4}F_{\mu\nu}F^{\mu\nu} + m^2A_\mu A^\mu.
+\end{equation}
+L'equazione del moto associata è l'equazione di Proca 
+\begin{equation}
+\label{eq: equazione di Proca}
+    \p_{\mu}F^{\mu\nu} + m^2A^\nu = \p_\mu(\p^\mu A^\nu) - \p_\mu(\p^\nu A^\mu) + m^2A^\nu = 0.
+\end{equation}
+Prendendo la divergenza dell'equazione \eqref{eq: equazione di Proca} restituisce direttamente la condizione di Lorentz tale per cui, per un campo vettoriale massivo, l'equazione \eqref{eq: equazione di Proca} è equivalente all'equazione di Klein - Gordon \eqref{eq: eq. Klein-Gordon campo scalare} per ognuna delle componenti del campo vettoriale
+\begin{equation}
+    (\square + m^2)A_\nu = 0.
+\end{equation}
+La condizione di Lorentz riduce il numero di componenti indipendenti di $A_\mu$ da quattro a tre. A differenza del caso massless, non si possono ridurre ulteriormente il numero di tali componenti indipendenti, in quanto il termine di massa introdotto rompe l'invarianza di gauge della lagrangiana \eqref{eq: lagrangiana campo EM}.

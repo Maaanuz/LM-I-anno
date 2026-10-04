@@ -1,0 +1,486 @@
+\chapter{Elementi di Teoria dei gruppi}
+Le simmetrie che interessano principalmente la Teoria dei campi sono quelle rispetto alle trasformazioni di Lorentz e Poincarè essendo quelle per cui le leggi sono invarianti in Relatività speciale. In generale, esistono due tipi di simmetrie: continue e discrete; ci si concentra sulle prime dato che sono quelle più frequenti in Fisica, descritte infatti da funzioni continue a variabili continue. Si richiamano quindi alcuni aspetti della Teoria dei gruppi utili per formulare una teoria di campo.
+\begin{defn}[gruppo]
+\label{defn: gruppo}
+    Un gruppo $G$ è un insieme di elementi astratti dotato di un'operazione di composizione $\circ : G\times G \to G$ avente le seguenti proprietà:
+    \begin{enumerate}
+        \item associatività, $(g_1\circ g_2)\circ g_3=g_1\circ(g_2\circ g_3),\, \forall g_1,g_2,g_3\in G$;
+        \item esistenza dell'elemento neutro, $\exists e : e\circ g = g\circ e = g,\,\forall g\in G$;
+        \item esistenza dell'elemento inverso, $\exists g^{-1} : g^{-1}\circ g = g\circ g^{-1} = e,\,\forall g\in G$.
+    \end{enumerate}
+\end{defn}
+\begin{ex}[gruppi]
+    Un esempio di gruppo è $\mathbb{Z}$ dotato dell'operazione di somma $+ : \mathbb{Z}\times \mathbb{Z}\to \mathbb{Z}$, mentre non lo è $\mathbb{Z}$ dotato dell'operazione di moltiplicazione dato che l'elemento inverso $z^{-1}$ non appartiene necessariamente a $\mathbb{Z}$, invalidando così una delle proprietà dell'operazione di composizione.
+\end{ex}
+\begin{defn}[gruppo abeliano]
+    Un gruppo $G$ si dice abeliano (o commutativo) se vale anche la proprietà $g_1\circ g_2=g_2\circ g_1,\,\forall g_1,g_2\in G$.
+\end{defn}
+\begin{defn}[ordine di un gruppo]
+    L'ordine di un gruppo $G$ coincide con la sua cardinalità e si indica con $|G|$
+\end{defn}
+\begin{defn}[finitezza]
+    Un gruppo $G$ si dice finito se la sua cardinalità $|G|$ coincide con un numero $n$ finito, altrimenti si dice infinito (o continuo).
+\end{defn}
+\begin{defn}[sottogruppo]
+    Un sottoinsieme $H\subseteq G$ si dice sottogruppo se è chiuso rispetto alla stessa operazione di composizione del gruppo $G$. In tal caso si indica $H\le G$.
+\end{defn}
+\begin{defn}[sottogruppo invariante]
+    Un sottogruppo $H$ di $G$ si dice invariante se
+    \begin{equation}
+        g\circ(h \circ g^{-1}) = h'\in H,\quad\forall g\in G,\,\forall h\in H.
+    \end{equation}
+\end{defn}
+\begin{defn}[gruppo semplice]
+    Un gruppo si dice semplice se non ha sottogruppi invarianti, esclusi il gruppo stesso e l'identità.
+\end{defn}
+\begin{defn}[gruppo semi-semplice]
+    Un gruppo si dice semi-semplice se non ha sottogruppi invarianti abeliani, ma può averne di non-abeliani.
+\end{defn}
+Se un gruppo è semplice allora è anche semi-semplice dato che non ha sottogruppi invarianti per definizione, ma il viceversa non è necessariamente vero.
+\begin{defn}[gruppo prodotto diretto]
+    Dati due gruppi $(G_1,\circ_1)$ e $(G_2,\circ_2)$ è possibile definire l'insieme $G_1\otimes G_2$ costituito dall'insieme di tutte le coppie ordinate $(g_1,g_2)$ con $g_1\in G_1$ e $g_2\in G_2$, dotato di un'operazione di composizione $* : G_1\times G_1\times G_2\times G_2\to G_1\otimes G_2$ definita come
+    \begin{equation}
+        (g_1,g_2) * (g_1',g_2') := (g_1\circ_1 g_1',g_2\circ_2 g_2'),\quad g_1,g_1'\in G_1,g_2,g_2'\in G_2,
+    \end{equation}
+    soddisfacente le proprietà di:
+    \begin{enumerate}
+        \item associatività;
+        \item esistenza dell'elemento neutro, $(e_1,e_2)$ con $e_i\in G_i$;
+        \item esistenza dell'elemento inverso, $(g_1,g_2)^{-1} := (g_1^{-1},g_2^{-1}),\,\forall g_i\in G_i$.
+    \end{enumerate}
+    Quindi, $(G_1\otimes G_2,*)$ è detto gruppo prodotto diretto di $G_1$ e $G_2$.
+\end{defn}
+
+\section{Gruppi e algebre di Lie}
+Un gruppo di Lie è un gruppo continuo i cui elementi sono funzioni analitiche (continue e infinitamente differenziabili) di un numero finito di parametri $\theta_i$. Hanno un particolare rilievo i gruppi di Lie connessi, poiché grazie alla proprietà di analiticità, si può connettere con continuità l'elemento identità a qualsiasi altro elemento del gruppo. Un gruppo di Lie connesso avrà un numero infinito di elementi in un intorno dell'identità. In particolare, sono di rilievo i gruppi di Lie che dipendono linearmente dai parametri, per piccoli valori degli stessi, poiché devono avere sicuramente una rappresentazione matriciale e si connettono univocamente all'identità. In questo caso, una trasformazione infinitesima a partire dall'identità, o equivalentemente un elemento del gruppo infinitesimamente vicino all'identità, si può scrivere come
+\begin{equation}
+    \lim_{\epsilon\to0}{g(\epsilon)} \simeq \MI + \epsilon_i X^i,\quad i=1,\dots,|G|,
+\end{equation}
+dove i parametri $\epsilon_i$ sono parametri continui per definizione di gruppo di Lie.
+\begin{defn}[compattezza]
+    Un gruppo si dice compatto se i parametri variano in un intervallo chiuso e limitato, altrimenti si dice non compatto.
+\end{defn}
+Quindi, in generale una trasformazione finita è
+\begin{equation}
+\label{eq: trasformazione finita GdL}
+    h(\theta) = (\MI +\epsilon_i X^i)(\MI +\epsilon_i X^i)\cdots = (\MI +\epsilon_i X^i)^N,
+\end{equation}
+dove allora la trasformazione totale è $\theta_i = N\epsilon_i$. Pertanto, un elemento generico $g$ del gruppo si può scrivere come
+\begin{equation}
+    g = \lim_{N\to\infty}{h(\theta)} = \lim_{N\to\infty}{(\MI + \epsilon_i X^i)^N} = \lim_{N\to\infty}{\bigg(\MI + \frac{\theta_iX^i}{N}\bigg)^N} = e^{\theta_i X^i},
+\end{equation}
+dove gli elementi $X^i$ prendono il nome di generatori. Calcolando la derivata di $h(\theta)$ e prendendone il limite per $\theta_i\to0$ si ottiene
+\begin{equation}
+    \lim_{\theta_i\to 0}{\frac{\p g}{\p\theta_i}} = \lim_{\theta_i\to 0}{\frac{\p}{\p\theta_i}(e^{\theta_i X^i})} = X^i.
+\end{equation}
+Dunque, ogni elemento di un gruppo di Lie si può scrivere come un esponenziale dei generatori. 
+
+L'insieme dei generatori degli elementi di un gruppo di Lie tramite l'operazione di esponenziale forma l'algebra di Lie associata a tale gruppo. Una definzione più formale è la seguente.
+\begin{defn}[algebra di Lie]
+\label{defn: algebra di Lie}
+    Un'algebra di Lie $\g$ è uno spazio vettoriale su un campo $\mathbb{K}$ dotato di un'operazione binaria interna $\comm{\cdot}{\cdot} : \g\times\g \to \g$, detta prodotto di Lie, avente le seguenti proprietà:
+    \begin{enumerate}
+        \item bilinearità, ossia
+        \begin{align}
+            \comm{\alpha x +\beta y}{z} &= \alpha\comm{x}{z} + \beta\comm{y}{z},\quad\forall x,y,z\in\g,\,\forall\alpha,\beta\in\mathbb{K} \\
+            \comm{z}{\alpha x + \beta y}& = \alpha\comm{z}{x} + \beta\comm{z}{y},\quad\forall x,y,z\in\g,\,\forall\alpha,\beta\in\mathbb{K};
+        \end{align}
+        \item soddisfa l'identità di Jacobi, ossia
+        \begin{equation}
+            \comm{\comm{x}{y}}{z} + \comm{\comm{z}{x}}{y} + \comm{\comm{y}{z}}{x} = 0,\quad\forall x,y,z\in\g;
+        \end{equation}
+        \item è nilpotente, ossia $\comm{x}{x} = 0,\,\forall x\in\g$.
+    \end{enumerate}
+\end{defn}
+\begin{defn}[algebra di Lie abeliana]
+    Un'algebra di Lie $\g$ si dice abeliana se $\comm{x}{y} = 0,\,\forall x,y\in\g$, altrimenti si dice non-abeliana.
+\end{defn}
+La prima e la terza proprietà elencate nella definizione \ref{defn: algebra di Lie} insieme implicano che $\comm{x}{y} = -\comm{y}{x},\,\forall x,y\in\g$, esprimendo l'anti-simmetria della parentesi di Lie. 
+\begin{defn}[rango di un'algebra di Lie]
+\label{defn: rango algebra di Lie}
+    Il rango di un'algebra di Lie coincide con il numero massimo di generatori commutanti tra loro.
+\end{defn}
+In base alla definizione \ref{defn: rango algebra di Lie}, il rango dell'algebra di Lie fornisce il numero di generatori che possono essere rappresentati da matrici diagonalizzabili simultaneamente. 
+
+La relazione tra l'operazione di composizione di un gruppo di Lie e la parentesi di Lie dell'algebra di Lie associata al gruppo è data dalla formula di Baker-Campbell-Hausdorff.
+\begin{teo}[formula di Baker-Campbell-Hausdorff]
+    Dato un gruppo di Lie $G$ e $X,Y\in\g$, allora $F:=\exp(X)\exp(Y)$ è dato da
+    \begin{equation}
+        F= \exp\left(X + Y + \frac{1}{2}[X, Y] + \frac{1}{12}([X, [X, Y]] - [Y, [X, Y]]) + \ldots \right),
+    \end{equation}
+    dove ogni termine aggiuntivo può essere scritto in termini della parentesi di Lie su $\g$.
+\end{teo}
+A partire dai generatori di un gruppo di Lie si possono definire gli operatori di Casimir del gruppo.
+\begin{defn}[operatore di Casimir]
+    Un operatore $C$ costruito a partire dai generatori $X^i$ di un gruppo di Lie $G$ si dice di Casimir se commuta con tutti i generatori, ossia se $\comm{C}{X^i} = 0,\,\forall X^i\in\g$, dove $\g$ è l'algebra di Lie associata a $G$.
+\end{defn}
+% ESEMPIO DI SO(3)
+
+\section{Gruppo di Lorentz}
+Le trasformazioni di Lorentz formano un gruppo $L$ in quanto verificano le proprietà elencate nella definizione \ref{defn: gruppo}. Infatti, le trasformazioni di Lorentz: verificano la chiusura dato che componendo due trasformazioni $\ML'' = \ML\ML'$, con $\ML,\ML'\in L$, il risultato è ancora una trasformazione 
+\begin{equation}
+    (\ML'')^Tg\ML'' = (\ML\ML')^Tg\ML\ML' = (\ML')^T\ML^Tg\ML\ML' = (\ML')^T g \ML' = g;
+\end{equation}
+verificano l'associatività, dimostrazione che segue dall'operazione di moltiplicazione matriciale; hanno un elemento neutro $g^\mu_\nu\equiv\delta^\mu_\nu$; prevedono un elemento inverso $\ML^{-1}\in L$ tale che $\ML\ML^{-1} = \ML^{-1}\ML = \MI$, infatti
+\begin{equation}
+    g = (\ML^T)^{-1}\ML^T g \ML\ML^{-1} =  (\ML^T)^{-1}g\ML^{-1} = (\ML^{-1})^T g\ML^{-1}.
+\end{equation}
+Si consideri quindi una trasformazione di Lorentz infinitesima
+\begin{equation}
+\label{eq: TdL infinitesima}
+    \ML^\mu_\nu = \delta^\mu_\nu + \omega^\mu_\nu,\quad\omega^\mu_\nu\ll 1,\forall\mu,\nu,
+\end{equation}
+dove $\omega^\nu_\nu$ sono i parametri continui della trasformazione. L'unica condizione che deve soddisfare una trasformazione di Lorentz è lasciare invariata la distanza spaziotemporale $s^2$. La condizione di invarianza di $s^2$ è data dal principio di Relatività speciale, sostituendo quindi \eqref{eq: TdL infinitesima} in \eqref{eq: principio di RS} si ottiene
+\begin{equation}
+    \begin{split}
+        g_{\rho\sigma} &= g_{\mu\nu}\ML^\mu_\rho\ML^\nu_\sigma  \\
+        &= g_{\mu\nu}(\delta^\mu_\rho + \omega^\mu_\rho)(\delta^\nu_\sigma + \omega^\nu_\sigma) \\
+        &= \mm(\delta^\mu_\rho\delta^\nu_\sigma + \delta^\mu_\rho\omega^\nu_\sigma + \delta^\nu_\sigma\omega^\nu_\rho + \omega^\mu_\rho\omega^\nu_\sigma)\\
+        &\simeq g_{\rho\sigma} + \omega_{\rho\sigma} + \omega_{\sigma\rho},
+    \end{split}
+\end{equation}
+da cui si ricava la relazione $\omega_{\rho\sigma} + \omega_{\sigma\rho} = 0$, la quale a sua volta implica l'esistenza di sei parametri liberi anti-simmetrici. Quindi, si può riscrivere \eqref{eq: TdL infinitesima} come
+\begin{equation}
+    \ML^\mu_\nu = \delta^\mu_\nu + g^{\mu\rho}g^\sigma_\nu\omega_{\rho\sigma} = \delta^\mu_\nu + \frac{1}{2}\omega_{\rho\sigma}(g^{\mu\rho}g^\sigma_\nu-g^{\mu\sigma}g^\rho_\nu),
+\end{equation}
+dove nell'ultimo passaggio si è sfruttato il fatto che un tensore $T^{\mu\nu}$ può sempre essere scritto come somma della sua componente simmetrica e anti-simmetrica, ossia
+\begin{equation}
+    T^{\mu\nu} = \frac{1}{2}(T^{\mu\nu} + T^{\nu\mu}) + \frac{1}{2}(T^{\mu\nu} - T^{\nu\mu}),
+\end{equation}
+e che il prodotto tra un tensore anti-simmetrico e un altro simmetrico è sempre nullo. Si identificano quindi i sei generatori del gruppo di Lorentz con le sei matrici anti-simmetriche $(M^{\rho\sigma})^\mu_\nu$ definite da
+\begin{equation}
+\label{eq: generatori gruppo di Lorentz}
+    (M^{\rho\sigma})^\mu_\nu := -i(g^{\mu\rho}g^\sigma_\nu-g^{\mu\sigma}g^\rho_\nu).
+\end{equation}
+Considerando il determinante ad ambo i membri della relazione matriciale $\ML^Tg\ML = g$, equivalente all'equazione \eqref{eq: principio di RS}, si ottiene che
+\begin{equation}
+    \begin{split}
+        \det{(\ML^Tg\ML)} &= \det{(g)} \\
+        \det{(\ML^T)}\det{(g)}\det{(\ML)} &= \det{(g)} \\
+        (\det{\ML})^2 &= 1 \\
+        \det{\ML} &= \pm 1.
+    \end{split}
+\end{equation}
+Quindi, il determinante di una matrice di Lorentz $\ML$ può assumere due valori, $\pm1$, che permettono di distinguere le trasformazioni di Lorentz in due insiemi di trasformazioni:
+\begin{enumerate}
+    \item $L_+$ delle trasformazioni proprie se $\det{\ML} = 1$;
+    \item $L_-$ delle trasformazioni improprie se $\det{\ML} = -1$.
+\end{enumerate}
+Inoltre, imponendo che $\rho = \sigma = 0$ nell'equazione \eqref{eq: principio di RS}, segue che
+\begin{equation}
+    \begin{split}
+        g_{\mu\nu}\ML^\mu_0\ML^\nu_0 &= g_{00} \\
+        (\ML^0_0)^2 - (\ML^i_0)^2 &= 1 \\
+        (\ML^0_0)^2 &= 1 + (\ML^i_0)^2,
+    \end{split}
+\end{equation}
+ora dato che $(\ML^i_0)^2 \ge 0$, allora $(\ML^0_0)^2 \ge 1$, da cui si deduce che
+\begin{equation}
+\label{eq: valori ML^0_0}
+    \ML^0_0 \le -1\quad\vee\quad\ML^0_0 \ge 1. 
+\end{equation}
+Le condizioni \eqref{eq: valori ML^0_0} permettono di distinguere le trasformazioni di Lorentz in due insiemi di trasformazioni:
+\begin{enumerate}
+    \item $L^\ua$ delle trasformazioni ortocrone se $\ML^0_0 \ge 1$;
+    \item $L^\da$ delle trasformazioni anticrone se $\ML^0_0 \le -1$.
+\end{enumerate}
+Dunque, il gruppo di  le trasformazioni di Lorentz del gruppo di Lorentz $L$ si distinguono in quattro insiemi di trasformazioni:
+\begin{enumerate}
+    \item $L_+^\ua = L_+ \cap L^\ua$ delle trasformazioni proprie e ortocrone:
+    \item $L^\ua_- = L_- \cap L^\ua$ delle trasformazioni improprie e ortocrone;
+    \item $L^\da_+ = L_+ \cap L^\da$ delle trasformazioni proprie e anticrone;
+    \item $L^\da_- = L_- \cap L^\da$ delle trasformazioni improprie e anticrone;
+\end{enumerate}
+Dato che $\{L_+^\ua,\,L^\ua_-,\,L^\da_+,\,L^\da_-\}$ sono tutti insiemi indipendenti,il gruppo di Lorentz $L$ può essere scritto come unione dei quattro sottoinsiemi $L = L_+^\ua \cup L^\ua_- \cup L^\da_+ \cup L^\da_-$. L'unico insieme tra $\{L_+^\ua,\,L^\ua_-,\,L^\da_+\,L^\da_-\}$ che forma un sottogruppo di $L$ è $L_+^\ua$ che prende il nome di ``gruppo di Lorentz ristretto'' e viene indicato con $SO(1,3)$. 
+\begin{obs}
+    Formano sottogruppi di $L$ anche gli insiemi $L_+$, $L^\ua$ e $L_0 = L^\ua_+ \cup L_-^\da$, che infatti risultano chiusi rispetto all'operazione di composizione del gruppo $L$, in questo caso la moltiplicazione matriciale. In particolare, il gruppo delle trasformazioni ortocrone $L^\ua$ prende il nome di ``gruppo di Lorentz ortocrono'' e viene indicato con $O(1,3)$.
+\end{obs}
+
+\section{Gruppo \texorpdfstring{\bm{$SO(1,3)$}}{SO(1,3)}}
+Ogni trasformazione di Lorentz ristretta $\ML$, ossia propria e ortocrona, può essere scritta come il prodotto di una rotazione nello spazio tridimensionale $\ML_R$ e di un boost $\ML_B$, dove 
+\begin{equation}
+\label{eq: ML rotazione}
+    \ML_R = 
+    \begin{pmatrix}
+        1 & \bm{0} \\
+        \bm{0} & R(\theta)
+    \end{pmatrix},\quad R(\theta)\in SO(3),
+\end{equation}
+e
+\begin{equation}
+\label{eq: ML boost}
+    \ML_B = 
+    \begin{pmatrix}
+        \gamma & -\gamma\bm{\beta} \\
+        -\gamma\bm{\beta} & \MI + \dfrac{(\gamma -1 )\bm{\beta}^T\bm{\beta}}{\bm{\beta}^2}
+    \end{pmatrix},
+\end{equation}
+la quale nel caso il boost avvenga unicamente lungo l'asse $x$ si riduce a
+\begin{equation}
+    \ML_B^{(x)} =
+    \begin{pmatrix}
+        \gamma & -\gamma\beta & \bm{0} \\
+        -\gamma\beta & \gamma & \bm{0} \\
+        \bm{0} & \bm{0} & \MI
+    \end{pmatrix}.
+\end{equation}
+Per convenienza, si è soliti esprimere le matrici $\ML_B$ in termini della rapidità $\eta$ definita come
+\begin{equation}
+    \eta = \tanh^{-1}{\beta} = \frac{1}{2}\ln{\frac{1 + \beta}{1 - \beta}},
+\end{equation}
+in questo modo $\ML_B^{(x)}$ si può riscrivere come
+\begin{equation}
+    \ML_B^{(x)} = 
+    \begin{pmatrix}
+        \cosh{\eta} & -\sinh{\eta} & \bm{0} \\
+        -\sinh{\eta} & \cosh{\eta} & \bm{0} \\
+        \bm{0} & \bm{0} & \MI
+    \end{pmatrix},
+\end{equation}
+la cui forma è evidentemente molto simile a quella di \eqref{eq: ML rotazione}. 
+\begin{obs}
+    Un'inversione dell'asse temporale $\ML_T$ è una trasformazione impropria e anticrona data da 
+    \begin{equation}
+        \ML_T = 
+        \begin{pmatrix}
+            -1 & \bm{0} \\
+            \bm{0} & \MI_3
+        \end{pmatrix},
+    \end{equation}
+    mentre un'inversione degli assi spaziali (inversione di parità) è una trasformazione impropria e ortocrona data da
+    \begin{equation}
+        \ML_P = 
+        \begin{pmatrix}
+            1 & \bm{0} \\
+            \bm{0} & -\MI_3
+        \end{pmatrix}.
+    \end{equation}
+\end{obs}
+Il determinante di $\ML_B$ è $\gamma^2 - \bm{\beta}^2\gamma^2 = 1$, per cui $\ML_B$ è una trasformazione propria, ortocrona e simmetrica, inoltre $\Lambda_R$ è anch'essa una trasformazione ortocrona. Quindi, riprendendo l'affermazione iniziale, ogni trasformazione di Lorentz propria e ortocrona, ossia ristretta, può essere scritta come 
+\begin{equation}
+    \ML = \ML_R(\theta)\ML_B(\bm{\beta}).
+\end{equation}
+Dalla forma di \eqref{eq: ML rotazione} si può dedurre come $SO(3)$ sia un sottogruppo di $SO(1,3)$, mentre lo stesso non si può dire del gruppo dei boost che da solo non forma un sottogruppo di $SO(1,3)$ in quanto la sua algebra non è chiusa rispetto all'operazione di commutazione di $\so(1,3)$. L'algebra $\so(1,3)$ è infatti definita dalle regole di commutazione dell'algebra $\so(3)$
+\begin{equation}
+\label{eq: regole commutazione so(3)}
+    \comm{J_i}{J_j} = i\epsilon_{ijk}J^k,
+\end{equation}
+di quelle dell'algebra associata al gruppo dei boost
+\begin{equation}
+\label{eq: regole commutazione boost}
+    \comm{K_i}{K_j} = -i\epsilon_{ijk}J^k
+\end{equation}
+e dalle aggiuntive regole di commutazione
+\begin{equation}
+    \comm{J_i}{K_j} = i\epsilon_{ijk}K^k.
+\end{equation}
+Quindi, conoscendo $\so(1,3)$ è possibile scrivere il singolo elemento $\ML$ del gruppo $SO(1,3)$ tramite l'operazione di esponenziale come
+\begin{equation}
+    \ML = e^{i\theta_iJ^i + i\eta_iK^i}.
+\end{equation}
+L'algebra $\so(1,3)$ è fattorizzabile come il prodotto diretto di due algebre $\su(2)$. Considerando le combinazioni lineari
+\begin{equation}
+\label{eq: comb. lineari Ni+ e Ni-}
+    N_i^+ = \frac{1}{2}(J_i + iK_i),\quad N_i^- = \frac{1}{2}(J_i - iK_i),
+\end{equation}
+si nota che soddisfano le regole di commutazione
+\begin{equation}
+\label{eq: regole commutazione so(1,3) come su(2) x su(2)}
+    \comm{N_i^+}{N_j^+} = i\epsilon_{ijk}N^k_+,\quad\comm{N_i^-}{N_j^-} = i\epsilon_{ijk}N^k_-,\quad\comm{N_i^+}{N_j^-} = 0,
+\end{equation}
+che hanno la stessa forma di quelle che definiscono $\su(2)$. Inoltre, dato che $\comm{N_i^+}{N_j^-}=0$, non si può considerare $\so(1,3)$ isomorfa ad una sola $\su(2)$, ma si deve appunto considerare la somma interna di due algebre $\su(2)$ ognuna associata rispettivamente ai generatori $N_i^+$ e $N_i^-$, quindi $\so(1,3) \simeq \su(2)\oplus\su(2)$. 
+\begin{obs}
+    La decomposizione di $\so(1,3)$ in due copie di $\su(2)$ è molto vantaggiosa dato che le rappresentazioni irriducibili di $\su(2)$ sono ben note. Tuttavia, si deve fare attenzione che il gruppo di Lorentz $SO(1,3)$, come $SO(3)$, non è semplicemente connesso, per cui non c'è una rappresentazione uno ad uno tra le rappresentazioni irriducibili dell'algebra di Lie e quelle del gruppo associato. Si deve ricordare che esiste sempre almeno un gruppo semplicemente connesso che appartiene ad un'algebra di Lie: se si derivano le rappresentazioni irriducibili di un'algebra si ottiene, tramite l'operazione di esponenziale dei suoi generatori, le rappresentazioni dei gruppi semplicemente connessi, ossia i ricoprimenti. Quindi, derivando le rappresentazioni irriducibili di $\so(1,3)$ si trovano le rappresentazioni irriducibili dei gruppi ricoprenti il gruppo di Lorentz.
+\end{obs}
+Sempre da $\comm{N_i^+}{N_j^-}=0$, si possono definire gli operatori di Casimir dell'algebra, che in questo caso sono due, ognuno relativo alla rispettiva $\su(2)$, a cui sono associati i rispettivi autovalori; questi sono
+\begin{equation}
+\label{eq: operatori di casimir so(1,3)}
+    (N^+)^2 \to n^+(n^+ + 1),\quad (N^-)^2 \to n^-(n^- + 1).
+\end{equation}
+Gli stati del sistema sono quindi etichettati dalle coppie ordinate $(n^+,n^-)$, dove $n^+$ ed $n^-$ possono essere interi o semi-interi. 
+
+\subsubsection{Rappresentazione \texorpdfstring{$\bm{(0,0)}$}{(0,0)}}
+La rappresentazione di dimensione minore è banale perché lo spazio vettoriale è unidimensionale per entrambe le copie di $\su(2)$. I generatori devono pertanto essere matrici $1 \times 1$, cioè numeri. L'unico numero che soddisfa le regole \eqref{eq: regole commutazione so(1,3) come su(2) x su(2)} è lo zero, quindi
+\begin{equation}
+    N_i^+ = N_i ^- = 0\quad\Rightarrow\quad e^{iN_i^+} = e^{iN_i^-} = e^0 = 1.
+\end{equation}
+Quindi, la rappresentazione $\bm{(0,0)}$ del gruppo di Lorentz agisce su oggetti invarianti rispetto a trasformazioni di Lorentz. Questa rappresentazione prende il nome di ``rappresentazione scalare''.
+
+\subsubsection{Rappresentazione \texorpdfstring{$\bm{(1/2,0)}$}{(1/2,0)}}
+Si considera la rappresentazione 2-dimensionale per una singola copia di $\su(2)$, mentre per l'altra quella unidimensionale, per cui 
+\begin{equation}
+    N_i^+ = \frac{\sigma_i}{2},\quad N_i^- = 0.
+\end{equation}
+Combinando \eqref{eq: comb. lineari Ni+ e Ni-} e $N_i^- = 0$ segue che 
+\begin{equation}
+    J_i = iK_i.
+\end{equation}
+Usando quest'ultima relazione sempre insieme a \eqref{eq: comb. lineari Ni+ e Ni-} si trova
+\begin{equation}
+    N_i^+ = iK_i,
+\end{equation}
+ma dato che $N_i^+ = \sigma_i/2$ e che $J_i = iK_i$ si ha
+\begin{equation}
+    K_i = -\frac{i}{2}\sigma_i,\quad J_i=\frac{1}{2}\sigma_i.
+\end{equation}
+Dunque, in questa rappresentazione una rotazione di Lorentz è data da
+\begin{equation}
+    R(\theta) = e^{i\theta_i\sigma^i/2},
+\end{equation}
+mentre un boost è dato da
+\begin{equation}
+    B(\phi) = e^{\phi_i\sigma^i/2}.
+\end{equation}
+Gli oggetti a due componenti su cui agisce questa rappresentazione sono spinori a chiralità sinistrorsa, indicati con $\chi_L$ e definiti da
+\begin{equation}
+    \chi_L = 
+    \begin{pmatrix}
+        \chi_{L1} \\
+        \chi_{L2}
+    \end{pmatrix}.
+\end{equation}
+Un aspetto molto importante degli spinori è il fatto che dopo una rotazione di $2\pi$ non si ritorna allo spinore iniziale, ma si ottiene il suo opposto con un segno, a differenza di quanto ci si aspetterebbe.
+
+\subsubsection{Rappresentazione \texorpdfstring{$\bm{(0,1/2)}$}{(0,1/2)}}
+Analoga alla rappresentazione $\bm{(1/2,0)}$, in questo caso
+\begin{equation}
+    N_i^- = \frac{\sigma_i}{2},\quad N_i^+ = 0.
+\end{equation}
+Svolgendo i medesimi passaggi effettuati per la $\bm{(1/2,0)}$ si ottengono le relazioni
+\begin{equation}
+    K_i = \frac{i}{2}\sigma_i,\quad J_i = \frac{1}{2}\sigma_i.
+\end{equation}
+Quindi, rotazioni e boost di Lorentz sono dati rispettivamente da
+\begin{equation}
+    R(\theta) = e^{i\theta_i\sigma^i/2},\quad B(\phi) = e^{-\phi_i\sigma^i/2}.
+\end{equation}
+Questa volta, gli oggetti a due componenti su cui agisce questa rappresentazione sono spinori a chiralità destrorsa, indicati con $\chi_R$ e definiti da
+\begin{equation}
+    \chi_R = 
+    \begin{pmatrix}
+        \chi_{R1} \\
+        \chi_{R2}
+    \end{pmatrix}.
+\end{equation}
+
+\subsubsection{Rappresentazione \texorpdfstring{$\bm{(1/2,1/2)}$}{(1/2,1/2)}}
+Si considera la rappresentazione 2-dimensionale per entrambe le copie di $\su(2)$, in questo caso quindi
+\begin{equation}
+\label{eq: operatori di Casimir di so(1,3)}
+    N_i^+ = N_i^- = \frac{1}{2}\sigma_i.
+\end{equation}
+La rappresentazione $\bm{(1/2,1/2)}$ è detta ``rappresentazione vettoriale'' e agisce su oggetti 4-dimensionali dato che le matrici di Lorentz sono $4 \times 4$.
+
+\subsubsection{Algebra del gruppo \texorpdfstring{$\bm{SO(1,3)}$}{SO(1,3)}}
+Ricordando la definizione dei generatori del gruppo di Lorentz \eqref{eq: generatori gruppo di Lorentz} si può scrivere ogni elemento del gruppo $\ML\in L$ come 
+\begin{equation}
+    \ML = e^{i\omega_{\rho\sigma}(M^{\rho\sigma})^\mu_\nu/2}
+\end{equation}
+e definire la regola di commutazione dell'algebra 
+\begin{equation}
+\label{eq: regola di commutazione di so(1,3}
+    \comm{M^{\lambda\tau}}{M^{\rho\sigma}} = -i(g^{\lambda\sigma}M^{\tau\rho} + g^{\tau\rho}M^{\lambda\sigma} - g^{\lambda\rho}M^{\tau\sigma} - g^{\tau\sigma}M^{\lambda\rho}).
+\end{equation}
+In funzione degli $(M^{\rho\sigma})^\mu_\nu$ si possono definire i generatori delle rotazioni e dei boost come 
+\begin{equation}
+    K_i \equiv M_{0i},\quad J_i\equiv\frac{1}{2}\epsilon_{ijk}M^{jk}.
+\end{equation}
+Si definiscono poi gli operatori di Casimir del gruppo di Lorentz contraendo nei due modi possibili gli indici degli $(M^{\rho\sigma})^\mu_\nu$ ottenendo
+\begin{equation}
+\label{eq: relazioni generatori gruppo di Lorentz e J e K}
+    M_{\mu\nu}M^{\mu\nu} = 2(J^2 - K^2),\quad \epsilon^{\mu\nu\rho\sigma}M_{\mu\nu}M_{\rho\sigma} = 2(\vJ \cdot \vK),
+\end{equation}
+dove la prima è una combinazione completamente antisimmetrica, mentre la seconda è completamente simmetrica. 
+
+\section{Spinori}
+Fino a questo momento non c'è un vero motivo di parlare di rappresentazione a chiralità sinistrorsa $\bm{(1/2,0)}$ e a chiralità destrorsa $\bm{(0,1/2)}$. Tuttavia, ricordando che i generatori del gruppo di Lorentz sotto trasformazioni di parità $P$ si comportano secondo
+\begin{equation}
+    J_i \xrightarrow{P} J_i,\quad K_i\xrightarrow{P}-K_i,
+\end{equation}
+allora dalla definizione dei generatori $N_i^\pm$ \eqref{eq: comb. lineari Ni+ e Ni-} si deduce che per trasformazioni di parità si ha
+\begin{equation}
+    N_i^+\xlongleftrightarrow{P}N_i^-.
+\end{equation}
+Quindi, la rappresentazione $\bm{(1/2,0)}$ diventa la $\bm{(0,1/2)}$, e viceversa, sotto trasformazioni di parità. Questo è il motivo per il quale si distingue chiralità sinistrorsa da chiralità destrorsa: $\bm{(1/2,0)}$ e $\bm{(0,1/2)}$ trasformano l'una nell'altra.
+
+Le rotazioni sono le stesse sia per $\bm{(1/2,0)}$ che per $\bm{(0,1/2)}$, invece i boost differiscono per un segno, confermando quanto detto prima; infatti
+\begin{align}
+    (\ML_B)_{\bm{(1/2,0)}} &= e^{i\phi_iK^i}\xlongleftrightarrow{P}e^{-\phi_iK^i} = (\ML_B)_{\bm{(0,1/2)}}.
+\end{align}
+Pertanto, se si vuole descrivere un sistema fisico che sia invariante sotto trasformazioni di parità è necessario considerare sia gli spinori a chiralità sinistrorsa che quelli a chiralità destrorsa. Il metodo più semplice per farlo è considerarli entrambi in un unico spinore $\Psi$ 4-dimensionale detto spinore di Dirac
+\begin{equation}
+    \Psi = 
+    \begin{pmatrix}
+        \chi_L \\
+        \zeta_R
+    \end{pmatrix},
+\end{equation}
+dove si deve notare che in generale non si conosce la relazione tra lo spinore ``sinistrorso'' e quello ``destrorso'' e quindi si sono indicate con lettere diverse. Inoltre, il nome generico per gli spinori a chiralità sinistrorsa e a chiralità destrorsa è ``spinore di Weyl''. Si definisce poi uno spinore di Majorana $\Psi_M$ come uno spinore di Dirac della forma
+\begin{equation}
+    \Psi_M = 
+    \begin{pmatrix}
+        \chi_L \\
+        \chi_R
+    \end{pmatrix}.
+\end{equation}
+Una spinore di Dirac trasforma secondo la rappresentazione vettoriale del gruppo di Lorentz $\bm{(1/2,1/2)}$, per cui
+\begin{equation}
+    \Psi\to\Psi' =(\ML)_{\bm{(1/2,0)}\oplus\bm{(0,1/2)}}\Psi =
+    \begin{pmatrix}
+        \ML_{\bm{(1/2,0)}} & \bm{0} \\
+        \bm{0} & \ML_{\bm{(0,1/2)}}
+    \end{pmatrix}
+    \begin{pmatrix}
+        \chi_L \\
+        \zeta_R
+    \end{pmatrix}.
+\end{equation}
+
+\section{Gruppo di Poincarè}
+Come già detto, le traslazioni non sono incluse direttamente nel gruppo di Lorentz, ma fanno parte del gruppo delle trasformazioni relativistiche più generali appartenenti al gruppo di Poincarè. Il generatore del sottogruppo delle traslazioni è il quarimpulso $P_\mu$. Il gruppo di Poincarè non è un gruppo compatto dato che quello delle traslazioni a sua volta non lo è, infatti i suoi parametri possono variare in modo continuo su un intervallo continuo. Tuttavia, il gruppo delle traslazioni è abeliano a differenza di quello delle rotazioni che però è compatto. L'algebra del gruppo di Poincaré è definita dalle seguenti relazioni di commutazione
+\begin{equation}
+\label{eq: regole di commutazione del GdP}
+    \begin{split}
+        \comm{J_i}{J_j} &= i\epsilon_{ijk}J^k,\quad\comm{J_i}{K_j} = i\epsilon_{ijk}K^k,\quad\comm{K_i}{K_j}  =-i\epsilon_{ijk}J^k \\ 
+        \comm{J_i}{P_j} &= i\epsilon_{ijk}P^k,\quad\comm{K_i}{P_j} = i\delta_{ij}P_0,\quad\comm{K_i}{P_0} = -iP_i, \\
+        \comm{J_i}{P_0} &= 0.
+    \end{split}
+\end{equation}
+Usando la definizione \eqref{eq: generatori gruppo di Lorentz} e le relazioni \eqref{eq: relazioni generatori gruppo di Lorentz e J e K} si possono scrivere le relazioni di commutazione dell'algebra del gruppo di Poincarè in modo più compatto
+\begin{equation}
+    \comm{P_\mu}{P_\nu} = 0,\quad\comm{M_{\mu\nu}}{P_\rho} = i(g_{\mu\rho}P_\nu - g_{\nu\rho}P_\mu).
+\end{equation}
+Gli operatori di Casimir del gruppo di Poincarè sono
+\begin{equation}
+    P_\mu P^\mu := m^2,\quad W_\mu W^\mu,
+\end{equation}
+dove la prima è una combinazione completamente simmetrica che convenientemente si è già posta uguale al quadrato della massa dato che si sa già coincidere con la massa invariante, mentre la seconda è una combinazione completamente antisimmetrica corrispondente alla contrazione del vettore di Pauli-Lubanski $W^\mu$ definito come
+\begin{equation}
+\label{eq: vettore di Pauli - Lubanski}
+    W^\mu = \frac{1}{2}\epsilon^{\mu\nu\rho\sigma}P_\nu M_{\rho\sigma},
+\end{equation}
+da cui per simmetria si deduce che $\comm{W^\mu}{P^\nu} = 0$ e che $\bm{W}\cdot\bm{P} = 0$. L'importante proprietà del gruppo di Poincarè è la capacità di distinguere le particelle con il medesimo spin in base alla massa proprio grazie al nuovo operatore di Casimir $P_\mu P^\mu$. Invece, il vettore $W^\mu$ è direttamente associato allo spin della particella, per mostrarlo si considera una particella massiva nel suo sistema di riferimento a riposo in cui $P_\mu = (m,\bm{0})$, per cui le componenti di $W^\mu$ sono
+\begin{equation}
+    W^0 = \frac{1}{2}\epsilon^{0\nu\rho\sigma}P_\nu M_{\rho\sigma} = 0,
+\end{equation}
+\begin{equation}
+    W^i = \frac{1}{2}\epsilon^{i\nu\rho\sigma}P_\nu M_{\rho\sigma} = -\frac{m}{2}\epsilon^{0ijk}M_{jk}=-mJ^i.
+\end{equation}
+Il momento angolare $J^i$ nel sistema di riferimento a riposo coincide con lo spin $S^i$ dato che il momento angolare orbitale è appunto nullo, quindi $W^i = -mS^i$ e l'operatore di Casimir associato è 
+\begin{equation}
+    W_\mu W^\mu = m^2S^2 \rightarrow m^2 s(s+1),
+\end{equation}
+dove nell'ultimo passaggio si è associato l'autovalore di $S^2$. Quindi, una particella viene identificata in base agli autovalori degli operatori di Casimir $P_\mu P^\mu$ e $W_\mu W^\mu$, ossia alla sua massa e al suo spin.
+
+Tuttavia, nel caso la particella sia priva di massa, gli operatori di Casimir e la contrazione di $P_\mu$ con $W^\mu$ si annullano
+\begin{equation}
+    P_\mu P^\mu = 0,\quad W_\mu W^\mu = 0,\quad P^\mu W_\mu = 0,
+\end{equation}
+non permettendo di definire lo spin di una particella massless. Per aggirare il problema, si suppone che $W^\mu$ sia proporzionale a $P_\mu$, ossia che 
+\begin{equation}
+    W_\mu = h P_\mu,\quad h = \{-1,+1\}.
+\end{equation}
+dove $h$ prende il nome di ``elicità''. Quest'ultima è l'analogo dello spin per le particelle massless e può assumere solo due valori, $+1$ e $-1$, rispettivamente elicità destrorsa e sinistrorsa. L'elicità si può definire anche per le particelle massive e coincide semplicemente con la proiezione del vettore di spin lungo la direzione del moto, per cui si può avere $h$ concorde a $\bm{S}$, a cui corrisponde $h = +1$, oppure discorde ad $\bm{S}$, a cui corrisponde $h = -1$.
+
+I gradi di libertà di una particella massiva sono $2s + 1$, quindi una particella con $s = 1/2$ possiede due gradi di libertà; per una particella massless come il fotone con  ``spin'' $1$ ci si aspetterebbero tre gradi di libertà, invece le particelle massless hanno sempre due gradi di libertà, che nel caso del fotone coincidono con le due possibili polarizzazioni del campo elettromagnetico, proprio perché i valori possibili dell'elicità sono solo due.
+

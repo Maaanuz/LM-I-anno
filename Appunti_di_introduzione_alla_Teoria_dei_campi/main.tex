@@ -1,0 +1,200 @@
+\documentclass[openany]{book}
+\usepackage[a4paper,margin=4.72cm]{geometry}
+
+\usepackage{graphicx}
+\usepackage{siunitx} 
+\usepackage{natbib}
+\usepackage{mathtools}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage[italian]{babel}
+\usepackage{stackengine}
+\usepackage{graphicx,ifthen}
+\usepackage{amsmath}
+\usepackage{hyperref}
+\usepackage{upgreek}
+\usepackage{bm}
+\usepackage{braket}
+\usepackage{float}
+\usepackage{cancel}
+\usepackage{anyfontsize}
+\usepackage{scalefnt}
+\usepackage{mathtools}
+\usepackage{underoverlap}
+\usepackage{slashed}
+\usepackage{extarrows}
+\usepackage{tikz}
+\usetikzlibrary{positioning}
+
+\newtheorem{lem}{Lemma}
+\newtheorem{axiom}{Assioma}
+\newtheorem{defn}{Definizione}
+\newtheorem{obs}{Osservazione}
+\newtheorem{ex}{Esempio}
+\newtheorem{notz}{Notazione}
+\newtheorem{corl}{Corollario}
+\newtheorem{teo}{Teorema}
+\theoremstyle{remark}
+\newtheorem{caso}{Caso}
+
+\numberwithin{lem}{chapter}
+\numberwithin{axiom}{chapter}
+\numberwithin{teo}{chapter}
+\numberwithin{defn}{chapter}
+\numberwithin{obs}{chapter}
+\numberwithin{ex}{chapter}
+\numberwithin{equation}{chapter}
+
+% insiemi
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\MI}{\mathbb{I}}
+\newcommand{\MO}{\mathbb{O}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\HFN}{\SH_{N,F}}
+\newcommand{\HBN}{\SH_{N,B}}
+\newcommand{\HBFN}{\SH_{N,B/F}}
+\newcommand{\SH}{\mathcal{H}}
+\newcommand{\Horb}{\mathcal{H}_{orb}}
+\newcommand{\Hfock}{\mathcal{H}_{Fock}}
+\newcommand{\Hs}{\SH_s}
+
+% operatori quantistici
+\newcommand{\hatac}{\hat{a}_i^\dagger}
+\newcommand{\hatad}{\hat{a}_i}
+\newcommand{\hata}{\hat{a}}
+\newcommand{\hataT}{\hat{a}^\dagger}
+\newcommand{\hatb}{\hat{b}}
+\newcommand{\hatbT}{\hat{b}^\dagger}
+\newcommand{\hatT}{\hat{T}}
+\newcommand{\hatPi}{\hat{\Pi}}
+\newcommand{\hatpi}{\hat{\pi}}
+\newcommand{\hatR}{\hat{R}}
+\newcommand{\hatx}{\hat{x}}
+\newcommand{\hatp}{\hat{p}}
+\newcommand{\hatH}{\hat{H}}
+\newcommand{\hath}{\hat{h}}
+\newcommand{\hatfH}{\hat{\mathcal{H}}}
+\newcommand{\hatS}{\hat{S}}
+\newcommand{\hatO}{\hat{O}}
+\newcommand{\hatL}{\hat{L}}
+\newcommand{\hatU}{\hat{U}}
+\newcommand{\hatQ}{\hat{Q}}
+\newcommand{\hatA}{\hat{A}}
+\newcommand{\hatB}{\hat{B}}
+\newcommand{\hatP}{\hat{P}}
+\newcommand{\hatE}{\hat{E}}
+\newcommand{\hatJ}{\hat{J}}
+\newcommand{\hatN}{\hat{N}}
+\newcommand{\hatn}{\hat{n}}
+\newcommand{\hatUT}{\hat{U}(t)}
+\newcommand{\hatsz}{\hat{s}_3}
+\newcommand{\hatphi}{\hat{\phi}}
+\newcommand{\hatphid}{\hat{\phi}^\dagger}
+\newcommand{\hatpsi}{\hat{\psi}}
+\newcommand{\hatpsid}{\hat{\psi}^\dagger}
+\newcommand{\hatpsib}{\hat{\bar{\psi}}}
+\newcommand{\oc}{\Psi_{\sigma}^\dagger}
+\newcommand{\ocq}{\Psi_{\sigma}}
+\newcommand{\slp}{\slashed{p}}
+
+% vettori
+\newcommand{\vx}{\bm{x}}
+\newcommand{\bx}{\bar{x}}
+\newcommand{\vy}{\bm{y}}
+\newcommand{\vr}{\bm{r}}
+\newcommand{\vp}{\bm{p}}
+\newcommand{\vq}{\bm{q}}
+\newcommand{\vk}{\bm{k}}
+\newcommand{\vv}{\bm{v}}
+\newcommand{\vj}{\bm{j}}
+\newcommand{\vJ}{\bm{J}}
+\newcommand{\vK}{\bm{K}}
+\newcommand{\vA}{\bm{A}}
+\newcommand{\vE}{\bm{E}}
+\newcommand{\vB}{\bm{B}}
+
+% operatori matematici
+\newcommand{\mybraket}[2]{\langle #1 | #2 \rangle}
+\newcommand{\mybrakett}[3]{\langle #1 | #2 | #3 \rangle}
+\newcommand{\vmedio}[1]{\langle #1 \rangle}
+\newcommand{\comm}[2]{[#1,#2]}
+\newcommand{\acomm}[2]{\{#1,#2\}}
+\newcommand{\tr}[1]{\textnormal{tr}(#1)}
+\newcommand{\Tr}{\textnormal{Tr}}
+\newcommand{\nsum}{\sum\nolimits}
+\newcommand{\intR}{\int_{\mathbb{R}}}
+\newcommand{\ot}{\otimes}
+\newcommand{\op}{\oplus}
+\newcommand{\p}{\partial}
+\newcommand{\dg}{\dagger}
+\newcommand{\contr}[1]{\overbracket{#1}}
+
+% quantità
+\newcommand{\amp}{\mathcal{A}}
+\newcommand{\EM}{\mathcal{M}}
+\newcommand{\dL}{\mathcal{L}}
+\newcommand{\ML}{\Lambda}
+\newcommand{\psib}{\bar{\psi}}
+\newcommand{\mm}{g_{\mu\nu}}
+
+% stati quantistici
+\newcommand{\sv}{\ket{0}}
+\newcommand{\kO}{\ket{\Omega}}
+\newcommand{\bO}{\bra{\Omega}}
+\newcommand{\ua}{\uparrow}
+\newcommand{\da}{\downarrow}
+\newcommand{\vpsi}{\psi(\bm{x},t)}
+\newcommand{\tvpsi}{\Tilde{\psi}(\bm{x},t)}
+\newcommand{\ipsi}{\psi(x,t)}
+
+% gruppi ed algebre
+\newcommand{\g}{\mathfrak{g}}
+\newcommand{\su}{\mathfrak{su}}
+\newcommand{\so}{\mathfrak{so}}
+
+% spinori e antispinori
+\newcommand{\ub}{\bar{u}}
+\newcommand{\vb}{\bar{v}}
+\newcommand{\sdu}{u_s}
+\newcommand{\sdv}{v_s}
+\newcommand{\sdup}{u_{s'}}
+\newcommand{\sdvp}{v_{s'}}
+
+% spinori e antispinori hermitiani
+\newcommand{\sdud}{u^\dg_s}
+\newcommand{\sdvd}{v^\dg_s}
+\newcommand{\sdudp}{u^\dg_{s'}}
+\newcommand{\sdvdp}{v^\dg_{s'}}
+
+% spinori e antispinori hermitiani coniugati
+\newcommand{\sdub}{\bar{u}_s}
+\newcommand{\sdvb}{\bar{v}_s}
+\newcommand{\sdubp}{\bar{u}_{s'}}
+\newcommand{\sdvbp}{\bar{v}_{s'}}
+
+\makeindex
+\title{\textbf{APPUNTI DI INTRODUZIONE ALLA TEORIA DEI CAMPI}}
+\author{Manuel Gabriele Moretti}
+\date{Settembre 2025}
+
+\begin{document}
+
+\maketitle
+\pagenumbering{roman}
+\tableofcontents
+\newpage
+
+\pagenumbering{arabic}
+\include{Capitolo 1 - Richiami di RS}
+\include{Capitolo 2 - Equazione di KG}
+\include{Capitolo 3 - Richiami di TdG }
+\include{Capitolo 4 - Campi locali}
+\include{Capitolo 5 - Azione}
+\include{Capitolo 6 - Equazione di Dirac}
+\include{Capitolo 7 - Quantizzazione}
+\include{Capitolo 8 - Propagatore}
+\include{Capitolo 9 - Perturbazioni}
+\include{Capitolo 10 - QED}
+
+\end{document}

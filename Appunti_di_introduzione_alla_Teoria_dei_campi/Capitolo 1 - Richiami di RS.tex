@@ -1,0 +1,124 @@
+\chapter{Richiami di Relatività speciale}
+La Relatività speciale si basa due principi fondamentali:
+\begin{enumerate}
+    \item le leggi della fisica sono invarianti in tutti i sistemi di riferimento inerziali;
+    \item la luce si propaga nel vuoto a velocità costante, indipendentemente dallo stato di moto della sorgente o dell'osservatore.
+\end{enumerate}
+Si definisce la metrica dello spaziotempo, o di Minkowski, $g_{\mu\nu}$ come
+\begin{equation}
+\label{eq: metrica ST}
+    g_{\mu\nu} = 
+    \begin{pmatrix}
+        1 & 0 & 0 & 0 \\
+        0 & -1 & 0 & 0 \\
+        0 & 0 & -1 & 0 \\
+        0 & 0 & 0 & -1
+    \end{pmatrix}
+    \equiv g^{\mu\nu},
+\end{equation}
+per cui $g_{\mu\nu}g^{\mu\nu} = \MI$, o più in generale $g_{\mu\rho}g^{\rho\nu} = \delta^\nu_\mu$. In generale, un quadrivettore è un vettore a quattro componenti e si indica con
+\begin{equation}
+    a^\mu = (a^0,a^1,a^2,a^3) = (a^0,a^i) = (a^0,\bm{a}),
+\end{equation}
+dove $\bm{a}$ è il classico trivettore. Data la metrica in \eqref{eq: metrica ST}, il prodotto scalare tra due quadrivettori $a^\mu$ e $b^\mu$ è definito come
+\begin{equation}
+\label{eq: defn. prodotto scalare QV}
+    a_\mu b^\mu = a_0b^0 - a_ib^i = a_0b^0 - \bm{a}\cdot\bm{b}.
+\end{equation}
+Il modulo quadro di un quadrivettore $a^\mu$ quindi è definito come
+\begin{equation}
+\label{eq: defn. modulo quadro QV}
+    a_\mu a^\mu = a_0^2-|\bm{a}|^2 = (a^\mu)^2.
+\end{equation}
+L'elemento invariante in Relatività speciale è la distanza spaziotemporale
+\begin{equation}
+\label{eq: defn. s^2}
+    s^2 = c^2t^2 - x_ix^i,
+\end{equation}
+infatti rispetto a trasformazioni del tipo $(t,x^i)\to(t',x'^i)$ si ha
+\begin{equation}
+\label{eq: invarianza s^2 per TdL}
+    s^2 = c^2t^2 - x_ix^i = c^2t'^2 - x_i'x'^i.
+\end{equation}
+Il set di trasformazioni lineari che legano $(t,x^i)$ a $(t',x'^i)$ è detto gruppo di Lorentz, quindi si dice che la distanza $s^2$ è invariante rispetto a trasformazioni di Lorentz, che a loro volta vengono dette isometrie. La trasformazione di Lorentz di $x^\mu$ è data da
+\begin{equation}
+\label{eq: TdL di x^mu}
+    x'^\mu = \Lambda^\mu_\nu x^\nu = \Lambda^\mu_0 x^0 + \Lambda^\mu_i x^i,
+\end{equation}
+dove le $\Lambda^\mu_\nu$ sono le matrici di Lorentz. Tramite la definizione \eqref{eq: defn. modulo quadro QV} si può scrivere la relazione \eqref{eq: invarianza s^2 per TdL} come
+\begin{equation}
+    s^2 = x^\mu x_\mu = x'^\mu x'_\mu,
+\end{equation}
+che equivale alla condizione
+\begin{equation}
+    g_{\mu\nu}x^\mu x^\nu = g_{\mu\nu}x'^\mu x'^\nu,
+\end{equation}
+che, usando la \eqref{eq: TdL di x^mu} e arrangiandola opportunamente, diventa
+\begin{equation}
+    g_{\mu\nu}x^\mu x^\nu = g_{\mu\nu}\Lambda^\mu_\rho \Lambda^\nu_\sigma x^\rho x^\sigma,
+\end{equation}
+la quale è verificata se e solo se
+\begin{equation}
+\label{eq: principio di RS}
+    g_{\mu\nu}\Lambda^\mu_\rho \Lambda^\nu_\sigma = g_{\rho\sigma}.
+\end{equation}
+L'equazione \eqref{eq: principio di RS} viene spesso indicata con il nome di principio di relatività speciale, in quanto è la relazione che assicura che l'intervallo tra due punti dello spaziotempo $(x^\mu,x'^\mu)$ in un sistema di riferimento inerziale e $(\bx^\mu,\bx'^\mu)$ in un altro sistema di riferimento inerziale sia invariante. Questo fatto si può dimostrare nel seguente modo. Si considerano i due invarianti
+\begin{equation}
+    (x-x')^2 = (x-x')^\mu(x-x')_\mu,\quad(\bx-\bx')^2 = (\bx-\bx')^\mu(\bx-\bx')_\mu
+\end{equation}
+e usando la \eqref{eq: TdL di x^mu} si riscrive il secondo in modo da ottenere la relazione
+\begin{equation}
+    \begin{split}
+        (\bx-\bx')^\mu(\bx-\bx')_\mu &= \Lambda_\nu^\mu(x-x')^\nu g_{\mu\sigma}(\bx-\bx')^\sigma \\
+        &= g_{\mu\sigma}\Lambda_\nu^\mu(x-x')^\nu\Lambda^\sigma_\rho(x-x')^\rho \\
+        &= g_{\mu\sigma}\Lambda_\nu^\mu\Lambda^\sigma_\rho(x-x')^\nu(x-x')^\rho,
+    \end{split}
+\end{equation}
+la quale è verificata solo se $g_{\mu\sigma}\Lambda_\nu^\mu\Lambda^\sigma_\rho=g_{\nu\rho}$, condizione che coincide proprio con il principio di Relatività speciale. Usando appunto la \eqref{eq: principio di RS} si ha che
+\begin{equation}
+    \begin{split}
+        (\bx-\bx')^\mu(\bx-\bx')_\mu &= g_{\mu\sigma}\Lambda_\nu^\mu\Lambda^\sigma_\rho(x-x')^\nu(x-x')^\rho \\
+        &= g_{\nu\rho}(x-x')^\nu(x-x')^\rho \\
+        &= (x-x')_\rho(x-x')^\rho,
+    \end{split}
+\end{equation}
+verificando quindi l'invarianza di $s^2$ per trasformazioni di Lorentz. Per la precisione, il gruppo di Lorentz è contenuto nel gruppo di Poincaré che comprende trasformazioni più generali, la trasformazione di Poincaré di $x^\mu$ è infatti data da
+\begin{equation}
+\label{eq: TdP di x^mu}
+    x'^\mu  =\Lambda^\mu_\nu x^\nu + a^\mu.
+\end{equation}
+Tuttavia, nella dimostrazione appena svolta l'ulteriore quadrivettore $a^\mu$ che compare in \eqref{eq: TdP di x^mu} non ha alcun effetto dato che si sono considerati intervalli, i quali appunto non sono sensibili alle semplici traslazioni nello spaziotempo. 
+\begin{notz}
+    D'ora in avanti, salvo eccezioni, si userà la scala di unità naturale che consiste nel porre $\hbar = 1$ e $c = 1$.
+\end{notz}
+Si definiscono infine gli operatori di derivazione covariante e controvariante rispettivamente come
+\begin{equation}
+    \p_\mu \equiv \frac{\p}{\p x^\mu} = \bigg(\frac{\p}{\p t},\nabla\bigg),\quad \p^\mu \equiv \frac{\p}{\p x_\mu} = \bigg(\frac{\p}{\p t},-\nabla\bigg).
+\end{equation}
+Appare subito evidente che $\p^\mu x^\nu = g^{\mu\nu}$, che $\p_\mu x^\mu = \MI$ e che $\p_\mu x^\nu = g_\mu^\nu$. Inoltre, $\p^\mu$ trasforma esattamente come $x^\mu$, per cui
+\begin{equation}
+\label{eq: TdL di d^mu}
+    \bar{\p}^\mu = \Lambda^\mu_\nu\p^\nu.
+\end{equation}
+Infatti, da
+\begin{equation}
+    \bar{\p}^\rho\bx^\sigma = (\Lambda^\rho_\mu\p^\mu)(\Lambda^\sigma_\nu x^\nu + a^\sigma) = \Lambda^\rho_\mu\Lambda^\sigma_\nu\p^\mu x^\nu = \Lambda^\rho_\mu\Lambda^\sigma_\nu g^{\mu\nu} = g^{\rho\sigma}
+\end{equation}
+che, per il principio di Relatività speciale \eqref{eq: principio di RS}, coincide proprio con $\p^\mu x^\nu = g^{\mu\nu}$, per cui
+\begin{equation}
+    \bar{\p}^\rho\bx^\sigma = \p^\rho x^\sigma.
+\end{equation}
+Inoltre, si può dimostrare che anche $\p^2 = \p^\mu\p_\mu \equiv\square$ è invariante per trasformazioni di Lorentz. Infatti, si può scrivere $\p^2$ come
+\begin{equation}
+    \p^\mu\p_\mu = g_{\mu\nu}\p^\mu\p^\nu,
+\end{equation}
+mentre $\bar{\p}^2 = \bar{\p}^\mu\bar{\p}_\mu \equiv \bar{\square}$ può essere riscritto come
+\begin{equation}
+    \bar{\p}^\mu\bar{\p}_\mu = g_{\mu\nu}\Lambda^\mu_\rho\Lambda^\nu_\sigma\p^\rho\p^\sigma = g_{\rho\sigma}\p^\rho\p^\sigma = \p^\rho\p_\rho,
+\end{equation}
+dove si è sempre usata la \eqref{eq: principio di RS}. Dunque, si ha che il l'operatore d'Alembert è invariante per trasformazioni di Lorentz, ovvero
+\begin{equation}
+\label{eq: invarianza per TdL di OD'AL}
+    \square = \bar{\square}.
+\end{equation}
+
