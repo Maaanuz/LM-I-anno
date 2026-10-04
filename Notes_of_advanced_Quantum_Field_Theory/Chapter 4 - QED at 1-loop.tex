@@ -1,0 +1,1670 @@
+\chapter{QED at 1-loop}
+We consider a general covariant gauge. The QED Lagrangian is
+\begin{equation}
+\label{eq: QED Lagrangian}
+    \dL_{QED} = -\frac{1}{4}F^{\mu\nu}F_{\mu\nu} + \psib(i\slD - m)\psi + \dL_{gauge},
+\end{equation}
+where 
+\begin{equation}
+    F^{\mu\nu} = \p^\mu A^\nu - \p^\nu A^\mu,\quad D^\mu = \p^\mu + ieA^\mu,
+\end{equation}
+which is invariant under local $U(1)$ rotations given by
+\begin{equation}
+    \begin{cases}
+        \psi &\to \psi' = e^{i\theta(x)}\psi, \\
+        A_\mu &\to A'_\mu = A_\mu - \frac{1}{e}\p_\mu\theta(x).
+    \end{cases}
+\end{equation}
+The covariant gauge fixing term is 
+\begin{equation}
+    \dL_{gauge} = -\frac{1}{2\xi}(\p_\mu A^\mu)^2.
+\end{equation}
+To derive the form of the photon propagator we take the terms in the Lagrangian in \eqref{eq: QED Lagrangian} with two photon fields $A^\mu$, which are
+\begin{equation}
+    \begin{split}
+        -\frac{1}{4}F^{\mu\nu}F_{\mu\nu} - \frac{1}{2\xi}(\p_\mu A^\mu)^2 &= -\frac{1}{2}\bigg(\p_\mu A_\nu \p^\mu A^\nu - \p_\mu A_\nu \p^\nu A^\mu + \frac{1}{\xi}\p_\mu A^\mu \p_\nu A^\nu\bigg) \\
+        &=\frac{1}{2}A^\mu\bigg[\square g_{\mu\nu} - \bigg(1 - \frac{1}{\xi}\bigg)\p_\mu \p_\nu\bigg]A^\nu + \mathrm{surface\,term},
+    \end{split}
+\end{equation}
+where we have used integration by parts and removed surface terms from the Lagrangian. Considering the Fourier transform of this expression gives us
+\begin{equation}
+    \frac{1}{2}\tilde{A}^\mu M_{\mu\nu}\tilde{A}^\nu,\quad M_{\mu\nu} \equiv -p^2g_{\mu\nu} + \bigg(1 - \frac{1}{\xi}\bigg)p_\mu p_\nu.
+\end{equation}
+The photon propagator is defined as
+\begin{equation}
+\label{eq: photon propagator}
+    D_{\mu\nu}(p^2,\xi)M^\nu_\sigma(p^2,\xi) = ig_{\mu\sigma},
+\end{equation}
+from which solving for $D_{\mu\nu}(p^2,\xi)$ by first providing a tensor decomposition
+\begin{equation}
+    D_{\mu\nu}(p^2,\xi) = \frac{\alpha}{p^2}\bigg(-g_{\mu\nu} + \frac{\beta p_\mu p_\nu}{p^2}\bigg),
+\end{equation}
+which can be inserted into equation \eqref{eq: photon propagator} to find
+\begin{equation}
+    \alpha = i,\quad \beta = 1 - \xi.
+\end{equation}
+We need to add contour deformation to avoid the pole on the real axis so the final expression is
+\begin{equation}
+    D_{\mu\nu}(p^2,\xi) = \frac{i}{p^2 + i\smallp}\bigg[-g_{\mu\nu} + (1 - \xi)\frac{p_\mu p_\nu}{p^2}\bigg].
+\end{equation}
+The QED Feynman rules are the followings
+\begin{eqnarray}
+    \feynmandiagram[inline={([yshift=-0.1cm]current bounding box.center)}, horizontal=a to b, scale=1.2] { a [label=\ensuremath{\scriptstyle \alpha}] -- [fermion, momentum={[arrow distance=4pt, arrow shorten=0.3]\ensuremath{\scriptstyle p}}] b [label=\ensuremath{\scriptstyle \beta}]}; &=& \frac{i}{p^2 - m^2 + i\smallp}(\slp + m)_{\beta\alpha},
+    \\ \feynmandiagram[inline={([yshift=-0.1cm]current bounding box.center)}, horizontal=a to b, scale=1.2] { a [label=\ensuremath{\scriptstyle \mu}] -- [boson, momentum={[arrow distance=4pt, arrow shorten=0.3]\ensuremath{\scriptstyle p}}] b [label=\ensuremath{\scriptstyle \nu}]}; &=& \frac{i}{p^2 + i\smallp}\bigg[-g_{\mu\nu} + (1 - \xi)\frac{p_\mu p_\nu}{p^2}\bigg] \\
+    \begin{tikzpicture}[scale=1, transform shape]
+    \begin{feynman}
+    
+    \vertex [label=\ensuremath{\scriptstyle \alpha}] (a) {};
+    \vertex [dot, right=1.5cm of a] (b) {};
+    \vertex [above=1cm of b] (c) {};
+    \vertex [right=1.5cm of b, label=\ensuremath{\scriptstyle \beta}] (d) {};
+
+    \diagram* {
+      (a) -- [fermion, momentum={[arrow distance=4pt] \ensuremath{\scriptstyle p}}] (b), (b) -- [boson, edge label=\ensuremath{\scriptstyle \mu}, pos=0.9] (c), (b) -- [fermion, momentum={[arrow distance=4pt] \ensuremath{\scriptstyle p}}] (d)
+    };
+  \end{feynman}
+\end{tikzpicture} &=& -ie\gamma^\mu_{\beta\alpha};
+\end{eqnarray}
+plus the rules for the external spinors and polarisations
+\begin{enumerate}
+    \item $u_{\alpha,s}(p,m)$ for the initial particle;
+    \item $\ubar_{\alpha,s}(p,m)$ for the final particle;
+    \item $\vbar_{\alpha,s}(p,m)$ for the initial antiparticle;
+    \item $v_{\alpha,s}(p,m)$ for the final antiparticle;
+    \item $\epsilon_\mu(p)$ for the initial photon;
+    \item $\epsilon_\mu^*(p)$ for the final photon.
+\end{enumerate}
+
+\section{Superficial QED degree of divergence}
+Recall, from equation \eqref{eq: superficial degree of divergence}, that $\omega(\Gamma_{\phi^3}) = DL - 2n_{\phi^3}$ where $D$ is the dimension, $L$ is the loop order, and $n_{\phi^3}$ the number of internal lines. We may derive a similar form for a graph in QED by 
+\begin{equation}
+    \omega(\Gamma_{QED}) = DL - 2n_\gamma - n_e,
+\end{equation}
+where $n_\gamma$ and $n_e$ are the number of internal photon and fermion lines respectively. We may in terms of external photon and electron multiplicity, $E_\gamma$ and $E_e$, using
+\begin{equation}
+    L = n_e + n_\gamma - V + 1,\quad V = 2n_\gamma + E_\gamma = n_e + \frac{E_e}{2},
+\end{equation}
+write that 
+\begin{equation}
+    \omega(\Gamma_{QED}) = D + \bigg(\frac{1 - D}{2}\bigg)E_e + \bigg(\frac{2 - D}{2}\bigg)E_\gamma + \bigg(\frac{D - 4}{2}\bigg)V,
+\end{equation}
+so in four dimensions $\omega(\Gamma_{QED})$ is simply
+\begin{equation}
+    \omega(\Gamma_{QED}) = 4 - \frac{3}{2}E_e - E_\gamma.
+\end{equation}
+In the following table \ref{tab: divergent QED graphs} are listed some divergent QED graphs. 
+\begin{table}[h]
+    \centering
+    \begin{tabular}{|c|cccc|}
+         \hline
+         $\Gamma$ & $E_e$ & $E_\gamma$ & $\omega(\Gamma_{QED})$ & name  \\ \hline
+         \feynmandiagram [inline=(v.base), scale=0.8, horizontal=a to v, transform shape] {
+         a -- [photon] v [blob] 
+         }; & 0 & 1 & 3 & tadpole \\
+         \feynmandiagram [inline=(v.base), scale=0.8, horizontal=a to b, transform shape, layered layout] {
+         a -- [fermion] v [blob] -- [fermion] b 
+         }; & 2 & 0 & 1 & electron self energy \\
+         \feynmandiagram [inline=(v.base), scale=0.8, horizontal=a to b, transform shape, layered layout] {
+         a -- [photon] v [blob] -- [photon] b 
+         }; & 0 & 2 & 2 & photon vacuum polarisation \\
+         \feynmandiagram [inline=(a.base), layered layout, horizontal=a to b, scale=0.8, transform shape] {
+        a -- [photon] b [blob] -- [fermion] c, b -- [anti fermion] d
+        }; & 2 & 1 & 0 & vertex \\
+        \feynmandiagram [inline=(a.base), layered layout, horizontal=a to b, scale=0.6, transform shape] {
+        a -- [photon] b [blob] -- [photon] c, b -- [photon] d
+        }; & 0 & 3 & 2 & - \\
+        \feynmandiagram [inline=(v.base), scale=0.8, transform shape, rotate=-32] { a -- [photon] v [blob], b -- [photon] v, v -- [photon] c, v -- [photon] d, a -- [opacity=0.0] b, d -- [opacity=0.0] c, }; & 0 & 4 & 0 & - \\ \hline
+    \end{tabular}
+    \caption{some divergent graphs in QED.}
+    \label{tab: divergent QED graphs}
+\end{table}
+The treatment of the tadpole graph is different, and more straightforward, than in $\phi^3$ where is was necessary to redefine the vacuum expectation value. Here we can show the graph is zero, for example at 1-loop
+\begin{equation}
+    \begin{split}
+        \feynmandiagram [inline=(v.base), scale=0.8, horizontal=a to v, transform shape, layered layout] {
+        a -- [photon, edge label = \(\mu\), pos=0.1] v, v -- [fermion, half left, looseness=1.5, momentum={[arrow distance=5pt, arrow shorten=0.2] \(\scriptstyle k\)}] v1, v1 -- [half left, looseness=1.5] v
+        }; &= -ie\,\mathrm{tr}\bigg(\gamma^\mu\int_k\frac{\slk + m}{k^2 - m^2}\bigg) \\
+        &= -ie\,\tr{\gamma^\mu}m\int_k\frac{1}{k^2 - m^2} - ie\,\tr{\gamma^\mu\gamma^\nu}\int_k\frac{k_\nu}{k^2 - m^2} \\
+        &= 0.
+    \end{split}
+\end{equation}
+This property holds to all loop orders so
+\begin{equation}
+    \feynmandiagram [inline=(v.base), scale=0.8, horizontal=a to v, transform shape] {
+    a -- [photon] v [blob]
+    }; = 0.
+\end{equation}
+There are two other graphs to worry about, which are the ones with $E_\gamma = 3$ and $E_\gamma = 4$. There are operators for $\gamma$ self interactions in the Lagrangian so it is not clear where to absorb the divergences. The resolution is to see that divergences cancel between contributing diagrams, for example
+\begin{equation}
+    \feynmandiagram [inline=(v.base), layered layout, horizontal=a to b, scale=0.8, transform shape] {
+        a -- [photon, edge label = \(1\), pos=0.1] b [blob] -- [photon, edge label = \(2\), pos=0.5] c, b -- [photon, edge label'=\(3\), pos=0.5] d
+        }; = \feynmandiagram [inline=(c.base), scale = 0.6] {
+          a -- [bend left=60] b
+            -- [bend left=60] c
+            -- [fermion, bend left=60] a, i1 -- [photon, edge label = {\small \(3\)}] a, i2 -- [photon, edge label = {\small \(1\)}] b, i3 -- [photon, edge label =  {\small \(2\)}] c,
+        }; + \feynmandiagram [inline=(c.base), scale = 0.6] {
+          a -- [bend left=60] b
+            -- [bend left=60] c
+            -- [fermion, bend left=60] a, i1 -- [photon, edge label = {\small \(3\)}] a, i2 -- [photon, edge label = {\small \(2\)}] b, i3 -- [photon, edge label =  {\small \(1\)}] c,
+        }; + o(e^5) = 0,
+\end{equation}
+and for the $E_\gamma = 4$ case 
+\begin{equation} 
+    \feynmandiagram [inline=(v.base), scale=0.8, horizontal=a to d, transform shape] { 
+        a -- [photon, edge label={\small 1}, pos=0.1] v [blob], 
+        b -- [photon, edge label={\small 2}, pos=0.1] v, 
+        v -- [photon, edge label={\small 3}, pos=0.9] c, 
+        v -- [photon, edge label={\small 4}, pos=0.9] d 
+    }; = \feynmandiagram[ 
+        inline={([yshift=-0.1cm]current bounding box.center)}, 
+        scale=0.8, 
+        transform shape, 
+        horizontal=v1 to v2
+    ] { 
+        a -- [photon, edge label={\small 1}, pos=0.1] v1, 
+        v1 -- v2, 
+        v2 -- [photon, edge label={\small 2}, pos=0.9] b, 
+        v2 -- v3, 
+        v3 -- [photon, edge label={\small 3}, pos=0.9] c, 
+        v3 -- v4, 
+        v4 -- [fermion] v1, 
+        v4 -- [photon, edge label={\small 4}, pos=0.9] d 
+    }; + \mathrm{permutations} + o(e^6) = \mathrm{finite}. 
+\end{equation}
+Moreover, the $E_\gamma = 3$ graph, and technically also the tadpole graph, is a special case of a more general theorem, which follows using charge conjugation symmetry.
+\begin{teo}[Furry's theorem]
+    Correlations functions and amplitudes for odd numbers of photons are zero.
+\end{teo}
+In terms of bare quantities, the QED Lagrangian is
+\begin{equation}
+    \dL_{0,QED} = \frac{1}{2}A_0^\mu\bigg[\square g_{\mu\nu} - \bigg(1 - \frac{1}{\xi}\bigg)\p_\mu \p_\nu\bigg]A_0^\nu + i\psib_0\slpd\psi_0 - m_0\psib_0\psi_0 - e_0\psib_0\slA_0\psi_0.
+\end{equation}
+We relate bare quantities to renormalized ones using
+\begin{gather}
+    \psi_0 = \sqrt{Z_\psi}\psi_R,\quad A_0^\mu = \sqrt{Z_A} A_R^\mu,\quad m_0^2 = Z_mm_R^2, \\
+    e_0 = Z_ee_R\mu_R^\epsilon = \frac{Z_1}{Z_\psi\sqrt{Z_A}}e_R\mu_R^\epsilon,\quad \xi_0 = \frac{Z_A}{Z_\xi}\xi_R,
+\end{gather}
+so that the Lagrangian becomes $\dL_{QED} = \dL_{QED,R} + \dL_{counter}$, where
+\begin{equation}
+    \begin{split}
+        \dL_{counter} &= \frac{1}{2}(Z_A - 1)A_R^\mu(\square g_{\mu\nu} - \p_\mu\p_\nu)A_R^\nu + \frac{1}{2}\frac{Z_\xi - 1}{\xi_R}A_R^\mu\p_\mu\p_\nu A^\nu_R \\
+        &+ i(Z_\psi - 1)\psib_R\slpd\psi_R - (Z_mZ_\psi - 1)m_R\psib_R\psi_R \\
+        &- (Z_1 - 1)e_R\mu_R^\epsilon\psib_R\slA_R\psi_R,
+    \end{split}
+\end{equation}
+which is invariant under gauge rotations
+\begin{equation}
+    \begin{cases}
+        \psi_R \to \psi_R' = e^{i\theta(x)}\psi_R, \\
+        A_R^\mu \to A_R'^\mu = A_R^\mu - \dfrac{1}{e_R\mu_R^\epsilon}\p^\mu\theta(x).
+    \end{cases}
+\end{equation}
+For the whole expression to be invariant requires $Z_1 = Z_\psi$. The Feynman rules for the counter-terms are
+\begin{align}
+    \feynmandiagram[inline=(v.base), layered layout, horizontal=a to b, scale=0.8, transform shape] { 
+    a -- [fermion, momentum'={[arrow distance=3.5pt]\(\scriptstyle p\)}, edge label=\(\alpha\), pos=0.1] v [crossed dot, pos=0.5] -- [fermion, edge label=\(\beta\), pos=0.9] b, 
+    }; &= i(\slp\delta_\psi - m\delta_3)_{\beta\alpha}, \\
+    \feynmandiagram[inline=(v.base), layered layout, horizontal=a to b, scale=0.8, transform shape] { 
+    a -- [photon, momentum'={[arrow distance=3.5pt]\(\scriptstyle p\)}, edge label=\(\mu\), pos=0.1] v [crossed dot, pos=0.5] -- [photon, edge label=\(\nu\), pos=0.9] b, 
+    }; &= -i(p^2g^{\mu\nu} - p^\mu p^\nu)\delta_A, \\
+    \feynmandiagram[inline=(v.base),
+    scale=0.8, horizontal=a to v, layered layout,
+    transform shape] {
+    a -- [fermion, momentum'={[arrow distance=3.5pt]\(\scriptstyle p\)}, edge label=\(\alpha\), pos=0.1] v [crossed dot] -- [fermion, edge label=\(\beta\), pos=0.9] b, v -- [photon, edge label=\(\mu\)] c
+    }; &= -ie_R\mu_R^\epsilon\gamma^\mu\delta_1,
+\end{align}
+where
+\begin{gather}
+    \delta_3 = Z_mZ_\psi - 1,\quad \delta_\psi = Z_\psi - 1, \\
+    \delta_A = Z_A - 1,\quad \delta_1 = Z_1 - 1.
+\end{gather}
+Moreover, later we will show that $Z_\xi = 1$. 
+
+\section{Divergent graphs at one loop}
+The expansions of the divergent graphs at 1-loop are
+\begin{align}
+    \begin{split}
+        \feynmandiagram[inline=(v.base), layered layout, horizontal=a to b, scale=0.8, transform shape] { 
+        a -- [fermion, momentum'={[arrow distance = 5pt]\(\scriptstyle p\)}, edge label=\(\beta\), pos=0.1] v [blob, pos=0.5] -- [fermion, edge label=\(\alpha\), pos=0.9] b, 
+        }; &= \Sigma_{\alpha\beta}(p,m) = \feynmandiagram[inline=(v.base), layered layout, horizontal=a to b, scale=0.8, transform shape] { 
+        a -- [fermion] v -- [photon, half left, looseness=1.5] v1, v --[fermion] v1, v1 --[fermion] b, 
+        }; + \feynmandiagram[inline=(v.base), layered layout, horizontal=a to b, scale=0.8, transform shape] { 
+        a -- [fermion] v [crossed dot, pos=0.5] -- [fermion] b, 
+        }; + o(e^4),
+    \end{split} \\
+    \begin{split}
+        \feynmandiagram[inline=(v.base), layered layout, horizontal=a to b, scale=0.8, transform shape] { 
+        a -- [photon, momentum'={[arrow distance = 5pt]\(\scriptstyle p\)}, edge label=\(\mu\), pos=0.1] v [blob, pos=0.5] -- [photon, edge label=\(\nu\), pos=0.9] b, 
+        }; &= \Pi_{\mu\nu}(p,m) = \feynmandiagram[inline=(v.base), layered layout, horizontal=a to b, scale=0.5, transform shape] { 
+        a -- [photon] v -- [half left, looseness=1.5] v1 -- [half left, looseness=1.5] v, v1 -- [photon] b, }; + \feynmandiagram[inline=(v.base), layered layout, horizontal=a to b, scale=0.8, transform shape] { 
+        a -- [photon] v [crossed dot] v1 -- [photon] b, }; + o(e^4),
+    \end{split} \\
+    \begin{split}
+        \feynmandiagram [inline=(v.base), layered layout, horizontal=a to b, scale=0.8, transform shape] {
+        a -- [fermion, edge label = \(\alpha\), pos=0.1] b [blob] -- [fermion, edge label = \(\beta\), pos=0.5] c, b -- [photon, edge label'=\(\mu\), pos=0.5, momentum={[arrow distance=4pt]\ensuremath{\scriptstyle p}}] d
+        }; &= \Gamma^\mu_{\alpha\beta}(p,m) = \feynmandiagram[inline=(c.base), rotate=-45, horizontal=a to b, scale=0.75] {
+        a -- v1 -- [anti fermion] v -- [anti fermion] v2 -- b, v1 -- [boson] v2, v -- [boson] c,
+        }; + \feynmandiagram [inline=(d.base), layered layout, horizontal= c to d, scale=0.8, transform shape] {
+        a -- [anti fermion] c [crossed dot], b -- [fermion] c, c -- [photon] d
+        }; + o(e^5),
+    \end{split}
+\end{align}
+which are the electron self-energy, the photon vacuum polarisation and the vertex correction, respectively.
+
+\subsection{Electron self-energy}
+Let's compute the electron self-energy in the Feynman gauge, defined as the imposition $\xi_R = 1$, as a simplification. So
+\begin{equation}
+    \begin{split}
+        \feynmandiagram[inline=(v.base), layered layout, horizontal=a to b, scale=0.8, transform shape] { 
+        a -- [fermion, momentum'={[arrow distance = 5pt]\(\scriptstyle p\)}, edge label=\(\beta\), pos=0.1] v -- [photon, momentum={[arrow distance = 5pt] \(\scriptstyle k\)}, half left, looseness=1.5] v1, v --[fermion, momentum'={[arrow distance = 5pt]\(\scriptstyle p-k\)}] v1, v1 --[fermion, edge label=\(\alpha\), pos=0.9] b, 
+        }; &= (-ie_R\mu_R^\epsilon)^2\int_k\gamma_{\alpha\delta}^\mu\frac{(\slp - \slk + m_R)_{\delta\sigma}}{D(k - p, m_R)}\gamma^\nu_{\sigma\beta}\bigg(-\frac{ig_{\mu\nu}}{D(k,0)}\bigg) \\
+        &= e_R^2\mu_R^{2\epsilon}\int_k\frac{[\gamma^\mu(\slk - \slp - m_R)\gamma_\mu]_{\alpha\beta}}{D(k,0)D(k - p, m_R)} \\
+        &= e_R^2\mu_R^{2\epsilon}\int_k\frac{[(2 - D)(\slk - \slp) - Dm_R]_{\alpha\beta}}{D(k,0)D(k - p, m_R)},
+    \end{split}
+\end{equation}
+now we define
+\begin{equation}
+    I^{(1)[D]}_{2,m_1,m_2}[N] = \int_k\frac{N}{D(k,m_1)D(k - p, m_2)},
+\end{equation}
+such that
+\begin{equation}
+    \feynmandiagram[inline=(v.base), layered layout, horizontal=a to b, scale=0.8, transform shape] { 
+    a -- [momentum'={[arrow distance = 4pt]\(\scriptstyle p\)}] v -- [photon, half left, looseness=1.5] v1, v -- v1, v1 -- b, 
+    }; = -e_R^2\mu_R^{2\epsilon}\{[(2 - D)\slp + Dm_R]I_{2,0,m}^{(1)[D]} - (2 - D)I_{2,0,m}^{(1)[D]}[\slk]\}
+\end{equation}
+and since,
+\begin{equation}
+    I_{2,0,m}^{(1)[D]}[\slk] = \slp b_1(p;0,m) = \frac{\slp}{2p^2}\{I_{1,m}^{(1)[D]}[1] + (p^2 - m_R^2)I_{2,0,m}^{(1)[D]}[1]\},
+\end{equation}
+we have
+\begin{equation}
+    \begin{split}
+        \feynmandiagram[inline=(v.base), layered layout, horizontal=a to b, scale=0.8, transform shape] { 
+        a -- [momentum'={[arrow distance = 4pt]\(\scriptstyle p\)}] v -- [photon, half left, looseness=1.5] v1, v -- v1, v1 -- b, 
+        }; &= -e_R^2\mu_R^{2\epsilon}\bigg\{\frac{(2 - D)\slp}{2p^2}\bigg[(p^2 + 2m_R^2)I_{2,0,m}^{(1)[D]}[1] - I_{1,m}^{(1)[D]}[1]\bigg] \\
+        &+ Dm_RI_{1,m}^{(1)[D]}[1]\bigg\}.
+    \end{split}
+\end{equation}
+The scalar integrals in $D = 4 - 2\epsilon$ dimension are
+\begin{align}
+    \begin{split}
+        I_{1,m}^{(1)[4 - 2\epsilon]}[1] &= \frac{i}{(4\pi)^{2 - \epsilon}}\frac{\Gamma(1 + \epsilon)}{(1 - \epsilon)\epsilon}(m_R^2)^{1 - \epsilon} \\
+        &= \frac{ir_\Gamma}{(4\pi)^2}m_R^2\bigg[\frac{1}{\epsilon} + 1 -\log{(m_R^2)} + o(\epsilon)\bigg],
+    \end{split} \\
+    \begin{split}
+        I_{2,0,m}^{(1)[4 - 2\epsilon]}[1] &= \frac{ir_\Gamma}{(4\pi)^2}\bigg[\frac{1}{\epsilon} + 2 - \log{(m_R^2)} + \bigg(1 - \frac{m_R^2}{p^2}\bigg)\log{\bigg(1 - \frac{m_R^2}{p^2}\bigg)} + o(\epsilon)\bigg],
+    \end{split}
+\end{align}
+where we recall that $r_\Gamma \equiv \Gamma(1 + \epsilon)(4\pi)^\epsilon$ and so we find, using that $e_R^2 = 4\pi\alpha$, that
+\begin{equation}
+    \feynmandiagram[inline=(v.base), layered layout, horizontal=a to b, scale=0.8, transform shape] { 
+    a -- [momentum'={[arrow distance = 4pt]\(\scriptstyle p\)}] v -- [photon, half left, looseness=1.5] v1, v -- v1, v1 -- b, 
+    }; = \frac{i\alpha}{4\pi}(\slp - 4m_R)\frac{1}{\epsilon} + o(\epsilon^0).
+\end{equation}
+
+\subsection{Photon vacuum polarisation}
+Let's now compute the photon vacuum polarisation, again by setting ourselves in the Feynman gauge. So we have
+\begin{equation}
+    \feynmandiagram[inline=(v.base), layered layout, horizontal=a to b, scale=0.8, transform shape] 
+    { a -- [photon, edge label=\(\mu\)] v -- [half left, looseness=1.5, momentum={[arrow distance=3pt, arrow shorten=0.2] \(\scriptstyle k\)}] v1 -- [half left, looseness=1.5, momentum = {[arrow distance=3pt, arrow shorten=0.2] \(\scriptstyle k-p\)}] v, v1 -- [photon, edge label=\(\nu\)] b, 
+    }; = -(-ie_R\mu_R^\epsilon)^2\int_k\frac{\mathrm{tr}[{\gamma^\mu i(\slk + m_R)\gamma^\nu i(\slk - \slp +m_R)]}}{D(k, m_R)D(k - p, m_R)},
+\end{equation}
+where the numerator can be written as
+\begin{multline}
+    \mathrm{tr}[{\gamma^\mu i(\slk + m_R)\gamma^\nu i(\slk - \slp +m_R)]} = \\ 
+    = 4(2k^\mu k^\nu - k^2g^{\mu\nu} - k^\mu p^\nu - k^\nu p^\mu + k_\lambda p^\lambda g^{\mu\nu} + m_R g^{\mu\nu})
+\end{multline}
+so we need the tensor reduction for up to rank two bubble integrals. After applying Passarino-Veltmann reduction one finds
+\begin{equation}
+    \feynmandiagram[inline=(v.base), layered layout, horizontal=a to b, scale=0.8, transform shape] { 
+    a -- [photon, edge label=\(\mu\)] v -- [half left, looseness=1.5] v1 -- [half left, looseness=1.5] v, v1 -- [photon, edge label=\(\nu\)] b, 
+    }; = -e_R^2\mu_R^{2\epsilon}(-g^{\mu\nu}p^2 + p^\mu p^\nu)A,
+\end{equation}
+where we set
+\begin{equation}
+    A \equiv \frac{4}{p^2(D - 1)}\bigg[(D - 2)I_{1,m}^{(1)[D]} - \bigg(2m_R^2 + \frac{D - 2}{2}p^2\bigg)I_{2,m,m}^{(1)[D]}\bigg].
+\end{equation}
+The bubble integral is the same we used in the $\phi^3$ theory, so in $D = 4 - 2\epsilon$ dimensions one can show that
+\begin{equation} 
+    \feynmandiagram[inline=(v.base), layered layout, horizontal=a to b, scale=0.8, transform shape] { 
+    a -- [photon, edge label=\(\mu\)] v -- [half left, looseness=1.5] v1 -- [half left, looseness=1.5] v, v1 -- [photon, edge label=\(\nu\)] b, }; = -\frac{i\alpha}{4\pi}(-g^{\mu\nu}p^2 + p^\mu p^\nu)\bigg[-\frac{4}{3\epsilon} + o(\epsilon^0)\bigg]. 
+\end{equation}
+
+\subsection{Vertex correction}
+This computation requires considerable extra work and is necessary to fix $\delta_1^{(1)}$. If we accept the result $Z_1 = Z_2$ then we can avoid the computation but validating the result is an extremely good cross check. The one loop diagram is
+\begin{equation}
+    \feynmandiagram[
+    inline=(v1.base), horizontal=a to b, scale=0.9, transform shape] {
+    a -- [fermion, momentum'=\(\scriptstyle p_1\)] v1 -- [fermion, momentum=\(\scriptstyle k+p_1\)] v -- [fermion, momentum=\(\scriptstyle k+p_2\)] v2 -- [fermion, momentum'=\(\scriptstyle p_2\)] b, v1 -- [boson, momentum'=\(\scriptstyle k\)] v2, v -- [boson, momentum'=\(\scriptstyle p_3\)] c,
+    }; = -ie_R\mu_R^\epsilon\ubar(p_2,m_R)\Gamma^{(1)\mu}u(p_1,m_R),
+\end{equation}
+where, in the Feynman gauge, $\Gamma^{(1)\mu}$ is
+\begin{equation}
+    \Gamma^{(1)\mu} = -i^3(-ie_R\mu_R^\epsilon)^2\int_k\frac{\gamma^\nu(\slk + \slp_2 + m_R)\gamma^\mu(\slk + \slp_1 + m_R)\gamma_\nu}{D(k,0)D(k + p_1,m_R)D(k + p_2, m_R)}.
+\end{equation}
+A general basis for $\Gamma^\mu_{\alpha\beta}(p_1,p_2)$ would have three elements $\gamma^\mu_{\alpha\beta}$, $p_1^\mu\delta_{\alpha\beta}$ and $p_2^\mu\delta_{\alpha\beta}$. However, $\Gamma^{(1)\mu}$ satisfies the Ward identity
+\begin{equation}
+    \Gamma^{(1)\mu}(p_1,p_2)p_{3\mu} = \Gamma^{(1)\mu}(p_1,p_2)(p_1 - p_2)_\mu = 0.
+\end{equation}
+As a result, $\Gamma^{(1)\mu}$ can be described in terms of two independent tensor structures. The vertex describes the electromagnetic interaction and so it is useful to use a tensor basis that exposes electric and magnetic properties. Thus, we define
+\begin{equation}
+    \Gamma^{(1)\mu}(p_1,p_2) = F_1\gamma^\mu + F_2\frac{i\sigma^{\mu\nu}}{2m_R}(-p_1 + p_2)_\nu,
+\end{equation}
+where $\sigma^{\mu\nu} = -i\comm{\gamma^\mu}{\gamma^\nu}/2$ and $F_1$ and $F_2$ are the electric and magnetic structure functions respectively. To prove the $\Gamma^{(1)\mu}$ decomposition we start from 
+\begin{equation}
+    \ubar_2\Gamma^{(1)\mu}u_1 = a_0\ubar_2\gamma^\mu u_1 + a_1p_1^\mu\ubar_2u_1 + a_2p_2^\mu\ubar_2u_1 
+\end{equation}
+and perform a base change to $(p_1 + p_2)_\mu$ and $(p_1 - p_2)_\mu$, thus getting
+\begin{equation}
+    \ubar_2\Gamma^{(1)\mu}u_1 = a_0\ubar_2\gamma^\mu u_1 + \tilde{a}_1(p_1 - p_2)^\mu\ubar_2u_1 + \tilde{a}_2(p_1 + p_2)^\mu\ubar_2u_1.
+\end{equation}
+Now, the Ward identity is satisfied if $\ubar_2\Gamma^{(1)\mu}p_{3\mu}u_1 = 0$, hence we get
+\begin{equation}
+    \begin{split}
+        \ubar_2\Gamma^{(1)\mu}p_{3\mu}u_1 &= -\ubar_2\Gamma(p_1 - p_2)_\mu u_1 \\
+        &= -a_0\ubar_2(\slp_1 - \slp_2)u_1 -\tilde{a}_1(p_1 - p_2)^2\ubar_2u_1 - \tilde{a}_2(p_1^2 - p_2^2)\ubar_2u_1 \\
+        &= -\tilde{a}_1(p_1 - p_2)^2\ubar_2u_1 \\
+        &= 0,
+    \end{split}
+\end{equation}
+from this, since $-a_0\ubar_2(\slp_1 - \slp_2)u_1 = 0$ because $\ubar_2\slp_2 = m\ubar_2$ and $\slp_1u_1 = mu_1$ and since $\tilde{a}_2(p_1^2 - p_2^2)\ubar_2u_1$ because $p_1^2 = p_2^2 = m_R^2$, it follows that $\tilde{a}_1 = 0$. Now, we notice that
+\begin{equation}
+    p^\mu\ubar_2u_1 = p_\nu g^{\nu\mu}u_2u_1 = \frac{1}{2}p_\nu u_2\acomm{\gamma^\mu}{\gamma^\nu}u_1 = \frac{1}{2}u_2\acomm{\gamma^\mu}{\slp}u_1,
+\end{equation}
+hence
+\begin{equation}
+    \begin{split}
+        (p_1 + p_2)^\mu\ubar_2u_1 &= \frac{1}{2}\ubar_2\acomm{\gamma^\mu}{\slp_1 + \slp_2}u_1 \\
+        &= \frac{1}{2}\ubar_2(\gamma^\mu\slp_2 + \slp_1\gamma^\mu + 2m_R\gamma^\mu)u_1,
+    \end{split}
+\end{equation}
+now we expand the magnetic tensor
+\begin{equation}
+    \begin{split}
+        \ubar_2\bigg[\frac{i\sigma^{\mu\nu}}{2m_R}(-p_1 + p_2)_\nu \bigg]u_1 &= \frac{1}{4m_R}\ubar_2\comm{\gamma^\mu}{-\slp_1 + \slp_2}u_1 \\
+        &= \frac{1}{4m_R}\ubar_2(\gamma^\mu\slp_2 + \slp_1\gamma^\mu - 2m_R\gamma^\mu)u_1 \\
+        &= \frac{1}{2m_R}(p_1 + p_2)^\mu\ubar_2u_1 - \ubar_2\gamma^\mu u_1,
+    \end{split}
+\end{equation}
+which completes the rearrangement. The full computation of the vertex diagram is quite long, but it is useful to try it in different ways.
+
+\subsection{1-loop counter terms}
+In the $\MMS$ scheme we can determine the values for $\delta_1$, $\delta_\psi$, $\delta_3$ and $\delta_A$. Thus from 
+\begin{equation}
+        \feynmandiagram[inline={([yshift=-0.1cm]current bounding box.center)}, rotate=-45, horizontal=a to b, scale=0.7] {
+        a -- [momentum={[arrow distance=4pt]\ensuremath{\scriptstyle p_1}}] v1 -- [fermion] v -- [anti fermion] v2 -- [momentum={[arrow distance=4pt]\ensuremath{\scriptstyle p_2}}] b, v1 -- [boson] v2, v -- [boson, momentum={[arrow distance=4pt]\ensuremath{\scriptstyle p_3}}] c,
+        }; + \feynmandiagram [inline={([yshift=-0.1cm]current bounding box.center)}, layered layout, horizontal= c to d, scale=0.8, transform shape] {
+        a -- c [crossed dot], b -- c, c -- [photon] d
+        }; = \mathrm{finite}
+\end{equation}
+we get
+\begin{equation}
+    \delta_1^{(1)} = \frac{\alpha}{4\pi}r_\Gamma\bigg(-\frac{1}{\epsilon}\bigg),
+\end{equation}
+from
+\begin{equation}
+    \feynmandiagram[inline={([yshift=-0.1cm]current bounding box.center)}, layered layout, horizontal=a to b, scale=0.7, transform shape] { 
+    a -- [momentum'={[arrow distance = 4pt]\ensuremath{\scriptstyle p}}] v -- [photon, half left, looseness=1.5] v1, v -- v1, v1 -- b, 
+    }; + \feynmandiagram [inline={([yshift=-0.1cm]current bounding box.center)}, layered layout, horizontal= a to c, scale=0.8, transform shape] {
+    a -- b [crossed dot], b -- c
+    }; = \mathrm{finite}
+\end{equation}
+we get
+\begin{equation}
+    \delta_\psi^{(1)} = \dfrac{\alpha}{4\pi}r_\Gamma\bigg(-\dfrac{1}{\epsilon}\bigg),\quad \delta_3^{(1)} = \dfrac{\alpha}{4\pi}r_\Gamma\bigg(-\dfrac{4}{\epsilon}\bigg),
+\end{equation}
+and from
+\begin{equation}
+    \feynmandiagram[inline={([yshift=-0.1cm]current bounding box.center)}, layered layout, horizontal=a to b, scale=0.5, transform shape] { a -- [photon] v -- [half left, looseness=1.5] v1 -- [half left, looseness=1.5] v, v1 -- [photon] b}; + \feynmandiagram [inline={([yshift=-0.1cm]current bounding box.center)}, layered layout, horizontal= a to c, scale=0.8, transform shape] {
+    a -- [photon] b [crossed dot], b -- [photon] c
+    }; = \mathrm{finite}
+\end{equation}
+we get
+\begin{equation}
+    \delta_A^{(1)} = \frac{\alpha}{4\pi}r_\Gamma\bigg(-\frac{4}{3\epsilon}\bigg).
+\end{equation}
+From the constants we may obtain 
+\begin{equation}
+    \delta_e^{(1)} = -\frac{1}{2}\delta_A^{(1)} = \frac{\alpha}{4\pi}r_\Gamma\bigg(-\frac{3}{2\epsilon}\bigg),\quad \delta_m^{(1)} = \delta_3^{(1)} - \delta_\psi^{(1)} = \frac{\alpha}{4\pi}r_\Gamma\bigg(-\frac{3}{\epsilon}\bigg).
+\end{equation}
+The Dyson re-summed electron propagator is 
+\begin{equation}
+    \frac{1}{\slp - m_R + \Sigma_R(\slp,m_R)}
+\end{equation}
+and we would like to ensure the propagator has no quantum corrections, namely $\Sigma_R = 0$, at the physical pole $m_R = m_P$. We may expand the self-energy $\Sigma_R$ around $\slp = m_R\MI$ to obtain
+\begin{multline}
+    \Sigma_R(\slp,m_R) = \Sigma_R(\slp,m_R)|_{\slp=m_R} + (\slp-m_R)\Sigma_R^{WF}(p^2,m_R^2) + o[(\slp - m_R)^2],
+\end{multline}
+where
+\begin{equation}
+    \Sigma_R^{WF}(p^2,m_R^2) \equiv \frac{d}{d\slp}\Sigma_R(\slp,m_R)|_{\slp = m_R}.
+\end{equation}
+So to completely fix $\delta_\psi$ and $\delta_m$ in the on-shell scheme we must impose
+\begin{align}
+    \Sigma_R(\slp,m_R)|_{\slp=m_R} &= 0, \\
+    \frac{d}{d\slp}\Sigma_R(\slp,m_R)|_{\slp=m_R} &= 0.
+\end{align}
+The photon counter-term can be fixed at zero momentum
+\begin{equation}
+    \lim_{p^2\to 0}\Pi(p^2,m_R^2) = 0,
+\end{equation}
+and the vertex correction can be fixed to a measurement at low $Q^2$
+\begin{equation}
+    \lim_{Q^2\to 0}\Gamma^\mu_R(Q^2,m_R^2) = -ie_P\gamma^\mu,
+\end{equation}
+where $Q^2 \to 0$ means that we are far away from the interaction point. There's a subtlety regarding the on-shell scheme renormalization constants in that the finite part of the vertex correction had on the IR divergence: the wave-function renormalization condition $d\Sigma/d\slp|_{\slp=m_R} = 0$ also contains an IR divergence such that we obtain $Z_\psi = Z_1$ as expected.
+
+\section{Re-summation of photon propagator}
+For $\xi_R = 1$ the Fourier transformed $2$-photon Green function is
+\begin{equation}
+    \begin{split}
+        \tilde{G}_{\mu\nu}(p^2) &= \feynmandiagram[inline={([yshift=-0.1cm]current bounding box.center)}, layered layout, horizontal=a to b, scale=0.6, transform shape] { a -- [photon] b }; + \feynmandiagram[inline={([yshift=-0.1cm]current bounding box.center)}, layered layout, horizontal=a to b, scale=0.6, transform shape] { a -- [photon] v [blob] -- [photon] b }; + \feynmandiagram[inline={([yshift=-0.1cm]current bounding box.center)}, layered layout, horizontal=a to b, scale=0.6, transform shape] { a -- [photon] v [blob] -- [photon] v1 [blob] -- [photon] b }; + \cdots \\
+        &= -\frac{ig_{\mu\nu}}{p^2} + \frac{ig_{\mu\sigma}}{p^2}\Pi^{\sigma\rho}\frac{ig_{\rho\nu}}{p^2} - \frac{ig_{\mu\sigma}}{p^2}\Pi^{\sigma\rho}\frac{ig_{\rho\lambda}}{p^2}\Pi^{\lambda\delta}\frac{ig_{\delta\nu}}{p^2} + \cdots,
+    \end{split}
+\end{equation}
+where $\Pi^{\mu\nu} \equiv i(p^2g^{\mu\nu} - p^\mu p^\nu)\Pi$, such that
+\begin{equation}
+    \begin{split}
+        \tilde{G}_{\mu\nu} &= -\frac{ig_{\mu\nu}}{p^2} + \frac{i}{p^4}(p^2g_{\mu\nu} - p_\mu p_\nu)\Pi - \frac{i}{p^6}(p^2g_{\mu\nu} - p_\mu p_\nu)(p^2 g^\nu_\nu - p^\nu p_\nu)\Pi^2 \\
+        &= -\frac{i}{p^4}(p^2g_{\mu\nu} + p_\mu p_\nu)(1 - \Pi + \Pi^2 + \cdots) - \frac{ip_\mu p _\nu}{p^4} \\
+        &= -\frac{i}{p^2}\bigg(g_{\mu\nu} - \frac{p_\mu p_\nu}{p^2}\bigg)\frac{1}{1 + \Pi} - \tilde{G}_{\mu\nu,L},
+    \end{split}
+\end{equation}
+where we denoted $\tilde{G}_{\mu\nu,L} \equiv -ip_\mu p_\nu/p^4$. In this way, we see that only the transverse part of the photon propagator is affected. The longitudinal component, $\tilde{G}_{\mu\nu,L}$, does not contribute to physical quantities thanks to the Ward identity. We can also prove that $Z_\xi = 1$. In particular, we can show that gauge invariance dictates $Z_\xi = 1$ by studying the 2-photon Green function, from $\tilde{G}_{\mu\nu,0}(p^2,\xi_0) = Z_A\tilde{G}_{\mu\nu,R}(p^2,\xi_R)$, we get
+\begin{multline}
+    -\frac{i}{p^2}\bigg(g_{\mu\nu} - \frac{p_\mu p_\nu}{p^2}\bigg)\frac{1}{1 + \Pi_0} - \frac{i\xi_0 p_\mu p_\nu}{p^2} = \\
+    = \bigg[-\frac{i}{p^2}\bigg(g_{\mu\nu} - \frac{p_\mu p_\nu}{p^2}\bigg)\frac{1}{1 + \Pi_R} - \frac{i\xi_R p_\mu p_\nu}{p^2}\bigg]Z_A,
+\end{multline}
+so from the coefficient of $g_{\mu\nu}$ we have
+\begin{equation}
+    \frac{1}{1 + \Pi_0} = \frac{Z_A}{1 + \Pi_R},
+\end{equation}
+while from the coefficient of $p_\mu p_\nu/p^2$ minus the one of $g_{\mu\nu}$ we have
+\begin{equation}
+    \xi_0 = Z_A\xi_R,
+\end{equation}
+but by definition $\xi_0 = Z_A\xi_R/Z_\xi$, so we are only consistent if $Z_\xi = 1$. 
+
+\subsubsection{Interpretation of \texorpdfstring{$F_1$}{F1} and \texorpdfstring{$F_2$}{F2} corrections}
+We now want to show that there is a direct connection between electric and magnetic interactions and the structure functions $F_1$ and $F_2$ by considering the interaction between an electron and a slowly varying semi-classical photon field $A^\mu_{c}$,
+\begin{equation}
+    \feynmandiagram[inline={([yshift=-0.1cm]current bounding box.center)}, scale = 0.85, horizontal=a to c] { 
+    a -- [fermion] b [blob] -- [photon, reversed momentum={[arrow distance=4pt] \ensuremath{\scriptstyle q}}, edge label'=\ensuremath{\scriptstyle A_c^\mu}] d [dot], b -- [fermion] c}; = -ie_R\mu_R^\epsilon\psib\gamma_\mu\psi A^\mu_c + \cdots. 
+\end{equation}
+By taking the limit for $q^2 \to 0$ and the slow variation, namely $q^\mu \simeq \p/\p x^\mu$, we can expand the interaction as follows
+\begin{equation}
+\begin{aligned}
+    \feynmandiagram[inline={([yshift=-0.1cm]current bounding box.center)}, scale = 0.85, horizontal=a to c] { 
+    a -- [fermion, edge label=\ensuremath{\scriptstyle 1}] b [blob] -- [photon, edge label=\ensuremath{\scriptstyle A_c^\mu}] d [dot], b -- [fermion, edge label=\ensuremath{\scriptstyle 2}] c};
+    &= \feynmandiagram[inline={([yshift=-0.1cm]current bounding box.center)}, scale = 0.85, horizontal=a to c] { 
+    a -- [fermion] b -- [photon] d [dot], b -- [fermion] c}; + 
+    \begin{tikzpicture}[scale=0.8, transform shape, baseline={([yshift=-0.1cm]current bounding box.center)}]
+    \begin{feynman}
+    
+    \vertex (a);
+    \vertex [dot, right=0.5cm of a] (v1) {};
+    \vertex [dot, right=2cm of v1] (v2) {};
+    \vertex [dot, right=1cm of v1] (centro) {};
+    \vertex [dot, right=0.5cm of v2] (b);
+    \vertex [dot, above right=0.8cm and 1.5cm of a] (up) {};
+
+    \diagram* {
+      (a) -- (v1) -- (v2) -- (b),
+      (v1) -- [photon, bend right=90] (v2), (centro) -- [photon] (up),
+    };
+    \end{feynman}
+    \end{tikzpicture} +  \feynmandiagram[inline={([yshift=-0.1cm]current bounding box.center)}, scale = 0.7, horizontal=a to c] { 
+    a -- [fermion] b [crossed dot] -- [photon] d [dot], b -- [fermion] c}; + \feynmandiagram[inline={([yshift=-0.1cm]current bounding box.center)}, horizontal=a to c, scale=0.7, transform shape, rotate=45] { a -- b -- c, b -- [photon] b1 -- [half left, looseness=1.5] v -- [half left, looseness=1.5] b1, v -- [photon] d [dot] }; \\
+    &+ \feynmandiagram[inline={([yshift=-0.1cm]current bounding box.center)}, horizontal=a to c, scale=0.7, transform shape, rotate=45] { a -- b -- c, b -- [photon] b1 [crossed dot] -- [photon] d [dot]}; + \cdots \\
+    &= -ie_R\mu_R^\epsilon\ubar_2[\gamma_\mu + \Gamma^{(1)}_{\mu,R}(q^2,m_R^2) + \gamma_\nu D^{\nu\rho}\Pi^{(1)}_{\rho\mu,R}(q^2,m_R^2)] \\
+    &\times u_1A^\mu_c + o(e^5) \\
+    &= \tilde{J}_\mu A^\mu_c.
+    \end{aligned}
+\end{equation}
+The interaction is described by an effective Hamiltonian 
+\begin{equation}
+    \Delta H_{int} = \int d^3x\,J_\mu A^\mu_c,
+\end{equation}
+where $J_\mu$ is the Fourier transform of $\tilde{J}_\mu$. Let's look at $\ubar_2\Gamma^{(1)}_{\mu,R}u_1$ first
+\begin{equation}
+    \ubar_2\Gamma^{(1)}_{\mu,R}u_1 = u_2\gamma_\mu u_1 F^{(1)}_{1,R}(q^2,m_R^2) + \frac{i}{2m}\ubar_2\sigma_{\mu\nu}u_1(p_1 + p_2)^\nu F_{2,R}^{(1)}(q^2,m_R^2),
+\end{equation}
+where we can show that 
+\begin{align}
+    \lim_{q^2\to 0}F_{1,R}^{(1)}(q^2,m_R^2) &= \frac{\alpha}{4\pi}\frac{q^2}{m_R^2}[a + b(\mathrm{IR\,divergence})], \\
+    \lim_{q^2\to 0}F_{2,R}^{(1)}(q^2,m_R^2) &= \frac{\alpha}{2\pi}.
+\end{align}
+\begin{obs}
+    Renormalization has explicitly removed leading terms $(q^2/m_R^2)^0$ in the exposition of $F_1$.
+\end{obs}
+We may also look at the second term proportional to $\Pi^{(1)}$ in the same limit to find that
+\begin{equation}
+    \lim_{q^2\to 0}[\gamma_\nu D^{\nu\rho}\Pi^{(1)}_{\rho\mu,R}(q^2,m_R^2)] = \frac{C\alpha}{4\pi}\gamma_\mu\frac{q^2}{m_R^2},\quad C \in \R.
+\end{equation}
+In position space we have $q^2/m_R^2 \to \square/m_R^2$, so having examined the elements of $\tilde{J}_\mu$, we may return to the expression of $\Delta H_{int}$ and show 
+\begin{equation}
+    \begin{split}
+        \Delta H_{int} &\propto e_R\int d^3x\,\bigg\{\psib\overset{\leftrightarrow}{\p}_\mu\psi\bigg[1 + \frac{\alpha}{4\pi}(a + c + b(\mathrm{IR\,divergence}))\square\bigg]A^\mu_c \\
+        &+ \frac{1}{2m_R}\bigg(\frac{1}{2} + \frac{\alpha}{4\pi}\bigg)\psib\sigma^{\mu\nu}\psi F_{\mu\nu,c}\bigg\},
+    \end{split}
+\end{equation}
+where $F_{\mu\nu,c} = \p_\mu A_{\nu,c} - \p_\nu A_{\mu,c}$, also the first part is the electric current, while the second is the magnetic moment of the electron. From the semi-classical Dirac equation one finds that 
+\begin{equation}
+    \vmu_{Dirac} = \frac{e}{2m_R}(2\vs) = g_{Dirac}\bigg(\frac{e}{4m_R}\vsigma\bigg),\quad g_{Dirac} = 2.
+\end{equation}
+The first order correction to the coupling constant $g_{Dirac}$ is therefore
+\begin{equation}
+    g_{Dirac} - 2 = \frac{\alpha}{\pi},
+\end{equation}
+which is the result obtained by Schwinger. 
+
+\subsubsection{Interpretation of \texorpdfstring{$\Pi(p^2,m^2)$}{Pi}}
+The renormalized 2-point function $\Pi_R(p^2,m_R^2)$ has implications for the range of the electromagnetic interaction. If we consider a static photon, namely with $q^0 = 0$ and so $q^2 = -|\vq|^2$, then for $|\vq|^2 \ll 1$ we have
+\begin{equation}
+    \lim_{q^2\to 0}\Pi_R(-|\vq|^2,m_R^2) = \frac{4}{15}\frac{|\vq|^2}{m_R^2} + o\bigg(\frac{|\vq|^4}{m_R^4}\bigg).
+\end{equation}
+The Dyson re-summed propagator gave us 
+\begin{equation}
+    \feynmandiagram[inline={([yshift=-0.1cm]current bounding box.center)}, layered layout, horizontal=a to b, scale=0.8, transform shape] { 
+    a -- [photon] b, 
+    }; + \feynmandiagram[inline={([yshift=-0.1cm]current bounding box.center)}, layered layout, horizontal=a to b, scale=0.5, transform shape] { a -- [boson] v -- [half left, looseness=1.5] v1 -- [half left, looseness=1.5] v, v1 -- [boson] b}; + \cdots,
+\end{equation}
+where we have used a cross at the end points to show we are propagating between two points far apart, namely in the limit $q^2 \to 0$, so
+\begin{equation}
+    \feynmandiagram[inline={([yshift=-0.1cm]current bounding box.center)}, layered layout, horizontal=a to b, scale=0.8, transform shape] { a -- [photon] b }; = \frac{(-ie_R)^2}{-|\vq|^2} = \frac{e_R^2}{|\vq|^2},
+\end{equation}
+so the Dyson re-summed expression is 
+\begin{equation}
+    \frac{e_R^2}{|\vq|^2}\bigg[\frac{1}{1 + \Pi_R(-|\vq|^2,m_R^2)}\bigg] = \frac{e_R^2}{|\vq|^2}\bigg[1 + \frac{\alpha}{4\pi}\frac{4}{15}\frac{|\vq|^2}{m_R^2} + o(\alpha^2)\bigg].
+\end{equation}
+We can use this result to read off the potential between a heavy nucleus of charge $-Ze$ and an electron 
+\begin{equation}
+    V(r) = -\frac{Ze_R^2}{4\pi|\vr|}\bigg[1 + \frac{\alpha}{4\pi}\frac{4}{15}\frac{\Delta(\vr)}{m_R^2} + o(\alpha^2)\bigg].
+\end{equation}
+The correction to $V(r)$ is called the Uehling potential and results in a charge screening effect. Also, $\Delta(\vr) \simeq \delta^{(3)}(\vr)$ but can be computed exactly to be a distribution concentrated in a region $r \le 1/m \simeq \lambda$, where $\lambda$ is the Compton wavelength. So for $r \ge 1/m$ the virtual $e^+e^-$ pairs accounted in $\Pi_R$ effect the medium around the electron reducing the effective electric charge. This effect is known as vacuum polarisation. We can also consider the effective coupling at very small distances by taking $|\vq|^2 \ge m_R^2$ in which gives 
+\begin{equation}
+    \Pi_R(-|\vq|^2,m_R^2) \xrightarrow{|\vq|^2 \gg m_R^2} \frac{\alpha}{4\pi}\frac{4}{9}\bigg[-5 + 3\log{\bigg(\frac{|\vq|^2}{m_R^2}\bigg)}\bigg] + o\bigg(\frac{m^2}{|\vq|^2}\bigg),
+\end{equation}
+thus the effective fine structure constant is
+\begin{equation}
+    \alpha_{eff}(|\vq|^2) \overset{|\vq|^2 \gg m_R^2}{=} \frac{\alpha}{1 - \dfrac{\alpha}{3\pi}\log{\bigg(\dfrac{|\vq|^2}{Am_R^2}\bigg)}},\quad A = e^{5/3}.
+\end{equation}
+From this, it is immediate to see that $\alpha_{eff} > \alpha$ at small distances. 
+
+\section{Ward-Takashi identity}
+We have already encountered the Ward identity of the form $A^\mu p_\mu = 0$, for an amplitude $A = A^\mu\epsilon_\mu(p)$. However, there is a stronger statement that applies to off-shell correlation functions from which the Ward identity follows, that is the Ward-Takahashi identity. To derive it, let's first take a correlation function with $n$ $e^+e^-$ pairs and $m$ photons $\gamma$, so
+\begin{equation}
+    M^\mu(p_1,\dots,p_n;q_1,\dots,q_n;r_1,\dots,r_m),
+\end{equation}
+where $p_i$ are incoming fermions, $q_i$ are outgoing fermions, and $r_i$ are outgoing photons. An incoming photon with momentum $k^\mu$ is inserted at all points along the $e^+e^-$ currents. The Ward-Takahashi identity states
+\begin{equation}
+\begin{tikzpicture}[scale=0.65, transform shape, baseline={([yshift=0cm]current bounding box.center)}]
+    \begin{feynman}
+        
+        \vertex [draw,circle,minimum size=0.6cm,inner sep=0pt] (k) {k};
+        \vertex [below=2cm of k] (down);
+
+        \diagram*{
+
+            (k) -- [fermion] (down),
+        };
+
+    \end{feynman}
+\end{tikzpicture}
+\otimes
+\begin{tikzpicture}[scale=0.65, transform shape, baseline={([yshift=-0.1cm]current bounding box.center)}]
+    \begin{feynman}
+        
+        \vertex [blob, minimum size=1cm] (v) {};
+
+        \vertex [above left=2cm and 1cm of v, label=\ensuremath{ q_1}] (q1);
+        \vertex [above right=2cm and 1cm of v, label=\ensuremath{ q_n}] (qn);
+
+        % p
+        \vertex [below left=2cm and 1cm of v, label={[label distance=0.5pt]below:\ensuremath{ p_1}}] (p1);
+        \vertex [below right=2cm and 1cm of v, label={[label distance=0.5pt]below:\ensuremath{ p_n}}] (pn);
+
+        % r
+        \vertex [above right=0.7 and 2cm of v, label=\ensuremath{ r_1}] (r1);
+        \vertex [below right=0.7 and 2cm of v, label=\ensuremath{ r_n}] (rn);
+
+        \diagram*{
+
+            (v) -- [fermion] (q1),
+            (v) -- [fermion] (qn),
+
+            (v) -- [anti fermion] (p1),
+            (v) -- [anti fermion] (pn),
+
+            (v) -- [photon] (r1),
+            (v) -- [photon] (rn)
+        };
+
+         \node at ($(q1)!0.5!(qn)+(0,-0.35)$) {$\cdots$};
+         \node at ($(p1)!0.5!(pn)+(0,0.35)$) {$\cdots$};
+         \node at ($(r1)!0.5!(rn)+(-0.35,0.1)$) {$\vdots$};
+
+    \end{feynman}
+\end{tikzpicture}
+ = e_R\sum_{i=1}^n
+\begin{tikzpicture}[scale=0.65, transform shape, baseline={([yshift=-0.1cm]current bounding box.center)}]
+    \begin{feynman}
+        
+        \vertex [blob, minimum size=1cm] (v) {};
+
+        \vertex [above left=2cm and 1cm of v, label=\ensuremath{ q_1}] (q1);
+        \vertex [above right=2cm and 1cm of v, label=\ensuremath{ q_n}] (qn);
+        \vertex [above =2cm of v, label=\ensuremath{ q_i - k}] (qi-k);
+
+        % p
+        \vertex [below left=2cm and 1cm of v, label={[label distance=0.5pt]below:\ensuremath{ p_1}}] (p1);
+        \vertex [below right=2cm and 1cm of v, label={[label distance=0.5pt]below:\ensuremath{ p_n}}] (pn);
+        \vertex [below =2cm of v, label={[label distance=0.5pt]below:\ensuremath{ p_i}}] (pi);
+
+        % r
+        \vertex [above right=0.7 and 2cm of v, label=\ensuremath{ r_1}] (r1);
+        \vertex [below right=0.7 and 2cm of v, label=\ensuremath{ r_n}] (rn);
+
+        \diagram*{
+
+            (v) -- [fermion] (q1),
+            (v) -- [fermion] (qn),
+
+            (v) -- [anti fermion] (p1),
+            (v) -- [anti fermion] (pn),
+
+            (v) -- [photon] (r1),
+            (v) -- [photon] (rn),
+
+            (v) -- [anti fermion] (pi),
+            (v) -- [fermion] (qi-k),
+        };
+
+         \node at ($(r1)!0.5!(rn)+(-0.35,0.1)$) {$\vdots$};
+
+    \end{feynman}
+\end{tikzpicture}
+-
+\begin{tikzpicture}[scale=0.65, transform shape, baseline={([yshift=-0.1cm]current bounding box.center)}]
+    \begin{feynman}
+        
+        \vertex [blob, minimum size=1cm] (v) {};
+
+        \vertex [above left=2cm and 1cm of v, label=\ensuremath{ q_1}] (q1);
+        \vertex [above right=2cm and 1cm of v, label=\ensuremath{ q_n}] (qn);
+        \vertex [above =2cm of v, label=\ensuremath{ q_i}] (qi);
+
+        % p
+        \vertex [below left=2cm and 1cm of v, label={[label distance=0.5pt]below:\ensuremath{ p_1}}] (p1);
+        \vertex [below right=2cm and 1cm of v, label={[label distance=0.5pt]below:\ensuremath{ p_n}}] (pn);
+        \vertex [below =2cm of v, label={[label distance=0.5pt]below:\ensuremath{ p_i+k}}] (pi+k);
+
+        % r
+        \vertex [above right=0.7 and 2cm of v, label=\ensuremath{ r_1}] (r1);
+        \vertex [below right=0.7 and 2cm of v, label=\ensuremath{r_n}] (rn);
+
+        \diagram*{
+
+            (v) -- [fermion] (q1),
+            (v) -- [fermion] (qn),
+
+            (v) -- [anti fermion] (p1),
+            (v) -- [anti fermion] (pn),
+
+            (v) -- [photon] (r1),
+            (v) -- [photon] (rn),
+
+            (v) -- [anti fermion] (pi+k),
+            (v) -- [fermion] (qi),
+        };
+
+         \node at ($(r1)!0.5!(rn)+(-0.35,0.1)$) {$\vdots$};
+
+    \end{feynman}
+\end{tikzpicture}.
+\end{equation}
+We can prove this relation to all orders using Feynman diagrams demonstrating that it relies on cancellations between diagrams. To start the proof, consider a fermion line with $n$ photons attached
+\begin{equation}
+    \begin{tikzpicture}[scale=0.8, transform shape, baseline={([yshift=0.2cm]current bounding box.center)}]
+    \begin{feynman}
+        
+
+        \vertex (a) {};
+        \vertex [dot, right=2cm of a] (b) {};
+        \vertex [dot, right=2cm of b] (c) {};
+        \vertex [dot, right=2cm of c] (d) {};
+        \vertex [right=2cm of d] (e) {};
+
+        \vertex[above=1.5 cm of b] (r1) {};
+        \vertex[above=1.5 cm of c] (r2) {};
+        \vertex [above=1.5 cm of d] (rn) {};
+        
+
+        \diagram*{
+
+            (a) -- [fermion, momentum'={[arrow distance=4pt]\ensuremath{\scriptstyle p = q_0}}] (b) -- [fermion, momentum'={[arrow distance=4pt]\ensuremath{\scriptstyle q_1 = q_0 - r_1}}] (c) -- [fermion] (d) -- [fermion, momentum'={[arrow distance=4pt]\ensuremath{\scriptstyle q = q_n = q_0 - \sum_ir_i}}] (e), (b) -- [photon, momentum'={[arrow distance=4pt]\ensuremath{\scriptstyle r_1}}] (r1), (c) -- [photon, momentum'={[arrow distance=4pt]\ensuremath{\scriptstyle r_2}}] (r2), (d) -- [photon, momentum'={[arrow distance=4pt]\ensuremath{\scriptstyle r_n}}] (rn),
+
+        };
+
+         \node at ($(r2)!0.5!(rn)+(0,-0.5)$) {$\cdots$};
+
+    \end{feynman}
+\end{tikzpicture}.
+\end{equation}
+We then add an insertion of a new photon with momentum $k^\mu$ denoted as
+\begin{equation}
+    \slk = \begin{tikzpicture}[scale=0.65, transform shape, baseline={([yshift=-0.1cm]current bounding box.center)}]
+    \begin{feynman}
+        
+        \vertex [draw,circle,minimum size=0.6cm,inner sep=0pt] (k) {k};
+        \vertex [right=1.5cm of k] (right);
+        \vertex [above right=1.2cm and 1.5cm of k] (up);
+        \vertex [below right=1.2cm and 1.5cm of k] (down);
+
+        \diagram*{
+            (k) -- [photon] (right), (up) -- [anti fermion] (right) -- [anti fermion] (down)
+        };
+
+    \end{feynman}
+    \end{tikzpicture}.
+\end{equation}
+If we make the insertion between photons $i$ and $i+1$ we will see 
+\begin{equation}
+\begin{aligned}
+    \begin{tikzpicture}[scale=0.5, transform shape, baseline={([yshift=-0.2cm]current bounding box.center)}]
+    \begin{feynman}
+        
+
+        \vertex (a) {};
+        \vertex [dot, right=2cm of a] (b) {};
+        \vertex [dot, right=2cm of b] (c) {};
+        \vertex [dot, right=2cm of c] (d) {};
+        \vertex [right=2cm of d] (e) {};
+
+        \vertex [above=1.5 cm of b] (r1) {};
+        \vertex [below=1.5 cm of c, draw,circle,minimum size=0.6cm,inner sep=0pt] (r2) {k};
+        \vertex [above=1.5 cm of d] (rn) {};
+        
+
+        \diagram*{
+
+            (a) -- [fermion, momentum'={[arrow distance=4pt]\ensuremath{\scriptstyle q_{i-1}}}] (b) -- [fermion, momentum={[arrow distance=4pt]\ensuremath{\scriptstyle q_i}}] (c) -- [fermion, momentum={[arrow distance=4pt]\ensuremath{\scriptstyle q_i + k}}] (d) -- [fermion, momentum'={[arrow distance=4pt]\ensuremath{\scriptstyle q_{i+1} + k}}] (e),
+            (b) -- [photon, momentum={[arrow distance=4pt]\ensuremath{\scriptstyle r_i}}] (r1), (c) -- [photon, reversed momentum'={[arrow distance=4pt]\ensuremath{\scriptstyle k}}] (r2), (d) -- [photon, momentum'={[arrow distance=4pt]\ensuremath{\scriptstyle r_{i+1}}}] (rn),
+
+        };
+
+    \end{feynman}
+    \end{tikzpicture} &= \gamma^{\mu_i}\frac{\slq_i + m}{q_i^2 - m^2}\slk\frac{\slq_i + \slk + m}{(q_i + k)^2 - m^2}\gamma^{\mu_{i+1}} \\
+    &= \gamma^{\mu_i}\bigg(\frac{\slq_i + m}{q_i^2 - m^2} - \frac{\slq_i + \slk + m}{(q_i + k)^2 - m^2}\bigg)\gamma^{\mu_{i+1}} \\
+    &= \begin{tikzpicture}[scale=0.5, transform shape, baseline={([yshift=-0.2cm]current bounding box.center)}]
+    \begin{feynman}
+        
+
+        \vertex (a) {};
+        \vertex [dot, right=2cm of a] (b) {};
+        \vertex [dot, right=2cm of b] (c) {};
+        \vertex [right=2cm of c] (d) {};
+
+        \vertex [above=1.5 cm of b] (r1) {};
+        \vertex [above=1.5 cm of c] (rn) {};
+        
+
+        \diagram*{
+
+            (a) -- [fermion, momentum'={[arrow distance=4pt]\ensuremath{\scriptstyle q_{i-1}}}] (b) -- [fermion, momentum={[arrow distance=4pt]\ensuremath{\scriptstyle q_i}}] (c) -- [fermion, momentum'={[arrow distance=4pt]\ensuremath{\scriptstyle q_{i+1} + k}}] (d),
+            
+            (b) -- [photon, momentum={[arrow distance=4pt]\ensuremath{\scriptstyle r_i}}] (r1), (c) -- [photon, momentum'={[arrow distance=4pt]\ensuremath{\scriptstyle r_{i+1} - k}}] (rn),
+
+        };
+
+    \end{feynman}
+    \end{tikzpicture} - \begin{tikzpicture}[scale=0.5, transform shape, baseline={([yshift=-0.2cm]current bounding box.center)}]
+    \begin{feynman}
+        
+
+        \vertex (a) {};
+        \vertex [dot, right=2cm of a] (b) {};
+        \vertex [dot, right=2cm of b] (c) {};
+        \vertex [right=2cm of c] (d) {};
+
+        \vertex [above=1.5 cm of b] (r1) {};
+        \vertex [above=1.5 cm of c] (rn) {};
+        
+
+        \diagram*{
+
+            (a) -- [fermion, momentum'={[arrow distance=4pt]\ensuremath{\scriptstyle q_{i-1}}}] (b) -- [fermion, momentum={[arrow distance=4pt]\ensuremath{\scriptstyle q_i + k}}] (c) -- [fermion, momentum'={[arrow distance=4pt]\ensuremath{\scriptstyle q_{i+1} + k}}] (d),
+            
+            (b) -- [photon, momentum={[arrow distance=4pt]\ensuremath{\scriptstyle r_i - k}}] (r1), (c) -- [photon, momentum'={[arrow distance=4pt]\ensuremath{\scriptstyle r_{i+1}}}] (rn),
+
+        };
+
+    \end{feynman}
+    \end{tikzpicture},
+\end{aligned}
+\end{equation}
+where we used $\slk = (\slq_i + \slk -m) - (\slq_i - m)$. Thus, using a shorthand notation
+\begin{equation}
+    \begin{tikzpicture}[scale=0.5, transform shape, baseline={([yshift=-0.1cm]current bounding box.center)}]
+    \begin{feynman}
+        
+
+        \vertex (a) {};
+        \vertex [dot, right=1.5cm of a] (b) {};
+        \vertex [dot, right=1.5cm of b] (c) {};
+        \vertex [dot, right=1.5cm of c] (d) {};
+        \vertex [right=2cm of d] (e) {};
+
+        \vertex [above=1.5 cm of b] (r1) {};
+        \vertex [below=1.5 cm of c, draw,circle,minimum size=0.6cm,inner sep=0pt] (r2) {k};
+        \vertex [above=1.5 cm of d] (rn) {};
+        
+
+        \diagram*{
+
+            (a) -- [fermion] (b) -- [fermion] (c) -- [fermion] (d) -- [fermion] (e),
+            (b) -- [photon] (r1), (c) -- [photon] (r2), (d) -- [photon] (rn),
+
+        };
+
+    \end{feynman}
+    \end{tikzpicture} = 
+    \begin{tikzpicture}[scale=0.5, transform shape, baseline={([yshift=-0.6cm]current bounding box.center)}]
+    \begin{feynman}
+        
+
+        \vertex (a) {};
+        \vertex [dot, right=1.5cm of a] (b) {};
+        \vertex [dot, right=1.5cm of b] (c) {};
+        \vertex [right=1.5cm of c] (d) {};
+
+        \vertex [above=1.5 cm of b] (r1) {};
+        \vertex [above=1.5 cm of c, label=\ensuremath{-k}] (rn) {};
+        
+
+        \diagram*{
+
+            (a) -- [fermion] (b) -- [fermion] (c) -- [fermion] (d),
+            
+            (b) -- [photon] (r1), (c) -- [photon] (rn),
+
+        };
+
+    \end{feynman}
+    \end{tikzpicture} - 
+    \begin{tikzpicture}[scale=0.5, transform shape, baseline={([yshift=-0.6cm]current bounding box.center)}]
+    \begin{feynman}
+        
+
+        \vertex (a) {};
+        \vertex [dot, right=1.5cm of a] (b) {};
+        \vertex [dot, right=1.5cm of b] (c) {};
+        \vertex [right=1.5cm of c] (d) {};
+
+        \vertex [above=1.5 cm of b, label=\ensuremath{-k}] (r1) {};
+        \vertex [above=1.5 cm of c] (rn) {};
+        
+
+        \diagram*{
+
+            (a) -- [fermion] (b) -- [fermion] (c) -- [fermion] (d),
+            (b) -- [photon] (r1), (c) -- [photon] (rn),
+
+        };
+
+    \end{feynman}
+    \end{tikzpicture},
+\end{equation}
+we can sum insertions on adjacent propagators, so we get the following sum $S$ as
+\begin{equation}
+\begin{aligned}
+    S &\equiv 
+    \begin{tikzpicture}[scale=0.5, transform shape, baseline={([yshift=-0.1cm]current bounding box.center)}]
+    \begin{feynman}
+        
+
+        \vertex (a) {};
+        \vertex [dot, right=1.5cm of a] (b) {};
+        \vertex [dot, right=1.5cm of b] (c) {};
+        \vertex [dot, right=1.5cm of c] (d) {};
+        \vertex [dot, right=1.5cm of d] (e) {};
+        \vertex [right=2cm of e] (f) {};
+
+        \vertex [above=1.5 cm of b] (r1) {};
+        \vertex [below=1.5 cm of c, draw,circle,minimum size=0.6cm,inner sep=0pt] (r2) {k};
+        \vertex [above=1.5 cm of d] (r3) {};
+        \vertex [above=1.5 cm of e] (r4) {};
+
+        \diagram*{
+
+            (a) -- [fermion] (b) -- [fermion] (c) -- [fermion] (d) -- [fermion] (e) -- [fermion] (f),
+            (b) -- [photon] (r1), (c) -- [photon] (r2), (d) -- [photon] (r3), (e) -- [photon] (r4)
+
+        };
+
+    \end{feynman}
+    \end{tikzpicture} +
+    \begin{tikzpicture}[scale=0.5, transform shape, baseline={([yshift=-0.1cm]current bounding box.center)}]
+    \begin{feynman}
+        
+
+        \vertex (a) {};
+        \vertex [dot, right=1.5cm of a] (b) {};
+        \vertex [dot, right=1.5cm of b] (c) {};
+        \vertex [dot, right=1.5cm of c] (d) {};
+        \vertex [dot, right=1.5cm of d] (e) {};
+        \vertex [right=2cm of e] (f) {};
+
+        \vertex [above=1.5 cm of b] (r1) {};
+        \vertex [below=1.5 cm of d, draw,circle,minimum size=0.6cm,inner sep=0pt] (r2) {k};
+        \vertex [above=1.5 cm of c] (r3) {};
+        \vertex [above=1.5 cm of e] (r4) {};
+
+        \diagram*{
+
+            (a) -- [fermion] (b) -- [fermion] (c) -- [fermion] (d) -- [fermion] (e) -- [fermion] (f),
+            (b) -- [photon] (r1), (c) -- [photon] (r3), (d) -- [photon] (r2), (e) -- [photon] (r4)
+
+        };
+
+    \end{feynman}
+    \end{tikzpicture}\\
+    &= \begin{tikzpicture}[scale=0.5, transform shape, baseline={([yshift=-0.6cm]current bounding box.center)}]
+    \begin{feynman}
+        
+
+        \vertex (a) {};
+        \vertex [dot, right=1.5cm of a] (b) {};
+        \vertex [dot, right=1.5cm of b] (c) {};
+        \vertex [dot, right=1.5cm of c] (d) {};
+        \vertex [right=1.5cm of d] (e) {};
+
+        \vertex [above=1.5 cm of b] (r1) {};
+        \vertex [above=1.5 cm of c, label=\ensuremath{-k}] (r2) {};
+        \vertex [above=1.5 cm of d] (r3) {};
+    
+        \diagram*{
+
+            (a) -- [fermion] (b) -- [fermion] (c) -- [fermion] (d) -- [fermion] (e),
+            (b) -- [photon] (r1), (c) -- [photon] (r2), (d) -- [photon] (r3)
+
+        };
+
+    \end{feynman}
+    \end{tikzpicture} - \begin{tikzpicture}[scale=0.5, transform shape, baseline={([yshift=-0.6cm]current bounding box.center)}]
+    \begin{feynman}
+        
+
+        \vertex (a) {};
+        \vertex [dot, right=1.5cm of a] (b) {};
+        \vertex [dot, right=1.5cm of b] (c) {};
+        \vertex [dot, right=1.5cm of c] (d) {};
+        \vertex [right=1.5cm of d] (e) {};
+
+        \vertex [above=1.5 cm of b, label=\ensuremath{-k}] (r1) {};
+        \vertex [above=1.5 cm of c] (r2) {};
+        \vertex [above=1.5 cm of d] (r3) {};
+    
+        \diagram*{
+
+            (a) -- [fermion] (b) -- [fermion] (c) -- [fermion] (d) -- [fermion] (e),
+            (b) -- [photon] (r1), (c) -- [photon] (r2), (d) -- [photon] (r3)
+
+        };
+
+    \end{feynman}
+    \end{tikzpicture} \\
+    &+ \begin{tikzpicture}[scale=0.5, transform shape, baseline={([yshift=-0.6cm]current bounding box.center)}]
+    \begin{feynman}
+        
+
+        \vertex (a) {};
+        \vertex [dot, right=1.5cm of a] (b) {};
+        \vertex [dot, right=1.5cm of b] (c) {};
+        \vertex [dot, right=1.5cm of c] (d) {};
+        \vertex [right=1.5cm of d] (e) {};
+
+        \vertex [above=1.5 cm of b] (r1) {};
+        \vertex [above=1.5 cm of c] (r2) {};
+        \vertex [above=1.5 cm of d, label=\ensuremath{-k}] (r3) {};
+    
+        \diagram*{
+
+            (a) -- [fermion] (b) -- [fermion] (c) -- [fermion] (d) -- [fermion] (e),
+            (b) -- [photon] (r1), (c) -- [photon] (r2), (d) -- [photon] (r3)
+
+        };
+
+    \end{feynman}
+    \end{tikzpicture} - \begin{tikzpicture}[scale=0.5, transform shape, baseline={([yshift=-0.6cm]current bounding box.center)}]
+    \begin{feynman}
+        
+
+        \vertex (a) {};
+        \vertex [dot, right=1.5cm of a] (b) {};
+        \vertex [dot, right=1.5cm of b] (c) {};
+        \vertex [dot, right=1.5cm of c] (d) {};
+        \vertex [right=1.5cm of d] (e) {};
+
+        \vertex [above=1.5 cm of b] (r1) {};
+        \vertex [above=1.5 cm of c, label=\ensuremath{-k}] (r2) {};
+        \vertex [above=1.5 cm of d] (r3) {};
+    
+        \diagram*{
+
+            (a) -- [fermion] (b) -- [fermion] (c) -- [fermion] (d) -- [fermion] (e),
+            (b) -- [photon] (r1), (c) -- [photon] (r2), (d) -- [photon] (r3)
+
+        };
+
+    \end{feynman}
+    \end{tikzpicture} \\
+    &= \begin{tikzpicture}[scale=0.5, transform shape, baseline={([yshift=-0.6cm]current bounding box.center)}]
+    \begin{feynman}
+        
+
+        \vertex (a) {};
+        \vertex [dot, right=1.5cm of a] (b) {};
+        \vertex [dot, right=1.5cm of b] (c) {};
+        \vertex [dot, right=1.5cm of c] (d) {};
+        \vertex [right=1.5cm of d] (e) {};
+
+        \vertex [above=1.5 cm of b] (r1) {};
+        \vertex [above=1.5 cm of c] (r2) {};
+        \vertex [above=1.5 cm of d, label=\ensuremath{-k}] (r3) {};
+    
+        \diagram*{
+
+            (a) -- [fermion] (b) -- [fermion] (c) -- [fermion] (d) -- [fermion] (e),
+            (b) -- [photon] (r1), (c) -- [photon] (r2), (d) -- [photon] (r3)
+
+        };
+
+    \end{feynman}
+    \end{tikzpicture} - \begin{tikzpicture}[scale=0.5, transform shape, baseline={([yshift=-0.6cm]current bounding box.center)}]
+    \begin{feynman}
+        
+
+        \vertex (a) {};
+        \vertex [dot, right=1.5cm of a] (b) {};
+        \vertex [dot, right=1.5cm of b] (c) {};
+        \vertex [dot, right=1.5cm of c] (d) {};
+        \vertex [right=1.5cm of d] (e) {};
+
+        \vertex [above=1.5 cm of b, label=\ensuremath{-k}] (r1) {};
+        \vertex [above=1.5 cm of c] (r2) {};
+        \vertex [above=1.5 cm of d] (r3) {};
+    
+        \diagram*{
+
+            (a) -- [fermion] (b) -- [fermion] (c) -- [fermion] (d) -- [fermion] (e),
+            (b) -- [photon] (r1), (c) -- [photon] (r2), (d) -- [photon] (r3)
+
+        };
+
+    \end{feynman}
+    \end{tikzpicture},
+    \end{aligned}
+\end{equation}
+and also compute the following product $P$, summing over all insertions, as
+\begin{equation}
+    \begin{aligned}
+        P &= \begin{tikzpicture}[scale=0.65, transform shape, baseline={([yshift=-0.2cm]current bounding box.center)}]
+    \begin{feynman}
+        
+        \vertex [draw,circle,minimum size=0.6cm,inner sep=0pt] (k) {k};
+        \vertex [below=1.2cm of k] (down);
+
+        \diagram*{
+
+            (k) -- [fermion] (down),
+        };
+
+    \end{feynman}
+\end{tikzpicture} \otimes
+    \begin{tikzpicture}[scale=0.5, transform shape, baseline={([yshift=-0.5cm]current bounding box.center)}]
+    \begin{feynman}
+        
+
+        \vertex (a) {};
+        \vertex [dot, right=1.5cm of a] (b) {};
+        \vertex [dot, right=1.5cm of b] (c) {};
+        \vertex [dot, right=1.5cm of c] (d) {};
+        \vertex [right=1.5cm of d] (e) {};
+
+        \vertex[above=1.5 cm of b] (r1) {};
+        \vertex[above=1.5 cm of c] (r2) {};
+        \vertex[above=1.5 cm of d] (rn) {};
+        
+
+        \diagram*{
+
+            (a) -- [fermion] (b) -- [fermion] (c) -- [fermion] (d) -- [fermion] (e), (b) -- [photon] (r1), (c) -- [photon] (r2), (d) -- [photon] (rn),
+
+        };
+
+         \node at ($(r2)!0.5!(rn)+(0,-0.5)$) {$\cdots$};
+
+    \end{feynman}
+    \end{tikzpicture} \\
+    &= \begin{tikzpicture}[scale=0.5, transform shape, baseline={([yshift=-0.5cm]current bounding box.center)}]
+    \begin{feynman}
+        
+
+        \vertex (a) {};
+        \vertex [dot, right=1.5cm of a] (b) {};
+        \vertex [dot, right=1.5cm of b] (c) {};
+        \vertex [dot, right=1.5cm of c] (d) {};
+        \vertex [right=1.5cm of d] (e) {};
+
+        \vertex[above=1.5 cm of b] (r1) {};
+        \vertex[above=1.5 cm of c] (r2) {};
+        \vertex [above=1.5 cm of d, label=\ensuremath{-k}] (rn) {};
+        
+
+        \diagram*{
+
+            (a) -- [fermion] (b) -- [fermion] (c) -- [fermion] (d) -- [fermion] (e), (b) -- [photon] (r1), (c) -- [photon] (r2), (d) -- [photon] (rn),
+
+        };
+
+         \node at ($(r2)!0.5!(rn)+(0,-0.5)$) {$\cdots$};
+
+    \end{feynman}
+    \end{tikzpicture} - \begin{tikzpicture}[scale=0.5, transform shape, baseline={([yshift=-0.5cm]current bounding box.center)}]
+    \begin{feynman}
+        
+
+        \vertex (a) {};
+        \vertex [dot, right=1.5cm of a] (b) {};
+        \vertex [dot, right=1.5cm of b] (c) {};
+        \vertex [dot, right=1.5cm of c] (d) {};
+        \vertex [right=1.5cm of d] (e) {};
+
+        \vertex[above=1.5 cm of b, label=\ensuremath{-k}] (r1) {};
+        \vertex[above=1.5 cm of c] (r2) {};
+        \vertex [above=1.5 cm of d] (rn) {};
+        
+
+        \diagram*{
+
+            (a) -- [fermion] (b) -- [fermion] (c) -- [fermion] (d) -- [fermion] (e), (b) -- [photon] (r1), (c) -- [photon] (r2), (d) -- [photon] (rn),
+
+        };
+
+         \node at ($(r2)!0.5!(rn)+(0,-0.5)$) {$\cdots$};
+
+    \end{feynman}
+    \end{tikzpicture} \\
+    &+ \begin{tikzpicture}[scale=0.5, transform shape, baseline={([yshift=0.2cm]current bounding box.center)}]
+    \begin{feynman}
+        
+
+        \vertex (a) {};
+        \vertex [dot, right=1.5cm of a] (b) {};
+        \vertex [dot, right=1.5cm of b] (c) {};
+        \vertex [dot, right=1.5cm of c] (d) {};
+        \vertex [right=1.5cm of d] (e) {};
+
+        \vertex[below=1.5 cm of b,draw,circle,minimum size=0.6cm,inner sep=0pt] (r1) {k};
+        \vertex[above=1.5 cm of c] (r2) {};
+        \vertex [above=1.5 cm of d] (rn) {};
+        
+
+        \diagram*{
+
+            (a) -- [fermion, momentum={[arrow distance=4pt]\ensuremath{\scriptstyle p}}] (b) -- [fermion] (c) -- [fermion] (d) -- [fermion, momentum'={[arrow distance=4pt]\ensuremath{\scriptstyle q_n + k}}] (e), (b) -- [photon] (r1), (c) -- [photon] (r2), (d) -- [photon] (rn),
+
+        };
+
+         \node at ($(r2)!0.5!(rn)+(0,-0.5)$) {$\cdots$};
+
+    \end{feynman}
+    \end{tikzpicture} + \begin{tikzpicture}[scale=0.5, transform shape, baseline={([yshift=0.2cm]current bounding box.center)}]
+    \begin{feynman}
+        
+
+        \vertex (a) {};
+        \vertex [dot, right=1.5cm of a] (b) {};
+        \vertex [dot, right=1.5cm of b] (c) {};
+        \vertex [dot, right=1.5cm of c] (d) {};
+        \vertex [right=1.5cm of d] (e) {};
+
+        \vertex[above=1.5 cm of b] (r1) {};
+        \vertex[above=1.5 cm of c] (r2) {};
+        \vertex [below=1.5 cm of d,draw,circle,minimum size=0.6cm,inner sep=0pt] (rn) {k};
+        
+
+        \diagram*{
+
+            (a) -- [fermion] (b) -- [fermion] (c) -- [fermion] (d) -- [fermion, momentum={[arrow distance=4pt]\ensuremath{\scriptstyle q_n + k}}] (e), (b) -- [photon] (r1), (c) -- [photon] (r2), (d) -- [photon] (rn),
+
+        };
+
+         \node at ($(r1)!0.5!(r2)+(0,-0.5)$) {$\cdots$};
+
+    \end{feynman}
+    \end{tikzpicture}.
+\end{aligned} 
+\end{equation}
+Also
+\begin{equation}
+    \begin{aligned}
+        \begin{tikzpicture}[scale=0.5, transform shape, baseline={([yshift=-0.1cm]current bounding box.center)}]
+    \begin{feynman}
+        
+
+        \vertex (a) {};
+        \vertex [dot, right=1.5cm of a] (b) {};
+        \vertex [dot, right=1.5cm of b] (c) {};
+        \vertex [right=1.5cm of c] (d) {};
+
+        \vertex [below=1.5 cm of b,draw,circle,minimum size=0.6cm,inner sep=0pt] (r1) {k};
+        \vertex [above=1.5 cm of c] (rn) {};
+        
+
+        \diagram*{
+
+            (a) -- [fermion, momentum={[arrow distance=4pt]\ensuremath{\scriptstyle p}}] (b) -- [fermion] (c) -- [fermion] (d),
+            
+            (b) -- [photon] (r1), (c) -- [photon] (rn),
+
+        };
+
+    \end{feynman}
+    \end{tikzpicture} &= \frac{\slp + m}{p^2- m^2}\slk\frac{\slp + \slk + m}{(p + k)^2 - m^2} \\
+        &= \begin{tikzpicture}[scale=0.5, transform shape, baseline={([yshift=-0.3cm]current bounding box.center)}]
+    \begin{feynman}
+        
+        \vertex (a) {};
+        \vertex [dot, right=2cm of a] (b) {};
+        \vertex [right=2cm of b] (c) {};
+        
+        \vertex [above=2cm of b] (r1) {};
+
+        \diagram*{
+
+            (a) -- [fermion, momentum={[arrow distance=4pt]\ensuremath{\scriptstyle p}}] (b) -- [fermion, momentum'={[arrow distance=4pt]\ensuremath{\scriptstyle p + k - r_1 }}] (c),
+            (b) -- [photon, momentum'={[arrow distance=4pt]\ensuremath{\scriptstyle r_1 - k}}] (r1)
+
+        };
+
+    \end{feynman}
+    \end{tikzpicture} - \begin{tikzpicture}[scale=0.5, transform shape, baseline={([yshift=-0.3cm]current bounding box.center)}]
+    \begin{feynman}
+
+        \vertex (a) {};
+        \vertex [dot, right=2cm of a] (b) {};
+        \vertex [right=2cm of b] (c) {};
+
+        \vertex [above=2 cm of b] (r1) {};
+
+        \diagram*{
+
+            (a) -- [fermion, momentum={[arrow distance=4pt]\ensuremath{\scriptstyle p + k}}] (b) -- [fermion, momentum'={[arrow distance=4pt]\ensuremath{\scriptstyle p + k - r_1}}] (c),
+            (b) -- [photon, momentum'={[arrow distance=4pt]\ensuremath{\scriptstyle r_1}}] (r1)
+
+        };
+
+    \end{feynman}
+    \end{tikzpicture},
+    \end{aligned}
+\end{equation}
+and 
+\begin{equation}
+    \begin{tikzpicture}[scale=0.5, transform shape, baseline={([yshift=-0.1cm]current bounding box.center)}]
+    \begin{feynman}
+        
+        \vertex (a) {};
+        \vertex [dot, right=1.5cm of a] (b) {};
+        \vertex [dot, right=1.5cm of b] (c) {};
+        \vertex [right=1.5cm of c] (d) {};
+
+        \vertex [above=1.5 cm of b] (r1) {};
+        \vertex [below=1.5 cm of c,draw,circle,minimum size=0.6cm,inner sep=0pt] (rn) {k};
+        
+        \diagram*{
+
+            (a) -- [fermion] (b) -- [fermion] (c) -- [fermion] (d),
+            
+            (b) -- [photon] (r1), (c) -- [photon] (rn),
+
+        };
+
+    \end{feynman}
+    \end{tikzpicture} = \begin{tikzpicture}[scale=0.5, transform shape, baseline={([yshift=-0.3cm]current bounding box.center)}]
+    \begin{feynman}
+        
+        \vertex (a) {};
+        \vertex [dot, right=2cm of a] (b) {};
+        \vertex [right=2cm of b] (c) {};
+
+        \vertex [above=2cm of b] (r1) {};
+
+        \diagram*{
+
+            (a) -- [fermion, momentum={[arrow distance=4pt]\ensuremath{\scriptstyle q_{n-1}}}] (b) -- [fermion, momentum'={[arrow distance=4pt]\ensuremath{\scriptstyle q_n}}] (c),
+            (b) -- [photon, momentum'={[arrow distance=4pt]\ensuremath{\scriptstyle r_n}}] (r1)
+
+        };
+
+    \end{feynman}
+    \end{tikzpicture} - \begin{tikzpicture}[scale=0.5, transform shape, baseline={([yshift=-0.3cm]current bounding box.center)}]
+    \begin{feynman}
+        
+        \vertex (a) {};
+        \vertex [dot, right=2cm of a] (b) {};
+        \vertex [right=2cm of b] (c) {};
+
+        \vertex [above=2cm of b] (r1) {};
+
+        \diagram*{
+
+            (a) -- [fermion, momentum={[arrow distance=4pt]\ensuremath{\scriptstyle q_{n-1}}}] (b) -- [fermion, momentum'={[arrow distance=4pt]\ensuremath{\scriptstyle q_n + k}}] (c),
+            (b) -- [photon, momentum'={[arrow distance=4pt]\ensuremath{\scriptstyle r_n - k}}] (r1)
+
+        };
+
+    \end{feynman}
+    \end{tikzpicture},
+\end{equation}
+thus
+\begin{equation}
+\label{eq: sum over insertions on adjacent propagators}
+    \begin{tikzpicture}[scale=0.65, transform shape, baseline={([yshift=-0.2cm]current bounding box.center)}]
+    \begin{feynman}
+        
+        \vertex [draw,circle,minimum size=0.6cm,inner sep=0pt] (k) {k};
+        \vertex [above=1.2cm of k] (down);
+
+        \diagram*{
+
+            (k) -- [fermion] (down),
+        };
+
+    \end{feynman}
+\end{tikzpicture} \otimes
+    \begin{tikzpicture}[scale=0.5, transform shape, baseline={([yshift=-0.2cm]current bounding box.center)}]
+    \begin{feynman}
+
+        \vertex (a) {};
+        \vertex [dot, right=1.5cm of a] (b) {};
+        \vertex [dot, right=1.5cm of b] (c) {};
+        \vertex [dot, right=1.5cm of c] (d) {};
+        \vertex [right=1.5cm of d] (e) {};
+
+        \vertex[above=1.5 cm of b] (r1) {};
+        \vertex[above=1.5 cm of c] (r2) {};
+        \vertex[above=1.5 cm of d] (rn) {};
+
+        \diagram*{
+
+            (a) -- [fermion, momentum'={[arrow distance=4pt]\ensuremath{\scriptstyle p}}] (b) -- [fermion] (c) -- [fermion] (d) -- [fermion, momentum'={[arrow distance=4pt]\ensuremath{\scriptstyle q'}}] (e), (b) -- [photon] (r1), (c) -- [photon] (r2), (d) -- [photon] (rn),
+
+        };
+
+         \node at ($(r2)!0.5!(rn)+(0,-0.5)$) {$\cdots$};
+
+    \end{feynman}
+    \end{tikzpicture}
+    =
+     \begin{tikzpicture}[scale=0.5, transform shape, baseline={([yshift=-0.2cm]current bounding box.center)}]
+    \begin{feynman}
+        
+        \vertex (a) {};
+        \vertex [dot, right=1.5cm of a] (b) {};
+        \vertex [dot, right=1.5cm of b] (c) {};
+        \vertex [dot, right=1.5cm of c] (d) {};
+        \vertex [right=1.5cm of d] (e) {};
+
+        \vertex[above=1.5 cm of b] (r1) {};
+        \vertex[above=1.5 cm of c] (r2) {};
+        \vertex [above=1.5 cm of d] (rn) {};
+
+        \diagram*{
+
+            (a) -- [fermion, momentum'={[arrow distance=4pt]\ensuremath{\scriptstyle p}}] (b) -- [fermion] (c) -- [fermion] (d) -- [fermion, momentum'={[arrow distance=4pt]\ensuremath{\scriptstyle q - k}}] (e), (b) -- [photon] (r1), (c) -- [photon] (r2), (d) -- [photon] (rn),
+
+        };
+
+         \node at ($(r2)!0.5!(rn)+(0,-0.5)$) {$\cdots$};
+
+    \end{feynman}
+    \end{tikzpicture} - \begin{tikzpicture}[scale=0.5, transform shape, baseline={([yshift=-0.2cm]current bounding box.center)}]
+    \begin{feynman}
+        
+        \vertex (a) {};
+        \vertex [dot, right=1.5cm of a] (b) {};
+        \vertex [dot, right=1.5cm of b] (c) {};
+        \vertex [dot, right=1.5cm of c] (d) {};
+        \vertex [right=1.5cm of d] (e) {};
+
+        \vertex[above=1.5 cm of b] (r1) {};
+        \vertex[above=1.5 cm of c] (r2) {};
+        \vertex [above=1.5 cm of d] (rn) {};
+        
+        \diagram*{
+
+            (a) -- [fermion, momentum'={[arrow distance=4pt]\ensuremath{\scriptstyle p + k}}] (b) -- [fermion] (c) -- [fermion] (d) -- [fermion, momentum'={[arrow distance=4pt]\ensuremath{\scriptstyle q}}] (e), (b) -- [photon] (r1), (c) -- [photon] (r2), (d) -- [photon] (rn),
+
+        };
+
+         \node at ($(r2)!0.5!(rn)+(0,-0.5)$) {$\cdots$};
+
+    \end{feynman}
+    \end{tikzpicture}
+\end{equation}
+where $q \equiv p + k -\sum_ir_i$ and $q' \equiv p - \sum_ir_i$. \begin{obs}
+    Note that if we apply the LSZ formalism to the correlation function and put the external legs on-shell, the two terms cancel recovering the Ward identity.
+\end{obs} 
+The relation is valid off-shell so applies to any sub-diagram. To complete the proof we must consider insertions on internal, closed loop, fermion lines. A closed loop with $n$-photons attached is written as
+\begin{equation}
+    \begin{tikzpicture}[scale=0.65, transform shape, baseline={([yshift=-0.1cm]current bounding box.center)}]
+    \begin{feynman}
+        
+        \vertex [draw,circle,minimum size=1cm,inner sep=0pt] (v) {};
+
+        \vertex [above left=1.5cm and 0.7cm of v, label=\ensuremath{ r_1}] (q1);
+        \vertex [above right=1.5cm and 0.7cm of v, label=\ensuremath{ r_2}] (qn);
+
+        % p
+        \vertex [below left=1.5cm and 0.7cm of v, label={[label distance=0.5pt]below:\ensuremath{r_n}}] (p1);
+        \vertex [below right=1.5cm and 0.7cm of v, label={[label distance=0.5pt]below:\ensuremath{r_5}}] (pn);
+
+        % r
+        \vertex [above right=0.7 and 1.5cm of v, label=\ensuremath{ r_3}] (r1);
+        \vertex [below right=0.7 and 1.5cm of v, label=\ensuremath{ r_4}] (rn);
+
+        \diagram*{
+
+            (v) -- [photon] (q1),
+            (v) -- [photon] (qn),
+
+            (v) -- [photon] (p1),
+            (v) -- [photon] (pn),
+
+            (v) -- [photon] (r1),
+            (v) -- [photon] (rn)
+        };
+ 
+         \node at ($(q1)!0.5!(p1)+(-0.2,0)$) {$\vdots$};
+
+    \end{feynman}
+\end{tikzpicture} = \bigtr{\begin{tikzpicture}[scale=0.5, transform shape, baseline={([yshift=-0.1cm]current bounding box.center)}]
+    \begin{feynman}
+        
+
+        \vertex (a) {};
+        \vertex [dot, right=1.5cm of a] (b) {};
+        \vertex [dot, right=1.5cm of b] (c) {};
+        \vertex [dot, right=1.5cm of c] (d) {};
+        \vertex [right=1.5cm of d] (e) {};
+
+        \vertex[above=1.5 cm of b] (r1) {};
+        \vertex[above=1.5 cm of c] (r2) {};
+        \vertex[above=1.5 cm of d] (rn) {};
+        
+
+        \diagram*{
+
+            (a) -- [fermion, momentum'={[arrow distance=4pt]\ensuremath{\scriptstyle l}}] (b) -- [fermion] (c) -- [fermion] (d) -- [fermion, momentum'={[arrow distance=4pt]\ensuremath{\scriptstyle l}}] (e), (b) -- [photon, momentum={[arrow distance=4pt]\ensuremath{\scriptstyle r_1}}] (r1), (c) -- [photon, momentum={[arrow distance=4pt]\ensuremath{\scriptstyle r_2}}] (r2), (d) -- [photon, momentum'={[arrow distance=4pt]\ensuremath{\scriptstyle r_n}}] (rn),
+
+        };
+
+         \node at ($(r2)!0.5!(rn)+(0,-0.5)$) {$\cdots$};
+
+    \end{feynman}
+    \end{tikzpicture}},
+\end{equation}
+where $r_i$ are outgoing photon and $l$ is an internal loop momentum. On the left-hand side we have used the notation $\nparallel$ to indicate the end-points are the same. When we sum over all insertion points, we can use the same type of relations as before and only the changed momentum conservation conditions results in the final two contributions cancelling
+\begin{equation}
+\label{eq: sum over insertion points}
+\begin{aligned}
+\begin{tikzpicture}[scale=0.65, transform shape, baseline={([yshift=0.2cm]current bounding box.center)}]
+    \begin{feynman}
+        
+        \vertex [draw,circle,minimum size=0.6cm,inner sep=0pt] (k) {k};
+        \vertex [below=1.2cm of k] (down);
+
+        \diagram*{
+
+            (k) -- [fermion] (down),
+        };
+
+    \end{feynman}
+\end{tikzpicture} \otimes
+    \begin{tikzpicture}[scale=0.65, transform shape, baseline={([yshift=-0.1cm]current bounding box.center)}]
+    \begin{feynman}
+        
+        \vertex [draw,circle,minimum size=1cm,inner sep=0pt] (v) {};
+
+        \vertex [above left=1.5cm and 0.7cm of v, label=\ensuremath{ r_1}] (q1);
+        \vertex [above right=1.5cm and 0.7cm of v, label=\ensuremath{ r_2}] (qn);
+
+        % p
+        \vertex [below left=1.5cm and 0.7cm of v, label={[label distance=0.5pt]below:\ensuremath{r_n}}] (p1);
+        \vertex [below right=1.5cm and 0.7cm of v, label={[label distance=0.5pt]below:\ensuremath{r_5}}] (pn);
+
+        % r
+        \vertex [above right=0.7 and 1.5cm of v, label=\ensuremath{ r_3}] (r1);
+        \vertex [below right=0.7 and 1.5cm of v, label=\ensuremath{ r_4}] (rn);
+
+        \diagram*{
+
+            (v) -- [photon] (q1),
+            (v) -- [photon] (qn),
+
+            (v) -- [photon] (p1),
+            (v) -- [photon] (pn),
+
+            (v) -- [photon] (r1),
+            (v) -- [photon] (rn)
+        };
+ 
+         \node at ($(q1)!0.5!(p1)+(-0.2,0)$) {$\vdots$};
+
+    \end{feynman}
+\end{tikzpicture} &= \bigtr{\begin{tikzpicture}[scale=0.5, transform shape, baseline={([yshift=-0.1cm]current bounding box.center)}]
+    \begin{feynman}
+        
+
+        \vertex (a) {};
+        \vertex [dot, right=1.5cm of a] (b) {};
+        \vertex [dot, right=1.5cm of b] (c) {};
+        \vertex [dot, right=1.5cm of c] (d) {};
+        \vertex [right=1.5cm of d] (e) {};
+
+        \vertex[above=1.5 cm of b] (r1) {};
+        \vertex[above=1.5 cm of c] (r2) {};
+        \vertex[above=1.5 cm of d] (rn) {};
+        
+
+        \diagram*{
+
+            (a) -- [fermion, momentum'={[arrow distance=4pt]\ensuremath{\scriptstyle l + k}}] (b) -- [fermion] (c) -- [fermion] (d) -- [fermion] (e), (b) -- [photon] (r1), (c) -- [photon] (r2), (d) -- [photon,] (rn),
+
+        };
+
+         \node at ($(r2)!0.5!(rn)+(0,-0.5)$) {$\cdots$};
+
+    \end{feynman}
+    \end{tikzpicture}} - \bigtr{\begin{tikzpicture}[scale=0.5, transform shape, baseline={([yshift=-0.1cm]current bounding box.center)}]
+    \begin{feynman}
+        
+
+        \vertex (a) {};
+        \vertex [dot, right=1.5cm of a] (b) {};
+        \vertex [dot, right=1.5cm of b] (c) {};
+        \vertex [dot, right=1.5cm of c] (d) {};
+        \vertex [right=1.5cm of d] (e) {};
+
+        \vertex[above=1.5 cm of b] (r1) {};
+        \vertex[above=1.5 cm of c] (r2) {};
+        \vertex[above=1.5 cm of d] (rn) {};
+        
+
+        \diagram*{
+
+            (a) -- [fermion, momentum'={[arrow distance=4pt]\ensuremath{\scriptstyle l}}] (b) -- [fermion] (c) -- [fermion] (d) -- [fermion] (e), (b) -- [photon] (r1), (c) -- [photon] (r2), (d) -- [photon] (rn),
+
+        };
+
+         \node at ($(r2)!0.5!(rn)+(0,-0.5)$) {$\cdots$};
+
+    \end{feynman}
+    \end{tikzpicture}} \\
+    &= 0.
+\end{aligned}
+\end{equation}
+The two equations \eqref{eq: sum over insertions on adjacent propagators} and \eqref{eq: sum over insertion points} are sufficient to prove the general relation. It is interesting to consider a special case of the Ward-Takahashi identity for the 2-point electron self-energy
+\begin{equation}
+    \begin{tikzpicture}[scale=0.65, transform shape, baseline={([yshift=0.2cm]current bounding box.center)}]
+    \begin{feynman}
+        
+        \vertex [draw,circle,minimum size=0.6cm,inner sep=0pt] (k) {k};
+        \vertex [below=1.2cm of k] (down);
+
+        \diagram*{
+
+            (k) -- [fermion] (down),
+        };
+
+    \end{feynman}
+    \end{tikzpicture} \otimes 
+    \feynmandiagram[inline=(v.base), layered layout, horizontal=a to b, scale=0.8, transform shape] { 
+        a -- [fermion, momentum'={[arrow distance = 5pt]\(\scriptstyle p\)},] v [blob, pos=0.5] -- [fermion] b, 
+        }; = e_R(\feynmandiagram[inline=(v.base), layered layout, horizontal=a to b, scale=0.8, transform shape] { 
+        a -- [fermion, momentum'={[arrow distance = 5pt]\(\scriptstyle p\)}] v [blob, pos=0.5] -- [fermion] b, 
+        }; - \feynmandiagram[inline=(v.base), layered layout, horizontal=a to b, scale=0.8, transform shape] { 
+        a -- [fermion, momentum'={[arrow distance = 5pt]\(\scriptstyle p + k\)}] v [blob, pos=0.5] -- [fermion] b, 
+        };) = \feynmandiagram[inline={([yshift=-0.2cm]current bounding box.center)}, scale = 0.9, horizontal=a to c] { 
+    a -- [fermion, momentum'={[arrow distance=4pt] \ensuremath{\scriptstyle p}}] b [blob] -- [photon, reversed momentum={[arrow distance=4pt] \ensuremath{\scriptstyle k}}, label=\ensuremath{\scriptstyle A_c^\mu}] d, b -- [fermion, momentum={[arrow distance=4pt] \ensuremath{\scriptstyle p + k}}] c};k_\mu.
+\end{equation}
+The 2-point function is
+\begin{equation}
+    \feynmandiagram[inline=(v.base), layered layout, horizontal=a to b, scale=0.8, transform shape] { 
+        a -- [fermion, momentum'={[arrow distance = 5pt]\(\scriptstyle p\)},] v [blob, pos=0.5] -- [fermion] b, 
+        }; = \frac{i}{\slp - m_R - \Sigma_R(p,m_R)} = S(p),
+\end{equation}
+while the vertex function appears on the left-hand side as
+\begin{equation}
+    \feynmandiagram[inline={([yshift=-0.2cm]current bounding box.center)}, scale = 0.9, horizontal=a to c] { 
+    a -- [fermion, momentum'={[arrow distance=4pt] \ensuremath{\scriptstyle p}}] b [blob] -- [photon, reversed momentum={[arrow distance=4pt] \ensuremath{\scriptstyle k}}, label=\ensuremath{\scriptstyle A_c^\mu}] d, b -- [fermion, momentum={[arrow distance=4pt] \ensuremath{\scriptstyle p + k}}] c};k_\mu = S(p)[-ie_R\Gamma_R^\mu(p,p + k)k_\mu]S(p + k).
+\end{equation}
+Multiplying the inverse propagator leads to the relation 
+\begin{equation}
+    -ik_\mu\Gamma_R^\mu(p,p + k) = S^{-1}(p + k) - S^{-1}(p),
+\end{equation}
+as we take the limit for $k \to 0$ we identify the renormalization constants $Z_1$ and $Z_\psi$ with
+\begin{equation}
+    \lim_{k \to 0}\Gamma_R^\mu(p,p + k) = Z_1^{-1}\gamma^\mu, \quad S(p) = \frac{iZ_\psi}{\slp - m_R} + o(\slp - m_R),
+\end{equation}
+hence
+\begin{equation}
+    -i\slk Z_1^{-1} = -i(\slp + \slk)Z_\psi^{-1} - (-i\slp)Z_\psi^{-1},
+\end{equation}
+resulting in 
+\begin{equation}
+    Z_1 = Z_\psi.
+\end{equation}
+So the Ward-Takahashi identity is directly connected with the gauge invariance constraint that identifies $Z_1$ with $Z_\psi$. 

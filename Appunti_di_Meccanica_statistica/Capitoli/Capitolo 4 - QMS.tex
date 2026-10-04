@@ -1,0 +1,163 @@
+\chapter{Meccanica statistica quantistica}
+Anche se la descrizione classica spesso fornisce un'utile approssimazione, la trattazione corretta dei sistemi a livello microscopico è quella quantistica. Serve quindi anche in questo contesto capire come possa emergere il comportamento termodinamico a livello macroscopico. Dato un sistema quantistico, anche a più componenti, esso è descritto da uno stato $\ket{\psi}$ in uno spazio di Hilbert. Lo stato $\ket{\psi}$ può venire espresso in una qualsiasi combinazione in una qualsivoglia base conveniente allo scopo. Ad esempio, se $\ket{q}$ è un autostato dell'operatore posizione, allora $\ket{\psi}$ si può scrivere come
+\begin{equation}
+    \ket{\psi} = \int dq\,\ket{q}\mybraket{q}{\psi},\quad \mybraket{q}{\psi(t)} = \psi(q,t).
+\end{equation}
+L'evoluzione temporale di $\ket{\psi}$ è determinata dall'equazione di Schr\"odinger 
+\begin{equation}
+\label{eq: equazione di Schrodinger}
+    i\hbar\frac{\p}{\p t}\ket{\psi(t)} = \hatH\ket{\psi(t)}.
+\end{equation}
+Questo implica che la dinamica è reversibile rispetto al tempo e l'evoluzione è unitaria. Si arriva di fronte allo stesso problema già incontrato nel contesto classico: come può emergere l'evoluzione macroscopica irreversibile verso l'equilibrio in cui raggiunge la stazionarietà? Perché c'è un macrostato unico di equilibrio che ``dimentica\footnote{In Termodinamica si parla di funzioni di stato che hanno la caratteristica di dipendere solo dallo stato che il sistema termodinamico ha in quel preciso momento, dimenticandosi dei trascorsi precedenti.}'' le condizioni iniziali? Come nel caso classico, il problema è ancora oggi oggetto di dibattito. Ci si concentra quindi sulla teoria standard degli ensembles statistici in versione quantistica. 
+
+\subsubsection{Evoluzione di uno stato puro}
+Sia $\{n\}$ il set di autovalori di un sistema completo di osservabili commutanti, tra le quali l'hamiltoniana, e si indichi con $\{\ket{n}\}$ il set dei corrispondenti autostati, quindi si ha dall'equazione agli autovalori dell'hamiltoniana
+\begin{equation}
+    \hatH\ket{n} = E_n\ket{n}
+\end{equation}
+che l'evoluzione degli stati $\ket{n}$ è completamente determinata da
+\begin{equation}
+    \ket{n(t)} = e^{-iE_nt/\hbar}\ket{n}.
+\end{equation}
+Un generico stato puro si può espandere, tramite una somma o un integrale a seconda che i livelli siano discreti o continui rispettivamente, come
+\begin{equation}
+    \ket{\psi(t)} = \sumint c_n\ket{n(t)} = \sumint c_ne^{-iE_nt/\hbar}\ket{n}.
+\end{equation}
+Quindi, noto lo spettro, risulta completamente determinato lo stato iniziale a $t = 0$ come
+\begin{equation}
+    \ket{\psi(0)} = \sumint c_n\ket{n}.
+\end{equation}
+Ora, il valore medio, definito nei termini quantistici, di un'osservabile $\hatO$, cioè di un operatore autoaggiunto definito su uno spazio di Hilbert, nello stato $\ket{\psi(t)}$ è dato da
+\begin{equation}
+    \begin{split}
+        \vmedio{\hatO}_{\ket{\psi(t)}} &= \mybrakett{\psi(t)}{\hatO}{\psi(t)} \\
+        &= \nsum_{m,n} c_m^*c_ne^{i(E_m - E_n)t/\hbar}\mybrakett{m}{\hatO}{n} \\
+        &= \nsum_n|c_n|^2\mybrakett{n}{\hatO}{n} + \nsum_{m\neq n}c_m^*c_ne^{i(E_m - E_n)t/\hbar}\mybrakett{m}{\hatO}{n},
+    \end{split} 
+\end{equation}
+da cui si deduce che, per un generico stato $\ket{\psi(t)}$ ed una generica osservabile $\hatO$, non si ha un'evoluzione verso l'equilibrio in quanto:
+\begin{enumerate}
+    \item il primo termine a secondo membro è indipendente dal tempo, anche nel limite $t\to\infty$, per cui è stazionario, anche se tuttavia dipende dallo stato iniziale attraverso i coefficienti $c_n$ e quindi non perde ``memoria'' di esso;
+    \item il secondo termine del secondo membro nel limite $t\to\infty$ continua ad oscillare nel tempo non diventando perciò mai stazionaria.
+\end{enumerate}
+Dunque, l'evoluzione di uno stato puro non è adatta a descrivere l'evoluzione termodinamica verso l'equilibrio. In altre parole, con uno stato puro non ci si aspetta termalizzazione per un sistema quantico isolato. 
+
+\subsubsection{Meccanismi di termalizzazione}
+Prima di tutto si da una definizione adatta di ``termalizzazione'' di un sistema secondo la Meccanica statistica.
+\begin{defn}[termalizzazione]
+    La termalizzazione è il processo secondo il quale le particelle di un sistema fisico giungono all'equilibrio termico mediante successive mutue interazioni.
+\end{defn}
+Si assume, nell'approccio standard della Meccanica statistica, che la termalizzazione nei sistemi quantistici macroscopici sia legata ai seguenti fatti: la conoscenza incompleta dello stato e le interazioni con l'ambiente.
+
+\paragraph{Conoscenza incompleta dello stato.} Anche ammettendo di conoscere lo spettro, cioè di aver risolto l'equazione di Scr\"odinger stazionaria, per specificare lo stato $\ket{\psi}$ si dovrebbero conoscere con estrema precisione tutti i coefficienti $c_n$ dello sviluppo, che però sono un numero enorme. Infatti, i livelli energetici per un sistema con un numero elevato $N$ di componenti sono molto densi e gli stati iniziali del sistema macroscopico sono quindi sempre specificati con un certo grado di incertezza.
+
+\paragraph{Interazioni con l'ambiente.}  Anche il sistema reale meglio isolato è in realtà, quasi-isolato. Infatti, data la densità dei livelli, basta qualsiasi anche minima interazione con l'ambiente per alterare i livelli stessi e lo stato del sistema. Tra le interazioni, nel caso quantistico, vanno incluse anche quelle con gli apparati di misura.
+
+\section{Matrice densità}
+Per quanto detto, adesso si considerano sistemi di cui non si ha una conoscenza completa. La descrizione quantistica basata su un insieme di dati incompleto si sviluppa tramite il formalismo della matrice densità, che è lo stesso utilizzato nella teoria degli ensembles statistici. 
+
+Si supponga quindi di conoscere in modo incompleto lo stato di un sistema, conoscendo solo la probabilità $p_k$ che il sistema si trovi in un certo stato $\ket{\psi_k(t)}$ dove l'insieme $\{\ket{\psi(t)}\}$ non è detto che rappresenti un sistema completo. Essendo $p_k$ delle probabilità, devono soddisfare la normalizzazione 
+\begin{equation}
+\label{eq: normalizzazione pk}
+    \nsum_k p_k = 1,\quad 0 \le p_k \le 1.
+\end{equation}
+In questo caso, data l'incertezza sullo stato assunto dal sistema, la predizione della misura di un'osservabile $\hatO$ non è più il semplice valor medio quantistico, ma è un valore medio in senso statistico pesato dalle $p_k$ sui contributi dei valori medi quantistici dei vari stati, ossia
+\begin{equation}
+\label{eq: valore medio quatistico statistico}
+    \vmedio{\hatO} = \nsum_k p_k\vmedio{\hatO}_k = \nsum_k p_k\mybrakett{\psi_k(t)}{\hatO}{\psi_k(t)}.
+\end{equation}
+L'espressione \eqref{eq: valore medio quatistico statistico} può essere riscritta in termini dell'operatore densità $\hatrho$ definito come
+\begin{equation}
+\label{eq: definizione operatore densità}
+    \hatrho := \nsum_k p_k \ket{\psi_k(t)}\bra{\psi_k(t)},
+\end{equation}
+dove $\ket{\psi_k(t)}$ e $\bra{\psi_k(t)}$ sono i proiettori sugli stati $\psi_k(t)$, ottenendo
+\begin{equation}
+\label{eq: valore medio quantistico statistico (operatore densità)}
+    \vmedio{\hatO} = \Tr{\hatO\hatrho}.
+\end{equation}
+Infatti, se $\{\ket{\alpha}\}$ è una qualsiasi base completa, introducendo una relazione di completezza $\nsum_\alpha\ket{\alpha}\bra{\alpha} = \MI$, si può scrivere
+\begin{equation}
+    \begin{split}
+        \vmedio{\hatO} = \Tr{\hatO\hatrho} &= \nsum_k\nsum_\alpha p_k \mybrakett{\psi_k(t)}{\hatO}{\alpha}\mybraket{\alpha}{\psi_k(t)} \\
+        &= \nsum_\alpha\mybrakett{\alpha}{\nsum_k p_k}{\psi_k(t)}\mybrakett{\psi_k(t)}{\hatO}{\alpha} \\
+        &= \nsum_\alpha\mybrakett{\alpha}{\hatrho\hatO}{\alpha} \\
+        &= \Tr{\hatrho\hatO}.
+    \end{split}
+\end{equation}
+Nella definizione di valore medio \eqref{eq: valore medio quantistico statistico (operatore densità)}, l'operatore $\hatrho$ compare come una traccia. Quindi, la descrizione è indipendente dalla particolare base che si decide di scegliere per rappresentare l'operatore. Questo fatto è molto conveniente in quanto la scelta di una certa base piuttosto che un'altra può semplificare la descrizione di un particolare sistema. Fissata la base, l'operatore $\hatrho$ è descritto dai suoi elementi di matrice, per questo si parla di ``matrice densità'' $\rho_{\alpha\beta}$, tipicamente rappresentata nella base dell'energia. 
+
+L'operatore e la matrice densità posseggono alcune proprietà importanti. Per studiarle, si supponga di scegliere una base $\{\ket{\alpha}\}$, l'operatore $\hatrho$ è quindi rappresentato dalla matrice densità
+\begin{equation}
+    \rho_{\alpha\beta} = \mybrakett{\alpha}{\hatrho}{\beta}.
+\end{equation}
+Le proprietà in questione sono:
+\begin{enumerate}
+    \item $\Tr{\hatrho} = 1$, infatti se si applica la definizione \eqref{eq: valore medio quantistico statistico (operatore densità)} nel caso in cui $\hatO \equiv \MI$, si ha direttamente $\vmedio{\MI} = 1 = \Tr{\hatrho}$;
+    \item $\rho_{\alpha\alpha} \le 1$, infatti si ha che
+    \begin{equation}
+        \rho_{\alpha\alpha} = \nsum_k p_k\mybraket{\alpha}{\psi_k(t)}\mybraket{\psi_k(t)}{\alpha} = \nsum_k p_k |\mybraket{\alpha}{\psi_k(t)}|^2,
+    \end{equation}
+    ma considerando la condizione \eqref{eq: normalizzazione pk} e dato che $|\mybraket{\alpha}{\psi_k(t)}|^2 \le 1$, allora è immediato vedere che $\rho_{\alpha\alpha} \le 1$;
+    \item dato che la precedente proprietà è valida per qualunque base, si indica con $\{\ket{\Lambda_i}\}$ la base di $\hatrho$ tale che $\hatrho\ket{\Lambda_i} = \lambda_i\ket{\Lambda_i}$, allora 
+    \begin{equation}
+        \lambda_i = \mybrakett{\Lambda_i}{\hatrho}{\Lambda_i} \le 1,\quad \nsum_i\lambda_i = \Tr{\hatrho} = 1,
+    \end{equation}
+    da cui, dato che $\lambda_i^2 \le \lambda_i$, si ricava che
+    \begin{equation}
+        \Tr{\hatrho^2} = \nsum_i\lambda_i^2 \le \nsum_i\lambda_i \le 1,
+    \end{equation}
+    dunque, si ha
+    \begin{equation}
+        \Tr{\hatrho^2} \le 1;
+    \end{equation}
+    \item $\Tr{\hatrho^2} = 1$ se e solo se il sistema si trova in uno stato puro, infatti, se si suppone che $\hatrho$ si possa scrivere come $\hatrho = \ket{\psi}\bra{\psi}$ per un qualche stato puro, allora solo in tal caso, siccome $\ket{\psi}\bra{\psi}$ è un proiettore, si ha
+    \begin{equation}
+        \hatrho = \ket{\psi}\bra{\psi} \quad\Rightarrow\quad \Tr{\hatrho^2} = 1;
+    \end{equation}
+    \item i termini non diagonali di $\rho_{\alpha\beta}$, con $\alpha \neq \beta$, non hanno direttamente significato di probabilità che il sistema sia in un certo stato $\alpha$, ma rappresentano piuttosto la tendenza del sistema di passare dallo stato $\ket{\beta}$ allo stato $\ket{\alpha}$, pertanto all'equilibrio ci si aspetta che 
+    \begin{equation}
+        \rho_{\alpha\beta} = \rho_{\beta\alpha},
+    \end{equation}
+    ossia che la matrice densità soddisfi una condizione di bilancio dettagliato.
+\end{enumerate}
+L'operatore densità svolge un ruolo analogo a quello della densità di probabilità $\rho(q,p)$ nella discussione classica. Allo stesso modo, la sua evoluzione temporale è determinata dalla dinamica microscopica, ma al posto che essere descritta dall'equazione di Liouville, lo è dall'equazione di Schr\"odinger
+\begin{equation}
+\label{eq: evoluzione temporale operatore densità (eq. schrodinger)}
+    i\hbar\frac{\p \hatrho}{\p t} = \comm{\hatH}{\hatrho}.
+\end{equation}
+Essendo stati puri, si sa che l'evoluzione è unitaria
+\begin{equation}
+    \hatrho(t) = e^{-i\hatH t/\hbar}\hatrho(0)e^{i\hatH t/\hbar}.
+\end{equation}
+Il risultato della \eqref{eq: evoluzione temporale operatore densità (eq. schrodinger)} è l'analogo del teorema di Liouville \eqref{eq: equazione di Liouville} per il caso classico, infatti
+\begin{equation}
+\label{eq: evoluzione temporale operatore densità (eq. liouville)}
+    \frac{\p \rho}{\p t} = \acomm{H}{\rho}.
+\end{equation}
+Come al solito, nel passaggio dalla trattazione classica a quella quantistica le parentesi di Poisson vengono sostituire con il commutatore. 
+\begin{obs}
+    Al momento si sta lavorando nella rappresentazione di Schr\"odinger dove gli stati evolvono nel tempo, mentre le osservabili sono stazionarie. Tuttavia, $\hatrho$, che è un operatore definito su uno spazio di Hilbert, è dipendente dal tempo.
+\end{obs}
+Nel caso classico, all'equilibrio ci si aspetta che $\rho(q,p)$ sia stazionaria, per cui anche $\hatrho$ deve risultare stazionaria all'equilibrio e quindi dall'equazione \eqref{eq: evoluzione temporale operatore densità (eq. schrodinger)} segue che
+\begin{equation}
+    \comm{\hatH}{\hatrho} = 0,
+\end{equation}
+ossia $\hatrho$ deve essere esprimibile tramite osservabili commutanti con l'hamiltoniana. Si assuma pertanto, per le medesime ragioni del caso classico, che $\hatrho$ dipenda solo da $\hatH$, o al massimo dall'operatore numero $\hatN$, il cui autovalore è il numero di particelle del sistema, se quest'ultimo è aperto. All'equilibrio, $\hatrho$ è convenientemente rappresentato nella base dell'energia degli stati stazionari $\ket{n}$ in cui, commutando con $\hatH$, esso è diagonale
+\begin{equation}
+    \hatrho = \nsum_n p_n\ket{n}\bra{n}.
+\end{equation}
+In tale base, $\hatrho$ è rappresentato da una matrice densità diagonale
+\begin{equation}
+\label{eq: matrice densità diagonale}
+    \rho_{mn} = p_n\delta_{mn},
+\end{equation}
+dove $p_n$ coincide con la probabilità che il sistema si trovi nello stato $\ket{n}$ con energia pari a $E_n$.
+
+\subsubsection{Entropia di von Neumann}
+In Meccanica quantistica, nel formalismo della matrice densità, si introduce l'entropia di von Neumann
+\begin{equation}
+\label{eq: definizione entropia von Neumann}
+    \SvN := -\Tr{\hatrho\ln{\hatrho}} = -\nsum_i\lambda_i\ln{\lambda_i}.
+\end{equation}
+Questa entropia rappresenta una misura dell'informazione quantistica contenuta in uno stato. Infatti, si ha $\SvN = 0$ per uno stato puro, mentre $\SvN > 0$ per uno stato misto\footnote{Infatti, se $\hatrho$ corrisponde ad uno stato puro, allora corrisponde un unico autovalore $\lambda_i = 1$, mentre gli altri sono nulli, per cui $\SvN = 0$; invece, se corrisponde ad uno stato misto, allora il logaritmo è negativo e $\SvN > 0$.}. L'espressione \eqref{eq: definizione entropia von Neumann} è analoga all'espressione dell'entropia di Shannon in Teoria dell'informazione. Inoltre, l'entropia di von Neumann per sistemi con molte componenti coincide, a meno di un fattore globale dato dalla costante di Planck, con l'entropia del sistema. 

@@ -1,0 +1,692 @@
+\chapter{Loop integration methods}
+In this chapter will expand on the techniques used in the previous chapter and develop methods read to continue our discussion to gauge theories. We came across three examples of Feynman parametrisation
+\begin{align}
+    \frac{1}{AB} &= \int_0^1 d\alpha\frac{1}{[A\alpha + B(1 - \alpha)]^2}, \\
+    \frac{1}{AB^2} &= 2\int_0^1 d\alpha\,\frac{\alpha}{[A\alpha + B(1 - \alpha)]^2}, \\
+    \frac{1}{ABC} &= 2\int_0^1 d\alpha_1\int_0^{1 - \alpha_1}d\alpha_2\frac{1}{[A\alpha_1 + B\alpha_2 + C(1 - \alpha_1 - \alpha_2)]^3},
+\end{align}
+but the general version is
+\begin{equation}
+    \frac{1}{\prod_{i=1}^nA_i^{\nu_i}} = \frac{\Gamma(\sum_{i=1}^n\nu_i)}{\prod_{i=1}^n\Gamma(\nu_i)}\int_0^1\prod_{i=1}^nd\alpha_i\,\frac{\alpha_i^{\nu_i - 1}\delta(1 - \sum_{i=1}^n\alpha_i)}{(\sum_{i=1}^nA_i\alpha_i)^{\sum_{i=1}^n\nu_i}}.
+\end{equation}
+A similar transformation is provided through Schwinger parameters
+\begin{equation}
+    \frac{1}{D^\nu} = \frac{(-1)^\nu}{\Gamma(\nu)}\int_0^\infty dt\,t^{\nu - 1}\exp{(tD)}.
+\end{equation}
+The 1-loop bubble example becomes
+\begin{equation}
+    \begin{split}
+        \selfint{D} &= \int_k\int_0^\infty dt_1\int_0^\infty dt_2\,\exp{[t_1D(k,m) + t_2D(k - p,m)]} \\
+        &= \int_k\int_{t_i}\exp{\bigg[(t_1 + t_2)(k^2 - m^2) + \frac{t_1t_2}{t_1 + t_2}p^2\bigg]} \\
+        &= \int_k\int_{t_i}\exp{(ak^2 - b)},
+    \end{split} 
+\end{equation}
+where we performed the shift 
+\begin{equation}
+\label{eq: loop momentum shift}
+    k \to k + \frac{t_2p}{t_1 + t_2}
+\end{equation}
+and imposed
+\begin{equation}
+    a \equiv t_1 + t_2,\quad b \equiv m^2(t_1 + t_2) - \frac{t_1t_2}{t_1 + t_2}p^2,\quad \int_{t_i} \equiv \int_0^\infty dt_1\int_0^\infty dt_2.
+\end{equation}
+The integral over $k$ can be performed after a Wick rotation 
+\begin{equation}
+    \begin{split}
+        \selfint{D} &= i\int_{t_i}\int_{k_E}\exp{(-ak_E^2)}\exp{(-b)} \\
+        &= \frac{i}{(4\pi)^{D/2}}\int_{t_i}\exp{(-b)}a^{-D/2}.
+    \end{split}
+\end{equation}
+
+\section{Tensor integrals}
+When considering gauge theories we will find loop momentum dependent numerators which require further analysis. We did find one case already in the case of $\p\Sigma/\p p^2$ for $\phi^3$ theory although it was handled in an easy manner. Let's try the example again using Schwinger parameters
+\begin{equation}
+    \selfint{D}[k^\mu] = \int_k\frac{k^\mu}{D(k,m)D(k - p,m)}.
+\end{equation}
+The loop momentum shift \eqref{eq: loop momentum shift} that we used to put the denominator in standard form also affects the numerator, so
+\begin{equation}
+    \begin{split}
+        \selfint{D}[k^\mu] &= \int_k\int_{t_i}\bigg[k + \frac{t_2p}{(t_1 + t_2)}\bigg]\exp{(ak^2 - b)} \\
+        &= p^\mu\int_{t_i}\frac{t_2}{(t_1 + t_2)}\frac{i}{(4\pi)^{D/2}}a^{-D/2}\exp{(-b)},
+    \end{split}
+\end{equation}
+where we have used that $\int_k k^\mu\exp{(ak^2)} = 0$. The parametric integration seems more difficult but we can use the symmetry with respect to the swap of $t_1$ and $t_2$ to write
+\begin{equation}
+    \begin{split}
+        \selfint{D}[k^\mu] &= \frac{p^\mu}{2}\int_{t_i}\bigg(\frac{t_1}{t_1 + t_2} + \frac{t_2}{t_1 + t_2}\bigg)\frac{i}{(4\pi)^{D/2}}a^{-D/2}\exp{(-b)} \\
+        &= \frac{p^\mu}{2}\selfint{D}.
+    \end{split}
+\end{equation}
+The tensor rank of a Feynman integral is the total power of all loop momenta in the numerator of the integrand. As we increase the tensor rank we encounter new loop momentum integrals, we can distinguish:
+\begin{enumerate}
+    \item if the rank is odd then the integral evaluates at
+    \begin{equation}
+    \label{eq: odd rank Feynman integrals}
+        \int_k k^{\mu_1}\cdots k^{\mu_{2n + 1}} \exp{(ak^2)} = 0,\quad n \in \Z;
+    \end{equation}
+    \item if the rank is even then the integral evaluates at
+    \begin{equation}
+    \label{eq: even rank Feynman integrals}
+        \int_k k^{\mu_1}\cdots k^{\mu_{2n}} \exp{(ak^2)} = -\frac{1}{2a}\sum_{i=2}^{2n}g^{\mu_1\mu_i}\int_k\frac{k^{\mu_1}\cdots k^{\mu_{2n}}}{k^{\mu_1}k^{\mu_i}},\quad n \in \Z.
+    \end{equation}
+\end{enumerate}
+In particular, we denote
+\begin{equation}
+    K \equiv \int_k\exp{(ak^2)} = \frac{i}{(4\pi)^{D/2}}e^{-D/2},
+\end{equation}
+so the first two integrals, other than $K$, are
+\begin{align}
+    \int_k k^\mu \exp{(ak^2)} &= 0,\quad 
+    \int_k k^\mu k^\nu \exp{(ak^2)} = -\frac{1}{2a}g^{\mu\nu}K.
+\end{align}
+\begin{obs}
+    Let's prove the rank two case of \eqref{eq: even rank Feynman integrals} given by
+    \begin{equation}
+        \int_k k^\mu k^\nu\exp{(ak^2)} = Ag^{\mu\nu},
+    \end{equation}
+    where $A$ is the unknown form factor. We begin by contracting both sides with the metric $g^{\mu\nu}$ remembering that $g^{\mu\nu}g_{\mu\nu} = D$, thus from
+    \begin{equation}
+        \begin{split}
+            \int_k k^2\exp{(ak^2)} = AD &= \int_k\frac{\p}{\p a}\exp{(ak^2)} \\
+            &= \frac{\p}{\p a}\int_k\exp{(ak^2)} \\
+            &= \frac{\p}{\p a}\bigg[\frac{i}{(4\pi)^{D/2}}e^{-D/2}\bigg] \\
+            &= -\frac{D}{2a}\frac{i}{(4\pi)^{D/2}}e^{-D/2},
+        \end{split}
+    \end{equation}
+    we get, comparing the first step with the last one, the expected result
+    \begin{equation}
+        A = -\frac{1}{2a}K.
+    \end{equation}
+\end{obs}
+Similar expressions are obtained using Feynman parameters after following the same steps, for example
+\begin{align}
+    \begin{split}
+        \selfint{D}[k^\mu] &= \int_0^1 d\alpha\int_k \frac{k^\mu + \alpha p^\mu}{(k^2 - \Delta)^2} \\
+        &= p^\mu\int_0^1 d\alpha\,\alpha\tadpole{2}{D}(\Delta),
+    \end{split} \\
+    \begin{split}
+        \selfint{D}[k^\mu,k^\nu] &= \int_0^1 d\alpha\int_k \frac{(k^\mu + \alpha p^\mu)(k^\nu + \alpha p^\nu)}{(k^2 - \Delta)^2} \\
+        &= p^\mu p^\nu\int_0^1 d\alpha\,\alpha^2\tadpole{2}{D}(\Delta) \\
+        &+ \frac{g^{\mu\nu}}{D}\int_0^1 d\alpha\,[\tadpole{1}{D}(\Delta) + \Delta\tadpole{2}{D}(\Delta)].
+    \end{split}
+\end{align}
+
+\subsection{Multi-loop parametrisations}
+It is possible to find a general parametrisation for any multi-loop graph in which we can perform the integration in $k_i^\mu$ but leave integrals over the Feynman or the Schwinger parameters. Let's consider a 2-loop graph with $n$ denominators defined through 
+\begin{align}
+    D_i &= D(q_i,m_i) = q_i^2 - m_i^2, \\
+    q_i &= \lambda_{ij}k_j^\mu + \sigma_{il}p_e^\mu,
+\end{align}
+where $k_j^\mu$ with $j = \{1,2\}$ are the loop momenta and $p_e^\mu$ are the independent external momentum
+\begin{equation}
+    \selfint{D} = \int_{k_1}\int_{k_2}\frac{1}{\prod_{i=1}^nD_i}.
+\end{equation}
+The combined arguments at the exponential after introducing Schwinger parameters $x_i$ for each $D_i$ is $\sum_{i=1}^nx_iD_i$ which we may decompose according to the loop momentum structures
+\begin{equation}
+    \sum_{i=1}^n x_iD_i = k_{i\mu}M_{ij}k_j^\mu + 2k_{i\mu}Q_i^\mu + J,
+\end{equation}
+where:
+\begin{enumerate}
+    \item $M$ is a symmetric $2\times 2$ matrix depending on $x_i$;
+    \item $Q_i^\mu$ is a vector linear in $p_e^\mu$ with coefficient dependent on $x_i$;
+    \item $J$ is a scalar quantity depending on momentum invariants and $x_i$.
+\end{enumerate}
+Thus, the relation can be written as
+\begin{equation}
+\label{eq: argument of exponential with S. parameters}
+    \sum_{i=1}^n x_iD_i = k^TMk + 2k^T\vQ + J.
+\end{equation}
+As a concrete example we can take a look at a 2-loop propagator graph
+\begin{equation}
+\begin{tikzpicture}   
+\begin{feynman}[inline={([yshift=-0.1cm]current bounding box.center)}, scale=1, transform shape]
+    % Vertici principali
+    \vertex (a);
+    \vertex [dot, right=1cm of a] (v1) {};
+    \vertex [dot, right=3.4cm of v1] (v2) {};
+    \vertex [dot, right=1.3cm of v2] (b);
+    \vertex [dot, below right=1.2cm and 2.8cm of a] (down) {};
+    \vertex [dot, above right=1.2cm and 2.8cm of a] (up) {};
+
+    \diagram* {
+      (a) -- [momentum={[arrow distance = 4pt]\(\scriptstyle p\)}] (v1),
+      (v1) -- [bend right=40, momentum'={[arrow distance = 4pt]\(\scriptstyle (4)\, k_2 + p\)}] (down), (down) -- [bend right=40, reversed momentum'={[arrow distance = 4pt]\(\scriptstyle (2)\, k_1 - p\)}] (v2),
+      (v2) -- [bend right=40, momentum'={[arrow distance = 4pt]\(\scriptstyle (1)\,k_1\)}] (up), (up) -- [bend right=40, momentum'={[arrow distance = 4pt]\(\scriptstyle (3)\, k_2\)}] (v1), (v2) -- [momentum'={[arrow distance = 4pt]\(\scriptstyle p\)}] (b), (down) -- [momentum={[arrow distance = 4pt]\(\scriptstyle (5)\, k_1 + k_2\)}]  (up)
+    };
+  \end{feynman}
+\end{tikzpicture}
+\end{equation}
+The matrix $M$ can be written simply following the propagator dependence on each Schwinger parameter
+\begin{equation}
+    M = 
+    \begin{pmatrix}
+        x_1 + x_2 + x_5 & x_5 \\
+        x_5 & x_3 + x_4 + x_5
+    \end{pmatrix},
+\end{equation}
+linear dependence of $k_1$ and $k_2$ comes only from propagators ``2'' and ``4'' so
+\begin{equation}
+    Q^\mu = \{-p^\mu x_2, p^\mu x_4\},
+\end{equation}
+and $J$ contains all mass dependence and $p^2$ terms 
+\begin{equation}
+    J = -\bigg(\sum_{i=1}^5 x_i\bigg)m^2 + (x_2 + x_4)p^2.
+\end{equation}
+From the general form \eqref{eq: argument of exponential with S. parameters} we can ``complete the square'' in $k$ which we do in two stages: diagonalize $M$ and then shift using $Q$. Firstly, consider a general symmetric $2 \times 2$ matrix
+\begin{equation}
+    M = 
+    \begin{pmatrix}
+        a & c \\
+        c & b
+    \end{pmatrix},
+\end{equation}
+completing the square in $k$, can be performed via transformation with unit determinant
+\begin{equation}
+    \Lambda = 
+    \begin{pmatrix}
+        1 & -c/a \\
+        0 & 1
+    \end{pmatrix},
+\end{equation}
+where with $\vk = (k_1,k_2)$ we have $\vk = \Lambda \vk'$, thus
+\begin{equation}
+    \vk^TM\vk = (\Lambda\vk')^TM\Lambda\vk' = \vk'^T(\Lambda^TM\Lambda)\vk'\equiv \vk'^TD\vk',
+\end{equation}
+where we denoted
+\begin{equation}
+    D \equiv 
+    \begin{pmatrix}
+        a & 0 \\
+        0 & \dfrac{\det{(M)}}{a}
+    \end{pmatrix}.
+\end{equation}
+The second step consists in absorbing the linear terms in linear $k_i$ via a transformation 
+\begin{equation}
+    \vk' = \vk'' - \Lambda^{-1}M^{-1}\vQ,
+\end{equation}
+therefore
+\begin{equation}
+    \begin{split}
+        \vk'^TD\vk' + 2\vQ^T\Lambda\vk' + J &= \vk''^TD\vk'' - \vk''^TD\Lambda^{-1}M^{-1}\vQ \\
+        &- (\Lambda^{-1}M^{-1}\vQ)^TD\vk'' + (\Lambda^{-1}M^{-1}\vQ)^TD\Lambda^{-1}M^{-1}\vQ \\
+        &+ 2\vQ^T\Lambda\vk'' - 2\vQ^T\Lambda\Lambda^{-1}M^{-1}\vQ + J \\
+        &= \vk''^TD\vk'' + J - \vQ^TM^{-1}\vQ.
+    \end{split}
+\end{equation}
+Both steps can be combined so that
+\begin{equation}
+    \vk'' = \Lambda\vk - M^{-1}\vQ 
+\end{equation}
+and the argument of the exponential is written as
+\begin{equation}
+    \sum_{i=1}^nx_iD_i = \vk^TD\vk + \frac{F}{u},
+\end{equation}
+where we denoted
+\begin{equation}
+    u \equiv \det{M},\quad F \equiv (J - \vQ^TM^{-1}\vQ)u,
+\end{equation}
+which are the first two of the Symanzik polynomials and permit to write
+\begin{equation}
+    D = 
+    \begin{pmatrix}
+        a & 0 \\
+        0 & \dfrac{u}{a}
+    \end{pmatrix}.
+\end{equation}
+The transformation has separated the loop integrals so we can perform the integration
+\begin{equation}
+    \begin{split}
+        \selfint{D} &= \int\prod_{i=1}^n dx_i\,\exp{\bigg(\frac{F}{u}\bigg)} \int_{k_1}\exp{(ak_1^2)}\int_{k_2}\exp{\bigg(\frac{uk_2^2}{a}\bigg)} \\
+        &= \bigg[\frac{i}{(4\pi)^{D/2}}\bigg]^2\int\prod_{i=1}^n dx_i\,\exp{\bigg(\frac{F}{u}\bigg)}u^{-D/2}.
+    \end{split}
+\end{equation}
+By following the same procedure we can derive a general multi-loop expression valid for arbitrary powers of the determinants. One can show that a general $L$-loop Feynman integral with $n$ interval lines may be written as
+\begin{equation}
+    \begin{split}
+        I_{n,sun}^{(L)[D]}[\nu_1,\dots,\nu_n] &= \int\prod_{i=1}^L\frac{d^Dk_l}{(2\pi)^D}\frac{1}{\prod_{j=1}^nD(q_j,m_j)^{\nu_j}} \\
+        &= \bigg[\frac{i}{(4\pi)^{D/2}}\bigg]^L\frac{\Gamma(\sum_{i=1}^n\nu_i - LD/2)}{\prod_{i=1}^n\Gamma(\nu_i)} \\
+        &\times\int_{\alpha_i}\delta(1 - \nsum_i\alpha_i)\frac{u^{n-(L+1)D/2}}{(-F)^{n-LD/2}},
+    \end{split} 
+\end{equation}
+where $u$ and $F$ are the Symanzik polynomials. 
+\begin{ex}
+    The ``sunrise'', or the ``sunset'', integral is
+    \begin{equation}
+        \feynmandiagram[inline={([yshift=-0.1cm]current bounding box.center)}, layered layout, horizontal=a to b, scale=1.8] { a -- [momentum={[arrow distance=4pt]\ensuremath{\scriptstyle p}}] v [dot] -- [half left, looseness=1.5, momentum={[arrow distance=4pt]\ensuremath{\scriptstyle k_1}}] v1 [dot] -- [half left, looseness=1.5, reversed momentum={[arrow distance=4pt]\ensuremath{\scriptstyle k_2}}] v, v1 -- [momentum={[arrow distance=4pt]\ensuremath{\scriptstyle p}}] b, v -- [reversed momentum={[arrow distance = 4pt]\ensuremath{\scriptstyle k_1 + k_2 - p}}] v1};.
+    \end{equation}
+    From this diagram here we get
+    \begin{equation}
+        M = 
+        \begin{pmatrix}
+            x_1 + x_3 & x_3 \\
+            x_3 & x_2 + x_3
+        \end{pmatrix},\quad \vQ = (-x_3p^\mu,-x_3p^\mu),\quad J = x_3p^2,
+    \end{equation}
+    from where we get
+    \begin{equation}
+        u = x_1x_2 + x_1x_3 + x_2x_3,\quad F = p^2x_1x_2x_3.
+    \end{equation}
+    Thus, the Feynman integral is
+    \begin{equation}
+        \begin{split}
+            I_{n,sun}^{(L)[D]} &= \frac{\Gamma(-1 + 2\epsilon)}{(4\pi)^{4 - 2\epsilon}}\int\prod_{i=1}^3 dx_i\,\delta(1 - x_1 - x_2 - x_3) \\
+            &\times(-p^2x_1x_2x_3)^{1 - 2\epsilon}(x_1x_2 + x_1x_3 + x_2x_3)^{-3(1 - \epsilon)}.
+        \end{split}
+    \end{equation}
+    Direct integration in Fourier phase space requires a bit of thought. The $1/\epsilon$ pole is quite easy since we may expand the integral around $\epsilon = 0$. The kinematic dependence can also factored out
+    \begin{equation}
+        I_{n,sun}^{(L)[D]} = \bigg[\frac{C_\Gamma}{(4\pi)^{2-\epsilon}}\bigg]^2(-p^2)^{1-2\epsilon}\hat{I}_{n,sun}^{(L)[D]}[\nu_1,\dots,\nu_n],
+    \end{equation}
+    where
+    \begin{equation}
+        \begin{split}
+            \hat{I}_{n,sun}^{(L)[D]} &= -\frac{\Gamma(1 + 2\epsilon)}{2\epsilon(1-2\epsilon)C_\Gamma^2}\int_{x_i}\delta\bigg(1 - \sum_{i=1}^nx_i\bigg)(x_1x_2x_3)^{1-2\epsilon} \\
+            &\times (x_1x_2 + x_1x_3 + x_2x_3)^{-3(1 - \epsilon)} \\
+            &\simeq -\frac{1}{4\epsilon} - \frac{13}{8} - \frac{115}{16}\epsilon - \bigg(\frac{865}{32} - \frac{3\zeta_3}{2}\bigg)\epsilon^2 \\
+            &-\bigg(\frac{5971}{64} - \frac{39}{4}\zeta_3 - \frac{\pi^4}{40}\bigg)\epsilon^3 + o(\epsilon^4).
+        \end{split}
+    \end{equation}
+\end{ex}
+
+\subsection{Passarino-Veltmann tensor reduction}
+We have already seen how to deal with higher rank numerators in Feynman or Schwinger parameter space. There is a more direct method to perform the reduction in momentum space and to determine the basis of Feynman integrals at 1-loop. The principles are:
+\begin{enumerate}
+    \item identify a basis of possible tensor structures after integration using the external momentum $p_i^\mu$ and the metric tensor $g^{\mu\nu}$;
+    \item contract the tensor integral in $D$ dimensions with each element of the tensor basis to construct a linear system of equations for the form factors, namely the coefficient of the tensor basis.
+\end{enumerate}
+\begin{ex}
+    Consider the rank one bubble
+    \begin{equation}
+        \selfint{D}[k^\mu] = \int_k\frac{k^\mu}{D(k,m)D(k - p,m)}.
+    \end{equation}
+    The first step is to impose $\selfint{D} = b_1p^\mu$, where $b_1$ is the form factor and $p^\mu$ is the tensor basis, then we contract with $p_\mu$ so that
+    \begin{equation}
+        \begin{split}
+            \selfint{D}[p_\mu k^\mu] = b_1p^2 &= \int_k \frac{p_\mu k^\mu}{D(k,m)D(k - p,m)} \\
+            &= \frac{1}{2}\int \frac{D(k,m) - D(k - p,m) + p^2}{D(k,m)D(k - p,m)} \\
+            &= \frac{1}{2}\bigg(\int_k \frac{1}{D(k - p,m)} - \int_k \frac{1}{D(k,m)} \\
+            &+ p^2\int_k \frac{1}{D(k,m)D(k - p,m)}\bigg) \\
+            &= \frac{1}{2}p^2\selfint{D}[1],
+        \end{split}
+    \end{equation}
+    where in the second-last step we shifted the integration $k \to k + p$ in the first integral to cancel it out with the last integral. Thus, the form factor is
+    \begin{equation}
+        b_1 = \frac{1}{2}\selfint{D}[1].
+    \end{equation}
+    We can also write this graphically
+    \begin{equation}
+        \feynmandiagram[inline={([yshift=-0.3cm]current bounding box.center)}, layered layout, horizontal=a to b, scale=0.5, transform shape] { a -- v -- [half left, looseness=1.5, momentum={[arrow distance=3pt] \ensuremath{\scriptstyle k}}] v1 -- [half left, looseness=1.5] v, v1 -- b};[k^\mu] = \selfint{D}[k^\mu],
+    \end{equation}
+    then
+    \begin{equation}
+        \begin{split}
+            \feynmandiagram[inline={([yshift=-0.1cm]current bounding box.center)}, layered layout, horizontal=a to b, scale=0.5, transform shape] { a -- v -- [half left, looseness=1.5, momentum={[arrow distance=3pt] \ensuremath{\scriptstyle k}}] v1 -- [half left, looseness=1.5, momentum={[arrow distance=3pt] \ensuremath{\scriptstyle k - p}}] v, v1 -- b};[p_\mu k^\mu] &= \frac{1}{2}\feynmandiagram[inline={([yshift=-0.1cm]current bounding box.center)}, layered layout, horizontal=a to b, scale=0.5, transform shape] { a -- v -- [half left, looseness=1.5, cancel] v1 -- [half left, looseness=1.5] v, v1 -- b};[1] - \frac{1}{2}\feynmandiagram[inline={([yshift=-0.1cm]current bounding box.center)}, layered layout, horizontal=a to b, scale=0.5, transform shape] { a -- v -- [half left, looseness=1.5] v1 -- [half left, looseness=1.5, cancel] v, v1 -- b};[1] + \frac{p^2}{2}\feynmandiagram[inline={([yshift=-0.1cm]current bounding box.center)}, layered layout, horizontal=a to b, scale=0.5, transform shape] { a -- v -- [half left, looseness=1.5] v1 -- [half left, looseness=1.5] v, v1 -- b};[1] \\
+            &= b_1p^2,
+        \end{split}
+    \end{equation}
+    where $\feynmandiagram[inline={([yshift=-0.1cm]current bounding box.center)}, horizontal=a to b, scale=0.7]{
+    a -- [cancel] b}; $ indicates a canceled propagator. Thus we have
+    \begin{equation}
+        \begin{cases}
+            \feynmandiagram[inline={([yshift=-0.1cm]current bounding box.center)}, layered layout, horizontal=a to b, scale=0.5, transform shape] { a -- v -- [half left, looseness=1.5, cancel] v1 -- [half left, looseness=1.5] v, v1 -- b};[1] = \feynmandiagram[inline={([yshift=0.4cm]current bounding box.center)}, layered layout, horizontal=a to b, scale=0.5, transform shape] { a -- v -- [out=-135, in=-45, loop, min distance=1.4cm, reversed momentum'={[arrow distance=4pt] \ensuremath{\scriptstyle k - p}}] v -- b };[1] = \feynmandiagram[inline={([yshift=-0.5cm]current bounding box.center)}, layered layout, horizontal=a to b, scale=0.5, transform shape] { a -- v -- [out=135, in=45, loop, min distance=1.4cm, momentum={[arrow distance=4pt] \ensuremath{\scriptstyle k}}] v -- b };[1] \\
+            \feynmandiagram[inline={([yshift=-0.1cm]current bounding box.center)}, layered layout, horizontal=a to b, scale=0.5, transform shape] { a -- v -- [half left, looseness=1.5] v1 -- [half left, looseness=1.5, cancel] v, v1 -- b};[1] = \feynmandiagram[inline={([yshift=-0.5cm]current bounding box.center)}, layered layout, horizontal=a to b, scale=0.5, transform shape] { a -- v -- [out=135, in=45, loop, min distance=1.4cm, momentum={[arrow distance=4pt] \ensuremath{\scriptstyle k}}] v -- b };[1]
+        \end{cases},
+    \end{equation}
+    so the form factor is
+    \begin{equation}
+        b_1 = \frac{1}{2}\feynmandiagram[inline={([yshift=-0.1cm]current bounding box.center)}, layered layout, horizontal=a to b, scale=0.5, transform shape] { a -- v -- [half left, looseness=1.5] v1 -- [half left, looseness=1.5] v, v1 -- b};[1].
+    \end{equation}
+\end{ex}
+The principle is straightforward to apply to higher rank and higher multiplicity integrals though the expressions can become quite lengthy. 
+\begin{ex}
+    Consider the rank two tensor bubble
+    \begin{equation}
+        \feynmandiagram[inline={([yshift=-0.3cm]current bounding box.center)}, layered layout, horizontal=a to b, scale=0.5, transform shape] { a -- [momentum={[arrow distance=4pt] \ensuremath{\scriptstyle p}}] v -- [half left, looseness=1.5, momentum={[arrow distance=4pt] \ensuremath{\scriptstyle k}}] v1 -- [half left, looseness=1.5] v, v1 -- b};[k^\mu k^\nu] = b_{00}g^{\mu\nu} + b_{11}p^\mu p^\nu,
+    \end{equation}
+    now contracting with $g_{\mu\nu}$ we get
+    \begin{equation}
+        \begin{split}
+            \feynmandiagram[inline={([yshift=-0.3cm]current bounding box.center)}, layered layout, horizontal=a to b, scale=0.5, transform shape] { a -- v -- [half left, looseness=1.5, momentum={[arrow distance=4pt] \ensuremath{\scriptstyle k}}] v1 -- [half left, looseness=1.5] v, v1 -- b};[k^2] &= Db_{00} + b_{11}p^2 \\
+            &= \feynmandiagram[inline={([yshift=-0.1cm]current bounding box.center)}, layered layout, horizontal=a to b, scale=0.5, transform shape] { a -- v -- [half left, looseness=1.5, cancel] v1 -- [half left, looseness=1.5] v, v1 -- b};[1] + m^2\feynmandiagram[inline={([yshift=-0.1cm]current bounding box.center)}, layered layout, horizontal=a to b, scale=0.5, transform shape] { a -- v -- [half left, looseness=1.5] v1 -- [half left, looseness=1.5] v, v1 -- b};[1] \\
+            &=  \feynmandiagram[inline={([yshift=0.1cm]current bounding box.center)}, layered layout, horizontal=a to b, scale=0.5, transform shape] { a -- v -- [out=-135, in=-45, loop, min distance=1.4cm] v -- b };[1] + m^2\feynmandiagram[inline={([yshift=-0.1cm]current bounding box.center)}, layered layout, horizontal=a to b, scale=0.5, transform shape] { a -- v -- [half left, looseness=1.5] v1 -- [half left, looseness=1.5] v, v1 -- b};[1],
+        \end{split}
+    \end{equation}
+    while contracting with $p_\mu p_\nu$ result in
+    \begin{equation}
+        \begin{split}
+            \feynmandiagram[inline={([yshift=-0.3cm]current bounding box.center)}, layered layout, horizontal=a to b, scale=0.5, transform shape] { a -- v -- [half left, looseness=1.5, momentum={[arrow distance=4pt] \ensuremath{\scriptstyle k}}] v1 -- [half left, looseness=1.5] v, v1 -- b};[(p_\mu k^\mu)^2] &= b_{00}p^2 + b_{11}p^4 \\
+            &= \feynmandiagram[inline={([yshift=-0.3cm]current bounding box.center)}, layered layout, horizontal=a to b, scale=0.4, transform shape] { a -- v -- [half left, looseness=1.5, momentum={[arrow distance=4pt] \ensuremath{\scriptstyle k}}] v1 -- [half left, looseness=1.5] v, v1 -- b};\bigg[\frac{1}{2}\bigg(D(k,m) - D(k - p,m) + p^2\bigg)^2\bigg] \\
+            &= \frac{1}{4}\feynmandiagram[inline={([yshift=-0.3cm]current bounding box.center)}, layered layout, horizontal=a to b, scale=0.4, transform shape] { a -- v -- [half left, looseness=1.5, momentum={[arrow distance=4pt] \ensuremath{\scriptstyle k}}] v1 -- [half left, looseness=1.5] v, v1 -- b};\{D(k,m)^2 + D(k - p,m)^2  \\ &- 2D(k,m)D(k - p,m) + p^4 + 2p^2[D(k,m) \\
+            &- D(k - p,m)]\} \\
+            &= \frac{1}{4}(p^4\feynmandiagram[inline={([yshift=-0.1cm]current bounding box.center)}, layered layout, horizontal=a to b, scale=0.4, transform shape] { a -- v -- [half left, looseness=1.5] v1 -- [half left, looseness=1.5] v, v1 -- b};[1] + \feynmandiagram[inline={([yshift=-0.1cm]current bounding box.center)}, layered layout, horizontal=a to b, scale=0.4, transform shape] { a -- v -- [half left, looseness=1.5, cancel] v1 -- [half left, looseness=1.5] v, v1 -- b};[D(k,m)] \\
+            &+ \feynmandiagram[inline={([yshift=-0.1cm]current bounding box.center)}, layered layout, horizontal=a to b, scale=0.4, transform shape] { a -- v -- [half left, looseness=1.5] v1 -- [half left, looseness=1.5, cancel] v, v1 -- b};[D(k - p,m)] - 2\feynmandiagram[inline={([yshift=-0.1cm]current bounding box.center)}, layered layout, horizontal=a to b, scale=0.4, transform shape] { a -- v -- [half left, looseness=1.5] v1 -- [half left, looseness=1.5, cancel] v, v1 -- b};[D(k,m)]) \\
+            &= \frac{1}{4}(p^4\feynmandiagram[inline={([yshift=-0.1cm]current bounding box.center)}, layered layout, horizontal=a to b, scale=0.4, transform shape] { a -- v -- [half left, looseness=1.5] v1 -- [half left, looseness=1.5] v, v1 -- b};[1] + 2\feynmandiagram[inline={([yshift=-0.1cm]current bounding box.center)}, layered layout, horizontal=a to b, scale=0.4, transform shape] { a -- v -- [half left, looseness=1.5, cancel] v1 -- [half left, looseness=1.5] v, v1 -- b};[D(k,m)] \\
+            &- 2\feynmandiagram[inline={([yshift=-0.1cm]current bounding box.center)}, layered layout, horizontal=a to b, scale=0.4, transform shape] { a -- v -- [half left, looseness=1.5] v1 -- [half left, looseness=1.5, cancel] v, v1 -- b};[D(k,m)]),
+        \end{split}
+    \end{equation}
+    where 
+    \begin{align}
+        \feynmandiagram[inline={([yshift=-0.1cm]current bounding box.center)}, layered layout, horizontal=a to b, scale=0.5, transform shape] { a -- v -- [half left, looseness=1.5,cancel] v1 -- [half left, looseness=1.5] v, v1 -- b};[D(k,m)] = \int_k\frac{k^2 - m^2}{k^2 - m^2} := 0, \\
+        \begin{split}
+            \feynmandiagram[inline={([yshift=-0.1cm]current bounding box.center)}, layered layout, horizontal=a to b, scale=0.5, transform shape] { a -- v -- [half left, looseness=1.5] v1 -- [half left, looseness=1.5, cancel] v, v1 -- b}; = \int_k\frac{k^2 - m^2}{(k - p)^2 - m^2} &= \int_k \frac{(k + p)^2 - m^2}{k^2 - m^2} \\
+            &= \int_k \frac{k^2 - m^2}{k^2 - m^2} + 2 \int_k \frac{p_\mu k^\mu}{k^2 - m^2} \\
+            &+ p^2\int_k \frac{1}{k^2 - m^2} \\
+            &= p^2\feynmandiagram[inline={([yshift=-0.1cm]current bounding box.center)}, layered layout, horizontal=a to b, scale=0.5, transform shape] { a -- v -- [half left, looseness=1.5,cancel] v1 -- [half left, looseness=1.5] v, v1 -- b};[1].
+        \end{split}
+    \end{align}
+    Thus, we have
+    \begin{equation}
+        \frac{p^4}{4}\feynmandiagram[inline={([yshift=-0.1cm]current bounding box.center)}, layered layout, horizontal=a to b, scale=0.4, transform shape] { a -- v -- [half left, looseness=1.5] v1 -- [half left, looseness=1.5] v, v1 -- b};[1] + \frac{p^2}{2}\feynmandiagram[inline={([yshift=-0.3cm]current bounding box.center)}, layered layout, horizontal=a to b, scale=0.5, transform shape] { a -- v -- [out=135, in=45, loop, min distance=1.4cm] v -- b };[1] = b_{00}p^2 + b_{11}p^4.
+    \end{equation}
+    The linear system of equations for $b_{00}$ and $b_{11}$ then reads
+    \begin{equation}
+        \begin{pmatrix}
+            D & p^2 \\
+            1 & p^2
+        \end{pmatrix}
+        \begin{pmatrix}
+            b_{00} \\
+            b_{11}
+        \end{pmatrix} =
+        \begin{pmatrix}
+            1 & m^2 \\
+            \dfrac{1}{2} & \dfrac{p^2}{4}
+        \end{pmatrix}
+        \begin{pmatrix}
+            \feynmandiagram[inline={([yshift=-0.3cm]current bounding box.center)}, layered layout, horizontal=a to b, scale=0.5, transform shape] { a -- v -- [out=135, in=45, loop, min distance=1.4cm] v -- b };[1] \\
+            \feynmandiagram[inline={([yshift=-0.1cm]current bounding box.center)}, layered layout, horizontal=a to b, scale=0.4, transform shape] { a -- v -- [half left, looseness=1.5] v1 -- [half left, looseness=1.5] v, v1 -- b};[1]
+        \end{pmatrix},
+    \end{equation}
+    that if inverted result in
+    \begin{equation}
+        \begin{split}
+            \begin{pmatrix}
+                b_{00} \\
+                b_{11}
+            \end{pmatrix} &= \frac{1}{p^2(D - 1)}
+            \begin{pmatrix}
+                p^2 & -p^2 \\
+                -1 & D
+            \end{pmatrix}
+            \begin{pmatrix}
+                1 & m^2 \\
+                \dfrac{1}{2} & \dfrac{p^2}{4}
+            \end{pmatrix}
+            \begin{pmatrix}
+            \feynmandiagram[inline={([yshift=-0.3cm]current bounding box.center)}, layered layout, horizontal=a to b, scale=0.5, transform shape] { a -- v -- [out=135, in=45, loop, min distance=1.4cm] v -- b };[1] \\
+            \feynmandiagram[inline={([yshift=-0.1cm]current bounding box.center)}, layered layout, horizontal=a to b, scale=0.4, transform shape] { a -- v -- [half left, looseness=1.5] v1 -- [half left, looseness=1.5] v, v1 -- b};[1]
+        \end{pmatrix} \\
+            &= \frac{1}{2(D - 1)}
+            \begin{pmatrix}
+                1 & -\dfrac{p^2}{2}\bigg(1 - \dfrac{4m^2}{p^2}\bigg) \\
+                -\dfrac{(D - 2)}{p^2} & \dfrac{1}{2}\bigg(D - \dfrac{4m^2}{p^2}\bigg)
+            \end{pmatrix}
+            \begin{pmatrix}
+            \feynmandiagram[inline={([yshift=-0.3cm]current bounding box.center)}, layered layout, horizontal=a to b, scale=0.5, transform shape] { a -- v -- [out=135, in=45, loop, min distance=1.4cm] v -- b };[1] \\
+            \feynmandiagram[inline={([yshift=-0.1cm]current bounding box.center)}, layered layout, horizontal=a to b, scale=0.4, transform shape] { a -- v -- [half left, looseness=1.5] v1 -- [half left, looseness=1.5] v, v1 -- b};[1]
+        \end{pmatrix}.
+        \end{split}
+    \end{equation}
+\end{ex}
+\begin{ex}
+    Consider the rank one, rank two, and rank three triangle integrals in the massless unit limit 
+    \begin{equation}
+        I_3^{(1)[D]}[N] = \int_k \frac{N}{D(k,0)D(k - p_2)D(k + p_1)} \equiv \feynmandiagram[inline=(c.base), rotate=-45, horizontal=a to b, scale=0.75] {
+        a [label = \ensuremath{\scriptstyle 2}] -- v1 -- v -- v2 -- b [label = \ensuremath{\scriptstyle 1}], v1 -- [reversed momentum'={[arrow distance=4pt]\ensuremath{\scriptstyle k}}] v2, v -- [momentum' ={[arrow distance=4pt] \ensuremath{\scriptstyle p_3}}] c [label = \ensuremath{\scriptstyle 3}]};,
+    \end{equation}
+    with kinematics $p_1^2 = p_2^2 = 0$ and $p_3 \neq 0$, and where
+    \begin{equation}
+        N \equiv (k^{\mu_1},k^{\mu_1}k^{\mu_2},k^{\mu_1}k^{\mu_2}k^{\mu_3}).
+    \end{equation}
+    At rank one we have the tensor basis $\{p_1^\mu,p_2^\mu\}$ with the form factors $\{c_1,c_2\}$, so we form the system of equation from
+    \begin{equation}
+        \begin{cases}
+            p_{1\mu}k_1^\mu = \dfrac{1}{2}[(k_1 + p_1)^2 - k_1^2 - p_1^2] = \dfrac{1}{2}[(k_1 + p_1)^2 - k_1^2] \\[2ex]
+            p_{2\mu}k_1^\mu = \dfrac{1}{2}[k_1^2 - (k_1 + p_2)^2 + p_2^2] = \dfrac{1}{2}[k_1^2 - (k_1 + p_2)^2]
+        \end{cases}
+    \end{equation}
+    thus we have
+    \begin{equation}
+        \frac{1}{2}\bigg(\feynmandiagram[inline={([yshift=-0.2cm]current bounding box.center)}, rotate=-45, horizontal=a to b, scale=0.55] {
+        a [label = \ensuremath{\scriptstyle 2}] -- v1 -- v -- [cancel] v2 -- b [label = \ensuremath{\scriptstyle 1}], v1 -- v2, v -- c [label = \ensuremath{\scriptstyle 3}]}; - \feynmandiagram[inline={([yshift=-0.2cm]current bounding box.center)}, rotate=-45, horizontal=a to b, scale=0.55] {
+        a [label = \ensuremath{\scriptstyle 2}] -- v1 -- v -- v2 -- b [label = \ensuremath{\scriptstyle 1}], v1 -- [cancel] v2, v -- c [label = \ensuremath{\scriptstyle 3}]};\bigg) = c_2p_{1\mu}p^\mu_2,
+    \end{equation}
+    \begin{equation}
+        \frac{1}{2}\bigg(\feynmandiagram[inline={([yshift=-0.2cm]current bounding box.center)}, rotate=-45, horizontal=a to b, scale=0.55] {
+        a [label = \ensuremath{\scriptstyle 2}] -- v1 -- v -- v2 -- b [label = \ensuremath{\scriptstyle 1}], v1 -- [cancel] v2, v -- c [label = \ensuremath{\scriptstyle 3}]}; - \feynmandiagram[inline={([yshift=-0.2cm]current bounding box.center)}, rotate=-45, horizontal=a to b, scale=0.55] {
+        a [label = \ensuremath{\scriptstyle 2}] -- v1 -- v -- v2 -- b [label = \ensuremath{\scriptstyle 1}], v1 -- [cancel] v2, v -- c [label = \ensuremath{\scriptstyle 3}]};\bigg) = c_1p_{1\mu}p^\mu_2,
+    \end{equation}
+    \begin{equation}
+        \feynmandiagram[inline={([yshift=-0.2cm]current bounding box.center)}, rotate=-45, horizontal=a to b, scale=0.55] {
+        a [label = \ensuremath{\scriptstyle 2}] -- v1 -- v -- [cancel] v2 -- b [label = \ensuremath{\scriptstyle 1}], v1 -- v2, v -- c [label = \ensuremath{\scriptstyle 3}]}; = \feynmandiagram[inline={([yshift=-0.1cm]current bounding box.center)}, layered layout, horizontal=a to b, scale=0.5] { a [label=\ensuremath{\scriptstyle 2}] -- v -- [half left, looseness=1.5, edge label=\ensuremath{\scriptstyle k - p_2}] v1 -- [half left, looseness=1.5, edge label=\ensuremath{\scriptstyle k}] v, v1 -- b}; = 0,\quad \feynmandiagram[inline={([yshift=-0.2cm]current bounding box.center)}, rotate=-45, horizontal=a to b, scale=0.55] {
+        a [label = \ensuremath{\scriptstyle 2}] -- v1 -- [cancel] v -- v2 -- b [label = \ensuremath{\scriptstyle 1}], v1 -- v2, v -- c [label = \ensuremath{\scriptstyle 3}]}; = 0,
+    \end{equation}
+    \begin{equation}
+        \feynmandiagram[inline={([yshift=-0.2cm]current bounding box.center)}, rotate=-45, horizontal=a to b, scale=0.55] {
+        a [label = \ensuremath{\scriptstyle 2}] -- v1 -- v -- v2 -- b [label = \ensuremath{\scriptstyle 1}], v1 -- [cancel] v2, v -- c [label = \ensuremath{\scriptstyle 3}]}; = \feynmandiagram[inline={([yshift=-0.1cm]current bounding box.center)}, layered layout, horizontal=a to b, scale=0.5] { a [label=\ensuremath{\scriptstyle 1 + 2}] -- v -- [half left, looseness=1.5, edge label=\ensuremath{\scriptstyle k - p_2}] v1 -- [half left, looseness=1.5, edge label=\ensuremath{\scriptstyle k + p_1}] v, v1 -- b}; = \selfint{D}(s_3),
+    \end{equation}
+    where $s_3 = p_3^2 = 2p_{1\mu}p^\mu_2 = (p_{1\mu} + p_{2\mu})^2$. In the end, we remain with
+    \begin{equation}
+        \begin{cases}
+            -\dfrac{1}{2}\feynmandiagram[inline={([yshift=-0.1cm]current bounding box.center)}, layered layout, horizontal=a to b, scale=0.5] { a [label=\ensuremath{\scriptstyle 3}] -- v -- [half left, looseness=1.5] v1 -- [half left, looseness=1.5] v, v1 -- b}; = \dfrac{1}{2}s_3c_2 \\[2ex]
+            \dfrac{1}{2}\feynmandiagram[inline={([yshift=-0.1cm]current bounding box.center)}, layered layout, horizontal=a to b, scale=0.5] { a [label=\ensuremath{\scriptstyle 3}] -- v -- [half left, looseness=1.5] v1 -- [half left, looseness=1.5] v, v1 -- b}; = \dfrac{1}{2}s_3c_1 \\
+        \end{cases},
+    \end{equation}
+    hence the form factors are
+    \begin{equation}
+        \{c_1,c_2\} = \frac{1}{s_3}\{1,-1\}\feynmandiagram[inline={([yshift=-0.1cm]current bounding box.center)}, layered layout, horizontal=a to b, scale=0.5] { a [label=\ensuremath{\scriptstyle 3}] -- v -- [half left, looseness=1.5] v1 -- [half left, looseness=1.5] v, v1 -- b};.
+    \end{equation}
+    At rank two the tensor basis is $\{g^{\mu_1\mu_2},p_1^{\mu_1}p_1^{\mu_2},p_2^{\mu_1}p_2^{\mu_2},\frac{1}{2}(p_1^{\mu_1}p_2^{\mu_2} + p_1^{\mu_2}p_2^{\mu_1})\}$, with form factors $\{c_{00},c_{11},c_{22},c_{12}\}$. First we contract with the metric tensor
+    \begin{equation}
+    \label{eq: first contribution triangle rank 2}
+        \feynmandiagram[inline={([yshift=-0.3cm]current bounding box.center)}, rotate=-45, horizontal=a to b, scale=0.55] {
+        a [label = \ensuremath{\scriptstyle 2}] -- v1 -- v -- v2 -- b [label = \ensuremath{\scriptstyle 1}], v1 -- [cancel] v2, v -- c [label = \ensuremath{\scriptstyle 3}]}; = Dc_{00} + c_{12}p_{1\mu}p_2^\mu = Dc_{00} + \frac{1}{2}s_3c_{12},
+    \end{equation}
+    then we contract with $p_{1\mu_1}p_{1\mu_2}$ to get
+    \begin{equation}
+        \begin{split}
+            \feynmandiagram[inline={([yshift=-0.2cm]current bounding box.center)}, rotate=-45, horizontal=a to b, scale=0.55] {
+            a [label = \ensuremath{\scriptstyle 2}] -- v1 -- v -- v2 -- b [label = \ensuremath{\scriptstyle 1}], v1 -- v2, v -- c [label = \ensuremath{\scriptstyle 3}]};[(k^\mu - p_1^\mu)^2] &= (p_{1\mu}p_2^\mu)^2c_{22} \\
+            &= \frac{1}{4}s_3^2c_{22} \\
+            &= \feynmandiagram[inline={([yshift=-0.2cm]current bounding box.center)}, rotate=-45, horizontal=a to b, scale=0.55] {
+            a [label = \ensuremath{\scriptstyle 2}] -- v1 -- v -- v2 -- b [label = \ensuremath{\scriptstyle 1}], v1 -- v2, v -- c [label = \ensuremath{\scriptstyle 3}]};\bigg[\frac{1}{4}(D_3 - D_1)^2\bigg] \\
+            &= \feynmandiagram[inline={([yshift=-0.2cm]current bounding box.center)}, rotate=-45, horizontal=a to b, scale=0.55] {
+            a [label = \ensuremath{\scriptstyle 2}] -- v1 -- v -- v2 -- b [label = \ensuremath{\scriptstyle 1}], v1 -- v2, v -- c [label = \ensuremath{\scriptstyle 3}]};\bigg[\frac{1}{4}(D_3^2 + D_1^2 - 2D_1D_3)\bigg] \\
+            &= \feynmandiagram[inline={([yshift=-0.2cm]current bounding box.center)}, rotate=-45, horizontal=a to b, scale=0.55] {
+            a [label = \ensuremath{\scriptstyle 2}] -- v1 -- v -- [cancel] v2 -- b [label = \ensuremath{\scriptstyle 1}], v1 -- v2, v -- c [label = \ensuremath{\scriptstyle 3}]};\bigg[\frac{1}{4}(k_1^\mu - p_1^\mu)^2\bigg] + \feynmandiagram[inline={([yshift=-0.2cm]current bounding box.center)}, rotate=-45, horizontal=a to b, scale=0.55] {
+            a [label = \ensuremath{\scriptstyle 2}] -- v1 -- v -- [cancel] v2 -- b [label = \ensuremath{\scriptstyle 1}], v1 -- v2, v -- c [label = \ensuremath{\scriptstyle 3}]};\bigg(\frac{k^2}{4}\bigg) \\
+            &-\frac{1}{2}\feynmandiagram[inline={([yshift=-0.2cm]current bounding box.center)}, rotate=-45, horizontal=a to b, scale=0.55] {
+            a [label = \ensuremath{\scriptstyle 2}] -- v1 -- v -- [cancel] v2 -- b [label = \ensuremath{\scriptstyle 1}], v1 -- [cancel] v2, v -- c [label = \ensuremath{\scriptstyle 3}]};[1],
+        \end{split}
+    \end{equation}
+    \begin{equation}
+        \feynmandiagram[inline={([yshift=-0.2cm]current bounding box.center)}, rotate=-45, horizontal=a to b, scale=0.55] {
+            a [label = \ensuremath{\scriptstyle 2}] -- v1 -- v -- [cancel] v2 -- b [label = \ensuremath{\scriptstyle 1}], v1 -- [cancel] v2, v -- c [label = \ensuremath{\scriptstyle 3}]}; = \int_k\frac{1}{D_2} = \int_k\frac{1}{(k^\mu - p_2^\mu)^2} = \int_k\frac{1}{k^2} = 0,
+    \end{equation}
+    \begin{equation}
+        \feynmandiagram[inline={([yshift=-0.2cm]current bounding box.center)}, rotate=-45, horizontal=a to b, scale=0.55] {
+            a [label = \ensuremath{\scriptstyle 2}] -- v1 -- v -- [cancel] v2 -- b [label = \ensuremath{\scriptstyle 1}], v1 -- v2, v -- c [label = \ensuremath{\scriptstyle 3}]};\bigg[\frac{k^2}{4} + \frac{1}{2}(k_\mu p^\mu_1) + \frac{p_1^2}{4}\bigg] = \frac{1}{4}\cancelto{0}{\feynmandiagram[inline={([yshift=-0.2cm]current bounding box.center)}, rotate=-45, horizontal=a to b, scale=0.55] {
+            a [label = \ensuremath{\scriptstyle 2}] -- v1 -- v -- [cancel] v2 -- b [label = \ensuremath{\scriptstyle 1}], v1 -- [cancel] v2, v -- c [label = \ensuremath{\scriptstyle 3}]};} + \frac{1}{2}p_{1\mu}\feynmandiagram[inline={([yshift=-0.1cm]current bounding box.center)}, layered layout, horizontal=a to b, scale=0.5] { a [label=\ensuremath{\scriptstyle 2}] -- v -- [half left, looseness=1.5] v1 -- [half left, looseness=1.5] v, v1 -- b};[k^\mu] = 0,
+    \end{equation}
+    \begin{equation}
+        \begin{split}
+            \feynmandiagram[inline={([yshift=-0.2cm]current bounding box.center)}, rotate=-45, horizontal=a to b, scale=0.55] { a [label = \ensuremath{\scriptstyle 2}] -- v1 -- v -- v2 -- b [label = \ensuremath{\scriptstyle 1}], v1 -- [cancel] v2, v -- c [label = \ensuremath{\scriptstyle 3}]};\bigg[\frac{k^2}{4}\bigg] &= \feynmandiagram[inline={([yshift=-0.1cm]current bounding box.center)}, layered layout, horizontal=a to b, scale=0.5] { a [label=\ensuremath{\scriptstyle 3}] -- v -- [half left, looseness=1.5, edge label=\ensuremath{\scriptstyle k + p_1 + p_2}] v1 -- [half left, looseness=1.5, edge label=\ensuremath{\scriptstyle k}] v, v1 -- b};\bigg[\frac{1}{4}(k^\mu + p_2^\mu)^2\bigg] \\
+            &= +\frac{1}{4}\feynmandiagram[inline={([yshift=-0.1cm]current bounding box.center)}, layered layout, horizontal=a to b, scale=0.5] { a [label=\ensuremath{\scriptstyle 3}] -- v -- [half left, looseness=1.5] v1 -- [half left, looseness=1.5, cancel] v, v1 -- b}; + \frac{1}{2}p_{2\mu}\feynmandiagram[inline={([yshift=-0.1cm]current bounding box.center)}, layered layout, horizontal=a to b, scale=0.5] { a [label=\ensuremath{\scriptstyle 3}] -- v -- [half left, looseness=1.5, edge label=\ensuremath{\scriptstyle k - p_3}] v1 -- [half left, looseness=1.5, edge label=\ensuremath{\scriptstyle k}] v, v1 -- b};[k_\mu] \\
+            &= \frac{1}{4}(p_{2\mu}p_3^\mu)\feynmandiagram[inline={([yshift=-0.1cm]current bounding box.center)}, layered layout, horizontal=a to b, scale=0.5] { a [label=\ensuremath{\scriptstyle 3}] -- v -- [half left, looseness=1.5] v1 -- [half left, looseness=1.5] v, v1 -- b};[1].
+        \end{split}
+    \end{equation}
+    Thus, we arrive at
+    \begin{equation}
+    \label{eq: second contribution triangle rank 2}
+        -\frac{s_3}{8}\feynmandiagram[inline={([yshift=-0.1cm]current bounding box.center)}, layered layout, horizontal=a to b, scale=0.5] { a [label=\ensuremath{\scriptstyle 3}] -- v -- [half left, looseness=1.5] v1 -- [half left, looseness=1.5] v, v1 -- b}; = \frac{1}{4}s_3^2c_{22}.
+    \end{equation}
+    In a similar way, we contract with $p_{2\mu_1}p_{2\mu_2}$ resulting in 
+    \begin{equation}
+    \label{eq: third contribution triangle rank 2}
+        -\frac{s_3}{8}\feynmandiagram[inline={([yshift=-0.1cm]current bounding box.center)}, layered layout, horizontal=a to b, scale=0.5] { a [label=\ensuremath{\scriptstyle 3}] -- v -- [half left, looseness=1.5] v1 -- [half left, looseness=1.5] v, v1 -- b}; = \frac{1}{4}s_3^2c_{11},
+    \end{equation}
+    while the contraction with $\frac{1}{2}(p_1^{\mu_1}p_2^{\mu_2} + p_1^{\mu_2}p_2^{\mu_1})$ gives
+    \begin{equation}
+    \label{eq: fourth contribution triangle rank 2}
+        \frac{s_3}{8}\feynmandiagram[inline={([yshift=-0.1cm]current bounding box.center)}, layered layout, horizontal=a to b, scale=0.5] { a [label=\ensuremath{\scriptstyle 3}] -- v -- [half left, looseness=1.5] v1 -- [half left, looseness=1.5] v, v1 -- b}; = \frac{1}{2}s_3c_{00} + \frac{1}{8}s_3^2c_{12}.
+    \end{equation}
+    The contributions found in equations \eqref{eq: first contribution triangle rank 2}, \eqref{eq: second contribution triangle rank 2}, \eqref{eq: third contribution triangle rank 2}, and \eqref{eq: fourth contribution triangle rank 2} as a matrix equation reads
+    \begin{equation}
+        M\vc = \vb \feynmandiagram[inline={([yshift=-0.1cm]current bounding box.center)}, layered layout, horizontal=a to b, scale=0.5] { a [label=\ensuremath{\scriptstyle 3}] -- v -- [half left, looseness=1.5] v1 -- [half left, looseness=1.5] v, v1 -- b};,
+    \end{equation}
+    where 
+    \begin{equation}
+        \vc = 
+        \begin{pmatrix}
+            c_{00} \\
+            c_{11} \\
+            c_{22} \\
+            c_{12}
+        \end{pmatrix},\quad \vb = 
+        \begin{pmatrix}
+            1 \\
+            -\dfrac{s_3}{8} \\
+            -\dfrac{s_3}{8} \\
+            \dfrac{s_3}{8} \\
+        \end{pmatrix}, \quad M = 
+        \begin{pmatrix}
+            D & 0 & 0 & \dfrac{s_3}{2} \\
+            D & 0 & \dfrac{s_3}{4} & 0 \\
+            0 & \dfrac{s_3^2}{4} & 0 & 0 \\
+            \dfrac{s_3}{2} & 0 & 0 & \dfrac{s_3^2}{8} \\
+        \end{pmatrix},
+    \end{equation}
+    which if inverted gives the form factors as the vector
+    \begin{equation}
+        \vc = 
+        \begin{pmatrix}
+            \dfrac{1}{2(D - 2)} \\
+            -\dfrac{1}{2s_3} \\
+            -\dfrac{1}{2s_3} \\
+            \dfrac{D - 4}{(D - 2)s_3}
+        \end{pmatrix} \underbrace{\feynmandiagram[inline={([yshift=-0.1cm]current bounding box.center)}, layered layout, horizontal=a to b, scale=0.5] { a [label=\ensuremath{\scriptstyle 3}] -- v -- [half left, looseness=1.5] v1 -- [half left, looseness=1.5] v, v1 -- b};}_{=\,I_2^{(1)[D]}(s_3)} =  
+        \begin{pmatrix}
+            \dfrac{1}{2(D - 2)} \\
+            -\dfrac{1}{2s_3} \\
+            -\dfrac{1}{2s_3} \\
+            \dfrac{D - 4}{(D - 2)s_3}
+        \end{pmatrix}\selfint{D}(s_3).
+    \end{equation}
+    At rank three the algebra is better implemented on a computer. The final result however is relatively simple though the rank two bubble reduction formula is required at intermediate stages. The tensor basis is
+    \begin{multline}
+        \{g^{\mu_1\mu_2}p_1^{\mu_3} + \mathrm{cyclic}, g^{\mu_1\mu_2}p_2^{\mu_3} + \mathrm{cyclic}, p_1^{\mu_1}p_1^{\mu_2}p_1^{\mu_3}, \\ p_2^{\mu_1}p_2^{\mu_2}p_2^{\mu_3}, p_1^{\mu_1}p_1^{\mu_2}p_2^{\mu_3} + \mathrm{cyclic}, p_1^{\mu_1}p_2^{\mu_2}p_2^{\mu_3} + \mathrm{cyclic}\},
+    \end{multline}
+    with form factors $\vc = \{c_{001}, c_{002}, c_{111}, c_{222}, c_{112}, c_{122}\}$. Solving the system results in 
+    \begin{equation}
+        \vc = \frac{1}{4(D - 1)}\bigg\{-1, 1, \frac{D}{s_3}, -\frac{D}{s_3}, -\frac{(D - 4)}{s_3}, \frac{(D - 4)}{s_3}\bigg\}\feynmandiagram[inline={([yshift=-0.1cm]current bounding box.center)}, layered layout, horizontal=a to b, scale=0.5] { a [label=\ensuremath{\scriptstyle 3}] -- v -- [half left, looseness=1.5] v1 -- [half left, looseness=1.5] v, v1 -- b};.
+    \end{equation}
+\end{ex}
+
+\section{Clifford algebra in \texorpdfstring{$D$}{D} dimensions}
+There are some subtleties in the extension of the Clifford algebra to $D = 4 - 2\epsilon$ dimensions and the representations of the $\gamma$ matrices. Since we will deal with QED and QCD which are parity symmetric, the issue will not arise but for the electroweak part of the Standard Model we must pay attention. The Clifford algebra we have used so far is
+\begin{equation}
+    \acomm{\gamma^\mu}{\gamma^\nu} = 2g^{\mu\nu}\MI_4,
+\end{equation}
+where $\dim{\gamma^\mu} = 4 \times 4$. If we extend the metric to live in $D$ dimensions we may derive identities such as
+\begin{align}
+    \gamma^\mu\gamma_\mu &= \frac{1}{2}\acomm{\gamma^\mu}{\gamma_\mu} = g^\mu g_\mu\MI_4 = D\MI_4, \\
+    \gamma^\mu\gamma^\nu\gamma_\mu &= -\gamma^\mu\gamma_\mu\gamma^\nu + 2\gamma^\nu = (2 - D)\gamma^\nu,
+\end{align}
+which will have to be applied to the numerators of the Feynman diagrams. We do not need an explicit representation of the $\gamma$ matrices in order to do this but in principle we should worry about it. It is possible to construct explicit representations for the $\gamma$ matrices in arbitrary dimensions, however the role of the chirality $\gamma^5$ is very different in even and odd dimensions. We now look at the constructions in the Euclidean $SO(D)$ and the Minkowskian $SO(1, D - 1)$ starting in $D = 2$.
+
+\subsection{\texorpdfstring{$\gamma$}{gamma} matrices in \texorpdfstring{$SO(2)$}{SO(2)}}
+In the $SO(2)$ group we have two matrices $\gamma^1_{(2)}$ and $\gamma^2_{(2)}$ which are $2 \times 2$ matrices that satisfy
+\begin{equation}
+    (\gamma^i_{(2)})^\dg = \gamma^i_{(2)},\quad \forall i \in \{1,2\}.
+\end{equation}
+We may choose
+\begin{equation}
+    \gamma^1_{(2)} \equiv \sigma^1 = 
+    \begin{pmatrix}
+        0 & 1 \\
+        1 & 0
+    \end{pmatrix},\quad \gamma^2_{(2)} \equiv \sigma^2 = 
+    \begin{pmatrix}
+        0 & -i \\
+        i & 0
+    \end{pmatrix},
+\end{equation}
+so that they satisfy the relation 
+\begin{equation}
+    \acomm{\gamma^i_{(2)}}{\gamma^j_{(2)}} = 2\delta^{ij}\MI_2.
+\end{equation}
+In even dimensions we may define a chirality operation
+\begin{equation}
+    P_\pm = \frac{1}{2}(1 + \hat{\gamma}^3_{(2)}),\quad \hat{\gamma}^3_{(2)} = \frac{i}{2}\bigg(\gamma^1_{(2)}\gamma^2_{(2)} - \gamma^2_{(2)}\gamma^1_{(2)}\bigg) = 
+    \begin{pmatrix}
+        -1 & 0 \\
+        0 & 1
+    \end{pmatrix}.
+\end{equation}
+
+\subsection{\texorpdfstring{$\gamma$}{gamma} matrices in \texorpdfstring{$SO(3)$}{SO(3)}}
+In the $SO(3)$ group, and more in general in odd dimensions, the dimension of the $\gamma$ matrices representation is $2^{\floor{D/2}} \times 2^{\floor{D/2}}$. So in $D = 3$ we have three $2 \times 2$ matrices satisfying
+\begin{equation}
+    \acomm{\gamma^i_{(3)}}{\gamma^j_{(3)}} = 2\delta^{ij}\MI_2,
+\end{equation}
+where
+\begin{equation}
+    \gamma^1_{(3)} = \gamma^1_{(2)},\quad \gamma^2_{(3)} = \gamma^2_{(2)},\quad \gamma^3_{(3)} = \hat{\gamma}^3_{(2)}.
+\end{equation}
+Moreover, there is no notion of chirality in three dimensions. Higher dimension representations can be built from tensor products, for example in $D = 4$ the $4 \times 4$ dimensions can be built from tensor product of $2 \times 2$ matrices. 
+
+\subsection{\texorpdfstring{$\gamma$}{gamma} matrices in \texorpdfstring{$SO(1,1)$}{SO(1,1)}}
+In the two dimensional Minkowski space, with the metric tensor $g^{\mu\nu} =\diag{1,-1}$ the $\gamma$ matrices satisfy
+\begin{equation}
+    (\gamma^\mu_{(2)})^\dg = 
+    \begin{cases}
+        \gamma^\mu_{(2)},\quad \mu = 0 \\
+        -\gamma^\mu_{(2)},\quad \mu = 1
+    \end{cases},
+\end{equation}
+or, equivalently, the relation $(\gamma^\mu_{(2)})^\dg = \gamma_{(2)\mu}$. We may choose
+\begin{equation}
+    \gamma^0_{(2)} \equiv \sigma^3 = 
+    \begin{pmatrix}
+        1 & 0 \\
+        0 & -1
+    \end{pmatrix},\quad \gamma^1_{(2)} \equiv \sigma^2 =
+    \begin{pmatrix}
+        0 & 1 \\
+        -1 & 0
+    \end{pmatrix},
+\end{equation}
+which satisfy explicitly $\acomm{\gamma^\mu_{(2)}}{\gamma^\nu_{(2)}} = 2g^{\mu\nu}\MI_2$. We may also define the a chirality operation as
+\begin{equation}
+    \hat{\gamma}^3_{(2)} = \frac{1}{2}(\gamma^0_{(2)}\gamma^1_{(2)} - \gamma^1_{(2)}\gamma^0_{(2)}) = 
+    \begin{pmatrix}
+        0 & 1 \\
+        1 & 0
+    \end{pmatrix}.
+\end{equation}
+The operator $\hat{\gamma}^3_{(2)}$ anti-commutes with $\gamma^\mu_{(2)}$ since $\acomm{\gamma^\mu_{(2)}}{\hat{\gamma}^3_{(2)}} = 0$. The three dimensional case is constructed analogously as the $SO(3)$ case.
+
+\subsection{\texorpdfstring{$\gamma$}{gamma} matrices in \texorpdfstring{$SO(1,3)$}{SO(1,3)}} 
+The standard Dirac matrices in the Weyl basis can be built from the $SO(1,1)$ $\gamma$ matrices by
+\begin{align}
+    \gamma^0_{(4)} &= \hat{\gamma}^3_{(2)} \otimes \MI_2,\quad \gamma^1_{(4)} = \gamma^2_{(2)} \otimes \hat{\gamma}^3_{(2)} \\
+    \gamma^2_{(4)} &= -i\gamma^2_{(2)} \otimes \gamma^2_{(2)},\quad \gamma^3_{(4)} = \gamma^2_{(2)} \otimes \gamma^2_{(2)},
+\end{align}
+while the chirality operation is defined as usual with $P_\pm = \frac{1}{2}(1 \pm \hat{\gamma}^5_{(4)})$ where
+\begin{equation}
+    \hat{\gamma}^5_{(4)} = -i\gamma^0_{(4)}\gamma^1_{(4)}\gamma^2_{(4)}\gamma^3_{(4)}.
+\end{equation}
+
+\subsection{\texorpdfstring{$\gamma$}{gamma} matrices in dimensional regularisation}
+If we were to think of representing the $\gamma$ matrices in $D = 4 - 2\epsilon$ dimensions as an infinite dimension vector space we would not find a correct continuation around $D = 4$, since there is the need to use $\hat{\gamma}^5$ to represent chirality. Therefore, we keep the dimensions of the spinor space to be four with
+\begin{equation}
+    \acomm{\gamma^\mu}{\gamma^\nu} = 2g^{\mu\nu}\MI_4,\quad g^{\mu\nu} = \diag{1,-1,-1,-1}.
+\end{equation}
+Thus, we keep the identities for the $\gamma$ matrices as before. Also, chirality is defined in four dimensional hence $\hat{\gamma}^5 = i\gamma^0\gamma^1\gamma^2\gamma^3$, 
+such that $\acomm{\gamma^\mu}{\hat{\gamma}^5} = 0$, but we must implement another commutation relation
+\begin{equation}
+    \comm{\gamma^\mu}{\hat{\gamma}^5} = 0,\quad \forall \mu > 3.
+\end{equation}
+This is the 't Hooft-Veltmann scheme. 
+
+

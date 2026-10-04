@@ -1,0 +1,1303 @@
+\chapter{QCD at 1-loop}
+We will consider a $SU(n_c)$ gauge theory with $n_f$ quark flavours transforming in the fundamental representation. The gluon field $A_\mu^a$ is quantized in a covariant gauge using the Faddeev-Popov method which introduces the ghost fields $c^a$. The complete field content is constituted by $\psi_{q\alpha i}$, $A^{\mu a}$ and $c^a$, where the indices are $q = 1,\dots,n_f$ for the flavours, $\alpha = 1,\dots,4$ for the spinors, $a = 1, \dots, n_c^2 - 1 $ for the colour of $A^\mu$ and $c$, $i = 1, \dots, n_c$ for the colour of $\psi$, and $\mu = 0,\dots,3$ for the Lorentz quantities. The bare Lagrangian is
+\begin{equation}
+    \begin{split}
+        \dL_{QCD,0} &= -\frac{1}{4}F_0^{\mu\nu a}F^a_{0\mu\nu} + \sum_{q=1}^{n_f}\psib_{0q\alpha i}(i\slD_0 - m_{0q})_{ij\alpha\beta}\psi_{0q\beta j} \\
+        &- \frac{1}{2\xi}(\p_\mu A^{\mu a}_0)(\p_\nu A^{\nu a}_0) + \p^\mu\cbar^a_0D^{ab}_{0\mu}c^b_0,
+    \end{split}
+\end{equation}
+where 
+\begin{align}
+    F_0^{\mu\nu a} = \p^\mu A^{\nu a}_0 - \p^\nu A^{\mu a}_0 - g_{S0}f^{abc}A_0^{\mu b}A^{\nu c}_0,\quad \slD_{0ij\alpha\beta} = \gamma^\mu_{\alpha\beta}D_{0\mu ij}, \\
+    D^\mu_{0ij} = \p^\mu\delta_{ij} - ig_{S0}t^a_{ij}A^{\mu a}_0,\quad D^{\mu ab}_0 = \p^\mu\delta^{ab} - g_{S0}f^{abc}A^{\mu c}_0,
+\end{align}
+with $f^{abc}$ the $SU(n_c)$ group structure constants, $g_{S0}$ the bare strong coupling constant and $t_{ij}^a$ the fundamental $SU(n_c)$ generators. The Feynman rules are
+\begin{equation}
+        \feynmandiagram[inline={([yshift=-0.3cm]current bounding box.center)}, horizontal=a to b, scale=0.8, transform shape] { 
+        a [label=\ensuremath{i}] -- [fermion, momentum={[arrow distance=4pt]\ensuremath{\scriptstyle p}}] b [label=\ensuremath{j}], 
+        }; = \frac{i(\slp + m_q)\delta_{ij}}{D(p,m_q)},
+\end{equation}
+\begin{equation}
+    \feynmandiagram[inline={([yshift=-0.3cm]current bounding box.center)}, horizontal=a to b, scale=0.8, transform shape] { 
+    a [label=\ensuremath{i}] -- [gluon, momentum={[arrow distance=4pt]\ensuremath{\scriptstyle p}}] b [label=\ensuremath{j}], 
+    }; = -\frac{i\delta^{ij}}{D(p,0)}\bigg[g^{\mu\nu} - \frac{p^\mu p^\nu}{p^2}(1 - \xi)\bigg],
+\end{equation}
+\begin{equation}
+    \feynmandiagram[inline={([yshift=-0.3cm]current bounding box.center)}, scale=0.8, horizontal=a to v, layered layout, transform shape] {
+        a [label=\ensuremath{a}] -- [gluon, momentum'={[arrow distance=4pt]\ensuremath{\scriptstyle p}}] v [dot] -- [fermion] b [label=\ensuremath{j}], v -- [fermion] c [label=\ensuremath{i}]
+        }; = ig_St^a_{ji}\gamma^\mu,
+\end{equation}
+\begin{equation}
+\begin{split}
+    \feynmandiagram[inline={([yshift=-0.3cm]current bounding box.center)},
+        scale=0.8, horizontal=a to v, layered layout,
+        transform shape] {
+        a [label=\ensuremath{a}] -- [gluon, momentum'={[arrow distance=4pt]\ensuremath{\scriptstyle 1}}] v [dot] -- [gluon, reversed momentum'={[arrow distance=4pt]\ensuremath{\scriptstyle 2}}] b [label=\ensuremath{j}], v -- [gluon, reversed momentum'={[arrow distance=4pt]\ensuremath{\scriptstyle 3}}] c [label=\ensuremath{i}]
+        }; = -g_Sf^{a_1a_2a_3}[g^{\mu_1\mu_2}(p_1 - p_2)^{\mu_3} \\
+        + g^{\mu_2\mu_3}(p_2 - p_3)^{\mu_1} \\
+        + g^{\mu_3\mu_1}(p_3 - p_1)^{\mu_2}],
+\end{split}
+\end{equation}
+\begin{equation}
+    \begin{split}
+        \feynmandiagram[inline={([yshift=-0.1cm]current bounding box.center)}, scale = 0.8, horizontal=a to c] { 
+        a -- [gluon, momentum={[arrow distance=4pt]\ensuremath{\scriptstyle 2}}] b [dot] -- [gluon, reversed momentum'={[arrow distance=4pt] \ensuremath{\scriptstyle 4}}, label=\ensuremath{\scriptstyle A_c^\mu}] d, b -- [gluon, reversed momentum'={[arrow distance=4pt]\ensuremath{\scriptstyle 3}}] c, b -- [gluon, reversed momentum'={[arrow distance=4pt]\ensuremath{\scriptstyle 1}}] e}; &= ig_S^2[f^{12b}f^{b34}(g^{13}g^{24} - g^{14}g^{23}) \\
+        &+ f^{13b}f^{b24}(g^{12}g^{34} - g^{14}g^{23}) \\
+        &+ f^{14b}f^{b23}(g^{13}g^{24} - g^{12}g^{34})],
+    \end{split}
+\end{equation}
+\begin{equation}
+     \feynmandiagram[inline={([yshift=-0.3cm]current bounding box.center)}, horizontal=a to b, scale=0.8, transform shape] { 
+        a [label=\ensuremath{a}] -- [ghost, momentum={[arrow distance=4pt]\ensuremath{\scriptstyle p}}] b [label=\ensuremath{b}], 
+        }; = \frac{i\delta^{ab}}{D(p,0)},
+\end{equation}
+\begin{equation}
+        \feynmandiagram[inline={([yshift=-0.3cm]current bounding box.center)}, scale=0.8, horizontal=a to v, layered layout, transform shape] {
+        a [label=\ensuremath{a}] -- [gluon, momentum'={[arrow distance=4pt]\ensuremath{\scriptstyle p}}] v [dot] -- [ghost] b , v -- [ghost] c
+        }; = g_Sf^{abc}p^\mu,
+\end{equation}
+where for the colour indices we used the short-hand $a_i \equiv i$.
+
+\section{Colour algebra}
+The $SU(n_c)$ group colour factors are a new feature of QCD diagrams. We must simplify them using the $SU(n_c)$ colour algebra defined from the commutator condition
+\begin{equation}
+    \comm{t^a}{t^b} = if^{abc}t^c,\quad \forall a,b \in \{1,\dots,n_c^2 -1\},
+\end{equation}
+where the generators $t^a$ are such that
+\begin{equation}
+    \tr{t^at^b} = \frac{\delta^{ab}}{2},\quad \tr{t^a} = 0,\quad \forall a,b \in \{1,\dots,n_c^2 -1\}.
+\end{equation}
+The group generators $t^a$ satisfy also other useful relations such as:
+\begin{enumerate}
+    \item the Fierz identity, namely
+    \begin{equation}
+    \label{eq: Fierz identity}
+        t^a_{ij}t^a_{kl} = \frac{1}{2}\bigg(\delta_{il}\delta_{kj} - \frac{1}{n_c}\delta_{ij}\delta_{kl}\bigg),\quad \forall i,j,k,l \in \{1,\dots,n_c\};
+    \end{equation}
+    \item the Jacobi identity, namely
+    \begin{equation}
+    \label{eq: Jacobi identity for SU(n)c structure constants}
+        f^{12x}f^{x34} + f^{13x}f^{x42} + f^{14x}f^{x23} = 0,\quad \forall x \in \{1,\dots,n_c^2 - 1\}.
+    \end{equation}
+\end{enumerate}
+By repeated use of these properties we may reduce onto a basis of colours factors.
+\begin{ex}
+    As a first example, let's look at the quark self-energy which will come in hand later, given by
+    \begin{equation}
+        \begin{split}
+            \feynmandiagram[inline=(v.base), layered layout, horizontal=a to b, scale=0.8, transform shape] { 
+            a [label=\ensuremath{i}] -- [fermion] v [dot] -- [gluon, half left, looseness=1.5, edge label=\ensuremath{a}, pos=0.1] v1 [dot], v -- [momentum'={[arrow distance = 4pt]\(\scriptstyle k\)}] v1, v1 -- [fermion] b [label=\ensuremath{j}], 
+            }; = t^{a}_{jk}t^{a}_{ki} &= \frac{1}{2}\bigg(\delta_{ji}\delta_{kk} - \frac{1}{n_c}\delta_{jk}\delta_{ki}\bigg) \\
+            &= \frac{1}{2}\bigg(n_c - \frac{1}{n_c}\bigg)\delta_{ij} \\
+            &\equiv C_F\delta_{ij},
+        \end{split}
+    \end{equation}
+where we have identified the fundamental Casimir of $SU(n_c)$ as 
+\begin{equation}
+    C_F \equiv \frac{n_c^2 - 1}{2n_c}.
+\end{equation}
+\end{ex}
+It is possible to apply the colour algebra graphically as well; if we use the Feynman diagrams to represent only the colour factor then we have
+\begin{equation}
+    \feynmandiagram[inline={([yshift=-0.3cm]current bounding box.center)},
+        scale=0.8, horizontal=a to v, layered layout,
+        transform shape] {
+        a [label=\ensuremath{a}] -- [gluon] v [dot] -- [fermion] b [label=\ensuremath{j}], v -- [anti fermion] c [label=\ensuremath{i}]
+        }; = t^a_{ji},\quad \feynmandiagram[inline={([yshift=-0.3cm]current bounding box.center)},
+        scale=0.8, horizontal=a to v, layered layout,
+        transform shape] {
+        a [label=\ensuremath{a}] -- [gluon] v [dot] -- [gluon] b [label=\ensuremath{b}], v -- [gluon] c [label=\ensuremath{c}]
+        }; = f^{abc},\quad\dots.
+\end{equation}
+The Fierz identity can be read as
+\begin{equation}
+    \begin{tikzpicture}[scale=0.7, transform shape, baseline={([yshift=-0.1cm]current bounding box.center)}]
+    \begin{feynman}
+    
+    \vertex [dot] (a) {};
+    \vertex [above=1.2cm of a] (v1) {};
+    \vertex [below=1.2cm of a] (v2) {};
+    \vertex [dot, right=1.7cm of a] (b) {};
+    \vertex [above=1.2cm of b] (w1) {};
+    \vertex [below=1.2cm of b] (w2) {};
+
+    \diagram* {
+      (v2) -- [fermion] (a) -- [fermion] (v1), (w1) -- [fermion] (b) -- [fermion] (w2),
+      (a) -- [gluon] (b)
+    };
+    \end{feynman}
+    \end{tikzpicture} 
+    = \frac{1}{2}\bigg( 
+    \begin{tikzpicture}[scale=0.7, transform shape, baseline={([yshift=-0.1cm]current bounding box.center)}]
+    \begin{feynman}
+    
+    \vertex (a) {};
+    \vertex [right=1.3cm of a] (a1) {};
+    
+    \vertex [below=1.1cm of a] (b) {};
+    \vertex [below=1.1cm of a1] (b1) {};
+
+    \diagram* {
+      (a) -- [anti fermion, bend right=50] (a1), (b) -- [fermion, bend left=50] (b1)
+    };
+    \end{feynman}
+    \end{tikzpicture}
+    + 
+    \begin{tikzpicture}[scale=0.7, transform shape, baseline={([yshift=-0.1cm]current bounding box.center)}]
+    \begin{feynman}
+    
+    \vertex (a) {};
+    \vertex [above=1.2cm of a] (a1) {};
+    
+    \vertex [right=0.5cm of a] (b) {};
+    \vertex [above=1.2cm of b] (b1) {};
+
+    \diagram* {
+      (a) -- [fermion] (a1), (b) -- [anti fermion] (b1)
+    };
+    \end{feynman}
+    \end{tikzpicture} \bigg),
+\end{equation}
+from which we can connect the lower quark index to make the self-energy colour factor
+\begin{equation}
+    \feynmandiagram[inline=(v.base), layered layout, horizontal=a to b, scale=0.7, transform shape] { 
+            a -- [fermion] v [dot] -- [gluon, half left, looseness=1.5] v1 [dot], v -- v1, v1 -- [fermion] b }; = \frac{1}{2}\bigg( 
+    \begin{tikzpicture}[scale=0.7, transform shape, baseline={([yshift=-0.1cm]current bounding box.center)}]
+    \begin{feynman}
+    
+    \vertex (a) {};
+    \vertex [right=1.1cm of a] (a1) {};
+    \vertex [below=1.1cm of a] (b) {};
+    \vertex [below=1.1cm of a1] (b1) {};
+    \vertex [above=0.3cm of b] (c) {};
+    \vertex [above=0.3cm of b1] (c1) {};
+
+    \diagram* {
+      (a) -- [fermion] (a1), (b) -- [anti fermion, half left] (b1), (c) -- [half right] (c1)
+    };
+    \end{feynman}
+    \end{tikzpicture}
+    -\frac{1}{n_c}\feynmandiagram[inline={([yshift=-0.1cm]current bounding box.center)}, horizontal=a to b, scale=0.7, transform shape] { a -- [fermion] b };
+    \bigg) = C_F(\feynmandiagram[inline={([yshift=-0.1cm]current bounding box.center)}, horizontal=a to b, scale=0.7, transform shape] { a -- [fermion] b };),\quad \begin{tikzpicture}[scale=0.1, transform shape, baseline={([yshift=-0.1cm]current bounding box.center)}]
+    \begin{feynman}
+    
+    \vertex (b) {};
+    \vertex [right=1.1cm of a1] (b1) {};
+    \vertex [above=0.3cm of b] (c) {};
+    \vertex [above=0.3cm of b1] (c1) {};
+
+    \diagram* {
+        (b) -- [anti fermion, half left] (b1), (c) -- [half right] (c1)
+    };
+    \end{feynman}
+    \end{tikzpicture} = n_c.
+\end{equation}
+
+\section{Tree-level amplitudes}
+Having arranged the colour factors it is also worth noting how we can compute compact helicity amplitudes for the remaining kinematic components. We will introduce the concepts by means of the $\qbar qgg$ scattering. There are three tree-level Feynman diagrams that make up the total amplitude
+\begin{equation}
+    \amp = \begin{tikzpicture}[scale=0.7, transform shape, baseline={([yshift=-0.1cm]current bounding box.center)}]
+    \begin{feynman}
+    
+    \vertex [dot] (a) {};
+    \vertex [dot, above=1.7cm of a] (b) {};
+    
+    \vertex [right=1.2cm of a] (v1) {4};
+    \vertex [left=1.2cm of a] (v2) {1};
+    \vertex [right=1.2cm of b] (w1) {3};
+    \vertex [left=1.2cm of b] (w2) {2};
+
+    \diagram* {
+      (a) -- [fermion] (b), (v2) -- [fermion] (a) -- [gluon] (v1), (w2) -- [anti fermion] (b) -- [gluon] (w1)
+    };
+    \end{feynman}
+    \end{tikzpicture} + \begin{tikzpicture}[scale=0.7, transform shape, baseline={([yshift=-0.1cm]current bounding box.center)}]
+    \begin{feynman}
+    
+    \vertex [dot] (a) {};
+    \vertex [dot, above=1.7cm of a] (b) {};
+    
+    \vertex [right=1.2cm of a] (v1) {4};
+    \vertex [left=1.2cm of a] (v2) {1};
+    \vertex [right=1.2cm of b] (w1) {3};
+    \vertex [left=1.2cm of b] (w2) {2};
+
+    \diagram* {
+      (a) -- [fermion] (b), (v2) -- [fermion] (a) -- [gluon] (w1), (w2) -- [anti fermion] (b) -- [gluon] (v1)
+    };
+    \end{feynman}
+    \end{tikzpicture} +
+    \begin{tikzpicture}[scale=0.7, transform shape, baseline={([yshift=-0.1cm]current bounding box.center)}]
+    \begin{feynman}
+    
+    \vertex [dot] (a) {};
+    \vertex [above left=1.2cm and 0.7 of a] (v1) {2};
+    \vertex [below left=1.2cm and 0.7 of a] (v2) {1};
+    \vertex [dot, right=1.7cm of a] (b) {};
+    \vertex [above right=1.2cm and 0.7 of b] (w1) {3};
+    \vertex [below right=1.2cm and 0.7 of b] (w2) {4};
+
+    \diagram* {
+      (v2) -- [fermion] (a) -- [fermion] (v1), (w1) -- [gluon] (b) -- [gluon] (w2),
+      (a) -- [gluon] (b)
+    };
+    \end{feynman}
+    \end{tikzpicture}
+    ,
+\end{equation}
+where we have chosen all particles out-going to simply the momentum conservation to $\sum_{i=1}^4p_i^\mu = 0$. Firstly, let's show that the amplitude satisfies the Ward identity $\amp^\mu p_{3\mu} = 0$ where $\amp = \amp^\mu \epsilon_\mu(p_3)$. The first diagram reads
+\begin{equation}
+    \amp_1 = i(ig_S)^2\ubar_1\slep_4\frac{\slp_{23}}{s_{23}}\slep_3v_2(t^{a_3}t^{a_4})_{i_2i_4},
+\end{equation}
+where $p_{ij} = p_i + p_j$ and $s_{ij} = 2(p_i \cdot p_j)$. The contribution to the Ward identity is then
+\begin{equation}
+    \begin{split}
+        \amp_1^\mu p_{3\mu} &= -ig_S^2\ubar_1\slep_4\frac{\slp_{23}}{s_{23}}\slp_3v_2c_1 \\
+        &= -ig_S^2\ubar_1\slep_4\frac{\slp_2\slp_3}{s_{23}}v_2c_1 \\
+        &= -ig_S^2\ubar_1\slep_4v_2c_1,
+    \end{split}
+\end{equation}
+where $c_1 \equiv (t^{a_3}t^{a_4})_{i_2i_1}$ and in the last step we used the Clifford algebra. The second diagram is related to the first through a swap of indices $3 \leftrightarrow 4$, doing that results in the contribution
+\begin{equation}
+    \amp_2^\mu p_{3\mu} = ig_S^2\ubar_1\slep_4v_2c_2,\quad c_2 \equiv (t^{a_4}t^{a_3})_{i_2i_1}.
+\end{equation}
+The third diagram however is not so simple to derive, the amplitude is 
+\begin{equation}
+    \begin{split}
+        \amp_3 &= g_S\ubar_1\gamma^\mu v_2\frac{1}{s_{12}}\hatV_{3g\mu\mu_3\mu_4}(-p_{34},p_3,p_4)\epsilon^{\mu_1}_3\epsilon^{\mu_4}_4 t^b_{i_1i_2}f^{ba_3a_4} \\
+        &= g_S^2t^b_{i_1i_2}f^{ba_3a_4}\frac{1}{s_{12}}\ubar_1\gamma^\mu v_2 \\
+        &\times[(\epsilon_3\cdot\epsilon_4)(p_3 - p_4)_\mu + \epsilon_{4\mu}(2p_4 \cdot \epsilon_3) - \epsilon_{3\mu}(2p_3 \cdot p_4)],
+    \end{split}
+\end{equation}
+where we have made use of $\epsilon_i\cdot p_i = 0$. For the Ward identity the contribution of this third diagram is
+\begin{equation}
+    \begin{split}
+        \amp_3^\mu p_{3\mu} &= g_S^2t^b_{i_1i_2}f^{ba_3a_4}\frac{1}{s_{12}}\ubar_1\gamma^\mu v_2\bigg[\epsilon_{4\mu}s_{12} - (p_3\cdot \epsilon_4)(p_3 + p_4)_\mu\bigg] \\
+        &= g_S^2c_3\ubar_1\slep_4v_2,
+    \end{split}
+\end{equation}
+where we identified $c_3 \equiv t^b_{i_1i_2}f^{ba_3a_4}$, which can be written as
+\begin{equation}
+    c_3 \equiv t^b_{i_1i_2}f^{ba_3a_4} = -i\comm{t^{a_3}}{t^{a_4}}_{i_1i_2} = -i(c_1 - c_2).
+\end{equation}
+This is now sufficient to show that $\amp$ satisfies the Ward identity as
+\begin{equation}
+    \amp^\mu p_{3\mu} = g_S^2\ubar_1\slep_4v_2(-ic_1 + ic_2 - c_3) = 0.
+\end{equation}
+The colour identity above can be used to order the diagrams that appear in the amplitude; defining
+\begin{equation}
+    \amp_1 := g_S^2c_1\amp_1,\quad \amp_2 := g_S^2c_2\amp_2,\quad \amp_3 := ig_S^2c_3\amp_3,
+\end{equation}
+we have
+\begin{equation}
+    \amp = g_S^2[c_1(\amp_1 + \amp_3) + c_2(\amp_1 - \amp_3)],
+\end{equation}
+where the partial amplitudes are related by symmetry 
+\begin{equation}
+    (\amp_1 + \amp_3)|_{3\leftrightarrow 4} = \amp_2 - \amp_3.
+\end{equation}
+It is therefore sufficient to compute only two of the three diagrams and then permute the result. This process is precisely the colour ordering. 
+
+Compact representations for the helicity amplitudes can be found using the spinor-helicity formalism, built around the Weyl representation for the Dirac equation from which we construct everything from two-component helicity spinors, like
+\begin{equation}
+    \amp(1_q^{h_1}2^{h_2}_{\qbar}3^{h_3}_g4^{h_4}_g) = \amp_1 + \amp_3|_{\ubar_1 \to \frac{1}{2}(1 + h_1\gamma_5)u_2 ,\dots}.
+\end{equation}
+We recall the Weyl representation of the Dirac matrices 
+\begin{equation}
+    \gamma^\mu = 
+    \begin{pmatrix}
+        \MO & \sigma^\mu \\
+        \bsigma^\mu & \MO
+    \end{pmatrix},\quad \sigma^\mu = (\MI,\vsigma),\,\bsigma^\mu = (-\MI,\vsigma).
+\end{equation}
+The helicity projection operators are
+\begin{equation}
+    P_\pm = \frac{1}{2}(\MI \pm \gamma_5) = \frac{1}{2}
+    \begin{pmatrix}
+        \MI \pm \MI & \MO \\
+        \MO & \MI \mp \MI
+    \end{pmatrix},
+\end{equation}
+from which we form the helicty operators
+\begin{equation}
+    \begin{cases}
+        u_+ = p_+u = 
+        \begin{pmatrix}
+            \ket{p} \\
+            0
+        \end{pmatrix} = v_- \\[3ex]
+        u_- = p_-u = 
+        \begin{pmatrix}
+            0 \\
+            \sqket{p}
+        \end{pmatrix} = v_+
+    \end{cases}.
+\end{equation}
+Explicit solutions for the two-component Weyl spinors $\ket{p}$ and $\sqket{p}$ can be found satisfying 
+\begin{align}
+    \begin{cases}
+        \ket{p}\sqbra{p} = \sigma \cdot p \\
+        \sqket{p}\bra{p} = \bsigma \cdot p
+    \end{cases}\quad\longleftrightarrow\quad
+    \begin{cases}
+        p^\mu = \dfrac{1}{2}\sqketbra{p\sigma^\mu p} \\[2ex]
+        p^\mu = \dfrac{1}{2}\sqbraket{p\sigma^\mu p}
+    \end{cases},
+\end{align}
+where $\bra{p} = \epsilon\ket{p}$ and $\sqbra{p} = \epsilon\sqket{p}$.
+
+\section{Divergent graphs at 1-loop}
+The UV divergences are similar to those in QED, which are collected in table \ref{tab: UV divergences QCD}, where we have omitted the tadpole graph which is trivially zero because of the colour algebra. The last two graphs do not match gauge invariant operators and must therefore give finite results when all diagrams are summed together. The major difference with respect to QED is the number of diagrams that contribute. Up to 1-loop we have
+\begin{equation}
+    \feynmandiagram[inline={([yshift=-0.1cm]current bounding box.center)}, horizontal=a to c, scale=0.8, transform shape, layered layout] { 
+         a -- [fermion] b [blob] -- [fermion] c }; = 
+    \feynmandiagram[inline={([yshift=-0.1cm]current bounding box.center)}, horizontal=a to b, scale=0.8, transform shape, layered layout] { 
+         a -- [fermion] b }; + 
+    \feynmandiagram[inline={([yshift=-0.3cm]current bounding box.center)}, layered layout, horizontal=a to b, scale=0.8, transform shape] { 
+        a -- [fermion] v -- [gluon, half left, looseness=1.5] v1, v -- v1, v1 -- [fermion] b };,
+\end{equation}
+\begin{equation}
+\begin{aligned}
+    \feynmandiagram[inline={([yshift=-0.1cm]current bounding box.center)}, horizontal=a to c, scale=0.8, transform shape, layered layout] { 
+         a -- [gluon] b [blob] -- [gluon] c, 
+         }; &= 
+    \feynmandiagram[inline={([yshift=-0.1cm]current bounding box.center)}, horizontal=a to b, scale=0.8, transform shape, layered layout] { 
+         a -- [gluon] b, 
+         }; +
+    \feynmandiagram[inline={([yshift=-0.1cm]current bounding box.center)}, layered layout, horizontal=a to b, scale=0.8, transform shape] { 
+        a -- [gluon] v [dot] -- [gluon, half left, looseness=1.5] v1 [dot], v1 -- [gluon, half left, looseness=1.5] v, v1 -- [gluon] b , 
+        }; + \nsum_q
+    \feynmandiagram[inline={([yshift=-0.1cm]current bounding box.center)}, layered layout, horizontal=a to b, scale=0.8, transform shape] { 
+        a -- [gluon] v [dot] -- [fermion, half left, looseness=1.5] v1 [dot], v1 -- [fermion, half left, looseness=1.5] v, v1 -- [gluon] b , 
+        }; \\
+        &+ \feynmandiagram[inline={([yshift=-0.1cm]current bounding box.center)}, layered layout, horizontal=a to b, scale=0.7, transform shape] { 
+        a -- [gluon] v [dot] -- [ghost, half left, looseness=1.5] v1 [dot], v1 -- [ghost, half left, looseness=1.5] v, v1 -- [gluon] b , 
+        };,
+\end{aligned}
+\end{equation}
+\begin{equation}
+    \feynmandiagram[inline={([yshift=-0.1cm]current bounding box.center)}, horizontal=a to c, scale=0.8, transform shape, layered layout] { 
+         a -- [ghost] b [blob] -- [ghost] c }; =
+    \feynmandiagram[inline={([yshift=-0.1cm]current bounding box.center)}, horizontal=a to b, scale=0.8, transform shape, layered layout] { 
+         a -- [ghost] b }; + 
+    \feynmandiagram[inline={([yshift=-0.3cm]current bounding box.center)}, layered layout, horizontal=a to b, scale=0.8, transform shape] { 
+        a -- [ghost] v [dot] -- [gluon, half left, looseness=1.5] v1 [dot], v -- [ghost] v1, v1 -- [ghost] b };,
+\end{equation}
+\begin{equation}
+\begin{aligned}
+    \feynmandiagram[inline={([yshift=-0.1cm]current bounding box.center)}, horizontal=a to c, scale=0.8, transform shape, node distance=1.2cm] { 
+        a -- [fermion] b [blob, minimum size=0.3 cm, inner sep=0pt] -- [fermion] c, b -- [gluon] d, }; &= 
+    \feynmandiagram[inline={([yshift=-0.1cm]current bounding box.center)}, horizontal=a to c, scale=0.8, transform shape, node distance=1.2cm] { 
+        a -- [fermion] b [dot] -- [fermion] c, b -- [gluon] d, }; +
+    \feynmandiagram[inline={([yshift=-0.1cm]current bounding box.center)}, horizontal=v1 to v2, scale=0.8, transform shape, node distance=0.8cm]{
+        a -- [fermion] v1,
+        b -- [fermion] v2,
+        c -- [gluon] v3,
+    
+        v1 -- [gluon] v2
+           -- [fermion] v3
+           -- [fermion] v1 }; +
+    \feynmandiagram[inline={([yshift=-0.1cm]current bounding box.center)}, horizontal=v1 to v2, scale=0.8, transform shape, node distance=0.8cm]{
+        a -- [fermion] v1,
+        b -- [fermion] v2,
+        c -- [gluon] v3 [dot],
+    
+        v1 -- [fermion] v2
+           -- [gluon] v3
+           -- [gluon] v1 }; \\
+    &+ \feynmandiagram[inline={([yshift=-0.1cm]current bounding box.center)}, horizontal=v to v1, scale=0.8, transform shape] { 
+        a [label=\ensuremath{1}] -- [gluon] v [dot] -- [gluon, half left, looseness=1.5] v1 [dot], a1 [label=\ensuremath{2}] -- [gluon] v, v1 -- [gluon, half left, looseness=1.5] v, v1 -- [gluon] b [label=\ensuremath{3}], 
+        }; +
+    \feynmandiagram[inline={([yshift=-0.1cm]current bounding box.center)}, horizontal=v to v1, scale=0.8, transform shape] { 
+        a [label=\ensuremath{1}] -- [gluon] v [dot] -- [gluon, half left, looseness=1.5] v1 [dot], a1 [label=\ensuremath{3}] -- [gluon] v, v1 -- [gluon, half left, looseness=1.5] v, v1 -- [gluon] b [label=\ensuremath{2}], 
+        };  +
+    \feynmandiagram[inline={([yshift=-0.1cm]current bounding box.center)}, horizontal=v to v1, scale=0.8, transform shape] { 
+        a [label=\ensuremath{2}] -- [gluon] v [dot] -- [gluon, half left, looseness=1.5] v1 [dot], a1 [label=\ensuremath{3}] -- [gluon] v, v1 -- [gluon, half left, looseness=1.5] v, v1 -- [gluon] b [label=\ensuremath{1}], 
+        };, \\
+    &+ \mathrm{ghost\,loops} + \mathrm{quark\,loops},
+\end{aligned}
+\end{equation}
+\begin{equation}
+    \feynmandiagram[inline={([yshift=-0.1cm]current bounding box.center)}, horizontal=a to c, scale=0.8, transform shape, node distance=1.2cm] { 
+        a -- [ghost] b [blob, minimum size=0.3 cm, inner sep=0pt] -- [ghost] c, b -- [gluon] d }; = 
+    \feynmandiagram[inline={([yshift=-0.1cm]current bounding box.center)}, horizontal=a to c, scale=0.8, transform shape, node distance=1.2cm] { 
+        a -- [ghost] b [dot] -- [ghost] c, b -- [gluon] d }; +
+    \feynmandiagram[inline={([yshift=-0.1cm]current bounding box.center)}, horizontal=v1 to v2, scale=0.8, transform shape, node distance=0.8cm]{
+        a -- [ghost] v1 [dot],
+        b -- [ghost] v2 [dot],
+        c -- [gluon] v3 [dot],
+    
+        v1 -- [gluon] v2
+           -- [ghost] v3
+           -- [ghost] v1 }; +
+    \feynmandiagram[inline={([yshift=-0.1cm]current bounding box.center)}, horizontal=v1 to v2, scale=0.8, transform shape, node distance=0.8cm]{
+        a -- [ghost] v1 [dot],
+        b -- [ghost] v2 [dot],
+        c -- [gluon] v3 [dot],
+    
+        v1 -- [ghost] v2
+           -- [gluon] v3
+           -- [gluon] v1 };.
+\end{equation}
+If required, 4-points diagram expansions can be obtained relatively easily, clearly there are quite a few diagrams to consider. 
+\begin{table}[h]
+    \centering
+    \begin{tabular}{|c|ccccc|}
+         \hline 
+         $\Gamma$ & $n_q$ & $n_g$ & $n_c$ & $\omega(\Gamma)$ & name \\ \hline
+         \feynmandiagram[inline={([yshift=0cm]current bounding box.center)}, horizontal=a to c, scale=0.8, transform shape, layered layout] { 
+         a -- [fermion] b [blob] -- [fermion] c, 
+         }; & 2 & 0 & 0 & 1 & quark self-energy \\
+         \feynmandiagram[inline={([yshift=0cm]current bounding box.center)}, horizontal=a to c, scale=0.8, transform shape, layered layout] { 
+         a -- [gluon] b [blob] -- [gluon] c, 
+         }; & 0 & 2 & 0 & 2 & gluon self-energy\\ 
+         \feynmandiagram[inline={([yshift=0cm]current bounding box.center)}, horizontal=a to c, scale=0.7, transform shape, node distance=1.2cm] { 
+         a -- [fermion] b [blob, minimum size=0.3 cm, inner sep=0pt] -- [fermion] c, b --  [gluon] d, 
+         }; & 2 & 1 & 0 & 0 & $q\qbar g$ vertex\\ 
+         \feynmandiagram[inline={([yshift=0cm]current bounding box.center)}, horizontal=a to c, scale=0.7, transform shape, node distance=1.2cm] { 
+         a -- [gluon] b [blob, minimum size=0.3 cm, inner sep=0pt] -- [gluon] c, b -- [gluon] d, 
+         }; & 0 & 3 & 0 & 1 & 3$g$ vertex \\ 
+         \feynmandiagram[inline={([yshift=0cm]current bounding box.center)}, horizontal=a to c, scale=0.7, transform shape, node distance=0.9cm] { 
+         a -- [gluon] b [blob, minimum size=0.3 cm, inner sep=0pt] -- [gluon] c, b -- [gluon] d, b -- [gluon] e , 
+         }; & 0 & 4 & 0 & 0 & 4$g$ vertex \\ 
+         \feynmandiagram[inline={([yshift=-0.1cm]current bounding box.center)}, horizontal=a to c, scale=0.8, transform shape, layered layout] { 
+         a -- [ghost] b [blob] -- [ghost] c, 
+         }; & 0 & 0 & 2 & 2 & ghost self-energy\\ 
+         \feynmandiagram[inline={([yshift=-0.1cm]current bounding box.center)}, horizontal=a to c, scale=0.7, transform shape, node distance=1.2cm] { 
+         a -- [ghost] b [blob, minimum size=0.3 cm, inner sep=0pt] -- [ghost] c, b -- [gluon] d, 
+         }; & 0 & 1 & 2 & 1 & $c\cbar g$ vertex \\ 
+         \feynmandiagram[inline={([yshift=-0.1cm]current bounding box.center)}, horizontal=a to c, scale=0.7, transform shape, node distance=0.9cm] { 
+         a -- [ghost] b [blob, minimum size=0.3 cm, inner sep=0pt] -- [ghost] c, b --  [gluon] d, b -- [gluon] e , 
+         }; & 0 & 2 & 2 & 0 & - \\ 
+         \feynmandiagram[inline={([yshift=-0.1cm]current bounding box.center)}, horizontal=a to c, scale=0.7, transform shape, node distance=0.8cm] { 
+         a -- [ghost] b [blob, minimum size=0.3 cm, inner sep=0pt] -- [ghost] c, b -- [ghost] d, b -- [ghost] e , 
+         }; & 0 & 0 & 4 & 0 & - \\ \hline 
+    \end{tabular}
+    \caption{UV divergences in QCD.}
+    \label{tab: UV divergences QCD}
+\end{table}
+
+\subsection{Renormalization counter-terms}
+The necessary field and parameter redefinitions are as follows
+\begin{gather}
+    \psi_{0q} = Z_{\psi_q}^{1/2}\psi_{q,R},\quad A^\mu_0 = Z_A^{1/2}A_R^\mu,\quad c_0 = Z_c^{1/2}c_R, \\
+    m_{0q} = Z_{m_q}m_{q,R},\quad g_{S,0} = g_{S,R}\mu_R^\epsilon Z_{g_S}.
+\end{gather}
+\begin{notz}
+    For the rest of the discussion, quantities without the $R$ subscript will be considered to be renormalized. 
+\end{notz}
+The QCD Lagrangian in terms of renormalized quantities has the following counter-terms
+\begin{equation}
+    \begin{split}
+        \dL_{QCD} &= \dL_{QCD,R} + \sum_{q=1}^{n_f}[i\psib_q\slpd\psi_q(Z_{\psi_q} - 1) + m_q\psib_q\psi_q(Z_{m_q}Z_{\psi_q} -1) \\
+        &-g_S\mu_R^\epsilon\psib_q\slA^at^a\psi_q(Z_1 - 1) - \cbar^a\square c^a(Z_c - 1)] \\
+        &- g_s\mu_R^\epsilon f^{abc}\p_\mu\cbar^a A^{\mu b}c^c(Z_1^c - 1) \\
+        &+\frac{1}{2}A^a_\mu(g^{\mu\nu}\square - \p^\mu\p^\nu)A_\nu^a(Z_A -1 ) \\
+        &+g_S\mu_R^\epsilon f^{abc}A^{\mu b}A^{\nu c}\p_\mu A_\nu^a(Z_1^{3g} - 1) \\
+        &-\frac{1}{4}g_S^2\mu_R^{2\epsilon}f^{abx}f^{xcd}A_\mu^a A_\nu^b A^{\mu c}A^{\nu d}(Z_1^{4g} -1),
+    \end{split}
+\end{equation}
+where
+\begin{gather}
+    Z_1 = Z_{g_S}Z_A^{1/2}Z_{\psi_q},\quad Z_1^c = Z_{g_S}Z_A^{1/2}Z_c, \\
+    Z_1^{3g} = Z_{g_S}Z_A^{3/2},\quad Z_1^{4g} = Z_{g_S}^2Z_A^2.
+\end{gather}
+Unlike QED the gauge invariance constraints on $Z_x$ do not imply that $Z_1 = Z_{\psi_q}$. There are a set of relations for correlation functions that follows from gauge invariance called ``Slavrov-Taylor identities'', in turn we may derive additional constraints on $Z_x$ but we can not avoid the vertex amputation. 
+\begin{center}
+    \begin{tikzpicture}[
+        box/.style={rectangle,draw,rounded corners=2mm,thin, minimum width=2.5cm, minimum height=1.4cm, align=center}, node distance=1.2cm
+        ]
+        
+        \node[box] (a) {$U(1)$ gauge invariance};
+        \node[above=0.2cm of a, font=\bfseries\Large] {\underline{QED}};
+        \node[box, below left=of a] (b) {$Z_1 = Z_\psi$};
+        \node[box, below right=of a, minimum width=2.5cm] (c) {Ward-Takahashi \\ identity};
+        
+        \draw[->] (a) -- (b);
+        \draw[->] (a) -- (c);
+        \draw[<-] (b) -- (c);
+    \end{tikzpicture}
+\end{center}
+\begin{center}
+    \begin{tikzpicture}[
+        box/.style={rectangle,draw,rounded corners=2mm,thin, minimum width=2.5cm, minimum height=1.4cm, align=center}, node distance=1.2cm
+        ]
+        
+        \node[box] (a) {$SU(n_c)$ gauge invariance};
+        \node[above=0.2cm of a, font=\bfseries\Large] {\underline{QCD}};
+        \node[box, below left=of a] (b) {$\dfrac{Z_1}{Z_{\psi_q}} = \dfrac{Z_1^c}{Z_c},\dots$};
+        \node[box, below right=of a, minimum width=2.5cm] (c) {Slavrov-Taylor \\ identities};
+        
+        \draw[->] (a) -- (b);
+        \draw[->] (a) -- (c);
+        \draw[<-] (b) -- (c);
+    \end{tikzpicture}
+\end{center}
+If we were to write down all $SU(n_c)$ gauge invariant operators in four dimensions we would include 
+\begin{equation}
+    F^{\mu\nu a}\tilde{F}^a_{\mu\nu},\quad \tilde{F}^a_{\mu\nu} \equiv \epsilon_{\mu\nu\rho\sigma}F^{\rho\sigma a}.
+\end{equation}
+This term represents a subtle problem in QCD in which its presence implies CP violating strong interactions which are not observed experimentally. It is possible to show that 
+\begin{equation}
+    F^{\mu\nu a}\tilde{F}^a_{\mu\nu} = \p_\mu k^\mu,
+\end{equation}
+where
+\begin{equation}
+    k^\mu = \epsilon^{\mu\nu\rho\sigma}A_\nu^a(F^a_{\rho\sigma} - \frac{g_S}{3}f^{abc}A_\rho^bA^c_\sigma).
+\end{equation}
+As a result, we see the operator $F^{\mu\nu a}\tilde{F}^a_{\mu\nu}$ can be written as a total derivative and plays no role in perturbation theory. QED, an Abelian theory, could also have a term $F^{\mu\nu a}\tilde{F}^a_{\mu\nu}$ but this total derivative has no non-perturbative consequences. 't Hooft showed that the QCD, a non-Abelian theory, vacuum has instanton contributions so $F^{\mu\nu a}\tilde{F}^a_{\mu\nu}$ also have non-perturbative consequences. A proposed solution to this problem introduces a new dynamical field, the ``axion'', which can naturally tune the coefficient at $F^{\mu\nu a}\tilde{F}^a_{\mu\nu}$ to be very small, namely undetectable. This is the Peccei-Quinn mechanism. Nonetheless, so far axions have not been confirmed in experiments.
+
+\subsection{1-loop graph computations}
+\paragraph{Quark self-energy.} There is only one diagram and the only difference with respect to QED is the colour factor, so
+\begin{equation}
+    \begin{aligned}
+        \feynmandiagram[inline={([yshift=-0.2cm]current bounding box.center)}, layered layout, horizontal=a to b, scale=0.7, transform shape] { 
+        a [label=\ensuremath{i}] -- [fermion] v -- [gluon, half left, looseness=1.5, momentum={[arrow distance=6pt]\ensuremath{\scriptstyle k}}] v1, v -- [momentum'={[arrow distance = 4pt]\ensuremath{\scriptstyle -k+p}}] v1, v1 -- [fermion] b [label=\ensuremath{j}], 
+        }; &= t^a_{ik}t^a_{kj}g_S^2\mu_R^{2\epsilon}\int\frac{d^Dx}{(2\pi)^D}\frac{\gamma^\mu(-\slk + \slp + m_q)\gamma_\mu}{D(k,0)D(k-p,m)_q} \\
+        &= C_F\delta_{ij}\frac{i\alpha_Sr_\Gamma}{4\pi}\bigg[\frac{1}{\epsilon}(\slp - 4m_q) + o(\epsilon^0)\bigg],
+    \end{aligned}
+\end{equation}
+as for the counter-term we have
+\begin{equation}
+    \feynmandiagram[inline={([yshift=-0.1cm]current bounding box.center)}, horizontal=a to c, scale=0.8, transform shape, layered layout] { a -- [fermion] b [crossed dot] -- [fermion] c }; = i\delta_{ij}(\delta_{\psi_q}\slp - \delta_3m_q) = i\delta_{ij}[\delta_{\psi_q}(\slp - m_q) - \delta_{m_q}m_q].
+\end{equation}
+Since for the strong interaction there is no perturbative low energy limit we cannot perform an on-shell renormalization and so stick to $\MMS$
+\begin{equation}
+    \delta^{(1)}_{\psi_q} = \frac{\alpha_Sr_\Gamma}{4\pi}\bigg(-\frac{1}{\epsilon}\bigg),\quad \delta^{(1)}_{m_q} = \frac{\alpha_Sr_\Gamma}{4\pi}\bigg(-\frac{3}{\epsilon}\bigg).
+\end{equation}
+
+\paragraph{Gluon self-energy.} The QCD computation differs from the QED analogue in that there are more diagrams and the ghost diagrams are required to produce the correct transverse tensor structure dictated by gauge invariance. 
+\begin{equation}
+    \feynmandiagram[inline={([yshift=-0.1cm]current bounding box.center)}, layered layout, horizontal=a to b, scale=0.8, transform shape] { 
+        a -- [gluon] v [dot] -- [gluon, half left, looseness=1.5] v1 [dot], v1 -- [gluon, half left, looseness=1.5] v, v1 -- [gluon] b }; + \nsum_q
+    \feynmandiagram[inline={([yshift=-0.1cm]current bounding box.center)}, layered layout, horizontal=a to b, scale=0.8, transform shape] { 
+        a -- [gluon] v [dot] -- [fermion, half left, looseness=1.5] v1 [dot], v1 -- [fermion, half left, looseness=1.5] v, v1 -- [gluon] b }; + 
+    \feynmandiagram[inline={([yshift=-0.1cm]current bounding box.center)}, layered layout, horizontal=a to b, scale=0.7, transform shape] { 
+        a -- [gluon] v [dot] -- [ghost, half left, looseness=1.5] v1 [dot], v1 -- [ghost, half left, looseness=1.5] v, v1 -- [gluon] b }; +
+    \underbrace{\feynmandiagram[inline={([yshift=-0.5cm]current bounding box.center)}, horizontal=a to c, scale=0.7, transform shape, layered layout]{
+        a -- [fermion] b [dot]-- [fermion] c,
+        b -- [gluon, out=60, in=120, loop, min distance=1.5cm] b,
+    };}_{\substack{zero\,in\\dim.\,reg.}}
+\end{equation}
+Let's start with the colour part of the gluon diagram
+\begin{equation}
+    \feynmandiagram[inline={([yshift=-0.1cm]current bounding box.center)}, layered layout, horizontal=a to b, scale=0.8, transform shape] { 
+        a -- [gluon, edge label=\ensuremath{a}, pos=0.1] v [dot] -- [gluon, half left, looseness=1.5, edge label=\ensuremath{x}, pos=0.1] v1 [dot], v1 -- [gluon, half left, looseness=1.5, edge label=\ensuremath{y}, pos=0.1] v, v1 -- [gluon, edge label=\ensuremath{b}, pos=0.9] b }; = f^{axy}f^{byx}.
+\end{equation}
+We may already anticipate that this should be proportional to the tree-level colour factor $\delta^{ab}$, namely
+\begin{equation}
+    \feynmandiagram[inline={([yshift=-0.1cm]current bounding box.center)}, layered layout, horizontal=a to b, scale=1, transform shape] { a -- [gluon] v [dot] -- [gluon, half left, looseness=1.5] v1 [dot], v1 -- [gluon, half left, looseness=1.5] v, v1 -- [gluon] b }; \propto \feynmandiagram[inline={([yshift=-0.1cm]current bounding box.center)}, horizontal=a to b, scale=1, transform shape, layered layout] { a -- [gluon] b };.
+\end{equation}
+By writing $f^{abc} = -2i\tr{\comm{t^a}{t^b}t^c}$ and applying the Fierz identity, we can derive the constant of proportionality
+\begin{equation}
+    \begin{aligned}
+        \feynmandiagram[inline={([yshift=-0.1cm]current bounding box.center)}, layered layout, horizontal=a to b, scale=0.8, transform shape] { 
+        a -- [gluon, edge label=\ensuremath{a}, pos=0.1] v [dot] -- [gluon, half left, looseness=1.5] v1 [dot], v1 -- [gluon, half left, looseness=1.5] v, v1 -- [gluon, edge label=\ensuremath{b}, pos=0.9] b };
+        &= 4(
+        \begin{tikzpicture}[scale=0.7, transform shape, baseline={([yshift=-0.1cm]current bounding box.center)}]
+        \begin{feynman}
+        
+        \vertex [label=\ensuremath{a}](a) {};
+        \vertex [right=1cm of a, draw, circle, minimum size=0.6cm, inner sep=0pt] (v) {};
+        \vertex [label=\ensuremath{x}, above right=0.5cm and 1cm of v] (b) {};
+        \vertex [label=\ensuremath{y}, below right=0.5cm and 1cm of v] (c) {};
+        
+        \diagram* {
+            (a) -- [gluon] (v),
+            (v) -- [gluon] (b),
+            (v) -- [gluon] (c),
+        };
+        
+        \end{feynman}
+        
+        % freccia sulla circonferenza
+        \draw[
+            postaction={
+                decorate,
+                decoration={
+                    markings,
+                    mark=at position 0.2 with {\arrow{>}}
+                }
+            }
+        ] (v.140) arc (140:-140:0.3cm);
+    
+    \end{tikzpicture} -
+    \begin{tikzpicture}[scale=0.7, transform shape, baseline={([yshift=-0.1cm]current bounding box.center)}]
+        \begin{feynman}
+        
+        \vertex [label=\ensuremath{a}](a) {};
+        \vertex [right=1cm of a, draw, circle, minimum size=0.6cm, inner sep=0pt] (v) {};
+        \vertex [label=\ensuremath{y}, above right=0.5cm and 1cm of v] (b) {};
+        \vertex [label=\ensuremath{x}, below right=0.5cm and 1cm of v] (c) {};
+        
+        \diagram* {
+            (a) -- [gluon] (v),
+            (v) -- [gluon] (b),
+            (v) -- [gluon] (c),
+        };
+        
+        \end{feynman}
+        
+        % freccia sulla circonferenza
+        \draw[
+            postaction={
+                decorate,
+                decoration={
+                    markings,
+                    mark=at position 0.2 with {\arrow{>}}
+                }
+            }
+        ] (v.140) arc (140:-140:0.3cm);
+    
+    \end{tikzpicture}) (
+        \begin{tikzpicture}[scale=0.7, transform shape, baseline={([yshift=-0.1cm]current bounding box.center)}]
+        \begin{feynman}
+        
+        \vertex [label=\ensuremath{a}](b) {};
+        \vertex [right=1cm of a, draw, circle, minimum size=0.6cm, inner sep=0pt] (v) {};
+        \vertex [label=\ensuremath{x}, above right=0.5cm and 1cm of v] (b) {};
+        \vertex [label=\ensuremath{y}, below right=0.5cm and 1cm of v] (c) {};
+        
+        \diagram* {
+            (a) -- [gluon] (v),
+            (v) -- [gluon] (b),
+            (v) -- [gluon] (c),
+        };
+        
+        \end{feynman}
+        
+        % freccia sulla circonferenza
+        \draw[
+            postaction={
+                decorate,
+                decoration={
+                    markings,
+                    mark=at position 0.2 with {\arrow{>}}
+                }
+            }
+        ] (v.140) arc (140:-140:0.3cm);
+    
+    \end{tikzpicture} -
+    \begin{tikzpicture}[scale=0.7, transform shape, baseline={([yshift=-0.1cm]current bounding box.center)}]
+        \begin{feynman}
+        
+        \vertex [label=\ensuremath{b}](a) {};
+        \vertex [right=1cm of a, draw, circle, minimum size=0.6cm, inner sep=0pt] (v) {};
+        \vertex [label=\ensuremath{y}, above right=0.5cm and 1cm of v] (b) {};
+        \vertex [label=\ensuremath{x}, below right=0.5cm and 1cm of v] (c) {};
+        
+        \diagram* {
+            (a) -- [gluon] (v),
+            (v) -- [gluon] (b),
+            (v) -- [gluon] (c),
+        };
+        
+        \end{feynman}
+        
+        % freccia sulla circonferenza
+        \draw[
+            postaction={
+                decorate,
+                decoration={
+                    markings,
+                    mark=at position 0.2 with {\arrow{>}}
+                }
+            }
+        ] (v.140) arc (140:-140:0.3cm);
+    
+    \end{tikzpicture}) \\
+    &= 8(\begin{tikzpicture}[scale=0.8, transform shape, baseline={([yshift=-0.1cm]current bounding box.center)}]
+    \begin{feynman}
+    
+    \vertex (a) {};
+    \vertex [right=1cm of a, draw, circle, minimum size=0.6cm, inner sep=0pt] (v) {};
+    \vertex [dot, above right=0.3cm and 0.1cm of v] (b) {};
+    \vertex [dot, below right=0.3cm and 0.1cm of v] (c) {};
+    \vertex [right=1.5cm of v, draw, circle, minimum size=0.6cm, inner sep=0pt] (v1) {};
+    \vertex [dot, above left=0.3cm and 0.1cm of v1] (b1) {};
+    \vertex [dot, below left=0.3cm and 0.1cm of v1] (c1) {};
+    \vertex [right=1cm of v1] (d) {};
+    
+    \diagram* {
+        (a) -- [gluon] (v),
+        (b) -- [gluon, edge label=\ensuremath{x}, pos=0.1] (b1),
+        (c) -- [gluon, edge label'=\ensuremath{y}, pos=0.1] (c1),
+        (v1) -- [gluon] (d)
+    };
+    
+    \end{feynman}
+    
+    % freccia sulla circonferenza
+    \draw[
+        postaction={
+            decorate,
+            decoration={
+                markings,
+                mark=at position 0.2 with {\arrow{>}}
+            }
+        }
+    ] (v.170) arc (170:-170:0.3cm);
+
+    \draw[
+        postaction={
+            decorate,
+            decoration={
+                markings,
+                mark=at position 0.2 with {\arrow{>}}
+            }
+        }
+    ] (v1.80) arc (80:-80:0.3cm);
+    
+    \end{tikzpicture} -
+    \begin{tikzpicture}[scale=0.8, transform shape, baseline={([yshift=-0.1cm]current bounding box.center)}]
+    \begin{feynman}
+    
+    \vertex (a) {};
+    \vertex [right=1cm of a, draw, circle, minimum size=0.6cm, inner sep=0pt] (v) {};
+    \vertex [dot, above right=0.3cm and 0.1cm of v] (b) {};
+    \vertex [dot, below right=0.3cm and 0.1cm of v] (c) {};
+    \vertex [right=1.5cm of v, draw, circle, minimum size=0.6cm, inner sep=0pt] (v1) {};
+    \vertex [dot, above left=0.3cm and 0.1cm of v1] (b1) {};
+    \vertex [dot, below left=0.3cm and 0.1cm of v1] (c1) {};
+    \vertex [right=1cm of v1] (d) {};
+    
+    \diagram* {
+        (a) -- [gluon] (v),
+        (b) -- [gluon, edge label=\ensuremath{x}, pos=0.1] (c1),
+        (c) -- [gluon, edge label'=\ensuremath{y}, pos=0.1] (b1),
+        (v1) -- [gluon] (d)
+    };
+    
+    \end{feynman}
+    
+    % freccia sulla circonferenza
+    \draw[
+        postaction={
+            decorate,
+            decoration={
+                markings,
+                mark=at position 0.2 with {\arrow{>}}
+            }
+        }
+    ] (v.170) arc (170:-170:0.3cm);
+
+    \draw[
+        postaction={
+            decorate,
+            decoration={
+                markings,
+                mark=at position 0.2 with {\arrow{>}}
+            }
+        }
+    ] (v1.80) arc (80:-80:0.3cm);
+    
+    \end{tikzpicture}).
+    \end{aligned}
+\end{equation}
+The first term is 
+\begin{equation}
+    \begin{aligned}
+        \begin{tikzpicture}[scale=0.8, transform shape, baseline={([yshift=-0.1cm]current bounding box.center)}]
+        \begin{feynman}
+        
+        \vertex (a) {};
+        \vertex [right=1cm of a, draw, circle, minimum size=0.6cm, inner sep=0pt] (v) {};
+        \vertex [dot, above right=0.3cm and 0.1cm of v] (b) {};
+        \vertex [dot, below right=0.3cm and 0.1cm of v] (c) {};
+        \vertex [right=1.5cm of v, draw, circle, minimum size=0.6cm, inner sep=0pt] (v1) {};
+        \vertex [dot, above left=0.3cm and 0.1cm of v1] (b1) {};
+        \vertex [dot, below left=0.3cm and 0.1cm of v1] (c1) {};
+        \vertex [right=1cm of v1] (d) {};
+        
+        \diagram* {
+            (a) -- [gluon] (v),
+            (b) -- [gluon, edge label=\ensuremath{x}, pos=0.1] (b1),
+            (c) -- [gluon, edge label'=\ensuremath{y}, pos=0.1] (c1),
+            (v1) -- [gluon] (d)
+        };
+        
+        \end{feynman}
+        
+        % freccia sulla circonferenza
+        \draw[
+            postaction={
+                decorate,
+                decoration={
+                    markings,
+                    mark=at position 0.2 with {\arrow{>}}
+                }
+            }
+        ] (v.170) arc (170:-170:0.3cm);
+    
+        \draw[
+            postaction={
+                decorate,
+                decoration={
+                    markings,
+                    mark=at position 0.2 with {\arrow{>}}
+                }
+            }
+        ] (v1.80) arc (80:-80:0.3cm);
+        
+        \end{tikzpicture} &= \frac{1}{2}(\begin{tikzpicture}[scale=0.8, transform shape, baseline={([yshift=-0.1cm]current bounding box.center)}]
+    \begin{feynman}
+    
+    \vertex (a) {};
+    \vertex [right=1.2cm of a, draw, circle, minimum size=0.8cm, inner sep=0pt] (v) {};
+    \vertex [dot, below left=0.35cm and 0.3cm of v] (b) {};
+    \vertex [dot, below right=0.35cm and 0.3cm of v] (c) {};
+    \vertex [right=1.2cm of v] (d) {};
+    
+    
+    \diagram* {
+        (a) -- [gluon] (v),
+        (b) -- [gluon, half right] (c), 
+        (v) -- [gluon] (d)
+    };
+    
+    \end{feynman}
+    
+    % freccia sulla circonferenza
+    \draw[
+        postaction={
+            decorate,
+            decoration={
+                markings,
+                mark=at position 0.2 with {\arrow{>}}
+            }
+        }
+    ] (v.170) arc (170:-170:0.4cm);
+    
+    \end{tikzpicture} - \feynmandiagram[inline={([yshift=-0.1cm]current bounding box.center)}, layered layout, horizontal=a to b, scale=0.5, transform shape] { 
+        a -- [gluon] v -- [fermion, half left, looseness=1.5] v1, v1 -- [fermion, half left, looseness=1.5] v, v1 -- [gluon] v2, v2 -- [fermion, half left, looseness=1.5] v3, v3 -- [fermion, half left, looseness=1.5] v2, v3 -- [gluon] b
+        }; ) \\
+        &=\frac{1}{4}\bigg(C_F - \frac{1}{2N_c}\bigg)(\feynmandiagram[inline={([yshift=-0.1cm]current bounding box.center)}, horizontal=a to b, scale=0.8, transform shape, layered layout] { a -- [gluon] b };),
+    \end{aligned}
+\end{equation}
+where $\feynmandiagram[inline={([yshift=-0.1cm]current bounding box.center)}, layered layout, horizontal=a to b, scale=0.5, transform shape] { a -- [gluon, edge label=\ensuremath{a}, pos=0.1] v -- [fermion, half left, looseness=1.5] v1, v1 -- [fermion, half left, looseness=1.5] v, v1 -- [gluon, edge label=\ensuremath{b}, pos=0.9] b };   = \tr{t^at^b} = \delta^{ab}/2$, while the second term is
+\begin{equation}
+    \begin{aligned}
+    \begin{tikzpicture}[scale=0.8, transform shape, baseline={([yshift=-0.1cm]current bounding box.center)}]
+    \begin{feynman}
+    
+    \vertex (a) {};
+    \vertex [right=1cm of a, draw, circle, minimum size=0.6cm, inner sep=0pt] (v) {};
+    \vertex [dot, above right=0.3cm and 0.1cm of v] (b) {};
+    \vertex [dot, below right=0.3cm and 0.1cm of v] (c) {};
+    \vertex [right=1.5cm of v, draw, circle, minimum size=0.6cm, inner sep=0pt] (v1) {};
+    \vertex [dot, above left=0.3cm and 0.1cm of v1] (b1) {};
+    \vertex [dot, below left=0.3cm and 0.1cm of v1] (c1) {};
+    \vertex [right=1cm of v1] (d) {};
+    
+    \diagram* {
+        (a) -- [gluon] (v),
+        (b) -- [gluon, edge label=\ensuremath{x}, pos=0.1] (c1),
+        (c) -- [gluon, edge label'=\ensuremath{y}, pos=0.1] (b1),
+        (v1) -- [gluon] (d)
+    };
+    
+    \end{feynman}
+    
+    % freccia sulla circonferenza
+    \draw[
+        postaction={
+            decorate,
+            decoration={
+                markings,
+                mark=at position 0.2 with {\arrow{>}}
+            }
+        }
+    ] (v.170) arc (170:-170:0.3cm);
+
+    \draw[
+        postaction={
+            decorate,
+            decoration={
+                markings,
+                mark=at position 0.2 with {\arrow{>}}
+            }
+        }
+    ] (v1.80) arc (80:-80:0.3cm);
+    
+    \end{tikzpicture} &= \bigg(\begin{tikzpicture}[scale=0.7, transform shape, baseline={([yshift=-0.1cm]current bounding box.center)}]
+    \begin{feynman}
+    
+    \vertex (a) {};
+    \vertex [right=1.2cm of a, draw, circle, minimum size=1cm, inner sep=0pt] (v) {};
+    \vertex [dot, below=0.5cm of v] (b) {};
+    \vertex [dot, above=0.5cm of v] (c) {};
+    \vertex [right=1.2cm of v] (d) {};
+    
+    
+    \diagram* {
+        (a) -- [gluon] (v),
+        (b) -- [gluon] (c), 
+        (v) -- [gluon] (d)
+    };
+    
+    \end{feynman}
+    
+    % freccia sulla circonferenza
+    \draw[
+        postaction={
+            decorate,
+            decoration={
+                markings,
+                mark=at position 0.2 with {\arrow{>}}
+            }
+        }
+    ] (v.190) arc (190:-190:0.5cm);
+    
+    \end{tikzpicture} - \frac{1}{N_c}\begin{tikzpicture}[scale=0.7, transform shape, baseline={([yshift=-0.1cm]current bounding box.center)}]
+    \begin{feynman}
+    
+    \vertex (a) {};
+    \vertex [right=1cm of a, draw, circle, minimum size=0.6cm, inner sep=0pt] (v) {};
+    \vertex [right=0.15cm of v] (b) {};
+    \vertex [right=1.5cm of v, draw, circle, minimum size=0.6cm, inner sep=0pt] (v1) {};
+    \vertex [left=0.15cm of v1] (b1) {};
+    \vertex [right=1cm of v1] (d) {};
+    
+    
+    \diagram* {
+        (a) -- [gluon] (v),
+        (b) -- [gluon] (b1),
+        (v1) -- [gluon] (d)
+    };
+    
+    \end{feynman}
+    
+    % freccia sulla circonferenza
+    \draw[
+        postaction={
+            decorate,
+            decoration={
+                markings,
+                mark=at position 0.2 with {\arrow{>}}
+            }
+        }
+    ] (v.170) arc (170:-170:0.3cm);
+
+    \draw[
+        postaction={
+            decorate,
+            decoration={
+                markings,
+                mark=at position 0.2 with {\arrow{>}}
+            }
+        }
+    ] (v1.190) arc (190:-190:0.3cm);
+    
+    \end{tikzpicture}\bigg) \\ 
+    &= \frac{1}{2}\bigg[\frac{1}{2}\bigg(\begin{tikzpicture}[scale=0.8, transform shape, baseline={([yshift=-0.1cm]current bounding box.center)}]
+    \begin{feynman}
+    
+    \vertex (a) {};
+    \vertex [right=0.9cm of a, draw, circle, minimum size=0.6cm, inner sep=0pt] (v) {};
+    \vertex [right=0.15cm of v] (b) {};
+    \vertex [right=0.7cm of v, draw, circle, minimum size=0.6cm, inner sep=0pt] (v1) {};
+    \vertex [left=0.15cm of v1] (b1) {};
+    \vertex [right=0.9cm of v1] (d) {};
+    
+    
+    \diagram* {
+        (a) --[gluon] (v),
+        (b) -- [opacity=0] (b1),
+        (v1) -- [gluon] (d)
+    };
+    
+    \end{feynman}
+    
+    % freccia sulla circonferenza
+    \draw[
+        postaction={
+            decorate,
+            decoration={
+                markings,
+                mark=at position 0.2 with {\arrow{>}}
+            }
+        }
+    ] (v.170) arc (170:-170:0.3cm);
+
+    \draw[
+        postaction={
+            decorate,
+            decoration={
+                markings,
+                mark=at position 0.2 with {\arrow{>}}
+            }
+        }
+    ] (v1.80) arc (80:-80:0.3cm);
+    
+    \end{tikzpicture} - \frac{1}{N_c}\begin{tikzpicture}[scale=0.8, transform shape, baseline={([yshift=-0.1cm]current bounding box.center)}]
+    \begin{feynman}
+    
+    \vertex (a) {};
+    \vertex [right=0.9cm of a, draw, circle, minimum size=0.6cm, inner sep=0pt] (v) {};
+    \vertex [right=0.9cm of v] (b) {};
+    
+    \diagram* {
+        (a) -- [gluon] (v),
+        (v) -- [gluon] (b),
+    };
+    
+    \end{feynman}
+    
+    % freccia sulla circonferenza
+    \draw[
+        postaction={
+            decorate,
+            decoration={
+                markings,
+                mark=at position 0.2 with {\arrow{>}}
+            }
+        }
+    ] (v.140) arc (140:-140:0.3cm);
+    
+    \end{tikzpicture} \\
+    &- \frac{1}{N_c}\begin{tikzpicture}[scale=0.8, transform shape, baseline={([yshift=-0.1cm]current bounding box.center)}]
+    \begin{feynman}
+    
+    \vertex (a) {};
+    \vertex [right=0.9cm of a, draw, circle, minimum size=0.6cm, inner sep=0pt] (v) {};
+    \vertex [right=0.15cm of v] (b) {};
+    \vertex [right=1.2cm of v, draw, circle, minimum size=0.6cm, inner sep=0pt] (v1) {};
+    \vertex [left=0.15cm of v1] (b1) {};
+    \vertex [right=0.9cm of v1] (d) {};
+    
+    
+    \diagram* {
+        (a) -- [gluon] (v),
+        (b) -- [gluon] (b1),
+        (v1) -- [gluon] (d)
+    };
+    
+    \end{feynman}
+    
+    % freccia sulla circonferenza
+    \draw[
+        postaction={
+            decorate,
+            decoration={
+                markings,
+                mark=at position 0.2 with {\arrow{>}}
+            }
+        }
+    ] (v.170) arc (170:-170:0.3cm);
+
+    \draw[
+        postaction={
+            decorate,
+            decoration={
+                markings,
+                mark=at position 0.2 with {\arrow{>}}
+            }
+        }
+    ] (v1.80) arc (80:-80:0.3cm);
+    
+    \end{tikzpicture}\bigg)\bigg]\\
+    &= -\frac{1}{4N_c}(\feynmandiagram[inline={([yshift=-0.1cm]current bounding box.center)}, horizontal=a to b, scale=0.8, transform shape, layered layout] { a -- [gluon] b };),
+    \end{aligned}
+\end{equation}
+thus we determine 
+\begin{equation}
+    \begin{split}
+        \feynmandiagram[inline={([yshift=-0.1cm]current bounding box.center)}, layered layout, horizontal=a to b, scale=0.8, transform shape] { 
+        a -- [gluon, edge label=\ensuremath{a}, pos=0.1] v [dot] -- [gluon, half left, looseness=1.5] v1 [dot], v1 -- [gluon, half left, looseness=1.5] v, v1 -- [gluon, edge label=\ensuremath{b}, pos=0.9] b }; &= 8\bigg(\frac{N_c^2 - 1}{8N_c} - \frac{1}{8N_c} - \frac{1}{4N_c}\bigg)(\feynmandiagram[inline={([yshift=-0.1cm]current bounding box.center)}, horizontal=a to b, scale=0.8, transform shape, layered layout] { a -- [gluon] b };) \\
+        &= -N_c(\feynmandiagram[inline={([yshift=-0.1cm]current bounding box.center)}, horizontal=a to b, scale=0.8, transform shape, layered layout] { a -- [gluon] b };)
+    \end{split}
+\end{equation}
+and identify the adjoint Casimir as $C_A = N_c$. The colour factors for the other diagrams are
+\begin{equation}
+    d_1 = -C_AK_1\delta_{ab}, \quad
+    d_2 = -C_AK_2\delta_{ab}, \quad
+    d_3 = \frac{1}{2}K_3\delta_{ab}.
+\end{equation}
+In particular, the kinematic factor $K_3$ is identified to the photon self-energy so we may immediately arrive at 
+\begin{equation}
+    K_£ = \frac{i\alpha_Sr_\Gamma}{4\pi}(-g^{\mu\nu}p^2 + p^\mu p\nu)\bigg[-\frac{4}{3\epsilon} + o(\epsilon^0)\bigg].
+\end{equation}
+The ghost loop is perhaps the next simplest 
+\begin{equation}
+    \feynmandiagram[inline={([yshift=-0.1cm]current bounding box.center)}, layered layout, horizontal=a to b, scale=0.75, transform shape] { 
+        a -- [gluon, edge label=\ensuremath{a\,\mu}, pos=0.1, momentum'={[arrow distance=4pt]\ensuremath{\scriptstyle p}}] v [dot] -- [ghost, half left, looseness=1.5, momentum={[arrow distance=4pt]\ensuremath{\scriptstyle k}}] v1 [dot], v1 -- [ghost, half left, looseness=1.5, momentum={[arrow distance=4pt]\ensuremath{\scriptstyle k-p}}] v, v1 -- [gluon, edge label=\ensuremath{b\,\nu}, pos=0.9] b }; = -C_A\delta_{ab}(ig_S)^2\mu_R^{2\epsilon}\int_k\frac{k^\mu(k - p)^\nu}{D(k,0)D(k-p,0)} \equiv -C_A\delta_{ab}K_2,
+\end{equation}
+where we identified the kinematic factor $K_2$ as
+\begin{equation}
+    K_2 \equiv (ig_S)^2\mu_R^{2\epsilon}\int_k\frac{k^\mu(k - p)^\nu}{D(k,0)D(k-p,0)}.
+\end{equation}
+Furthermore, it is possible to rewrite the kinematic terms $K_2$ and $K_3$ as
+\begin{align}
+    K_2 &= -g_S^2\mu_R^{2\epsilon}[g^{\mu\nu}p^2 - (D - 2)p^\mu p^\nu]\frac{1}{4(D - 1)}I^{[4 - 2\epsilon]}_{2,00}[1], \\
+    K_3 &= -\frac{1}{2}g_S^2\mu_R^{2\epsilon}[-(6D - 5)g^{\mu\nu}p^2 + (7D - 6)p^\mu p^\nu]\frac{1}{2(D - 1)}I^{[4 - 2\epsilon]}_{2,00}[1].
+\end{align}
+In the end, the sum of all diagrams gives
+\begin{equation}
+    d_1 + d_2 + \nsum_qd_3 = \frac{\alpha_Sr_\Gamma}{4\pi}(-g^{\mu\nu}p^2 + p^\mu p^\nu)\frac{1}{\epsilon}\bigg(\frac{5}{3}C_A - \frac{2}{3}n_f\bigg) + o(\epsilon^0).
+\end{equation}
+Combining with the counter-term we determine $\delta_A^{(1)}$ in the $\MMS$ scheme as
+\begin{equation}
+    \delta_A^{(1)} = \frac{\alpha_Sr_\Gamma}{4\pi}\bigg(\frac{5}{3}C_A - \frac{2}{3}n_f\bigg)\frac{1}{\epsilon}.
+\end{equation}
+
+\paragraph{Quark-gluon vertex.} The two contributing 1-loop diagrams are
+\begin{equation}
+    \feynmandiagram[inline={([yshift=-0.1cm]current bounding box.center)}, horizontal=v1 to v2, scale=1.1, transform shape, node distance=0.7cm]{
+    a -- [fermion, momentum={[arrow distance=4pt]\ensuremath{\scriptstyle p}}] v1,
+    b -- [fermion, reversed momentum={[arrow distance=4pt]\ensuremath{\scriptstyle p_2}}] v2,
+    c -- [gluon, reversed momentum={[arrow distance=4pt]\ensuremath{\scriptstyle p_3}}] v3 [dot],
+
+    v1 -- [fermion, reversed momentum'={[arrow distance=4pt]\ensuremath{\scriptstyle k}}] v2
+       -- [gluon, reversed momentum'={[arrow distance=4pt]\ensuremath{\scriptstyle k - p_2}}] v3
+       -- [gluon, reversed momentum'={[arrow distance=4pt]\ensuremath{\scriptstyle k + p_1}}] v1,
+    }; +
+    \feynmandiagram[inline={([yshift=-0.1cm]current bounding box.center)}, horizontal=v1 to v2, scale=1.1, transform shape, node distance=0.7cm]{
+    a -- [fermion, momentum={[arrow distance=4pt]\ensuremath{\scriptstyle p}}] v1,
+    b -- [fermion, reversed momentum={[arrow distance=4pt]\ensuremath{\scriptstyle p_2}}] v2,
+    c -- [gluon, reversed momentum={[arrow distance=4pt]\ensuremath{\scriptstyle p_3}}] v3 [dot],
+
+    v1 -- [gluon, reversed momentum'={[arrow distance=4pt]\ensuremath{\scriptstyle k}}] v2
+       -- [fermion, reversed momentum'={[arrow distance=4pt]\ensuremath{\scriptstyle k - p_2}}] v3
+       -- [fermion, reversed momentum'={[arrow distance=4pt]\ensuremath{\scriptstyle k + p_1}}] v1,
+    };.
+\end{equation}
+The colour factors are simple to determine
+\begin{equation}
+    \begin{aligned}
+        \feynmandiagram[inline={([yshift=-0.1cm]current bounding box.center)}, horizontal=v1 to v2, scale=0.8, transform shape, node distance=0.7cm]{
+    a [label=\ensuremath{i}] -- [fermion] v1,
+    b [label=\ensuremath{j}] -- [fermion] v2,
+    c [label=\ensuremath{a}] -- [gluon] v3,
+
+    v1 -- [gluon] v2
+       -- [fermion] v3
+       -- [fermion] v1,
+    }; = \frac{1}{2}\bigg(\begin{tikzpicture}[scale=0.6, transform shape, baseline={([yshift=-0.1cm]current bounding box.center)}]
+    \begin{feynman}
+    
+    \vertex (a) {};
+    \vertex [right=1.2cm of a] (a1) {};
+    \vertex [above=0.9cm of a] (b) {};
+    \vertex [dot, above=0.9cm of a1] (b1) {};
+    \vertex [above=0.3cm of b] (c) {};
+    \vertex [above=0.3cm of b1] (c1) {};
+    \vertex[right=1.2cm of b1] (d) {};
+
+    \diagram* {
+      (a) -- [anti fermion] (a1), (b) -- [anti fermion, half left] (b1), (c) -- [half right] (c1), (b1) -- [gluon] (d)
+    };
+    \end{feynman}
+    \end{tikzpicture} - \frac{1}{N_c} \feynmandiagram[inline={([yshift=-0.1cm]current bounding box.center)}, horizontal=a to c, scale=0.7, transform shape, node distance=1.2cm] { a -- [fermion] b [dot] -- [fermion] c, b -- [gluon] d }; \bigg) &= -\frac{1}{2N_c} \feynmandiagram[inline={([yshift=-0.1cm]current bounding box.center)}, horizontal=a to c, scale=0.7, transform shape, node distance=1.2cm] { a -- [fermion] b [dot] -- [fermion] c, b -- [gluon] d }; = C_2,
+    \end{aligned}
+\end{equation}
+\begin{equation}
+    \begin{aligned}
+    \feynmandiagram[inline={([yshift=-0.1cm]current bounding box.center)}, horizontal=v1 to v2, scale=0.8, transform shape, node distance=0.7cm]{
+    a [label=\ensuremath{i}] -- [fermion] v1,
+    b [label=\ensuremath{j}] -- [fermion] v2,
+    c [label=\ensuremath{a}] -- [gluon] v3 [dot],
+
+    v1 -- [fermion] v2
+       -- [gluon] v3
+       -- [gluon] v1,
+    }; &= -2i\bigg(\begin{tikzpicture}[scale=0.8, transform shape, baseline={([yshift=-0.2cm]current bounding box.center)}]
+    \begin{feynman}
+    
+    \vertex [dot] (a) {};
+    \vertex [left=0.5cm of a] (i) {};
+    \vertex [above right=0.9 and 0.5cm of a, draw, circle, minimum size=0.6cm, inner sep=0pt] (v) {};
+    \vertex [above=1cm of v] (b) {};
+    \vertex [dot, below right=0.9cm and 0.5cm of v] (c) {};
+    \vertex [right=0.5cm of c] (f) {};
+    
+    \diagram* {
+        (a) -- [gluon] (v),
+        (v) -- [gluon] (b),
+        (v) -- [gluon] (c),
+        (i) -- (f)
+    };
+    
+    \end{feynman}
+    
+    % freccia sulla circonferenza
+    \draw[
+        postaction={
+            decorate,
+            decoration={
+                markings,
+                mark=at position 0.2 with {\arrow{>}}
+            }
+        }
+    ] (v.170) arc (170:-170:0.3cm);
+    
+    \end{tikzpicture} - \begin{tikzpicture}[scale=0.8, transform shape, baseline={([yshift=-0.2cm]current bounding box.center)}]
+    \begin{feynman}
+    
+    \vertex [dot] (a) {};
+    \vertex [left=0.5cm of a] (i) {};
+    \vertex [above right=0.9 and 0.5cm of a, draw, circle, minimum size=0.6cm, inner sep=0pt] (v) {};
+    \vertex [above=1cm of v] (b) {};
+    \vertex [dot, below right=0.9cm and 0.5cm of v] (c) {};
+    \vertex [right=0.5cm of c] (f) {};
+    
+    \diagram* {
+        (a) -- [gluon] (v),
+        (v) -- [gluon] (b),
+        (v) -- [gluon] (c),
+        (i) -- (f)
+    };
+    
+    \end{feynman}
+    
+    % freccia sulla circonferenza
+    \draw[
+        postaction={
+            decorate,
+            decoration={
+                markings,
+                mark=at position 0.2 with {\arrow{>}}
+            }
+        }
+    ] (v.-220) arc (-220:220:0.3cm);
+    
+    \end{tikzpicture}\bigg) = -\frac{iN_c}{2} \feynmandiagram[inline={([yshift=-0.1cm]current bounding box.center)}, horizontal=a to c, scale=0.7, transform shape, node distance=1.2cm] { a -- [fermion] b [dot] -- [fermion] c, b -- [gluon] d }; = C_1
+    \end{aligned}
+\end{equation}
+while the kinematic terms can be showed to be 
+\begin{align}
+    K_1 &= \frac{i\alpha_Sg_Sr_\Gamma}{4\pi}\ubar_2\gamma^\mu v_1\frac{1}{\epsilon} + o(\epsilon^0), \\
+    K_2 &= \frac{i\alpha_Sg_Sr_\Gamma}{4\pi}\ubar_2\gamma^\mu v_1\frac{3i}{\epsilon} + o(\epsilon^0), 
+\end{align}
+where the IR divergences in the scalar integrals  $I_{3,0mm}^{[4 - 2\epsilon]}$ and $I_{3,000}^{[4 - 2\epsilon]}$ have been discarded. Combining with the contribution from the vertex counter-term in the $\MMS$ scheme we find
+\begin{equation}
+    \begin{split}
+        \delta_1^{(1)} &= \frac{\alpha_Sr_\Gamma}{4\pi}\bigg(-\frac{3N_c}{2} + \frac{1}{2N_c}\bigg)\frac{1}{\epsilon} \\
+        &= \frac{\alpha_Sr_\Gamma}{4\pi}(C_A + C_F)\bigg(-\frac{1}{\epsilon}\bigg).
+    \end{split}
+\end{equation}
+
+\subsection{Renormalization of the strong coupling}
+From the relation $Z_1 = Z_{g_S}Z_A^{1/2}Z_{\psi_q}$ we obtain 
+\begin{equation}
+    \delta_1^{(1)} - \delta_{\psi_q}^{(1)} - \frac{1}{2}\delta_A^{(1)} = \delta_{g_S}^{(1)},
+\end{equation}
+hence
+\begin{equation}
+    \begin{split}
+        \delta_{g_S}^{(1)} &= \frac{\alpha_Sr_\Gamma}{4\pi}\bigg[-\frac{1}{\epsilon}(C_A + C_F) + \frac{C_F}{\epsilon} - \frac{1}{2}(5C_A - 2n_f)\frac{1}{\epsilon}\bigg] \\
+        &= -\frac{\alpha_Sr_\Gamma}{4\pi}\bigg(\frac{11C_A - 2n_f}{6\epsilon}\bigg).
+    \end{split}
+\end{equation}
+To compare this directly with QED we can identify the quark loop with a factor of $T_R$ whose value is $T_R = 1/2$ for $QCD$ or $T_R = 1$ for QED, thus
+\begin{align}
+    \delta^{(1)}_{g_S} &= -\frac{\alpha_Sr_\Gamma}{4\pi}\bigg(\frac{11C_A - 4T_Rn_f}{6\epsilon}\bigg), \\
+    \delta^{(1)}_e &= \delta^{(1)}_{g_S}|_{\substack{C_A \to 0 \\T_Rn_f \to 1 \\ \alpha_S \to \alpha}} = \frac{\alpha r_\Gamma}{4\pi}\frac{2}{3\epsilon}.
+\end{align}
+The charge screening effect seen in QED implied that $\alpha_{eff}(Q^2) > \alpha_{eff}(0)$ for a scale $Q^2 > 0$. The analogous effect in QCD will depend on the sign of $\delta_{g_S}$. For $N_c = 3$, there is a sign change if $33 - 2n_f > 0$, hence $n_f \le 16$, where $n_f$ must be an integer. The Standard Model has $n_f = 6$ and so
+\begin{equation}
+    \alpha_{S,eff}(Q^2) < \alpha_{S,eff}(Q'^{\,2}),\quad Q^2 > Q'^{\,2}.
+\end{equation}
+
+
+
+

@@ -1,0 +1,188 @@
+\chapter{Review of scalar QFT}
+In 1927, Paul Dirac introduced his quantum theory of the electron as a possible link between quantum mechanics and the theory of relativity. However, his theory faced a serious difficulty: the calculation of the electron’s self-energy yielded an infinite result. Clearly, this was not physically acceptable. To address this issue, in 1949 Richard Feynman, Julian Schwinger, and Sin-Itiro Tomonaga developed a renormalized theory known as Quantum Electrodynamics (QED). With QED, quantum field theory began to develop rapidly, as physicists realized that the divergences appearing in calculations could be systematically handled through renormalization. Between 1972 and 1975, Kenneth G. Wilson, Leo P. Kadanoff, and Murray Gell-Mann laid the foundations for the modern understanding of the Renormalization Group. Wilson received most of the recognition for this work because he was among the first to study the problem in depth and made the most significant contributions. In the following years, further theoretical developments took place. The Yang–Mills theory provided the framework for describing non-Abelian gauge interactions, and Quantum Chromodynamics (QCD) was developed to explain the strong interaction. At the same time, electromagnetism and the weak interaction were unified into a single framework known as the Electroweak interaction by Sheldon Glashow, Abdus Salam, and Steven Weinberg. However, it was only around 1972 that physicists realized that the same renormalization procedures successfully applied in QED could also be extended to other quantum field theories.
+
+In this introductory chapter we review the formalism for perturbative scalar field theory. The Lagrangian density for a real, four dimensional, scalar field with an arbitrary potential $V(\phi)$ is 
+\begin{equation}
+\label{eq: lagrangian for a scalar field with potential}
+    \dL = \frac{1}{2}\p_\mu\phi\p^\mu\phi - V(\phi),
+\end{equation}
+where $\phi \equiv \phi(x^\mu)$ and where $x^\mu$ is a vector in Minkowski space using the metric $g^{\mu\nu} = \diag{1,-1,-1,-1}$. We will take the convention $\hbar = c = 1$ throughout. The classical equations of motion are
+\begin{equation}
+\label{eq: Euler-Lagrange equations}
+    \p_\mu\bigg[\frac{\p\dL}{\p(\p_\mu\phi)}\bigg] - \frac{\p\dL}{\p\phi} = 0,
+\end{equation}
+that for the Lagrangian \eqref{eq: lagrangian for a scalar field with potential} gives
+\begin{equation}
+    \p_\mu\p^\mu\phi + \frac{\p V}{\p \phi} = 0.
+\end{equation}
+We can quantize the theory by imposing canonical commutation relations between equal time fields and canonical momenta $\pi(x^\mu)$ defined as
+\begin{equation}
+    \pi(x^\mu) = \frac{\p\dL}{\p(\p_0\phi)}.
+\end{equation}
+The Hamiltonian is then
+\begin{equation}
+    \SH = \int d^3x\bigg[\frac{\pi^2}{2} + \frac{(\p \phi)^2}{2} + V(\phi)\bigg],\quad (\p\phi)^2 = \p_i\phi\p^i\phi.
+\end{equation}
+The commutation relations are
+\begin{align}
+    \comm{\phi(\vx,t)}{\phi(\vx',t)} &= 0, \\
+    \comm{\pi(\vx,t)}{\pi(\vx',t)} &= 0, \\
+    \comm{\pi(\vx,t)}{\phi(\vx',t)} &= -i\delta^3(\vx - \vx').
+\end{align}
+The field $\phi$ is now interpreted as an operator $\hatphi$ on a Hilbert space satisfying the Heisenberg equation of motion
+\begin{equation}
+    i\frac{\p\hatphi}{\p t} = \comm{\hatphi}{\hatH}.
+\end{equation}
+We assume that:
+\begin{enumerate}
+    \item it exists a Poincaré invariant vacuum state;
+    \item the solution of the theory may be obtained using the $n$-point correlation function between fields
+    \begin{equation}
+        G_N(x_1,\dots,x_N) = \mybrakett{0}{T\{\phi(x_1)\cdots\phi(x_N)\}{0}}.
+    \end{equation}
+\end{enumerate}
+For the 2-point function the equations of motion imply that 
+\begin{align}
+    \frac{\p}{\p x_1^\mu}\frac{\p}{\p x_{1\mu}}G_2(x_1,x_2) + \mybrakett{0}{T\{\bigg(\frac{\p V}{\p \phi}\bigg)(x_1)\phi(x_2)\}}{0} &= -i\delta^4(x_2 - x_1) \\
+    \square_{x_1}G_2(x_1,x_2) + \mybrakett{0}{T\{V'(x_1)\phi(x_2)\}}{0} &= -i\delta^4(x_2 - x_1),
+\end{align}
+or for the general case
+\begin{multline}
+    \square_{x_1}G_N(x_1,\dots,x_N) + \mybrakett{0}{T\{V'(x_1)\cdots\phi(x_N)\}}{0} = \\
+    = -i\sum_{j=2}^N\delta^4(x_j - x_i)G_{N-1}(x_2,\dots,x_N).
+\end{multline}
+Let us remind ourselves of the solution for $G_2(x_1,x_2)$ in the free theory
+\begin{equation}
+    \begin{split}
+        G_{2,0}(x_1,x_2) &= \mybrakett{0}{T\{\phi(x_1)\phi(x_2)\}}{0} \\
+        &= D_F(x_1 - x_2) \\
+        &= \int\frac{d^4k}{(2\pi)^4}\frac{e^{ik(x_2 - x_1)}}{k^2 - m^2 + i\smallp},
+    \end{split}
+\end{equation}
+where $D_F(x)$ indicates this is the Feynman propagator for a particle of mass $m$ and we have introduced a small positive imaginary term $\smallp$ in the denominator to resolve the poles on the real axis. For the interacting theory we may write the solution using the path integral 
+\begin{equation}
+    \mybrakett{0}{T\{\phi(x_1)\phi(x_2)\}}{0} = \lim_{t\to\infty}\bigg[\frac{\int Dq\,\phi(x_1)\phi(x_2)\exp{(i\int_{-t}^t d^4x\,\dL)}}{\int Dq\,\exp{(i\int_{-t}^t d^4x\,\dL)}}\bigg],
+\end{equation}
+which we can solve using a generating functional $Z[J]$ with a source term $J$ defined as
+\begin{equation}
+    Z[J] = \int Dq\,\exp{\{i\int d^4x\,[\dL + J(x)\phi(x)]\}}
+\end{equation}
+so the correlation function $G_2(x_2,x_2)$ is obtained via functional derivatives of $Z[J]$ with respect to the source term $J$, in the end
+\begin{equation}
+    \begin{split}
+            G_2(x_1,x_2) &= \mybrakett{0}{T\{\phi(x_1)\phi(x_2)\}}{0} \\
+            &= \frac{1}{Z[0]}\bigg(-i\frac{\delta}{\delta J(x_1)}\bigg)\bigg(-i\frac{\delta}{\delta J(x_2)}\bigg)Z[J]\bigg|_{J=0}.
+    \end{split}
+\end{equation}
+
+\section{2-point correlation function for \texorpdfstring{$\phi^3$}{phi3}}
+We will only consider perturbative solutions here. Let us now specify a particular interaction, the $\phi^3$ theory with the Lagrangian
+\begin{equation}
+    \dL = \frac{1}{2}\p_\mu\phi\p^\mu\phi - \frac{1}{2}m^2\phi^2 - \frac{\lambda}{3!}\phi^3 \equiv \dL_0 + \dL_I.
+\end{equation}
+We may expand $Z[J]$ as follows
+\begin{equation}
+    \begin{split}
+        Z[J] &= \int Dq\,\exp{\bigg[i\int d^4x\,(\dL_0 + \dL_I) + J\phi\bigg]} \\
+        &= \int Dq\,\exp\bigg(i\int d^4x\,\dL_I\bigg)\exp{\bigg(i\int d^4x\,\dL_0 + J\phi\bigg)} \\
+        &= \int Dq\,\exp{(iS_I[\phi])\exp{\bigg(i\int d^4x\,\dL_0 + J\phi\bigg)}} \\
+        &= \int Dq\,\sum_{n=0}^\infty\bigg(\frac{i}{n!}S_I[\phi]\bigg)^n\exp{\bigg(i\int d^4x\,\dL_0 + J\phi\bigg)}.
+    \end{split}
+\end{equation}
+For the free theory one can derive the 2-point correlation function from the relation
+\begin{equation}
+    Z_0[J] = Z_0[0]\exp{\bigg[-\frac{1}{2}\int d^4x\,d^4y\,J(x)D_F(x - y)J(y)\bigg]},
+\end{equation}
+from where
+\begin{equation}
+    G_{2,0}(x_1,x_2) = D_F(x_1 - x_2).
+\end{equation}
+Then determine the interacting theory by expanding around the free propagator 
+\begin{multline}
+    -\frac{1}{Z_0[0]}\frac{\delta}{\delta J(x_1)}\frac{\delta}{\delta J(x_2)}\bigg[1 - \cancelto{0}{\frac{i\lambda}{6}\int d^4z\bigg(\frac{\delta}{\delta J(z_1)}\bigg)^3} +
+    \\ + \bigg(\frac{i\lambda}{6}\bigg)^2\int d^4z_1\,d^4z_2\bigg(\frac{\delta}{\delta J(z_1)}\bigg)^3\bigg(\frac{\delta}{\delta J(z_2)}\bigg)^3 + \cdots\bigg]Z_0[J]\bigg|_{J=0} = \\
+    = D_F(x_1 - x_2) - \frac{\lambda^2}{4}\int d^4z_1\,d^4z_2\,[D_F(x_1 - z_1)D_F(z_1 - z_2)^2 \times \\
+    \times D_F(z_2 - x_2)] + o(\lambda^4) \\
+    = \feynmandiagram[inline={([yshift=-0.1cm]current bounding box.center)}, layered layout, horizontal=a to b, scale=0.8, transform shape] { 
+    a [dot] -- b [dot], 
+    }; + \feynmandiagram[inline={([yshift=-0.1cm]current bounding box.center)}, layered layout, horizontal=a to b, scale=0.5, transform shape] { 
+    a [dot] -- v [dot] -- [half left, looseness=1.5] v1 [dot] -- [half left, looseness=1.5] v, v1 -- b [dot]}; + o(\lambda^4).
+\end{multline}
+We already have an issue with this expression since the point $z_1 = z_2$ causes a singularity. The divergence is simpler to see in momentum space so we take the Fourier transform of $G_2(x_1,x_2)$ recalling the definition of the Feynman propagator $D_F(x_1 - x_2)$ arriving at 
+\begin{multline}
+    D_F(x_1 - z_1)D_F(z_1 - z_2)^2D_F(z_2 - x_2) = \int \prod_{i=1}^4\bigg[\frac{d^4k_i}{(2\pi)^4}\frac{1}{k_i^2 - m^2 + i\smallp}\bigg]\times \\
+    \times e^{ik_1(z_1 - x_2)}e^{ik_2(z_2 - z_1)}e^{ik_3(z_2 - z_1)}e^{ik_4(x_2 - z_2)}.
+\end{multline}
+We write the argument of the exponential to collect on $z_1$ and $z_2$
+\begin{equation}
+    \exp{[iz_1(k_1 - k_2 - k_3) - iz_2(k_4 - k_3 - k_2) -ix_1k_1 + ik_4x_2]}.
+\end{equation}
+We now compute $\tilde{G}_2$ by evaluating the integrals in $z_1$ and $z_2$:
+\begin{enumerate}
+    \item the integral $\int d^4z_1$ gives $(2\pi)^4\delta^4(k_1 - k_2 - k_3)$;
+    \item the integral $\int d^4k_3/(2\pi)^4$ sets $k_3 = k_1 - k_2$;
+    \item the integral $\int d^4z_2$ gives $(2\pi)^4\delta^4(k_4 - k_1)$;
+    \item the integral $\int d^4k_4/(2\pi)^4$ sets $k_4 = k_1$.
+\end{enumerate}
+Putting everything together we get
+\begin{equation}
+    \tilde{G}_2(p^2,m^2) = \int d^4\tilde{x}\,e^{ip\tilde{x}}G_2(x_1,x_2),\quad \tilde{x} = x_1 - x_2,
+\end{equation}
+and where
+\begin{multline}
+    G_2(x_1,x_2) = D_F(x_1 - x_2) - \frac{\lambda^2}{2}\int \frac{d^4k_1}{(2\pi)^4}\frac{d^4k_2}{(2\pi)^4}\times \\
+    \times\bigg[\frac{e^{-ik_1(x_1 - x_2)}}{D(k_1,m)^2D(k_2,m)D(k_1 - k_2,m)}\bigg],
+\end{multline}
+where we introduced the notation
+\begin{equation}
+    D(k,m) = k^2 - m^2 + i\smallp.
+\end{equation}
+The integral over $\tilde{x}$ can now be performed giving a $\delta^4(p - k_1)$ factor followed by the integral in $k_1$ fixing $k_1 = p$
+\begin{multline}
+    \tilde{G}_2(p^2,m^2) = \frac{i}{D(p,m)} + \frac{(-i\lambda)^2}{2}\bigg(\frac{i}{D(p,m)}\bigg)^2 \times \\
+    \times\int \frac{d^4k}{(2\pi)^4}\frac{i}{D(k,m)}\frac{i}{D(k - p,m)} + o(\lambda^4).
+\end{multline}
+Feynman introduced a diagrammatic way to arrive at the same expression avoiding lengthy algebra
+\begin{equation}
+\label{eq: Feynman rules phi3}
+     \feynmandiagram [inline={([yshift=-0.1cm]current bounding box.center)}, layered layout, horizontal= v to d, scale=0.8, transform shape] {
+    a -- v [dot], b -- v, v -- d
+    }; = -i\lambda,\quad \feynmandiagram[inline={([yshift=-0.1cm]current bounding box.center)}, layered layout, horizontal=a to b, scale=0.8, transform shape] { 
+    a [dot] -- b [dot], 
+    }; = \frac{i}{D(k,m)},
+\end{equation}
+so that 
+\begin{equation}
+    \tilde{G_2}(p^2,m^2) = \feynmandiagram[inline={([yshift=-0.1cm]current bounding box.center)}, layered layout, horizontal=a to b, scale=0.8, transform shape] { 
+    a [dot] -- b [dot], 
+    }; + \feynmandiagram[inline={([yshift=-0.1cm]current bounding box.center)}, layered layout, horizontal=a to b, scale=0.5, transform shape] { 
+    a [dot] -- v [dot] -- [half left, looseness=1.5] v1 [dot] -- [half left, looseness=1.5] v, v1 -- b [dot]}; + o(\lambda^4),
+\end{equation}
+where we have used the notation $\feynmandiagram[inline={([yshift=-0.1cm]current bounding box.center)}, layered layout, horizontal=a to b, scale=0.8, transform shape] { a [dot] -- b [dot]};$ to indicate this is a correlation function and so propagators are included on external lines unlike the case of $S$-matrix elements where diagrams are amputated.
+\begin{obs}
+    We must include the symmetry factors when applying the Feynman rules.
+\end{obs}
+
+\section{A first issue}
+The 1-loop correction to the propagator, also called the 1-loop self-energy, is defined as 
+\begin{equation}
+    \Sigma^{(1)}(p^2,m^2) = -i(\feynmandiagram[inline={([yshift=-0.1cm]current bounding box.center)}, layered layout, horizontal=a to b, scale=0.5, transform shape] { 
+    a [dot] -- v [dot] -- [half left, looseness=1.5] v1 [dot] -- [half left, looseness=1.5] v, v1 -- b [dot]};),
+\end{equation}
+so that 
+\begin{equation}
+    \tilde{G}_2(p^2,m^2) = \frac{i}{D(p,m)}\bigg[1 + \frac{\Sigma^{(1)}(p^2,m^2)}{D(p,m)} + o(\lambda^4)\bigg],
+\end{equation}
+where
+\begin{equation}
+    \begin{split}
+        \Sigma^{(1)}(p^2,m^2) &= -\frac{i\lambda^2}{2}\int \frac{d^4k}{(2\pi)^4}\frac{1}{D(k,m)D(k - p,m)} \\
+        &\overset{|k| \to \infty}{\simeq} \frac{i\lambda^2}{2}\int_0^\infty d|k|d^3\Omega\,\frac{|k|^3}{|k^4|} \\
+        &\propto \int_0^\infty\frac{d|k|}{|k|}.
+    \end{split}
+\end{equation}
+Hence, the self-energy has a logarithmic divergence in the UV 
+\begin{equation}
+    \int_\delta^\Lambda\frac{d|k|}{|k|} = \log{\frac{\Lambda}{\delta}}.
+\end{equation}
+Understanding how to treat such UV divergences through renormalization will be the main topic of the next chapters.

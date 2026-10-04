@@ -1,0 +1,273 @@
+\documentclass[openany]{book}
+\usepackage[a4paper,margin=4.72cm]{geometry}
+
+\usepackage{graphicx}
+\usepackage{siunitx} 
+\usepackage{natbib}
+\usepackage{mathtools}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{stackengine}
+\usepackage{graphicx,ifthen}
+\usepackage{amsmath}
+\usepackage{hyperref}
+\usepackage{upgreek}
+\usepackage{bm}
+\usepackage{braket}
+\usepackage{float}
+\usepackage{cancel}
+\usepackage{anyfontsize}
+\usepackage{scalefnt}
+\usepackage{tipa}
+\usepackage{multirow}
+\usepackage{array}
+\usepackage{makecell}
+\usepackage{tikz}
+\usetikzlibrary{positioning}
+\usetikzlibrary{calc}
+\usetikzlibrary{decorations.markings}
+\usepackage{tikz-feynman}
+\tikzfeynmanset{compat=1.1.0}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.18}
+\usepackage{slashed}
+\usepackage[version = 3]{mhchem}
+
+\newtheorem{lem}{Lemma}
+\newtheorem{axiom}{Axiom}
+\newtheorem{defn}{Definition}
+\newtheorem{obs}{Observation}
+\newtheorem{ex}{Example}
+\newtheorem{notz}{Notation}
+\newtheorem{corl}{Corollary}
+\newtheorem{teo}{Theorem}
+\theoremstyle{remark}
+\newtheorem{caso}{Case}
+
+\numberwithin{lem}{chapter}
+\numberwithin{axiom}{chapter}
+\numberwithin{teo}{chapter}
+\numberwithin{defn}{chapter}
+\numberwithin{obs}{chapter}
+\numberwithin{ex}{chapter}
+\numberwithin{equation}{chapter}
+
+% renormalization schemes
+\newcommand{\MS}{\mathrm{MS}}
+\newcommand{\MMS}{\overline{\mathrm{MS}}}
+\newcommand{\MOM}{\mathrm{MOM}}
+\newcommand{\OS}{\mathrm{OS}}
+
+% insiemi
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\MI}{\mathbb{I}}
+\newcommand{\MO}{\mathbb{O}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\HFN}{\SH_{N,F}}
+\newcommand{\HBN}{\SH_{N,B}}
+\newcommand{\HBFN}{\SH_{N,B/F}}
+\newcommand{\SH}{\mathcal{H}}
+\newcommand{\Horb}{\mathcal{H}_{orb}}
+\newcommand{\Hfock}{\mathcal{H}_{Fock}}
+\newcommand{\Hs}{\SH_s}
+
+% operatori quantistici
+\newcommand{\hatac}{\hat{a}_i^\dagger}
+\newcommand{\hatad}{\hat{a}_i}
+\newcommand{\hata}{\hat{a}}
+\newcommand{\hataT}{\hat{a}^\dagger}
+\newcommand{\hatb}{\hat{b}}
+\newcommand{\hatbT}{\hat{b}^\dagger}
+\newcommand{\hatT}{\hat{T}}
+\newcommand{\hatPi}{\hat{\Pi}}
+\newcommand{\hatpi}{\hat{\pi}}
+\newcommand{\hatR}{\hat{R}}
+\newcommand{\hatx}{\hat{x}}
+\newcommand{\hatp}{\hat{p}}
+\newcommand{\hatH}{\hat{H}}
+\newcommand{\hath}{\hat{h}}
+\newcommand{\hatfH}{\hat{\mathcal{H}}}
+\newcommand{\hatS}{\hat{S}}
+\newcommand{\hatO}{\hat{O}}
+\newcommand{\hatL}{\hat{L}}
+\newcommand{\hatU}{\hat{U}}
+\newcommand{\hatQ}{\hat{Q}}
+\newcommand{\hatA}{\hat{A}}
+\newcommand{\hatB}{\hat{B}}
+\newcommand{\hatD}{\hat{D}}
+\newcommand{\hatP}{\hat{P}}
+\newcommand{\hatE}{\hat{E}}
+\newcommand{\hatJ}{\hat{J}}
+\newcommand{\hatV}{\hat{V}}
+\newcommand{\hatN}{\hat{N}}
+\newcommand{\hatn}{\hat{n}}
+\newcommand{\hatUT}{\hat{U}(t)}
+\newcommand{\hatsz}{\hat{s}_3}
+\newcommand{\hatphi}{\hat{\phi}}
+\newcommand{\hatphid}{\hat{\phi}^\dagger}
+\newcommand{\hatpsi}{\hat{\psi}}
+\newcommand{\hatpsid}{\hat{\psi}^\dagger}
+\newcommand{\hatpsib}{\hat{\bar{\psi}}}
+\newcommand{\oc}{\Psi_{\sigma}^\dagger}
+\newcommand{\ocq}{\Psi_{\sigma}}
+\newcommand{\slp}{\slashed{p}}
+\newcommand{\slk}{\slashed{k}}
+\newcommand{\slq}{\slashed{q}}
+\newcommand{\slg}{\slashed{\gamma}}
+\newcommand{\slD}{\slashed{D}}
+\newcommand{\slA}{\slashed{A}}
+\newcommand{\slep}{\slashed{\epsilon}}
+\newcommand{\cbar}{\bar{c}}
+\newcommand{\qbar}{\bar{q}}
+\newcommand{\bsigma}{\bar{\sigma}}
+
+% vettori
+\newcommand{\vx}{\bm{x}}
+\newcommand{\bx}{\bar{x}}
+\newcommand{\vy}{\bm{y}}
+\newcommand{\vr}{\bm{r}}
+\newcommand{\vs}{\bm{s}}
+\newcommand{\vp}{\bm{p}}
+\newcommand{\vq}{\bm{q}}
+\newcommand{\vk}{\bm{k}}
+\newcommand{\vv}{\bm{v}}
+\newcommand{\vj}{\bm{j}}
+\newcommand{\va}{\bm{a}}
+\newcommand{\vb}{\bm{b}}
+\newcommand{\vc}{\bm{c}}
+\newcommand{\vJ}{\bm{J}}
+\newcommand{\vK}{\bm{K}}
+\newcommand{\vA}{\bm{A}}
+\newcommand{\vE}{\bm{E}}
+\newcommand{\vB}{\bm{B}}
+\newcommand{\vQ}{\bm{Q}}
+\newcommand{\vmu}{\bm{\mu}}
+\newcommand{\vsigma}{\bm{\sigma}}
+
+% operatori matematici
+\newcommand{\mybraket}[2]{\langle #1 | #2 \rangle}
+\newcommand{\mybrakett}[3]{\langle #1 | #2 | #3 \rangle}
+\newcommand{\vmedio}[1]{\langle #1 \rangle}
+\newcommand{\comm}[2]{[#1,#2]}
+\newcommand{\acomm}[2]{\{#1,#2\}}
+\newcommand{\tr}[1]{\textnormal{tr}(#1)}
+\newcommand{\bigtr}[1]{\textnormal{tr}\bigg(#1\bigg)}
+\newcommand{\Tr}{\textnormal{Tr}}
+\newcommand{\nsum}{\sum\nolimits}
+\newcommand{\intR}{\int_{\mathbb{R}}}
+\newcommand{\ot}{\otimes}
+\newcommand{\op}{\oplus}
+\newcommand{\p}{\partial}
+\newcommand{\slpd}{\slashed{\partial}}
+\newcommand{\dg}{\dagger}
+\newcommand{\contr}[1]{\overbracket{#1}}
+\newcommand{\diag}[1]{\mathrm{diag}(#1)}
+\newcommand{\floor}[1]{\lfloor #1 \rfloor}
+\DeclareMathOperator*{\sumint}{%
+\mathchoice%
+  {\ooalign{$\displaystyle\sum$\cr\hidewidth$\displaystyle\int$\hidewidth\cr}}
+  {\ooalign{\raisebox{.14\height}{\scalebox{.7}{$\textstyle\sum$}}\cr\hidewidth$\textstyle\int$\hidewidth\cr}}
+  {\ooalign{\raisebox{.2\height}{\scalebox{.6}{$\scriptstyle\sum$}}\cr$\scriptstyle\int$\cr}}
+  {\ooalign{\raisebox{.2\height}{\scalebox{.6}{$\scriptstyle\sum$}}\cr$\scriptstyle\int$\cr}}
+}
+
+% quantità
+\newcommand{\amp}{\mathcal{A}}
+\newcommand{\D}{\mathcal{D}}
+\newcommand{\PV}{\mathcal{P}}
+\newcommand{\EM}{\mathcal{M}}
+\newcommand{\dL}{\mathcal{L}}
+\newcommand{\ML}{\Lambda}
+\newcommand{\psib}{\bar{\psi}}
+\newcommand{\mm}{g_{\mu\nu}}
+\newcommand{\smallp}{\varnothing^+}
+\newcommand{\selfen}[1]{\Sigma^{(1)[#1]}}
+\newcommand{\selfint}[1]{I^{(1)[#1]}_2}
+\newcommand{\hatselfint}[1]{\hat{I}^{(1)[#1]}_2}
+\newcommand{\tadpole}[2]{T_{#1}^{[#2]}}
+\newcommand{\Deltahat}{\hat{\Delta}}
+\newcommand{\Disc}{\mathrm{Disc}}
+\newcommand{\Cut}{\mathrm{Cut}}
+\newcommand{\Res}{\mathrm{Res}}
+\newcommand{\vo}{\bm{0}}
+\newcommand{\norm}{\mathcal{N}}
+\newcommand{\Wc}{\mathcal{C}}
+
+% stati quantistici
+\newcommand{\sv}{\ket{0}}
+\newcommand{\kO}{\ket{\Omega}}
+\newcommand{\bO}{\bra{\Omega}}
+\newcommand{\ua}{\uparrow}
+\newcommand{\da}{\downarrow}
+\newcommand{\vpsi}{\psi(\bm{x},t)}
+\newcommand{\tvpsi}{\Tilde{\psi}(\bm{x},t)}
+\newcommand{\ipsi}{\psi(x,t)}
+\newcommand{\sqket}[1]{|#1]}
+\newcommand{\sqbra}[1]{[#1|}
+\newcommand{\sqbraket}[1]{[ #1 \rangle}
+\newcommand{\sqketbra}[1]{\langle #1 ]}
+\newcommand{\ingoing}{\mathrm{in}}
+\newcommand{\outgoing}{\mathrm{out}}
+
+% gruppi ed algebre
+\newcommand{\g}{\mathfrak{g}}
+\newcommand{\su}{\mathfrak{su}}
+\newcommand{\so}{\mathfrak{so}}
+
+% spinori e antispinori
+\newcommand{\ubar}{\bar{u}}
+\newcommand{\vbar}{\bar{v}}
+\newcommand{\sdu}{u_s}
+\newcommand{\sdv}{v_s}
+\newcommand{\sdup}{u_{s'}}
+\newcommand{\sdvp}{v_{s'}}
+
+% spinori e antispinori hermitiani
+\newcommand{\sdud}{u^\dg_s}
+\newcommand{\sdvd}{v^\dg_s}
+\newcommand{\sdudp}{u^\dg_{s'}}
+\newcommand{\sdvdp}{v^\dg_{s'}}
+
+% spinori e antispinori hermitiani coniugati
+\newcommand{\sdub}{\bar{u}_s}
+\newcommand{\sdvb}{\bar{v}_s}
+\newcommand{\sdubp}{\bar{u}_{s'}}
+\newcommand{\sdvbp}{\bar{v}_{s'}}
+
+\tikzset{
+    cancel/.style={
+        postaction={
+            decorate,
+            decoration={
+                markings,
+                mark=at position 0.5 with {
+                    \node[inner sep=0pt, outer sep=0pt, scale=1] {\(\times\)};
+                }
+            }
+        }
+    }
+}
+
+\title{\textbf{NOTES OF ADVANCED \\ QUANTUM FIELD THEORY}}
+\author{Manuel Gabriele Moretti}
+\date{March 2026}
+
+\begin{document}
+
+\maketitle
+\pagenumbering{roman}
+\tableofcontents
+\newpage
+
+\pagenumbering{arabic}
+\include{Chapter 1 - Review of scalar QFT}
+% \include{Chapter 2 - phi3 theory at 1-loop}
+% \include{Chapter 3 - Loop integration methods}
+% \include{Chapter 4 - QED at 1-loop}
+% \include{Chapter 5 - QCD at 1-loop}
+% \include{Chapter 6 - The renormalization group}
+% \include{Chapter 7 - Unitarity and gauge invariance}
+
+\end{document}

@@ -1,0 +1,764 @@
+\chapter{\texorpdfstring{$\phi^3$}{phi3} theory at 1-loop}
+We will consider our study of $\phi^3$ theory. This time we specify a general spacetime dimension $D$ so
+\begin{equation}
+    S = \int d^Dx\,\dL,\quad \dL = \frac{1}{2}\p_\mu\phi\p^\mu\phi - \frac{1}{2}m^2\phi^2 - \frac{\lambda}{3!}\phi^3.
+\end{equation}
+The metric is taken to be ``mostly minus'' hence
+\begin{equation}
+    g^{\mu\nu} = \diag{1,-1,\underbrace{\dots}_{D - 1\,\mathrm{times}},-1}.
+\end{equation}
+Before finding a resolution to the problem of UV divergences, our first task is to classify the possible divergent graphs. 
+
+\section{Superficial degree of divergence}
+We can repeat the argument from before in $D$ dimensions concerning the UV divergence of the self-energy 
+\begin{equation}
+\label{eq: definition of the UV divergence of the self-energy}
+    \selfen{D}(p^2,m^2) = -\frac{i\lambda^2}{2}\selfint{D},
+\end{equation}
+where
+\begin{equation}
+    \selfint{D} = \int_k \frac{1}{D(k,m)D(k - p,m)},\quad \int_k = \int\frac{d^Dk}{(2\pi)^D}.
+\end{equation}
+Considering the limit $|k| \to \infty$ we have
+\begin{equation}
+    \selfint{D} \simeq \int \frac{d|k||k|^{D-1}d^{D-1}\Omega}{|k|^4(2\pi)^D} = \int d|k|\,|k|^{D - 5}\int \frac{d^{D-1}\Omega}{(2\pi)^D},
+\end{equation}
+where the integral in $d|k|$ is UV divergent for $D \ge 4$. In $D = 4$ the divergence is logarithmic. There is a natural lower cut-off for the energy, the mass $m$, so using a cut-off regularisation scale $\Lambda$ we get
+\begin{equation}
+    \selfen{4}(p^2,m^2) \xrightarrow{|k| \to \infty} C\log{\frac{\Lambda^2}{m^2}}.
+\end{equation}
+We can perform this analysis for a general one particle irreducible (1PI) graph $\Gamma_E(n,L)$, where $E$ are the number of external lines, $n$ are the number of internal lines and $L$ are the number of loops. The UV power counting gives the superficial degree of divergence $\omega(\Gamma_E)$ as 
+\begin{equation}
+\label{eq: superficial degree of divergence}
+    \omega(\Gamma_E) = DL - 2n.
+\end{equation}
+The extension to higher loops assumes scaling all internal momenta to infinity at the same rate. We may conclude that:
+\begin{enumerate}
+    \item for $\omega(\Gamma_E) < 0$ the graph converges;
+    \item for $\omega(\Gamma_E) = 0$ the graph diverges logarithmically;
+    \item for $\omega(\Gamma_E) > 0$ the graph diverges with a power law.
+\end{enumerate}
+Which can be made concrete by considering also the superficial degree of divergence of each sub-graph.
+\begin{teo}[Weinberg's theorem] 
+    A graph $\Gamma$ is convergent in the UV if $\omega(\Gamma) < 0$ and $\omega(\Gamma^{(sub)}) < 0$ for every sub-graph $\Gamma^{(sub)}$ of $\Gamma$.
+\end{teo}
+\begin{obs}
+    The superficial degree of divergence does not account of potential cancellations between graphs with the same number of external legs and loop order.  
+\end{obs}
+We may express the superficial degree of divergence $\omega(\Gamma)$ in terms of the dimensions of the fields and couplings. For a general scalar field theory with $p$-point vertices, so with a Lagrangian of interaction $\dL_I = \lambda\phi^p/p!$, we have
+\begin{equation}
+    L = n - V + 1,\quad n = \frac{1}{2}(pV - E),
+\end{equation}
+where $V$ is the number of the vertices. So, we can write
+\begin{equation}
+    \begin{split}
+    \omega(\Gamma) = DL - 2n &= D(n - V + 1) - 2n \\
+    &= \frac{1}{2}(D - 2)(pV - E) - DV - D \\
+    &= D - E\bigg(\frac{D - 2}{2}\bigg) - V\bigg[D - p\bigg(\frac{D - 2}{2}\bigg)\bigg] \\
+    &= D - E\frac{[\phi]}{[m]} - V\frac{[\lambda]}{[m]},
+    \end{split}
+\end{equation}
+in fact
+\begin{gather}
+    [m^2\phi^2] = 2[m] + 2[\phi] = D[m] \quad\Longrightarrow\quad \frac{[\phi]}{[m]} = \frac{D - 2}{2}, \\
+    [\lambda\phi^p] = D[m] = [\lambda] + p[\phi] \quad\Longrightarrow\quad \frac{[\lambda]}{[m]} = D - p\frac{D - 2}{2}.
+\end{gather}
+Our ability to renormalize will rely on the number of UV divergences that we may encounter in correlation functions. We must find a finite number of divergent sub-graphs. In terms of the dimension of $\lambda$ we classify cases for as:
+\begin{enumerate}
+    \item super-renormalizable, if $[\lambda]/[m] > 0$ and a graph $\Gamma$ has $\omega(\Gamma) < 0$ then additional loop corrections to $\Gamma$ will decrease $\omega(\Gamma)$ giving a finite number of divergent graphs;
+    \item renormalizable, if $[\lambda]/[m] = 0$ there will be an infinite number of divergent graphs but only for a limited number of external lines, and so a finite number of divergent sub-graphs;
+    \item non-renormalizable, if $[\lambda]/[m] < 0$ every 1PI graph is divergent if we go to a sufficiently high loop order.
+\end{enumerate}
+Having established that the self-energy is divergent we may calculate only after introducing a regularization method. We already demonstrated a simple ``cut-off'' would render the integral finite but breaks one of the fundamental symmetries in Physics which is the Poincaré invariance, so is not preferred. Instead, we can use dimensional regularization where $D$ is analytically continued to be non-integer by an expansion around $D = 4$
+\begin{equation}
+    D = 4 - 2\epsilon,\quad \epsilon \ll 1,
+\end{equation}
+which preserves many symmetries including Poincaré, gauge invariances and that generalises well to QED and QCD, is preferable. Feynman, and similarly Schwinger, noticed that
+\begin{equation}
+    \frac{1}{AB} = \int_0^1 d\alpha_1\int_0^1 d\alpha_2\,\frac{\delta(1 - \alpha_1 - \alpha_2)}{(\alpha_1A + \alpha_2B)^2}.
+\end{equation}
+So using this result one can write
+\begin{equation}
+    \selfint{D} = \int_k\int_0^1 d\alpha \frac{1}{[\alpha D(k - p,m) + (1 - \alpha)D(k,m)]^2}.
+\end{equation}
+Completing the square in the denominator yields 
+\begin{equation}
+    \begin{split}
+        \alpha D(k - p,m) + (1 - \alpha)D(k,m) &= \alpha[(k - p)^2 - m^2 + i\smallp] \\
+        &+ (1 - \alpha)(k^2 - m^2 + i\smallp) \\
+        &= k^2 - m^2 + i\smallp - 2\alpha kp + \alpha p^2 \\
+        &= (k -\alpha p)^2 -\alpha p^2 + \alpha^2 p^2 - m^2 + i\smallp \\
+        &= (k')^2 - \Delta,
+    \end{split}
+\end{equation}
+where we defined
+\begin{equation}
+    k' := k - \alpha p,\quad \Delta := -\alpha(1 - \alpha)p^2 + m^2 - i\smallp.   
+\end{equation}
+We can now reorder the integration in $\alpha$ and $k$ to write 
+\begin{equation}
+    \selfint{D} = \int_0^1 d\alpha \int_k \frac{1}{(k^2 - \Delta)^2},
+\end{equation}
+where we changed variables $k' \to k$.
+\begin{obs}
+    If the numerator has dependence on $k$ we would pick up $\alpha$ dependence in the numerator with the shift $k \to k' = k - \alpha p$.
+\end{obs}
+Rather than $\selfint{D}$ we can consider a general tadpole integral 
+\begin{equation}
+\label{eq: tadpole integral}
+    \tadpole{n}{D}(\Delta) = \int _k \frac{1}{(k^2 - \Delta)^n}.
+\end{equation}
+The first step is to Wick rotate into Euclidean kinematics by
+\begin{equation}
+    k^0 = ik_E^0,\quad \vk = \vk_E,
+\end{equation}
+so that 
+\begin{equation}
+    k^2 = (k^0)^2 - |\vk|^2 = -(k_E^0)^2 - |\vk_E|^2 = -k_E^2,\quad d^Dk = id^Dk_E.
+\end{equation}
+The transformation does not cross the poles that are given by the solution of $k^2 - \Delta = (k^0)^2 - |\vk|^2 - \Delta = 0$, which are
+\begin{equation}
+    k^0 = \pm\sqrt{|\vk|^2 + \Delta} = \pm\sqrt{|\vk| + \Re{(\Delta)}} \mp i\smallp \equiv k_\pm^0.
+\end{equation}
+Therefore
+\begin{equation}
+    \begin{split}
+        \tadpole{n}{D}(\Delta) &= (-1)^ni\int\frac{d^Dk_E}{(2\pi)^D}\frac{1}{(k_E^2 + \Delta)^n} \\
+        &= (-1)^ni\int\frac{d|k_E||k_E|^{D - 1}}{(|k_E|^2 + \Delta)^n}\int\frac{d^{D-1}\Omega}{(2\pi)^D} \\
+        &= (-1)^ni\int\frac{d|k_E||k_E|^{D - 1}}{(|k_E|^2 + \Delta)^n}\frac{2\pi^{D/2}}{(2\pi)^D\Gamma(D/2)},
+    \end{split}
+\end{equation}
+where $\Gamma(x) = \int_0^x dz\,z^{x-1}e^{-z}$. The integration in $|k_E|$ is also straightforward 
+\begin{equation}
+    \begin{split}
+        \int_0^\infty dx\,\frac{x^{D-1}}{(x^2 + \Delta)^n} &= \int_0^\infty dt\,\frac{t^{D/2 - 1}}{2(t + \Delta)^n} \\
+        &= \frac{1}{2}\int_0^1 dy\,\Delta^{D/2 - n}y^{n - 1 - D/2}(1 - y)^{D/2 - 1},
+    \end{split}
+\end{equation}
+where we first set $x^2 = t$ and then $y = \Delta/(t + \Delta)$, from where we can recognize the Euler beta function 
+\begin{equation}
+    \beta(a,b) := \int_0^1 dx\,x^{a-1}(1-x)^{b-1} = \frac{\Gamma(a)\Gamma(b)}{\Gamma(a+b)}
+\end{equation}
+and we arrive at
+\begin{equation}
+    \int\frac{d|k_E||k_E|^{D - 1}}{(|k_E|^2 + \Delta)^n} = \frac{1}{2}\Delta^{D/2 - n}\frac{\Gamma(n - D/2)\Gamma(D/2)}{\Gamma(n)}.
+\end{equation}
+So, in the end for the tadpole integral we get
+\begin{equation}
+    \tadpole{n}{D}(\Delta) = \frac{(-1)^ni}{(4\pi)^{D/2}}\Delta^{D/2 - n}\frac{\Gamma(n - D/2)}{\Gamma(n)}.
+\end{equation}
+
+\subsection{The massless self-energy}
+Before completing $\selfint{D}(p^2,m^2)$ we can try the simpler case with $m = 0$ 
+\begin{equation}
+    \begin{split}
+        \selfint{D}(p^2,0) &= \int_0^1 d\alpha\,\tadpole{2}{D}[-\alpha(1-\alpha)p^2] \\
+        &= \frac{i}{(4\pi)^{D/2}}\int_0^1 d\alpha\,\frac{\Gamma(2 - D/2)}{\Gamma(2)}[-\alpha(1-\alpha)p^2]^{D/2 - 2} \\
+        &= \frac{i}{(4\pi)^{D/2}}(-p^2)^{D/2 - 2}\Gamma(2 - D/2)\beta(D/2 - 1,D/2 - 1) \\
+        &= \frac{i}{(4\pi)^{D/2}}(-p^2)^{D/2 - 2}\frac{\Gamma(2 - D/2)\Gamma^2(D/2 - 1)}{\Gamma(D - 2)},
+    \end{split}
+\end{equation}
+that in $D = 4 - 2\epsilon$ dimensions becomes
+\begin{equation}
+    \selfint{4 - 2\epsilon}(p^2,0) = \frac{iC_\Gamma}{(4\pi)^2}\frac{(-p^2)^{-\epsilon}}{\epsilon(1 - 2\epsilon)},
+\end{equation}
+where the UV pole can be made explicit through the use of the identity $a\Gamma(a) = \Gamma(a + 1)$ so that we get
+\begin{equation}
+    \selfint{4 - 2\epsilon}(p^2,0) = \frac{iC_\Gamma}{(4\pi)^2}\frac{(-p^2)^{-\epsilon}}{\epsilon(1 - 2\epsilon)},\quad C_\Gamma = \frac{\Gamma(1+\epsilon)\Gamma^2(1-\epsilon)}{(4\pi)^{-\epsilon}\Gamma(1-2\epsilon)}.
+\end{equation}
+We may also expand in $\epsilon$ to observe the analytic structure
+\begin{equation}
+\label{eq: massless self-energy integral}
+    \selfint{4 - 2\epsilon}(p^2,0) = \frac{i}{(4\pi)^2}\bigg[\frac{1}{\epsilon} + 2 - \gamma_E + \log{(4\pi)} - \log{(-p^2)} + o(\epsilon)\bigg],
+\end{equation}
+where $\gamma_E \simeq 0.57721$ is the Euler-Mascheroni constant. 
+
+\subsection{The massive self-energy}
+So if we consider the case where the mass is different from zero we have
+\begin{equation}
+    \begin{split}
+        \selfint{D}(p^2,m^2) &= \int_0^1 d\alpha\,\tadpole{2}{D}[-\alpha(1-\alpha)p^2 + m^2] \\
+        &= \frac{i}{(4\pi)^{D/2}}\Gamma(2 - D/2)\int_0^1 d\alpha\,[-\alpha(1-\alpha)p^2 + m^2]^{D/2 - 2} \\
+        &= \frac{i}{(4\pi)^{2 - \epsilon}}\Gamma(\epsilon)(m^2)^{-\epsilon}\int_0^1 d\alpha\,\bigg[1 - \alpha(1-\alpha)\frac{p^2}{m^2}\bigg]^{-\epsilon} \\
+        &= \frac{i}{(4\pi)^{2 - \epsilon}}\Gamma(\epsilon)(m^2)^{-\epsilon}\int_0^1 d\alpha\,\Deltahat^{-\epsilon},
+    \end{split}
+\end{equation}
+where we considered $D = 4 - 2\epsilon$ and we defined 
+\begin{equation}
+    \Deltahat := 1 - \alpha(1-\alpha)\frac{p^2}{m^2}.
+\end{equation}
+The UV divergence is the same since $\epsilon\Gamma(\epsilon) = \Gamma(1 + \epsilon)$ and the integral in $\alpha$ is finite so 
+\begin{equation}
+    \int_0^1 d\alpha\,\Deltahat^{-\epsilon} = \int_0^1 d\alpha\,(1 -\epsilon\log{\Deltahat} + \cdots),
+\end{equation}
+which substituted in $\selfint{4 - 2\epsilon}(p^2,m^2)$ results in
+\begin{equation}
+    \selfint{4 - 2\epsilon}(p^2,m^2) = \frac{i}{(4\pi)^{2 - \epsilon}}\Gamma(1 + \epsilon)(m^2)^{-\epsilon}\bigg[\frac{1}{\epsilon} - \int_0^1 d\alpha\,\log{(\Deltahat)} + o(\epsilon)\bigg].
+\end{equation}
+Deriving a closed form for the integral over $\alpha$ is also pretty straightforward.
+\begin{ex}
+    +EXERCISE INTEGRATION OVER ALPHA.
+\end{ex}
+The final result is therefore
+\begin{equation}
+\label{eq: massive self-energy integral}
+    \begin{split}
+        \selfint{4 - 2\epsilon}(p^2,m^2) &= \frac{i\Gamma(1+\epsilon)m^{-2\epsilon}}{(4\pi)^{2-\epsilon}}\bigg[\frac{1}{\epsilon} + 2 -\beta\log{\bigg(-\frac{\beta_+}{\beta_-}\bigg)}\bigg] + o(\epsilon) \\
+        &= \frac{i}{(4\pi)^2}\bigg[\frac{1}{\epsilon} + 2 + \log{(4\pi)} - \gamma_E - \log{(m^2)} \\
+        &-\beta\log{\bigg(-\frac{\beta_+}{\beta_-}\bigg)}\bigg] + o(\epsilon),
+    \end{split} 
+\end{equation}
+where we defined
+\begin{equation}
+    \beta_\pm = \frac{1}{2}(1 \pm \beta),\quad\beta = \sqrt{1- \frac{4m^2}{p^2}},
+\end{equation}
+such that $\beta_+\beta_- = m^2/p^2$. Substituting \eqref{eq: massive self-energy integral} in the definition \eqref{eq: definition of the UV divergence of the self-energy} we find
+\begin{equation}
+    \selfen{4 - 2\epsilon}(p^2,m^2) = \frac{\lambda^2}{2(4\pi)^2}\bigg[\frac{1}{\epsilon} + o(\epsilon^0)\bigg].
+\end{equation}
+
+\section{Renormalization of the 2-point function}
+We now reconsider the perturbative expression of the two point function $\tilde{G}_2$ in terms of Feynman diagrams
+\begin{equation}
+    \begin{split}
+        \tilde{G}_2(p^2,m^2) &=
+        \feynmandiagram[inline={([yshift=-0.1cm]current bounding box.center)}, layered layout, horizontal=a to b, scale=0.8, transform shape] { 
+        a [dot] -- b [dot] 
+        }; + 
+        \feynmandiagram[inline={([yshift=-0.1cm]current bounding box.center)}, layered layout, horizontal=a to b, scale=0.5, transform shape] { 
+        a [dot] -- v [dot] -- [half left, looseness=1.5] v1 [dot] -- [half left, looseness=1.5] v, v1 -- b [dot]}; + 
+        \feynmandiagram[inline={([yshift=-0.1cm]current bounding box.center)}, layered layout, horizontal=a to b, scale=0.5, transform shape] { 
+        a [dot] -- v [dot] -- [half left, looseness=1.5] v1 [dot] -- [half left, looseness=1.5] v, v1 -- v2 [dot], v2 -- [half left, looseness=1.5] v3 [dot] -- [half left, looseness=1.5] v2, v3 -- b [dot]}; + 
+        \feynmandiagram [horizontal=v1 to v3, inline={([yshift=-0.1cm]current bounding box.center)}, scale=0.6] {
+        a [dot] -- v1,
+        v1 -- [quarter right, looseness=1.1] v2 [dot] -- [quarter right, looseness=1.1] v3 -- [quarter right, looseness=1.1] v4 [dot] -- [quarter right, looseness=1.1] v1,
+        v3 -- b [dot],
+        v2 -- v4, }; + \cdots \\
+      &= \feynmandiagram[inline={([yshift=-0.1cm]current bounding box.center)}, layered layout, horizontal=a to b, scale=0.8, transform shape] { a [dot] -- b [dot] }; + 
+      \feynmandiagram[inline={([yshift=-0.1cm]current bounding box.center)}, layered layout, horizontal=a to c, scale=0.8, transform shape] { a [dot] -- b [blob] -- c [dot] }; + 
+      \feynmandiagram[inline={([yshift=-0.1cm]current bounding box.center)}, layered layout, horizontal=a to c, scale=0.8, transform shape] { a [dot] -- b [blob] -- c [blob] -- d  [dot] }; + \cdots,
+    \end{split}
+\end{equation}
+where
+\begin{equation}
+    \feynmandiagram[inline={([yshift=-0.1cm]current bounding box.center)}, layered layout, horizontal=a to c, scale=0.8, transform shape] { a [dot] -- b [blob] -- c [dot]}; = (\feynmandiagram[inline={([yshift=-0.1cm]current bounding box.center)}, layered layout, horizontal=a to b, scale=0.8, transform shape] { a [dot] -- b [dot] }; )^2\Sigma(p^2,m^2),\quad \Sigma(p^2,m^2) = \sum_{L=1}^\infty \Sigma^{(L)}(p^2,m^2),
+\end{equation}
+is the self-energy containing all the factorisable diagrams. This way we obtain
+\begin{equation}
+    \begin{split}
+        \tilde{G}_2(p^2,m^2) &= \frac{i}{D(p,m)}\bigg(1 + \frac{\Sigma}{D(p,m)} + \frac{\Sigma^2}{D^(p,m)^2 } + \cdots\bigg) \\
+        &= \frac{i}{D(p,m)}\frac{1}{[1 - \Sigma(p^2,m^2)/D(p,m)]} \\
+        &= \frac{i}{p^2 - m^2 - \Sigma(p^2,m^2) + i\smallp}.
+    \end{split}
+\end{equation}
+So, the self energy, containing the UV divergence, can be interpreted as a mass shift to the tree-level propagator. It is therefore possible to absorb the divergence into a re-defined mass parameter
+\begin{equation}
+    m_R^2 := m^2 - \delta_{m}(\kappa),\quad \delta_{m}(\kappa) = \sum_{L=1}^\infty \delta^{(L)}_m(\kappa),
+\end{equation}
+where $\kappa$ indicates the dependence from the renormalization scheme that one choose. We have compacted $\delta_{m}(\kappa)$ up to 1-loop 
+\begin{equation}
+    m^2 + \Sigma(p^2,m^2) = m_R^2 + \delta_m^{(1)}(\kappa) + \Sigma^{(1)}(p^2,m^2) + o(\lambda^4),
+\end{equation}
+where
+\begin{equation}
+    \delta_m^{(1)}(\kappa) + \Sigma^{(1)}(p^2,m^2) = 0.
+\end{equation}
+Therefore, at 1-loop
+\begin{equation}
+    \delta^{(1)}_m(\kappa) = -\frac{\lambda^2}{2(4\pi)^2}\bigg(\frac{1}{\epsilon} + \kappa\bigg).
+\end{equation}
+It is clear that we must define a renormalization scheme in order to fix $\kappa$ and to achieve a physical prediction. However, we have hidden another new parameter inside the coupling in dimensional regularisation; so recall that
+\begin{equation}
+    \frac{[\lambda]}{[m]} = D - 3\bigg(\frac{D - 2}{2}\bigg) = 1 + \epsilon,\quad D = 4 - 2\epsilon,
+\end{equation}
+we can make the scale explicitly using
+\begin{equation}
+    \lambda_R\mu_R^\epsilon = \lambda,
+\end{equation}
+where $[\lambda_R] = [m]$ and $[\mu_R] = [m]$. The finite ``renormalized'' 2-point correlation function is therefore
+\begin{equation}
+    \tilde{G}_{2,R} = -i\Gamma_{2,R}^{-1},
+\end{equation}
+where
+\begin{multline}
+\label{eq: Gamma_2R}
+    \Gamma_{2,R}(p^2,m_R^2;\kappa,\mu_R^2,\lambda_R^2) = p^2 - m_R^2 + i\smallp + \frac{\lambda_R^2}{2(4\pi)^2}\bigg[2 + \log{(4\pi)} - \\ - \gamma_E - \kappa + \log{\bigg(\frac{\mu_R^2}{m_R^2}\bigg)} - \beta\log{\bigg(-\frac{\beta_+}{\beta_-}\bigg)}\bigg] + o(\lambda_R^4).
+\end{multline}
+We may apply the change of parameters already at the level of the Lagrangian
+\begin{equation}
+    \dL = \frac{1}{2}\p_\mu\phi\p^\mu\phi - \frac{1}{2}m_0^2\phi^2 - \frac{\lambda_0}{3!}\phi^3,
+\end{equation}
+where we have now specified $m_0$ and $\lambda_0$ as bare quantities. After the transformations
+\begin{equation}
+    m_0^2 = m_R^2 +\delta_{m},\quad \lambda_0 = \lambda_R\mu_R^\epsilon,
+\end{equation}
+we see
+
+\begin{equation}
+    \dL = \dL|_{\substack{m_0 \to m_R \\[0.5ex] \lambda_0 \to \lambda_R\mu_R^\epsilon}} - \frac{1}{2}\delta_{m}\phi^2,
+\end{equation}
+where the first term can be computed through the Feynman rules \eqref{eq: Feynman rules phi3} while the second is the UV counter term defined as $\feynmandiagram[inline={([yshift=-0.1cm]current bounding box.center)}, layered layout, horizontal=a to b, scale=0.8, transform shape] { a [dot] -- v [crossed dot, pos=0.5] -- b [dot] };$. Hence we generate renormalized, so finite, quantities order by order
+\begin{multline}
+    \underbrace{\feynmandiagram[inline={([yshift=-0.1cm]current bounding box.center)}, layered layout, horizontal=a to b, scale=0.8, transform shape] { a [dot] -- b [dot] }; }_{o(\lambda^0_R)} + 
+    \underbrace{\feynmandiagram[inline={([yshift=-0.1cm]current bounding box.center)}, layered layout, horizontal=a to b, scale=0.5, transform shape] { 
+    a [dot] -- v [dot] -- [half left, looseness=1.5] v1 [dot] -- [half left, looseness=1.5] v, v1 -- b [dot]}; + 
+    \feynmandiagram[inline={([yshift=-0.3cm]current bounding box.center)}, layered layout, horizontal=a to b, scale=0.8, transform shape] { a [dot] -- v [crossed dot, label=60:\((2)\)] -- b [dot] }; }_{o(\lambda_R^2)} + \\
+    + 
+    \underbrace{\feynmandiagram [horizontal=v1 to v3, inline={([yshift=-0.1cm]current bounding box.center)}, scale=0.6] {
+    a [dot] -- v1, v1 -- [quarter right, looseness=1.1] v2 [dot] -- [quarter right, looseness=1.1] v3 -- [quarter right, looseness=1.1] v4 [dot] -- [quarter right, looseness=1.1] v1, v3 -- b [dot], v2 -- v4, }; + \cdots + \feynmandiagram[inline={([yshift=-0.3cm]current bounding box.center)}, layered layout, horizontal=a to b, scale=0.8, transform shape] { a [dot] -- v [crossed dot, label=60:\((2)\)] -- b [dot] }; }_{o(\lambda_R^4)} + \cdots.
+\end{multline}
+
+\section{Renormalization schemes}
+We see that our finite $\tilde{G}_{2,R}$ still has ambiguity that must be fixed before the procedure is predictive. The quantity $m_0$ is not the physical mass but we must specify how $m_R$ is connected to be a physical quantity, which will fix the scheme. We define the physical mass $m_P$ to be at the pole of the 2-point function 
+\begin{equation}
+    \tilde{G}_{2,P} = \frac{i}{p^2 - m_P^2 + i\smallp}
+\end{equation}
+and now consider options for the renormalization scheme. 
+
+\subsection{Minimal subtraction}
+In this scheme there are retained only the poles from divergent graphs so $\kappa_\MS := 0$. We can the state that
+\begin{equation}
+    -iG_{2,P}^{-1} = \Gamma_{2,P},\quad \lim_{p^2 \to m_P^2}\Gamma_{2,P} = i\smallp,
+\end{equation}
+which we match to the renormalized function $\Gamma_{2,\MS}(p^2,m_R^2;\mu_R^2,\lambda_R^2)$ as follows
+\begin{equation}
+    \lim_{p^2 \to m_P^2}\Gamma_{2,\MS}(p^2,m_R^2;\mu_R^2,\lambda_R^2) = i\smallp,
+\end{equation}
+where $\Gamma_{2,R}(p^2,m_R^2;\mu_R^2,\lambda_R^2)$ is defined as in \eqref{eq: Gamma_2R}, therefore
+\begin{multline}
+    m_P^2 - m_R^2 + \frac{\lambda_R^2}{2(4\pi)^2}\bigg[2 + \log{(4\pi)} - \gamma_E + \\
+    + \log{\bigg(\frac{\mu_R^2}{m_R^2}\bigg) - \beta_P\log{\bigg(-\frac{\beta_{+,P}}{\beta_{-,P}}\bigg)}}\bigg] = o(\lambda^4_R).
+\end{multline}
+So we have fixed the scheme to a measurement at $p^2 = m_P^2$ and found a relation between $m_{R,\MS}$ and $m_P$. At leading order 
+\begin{equation}
+    m_{R,\MS}^2 = m_P^2 + o(\lambda_R^2),
+\end{equation}
+so we may replace $m_R$ with $m_P$ inside the terms at $o(\lambda_R^2)$, therefore
+\begin{equation}
+    m_{R,\MS}^2 = m_P^2 + \frac{\lambda_R^2}{2(4\pi)^2}\bigg[2 + \log{(4\pi)} - \gamma_E + \log{\bigg(\frac{\mu_R^2}{m_P^2}\bigg) - \frac{\pi}{\sqrt{3}}}\bigg] + o(\lambda^4_R),
+\end{equation}
+where
+\begin{equation}
+    \beta\log{\bigg(-\frac{\beta_+}{\beta_-}\bigg)}\bigg|_{\substack{p^2 = m_P^2 \\ m_R^2 = m_P^2}} = \frac{\pi}{\sqrt{3}}.
+\end{equation}
+
+\subsection{Modified minimal subtraction}
+We can also include some additional constants in the choice of $\kappa$ which may help to tidy up the expressions, so in this scheme 
+\begin{equation}
+    \kappa_{\MMS} := \log{(4\pi)} - \gamma_E,
+\end{equation}
+which can also be seen as subtracting $(4\pi)^\epsilon e^{-\gamma_E\epsilon}/\epsilon$ rather than $1/\epsilon$. This is particularly useful for the higher order corrections. The relation between $m_{R,\MMS}^2$ and $m_P^2$ is then ever so slightly more compact
+\begin{equation}
+    m_{R,\MMS}^2 = m_P^2 + \frac{\lambda_R^2}{2(4\pi)^2}\bigg[2 + \log{\bigg(\frac{\mu_R^2}{m_P^2}\bigg)} - \frac{\pi}{\sqrt{3}}\bigg] + o(\lambda^4).
+\end{equation}
+
+\subsection{Fixed momentum subtraction}
+In this scheme we fix the 2-point function function at a value $p^2 = -M^2$ and impose
+\begin{equation}
+    \Gamma_{2,\MOM}(-M^2,m_R^2;\kappa_\MOM,\mu_R^2,\lambda_R^2) = -M^2 - m_R^2 + i\smallp,
+\end{equation}
+from which we determine 
+\begin{equation}
+    \kappa_\MOM = 2 + \log{(4\pi)} - \gamma_E + \log{\bigg(\frac{\mu_R^2}{m_R^2}\bigg)} - \beta_\MOM\log{\bigg(-\frac{\beta_{+,\MOM}}{\beta_{-,\MOM}}\bigg)},
+\end{equation}
+and so
+\begin{multline}
+    \Gamma_{2,\MOM}(-M^2,m_R^2;\mu_R^2,\lambda_R^2) = p^2 -m_R^2 + i\smallp + \\
+    +\frac{\lambda_R^2}{2(4\pi)^2}\bigg[-\beta_R\log{\bigg(-\frac{\beta_{+,R}}{\beta_{-,R}}\bigg)} + \beta_\MOM\log{\bigg(-\frac{\beta_{+,\MOM}}{\beta_{-,\MOM}}\bigg)}\bigg] + o(\lambda^4_R).
+\end{multline}
+The relation to the physical mass can be determined as before
+\begin{equation}
+    \lim_{p^2 \to m_P^2}\Gamma_{2,\MOM}(p^2,m_R^2;M^2,\lambda_R) = i\smallp,
+\end{equation}
+therefore
+\begin{multline}
+\label{eq: renormalized mass in MOM scheme}
+    m_{R,\MOM}^2 = m_P^2 + \frac{\lambda_R^2}{2(4\pi)^2}\bigg[-\frac{\pi}{\sqrt{3}} + \\ + \beta(-M^2,m_P^2)\log{\bigg(-\frac{\beta_+(-M^2,m_P^2)}{\beta_-(-M^2,m_P^2)}\bigg)}\bigg] + o(\lambda^4_R).
+\end{multline}
+
+\subsection{On-shell subtraction}
+In this scheme we are going to say that there are no momentum corrections in \eqref{eq: renormalized mass in MOM scheme}, to do that we impose $m_R^2 := m_P^2$, so that
+\begin{equation}
+    \lim_{p^2 \to m_R^2}\Gamma_{2,\OS}(p^2,m_R^2;\kappa_\OS,\mu_R^2,\lambda_R^2) = i\smallp,
+\end{equation}
+therefore
+\begin{equation}
+    \kappa_\OS = 2 + \log{(4\pi)} - \gamma_E + \log{\bigg(\frac{\mu_R^2}{m_R^2}\bigg)} - \frac{\pi}{\sqrt{3}}.
+\end{equation}
+
+\section{Complete renormalization of \texorpdfstring{$\phi^3$}{phi3} in 4D}
+Having completed our analysis of the 2-point function we need to consider all the other potentially divergent graphs. The result so far for the Lagrangian in terms of renormalized mass and coupling  is
+\begin{equation}
+    \dL = \frac{1}{2}\p_\mu\phi\p^\mu\phi - \frac{1}{2}m_R^2\phi^2 - \frac{\lambda_R\mu_R^\epsilon}{3!}\phi^3 + \frac{1}{2}\delta_{m}\phi^2,
+\end{equation}
+where 
+\begin{equation}
+    \delta_{m} = \frac{\lambda_R^2}{2(4\pi)^2}\bigg(\frac{1}{\epsilon} + \kappa\bigg) + o(\lambda^4_R),
+\end{equation}
+which cancels the divergence in $\tilde{G}_2$ so that $\tilde{G}_{2,R}$ is finite. In four dimension $[\lambda] = [m]$ so we only have a finite number of divergent graphs
+\begin{equation}
+    \omega(\Gamma) = 4 - E -V.
+\end{equation}
+At 1-loop we have
+\begin{equation}
+    \omega(\feynmandiagram[inline={([yshift=-0.1cm]current bounding box.center)}, layered layout, horizontal=a to b, scale=0.5, transform shape] { a -- v -- [half left, looseness=1.5] v1 -- [half left, looseness=1.5] v, v1 -- b}; ) = 0,\quad \omega\bigg(\feynmandiagram [inline={([yshift=-0.1cm]current bounding box.center)}, scale = 0.6] { a -- [bend left=60] b -- [bend left=60] c -- [bend left=60] a, i1 -- a, i2 -- b,i3 -- c }; \bigg) = -2,\quad \omega\bigg(\feynmandiagram[ 
+    inline={([yshift=-0.1cm]current bounding box.center)}, scale=0.6, transform shape, horizontal=v1 to v2] { a -- v1, v1 -- v2, v2 -- b, v2 -- v3, v3 -- c, v3 -- v4, v4 -- v1, v4 -- d };\bigg) = -4,\quad \dots,
+\end{equation}
+At 2-loops we have
+\begin{equation}
+    \omega\bigg(\feynmandiagram [horizontal=v1 to v3, inline={([yshift=-0.1cm]current bounding box.center)}, scale=0.6] { a [dot] -- v1, v1 -- [quarter right, looseness=1.1] v2 [dot] -- [quarter right, looseness=1.1] v3 -- [quarter right, looseness=1.1] v4 [dot] -- [quarter right, looseness=1.1] v1, v3 -- b [dot], v2 -- v4, }; \bigg) = -2,\quad \omega\bigg( 
+    \begin{tikzpicture}[
+    baseline={([yshift=-0.2cm]current bounding box.center)},
+    scale=0.5,
+    transform shape]
+    \begin{feynman}
+    % Vertici principali
+    \vertex (a);
+    \vertex [dot, right=0.5cm of a] (v1) {};
+    \vertex [dot, right=2cm of v1] (v4) {};
+    \vertex [dot, right=0.5cm of v4] (b);
+    
+    % Vertici per il loop superiore (posizionati manualmente sopra v1 e v4)
+    \vertex [dot, above right=0.8cm and 0.6cm of v1] (v2) {};
+    \vertex [dot, above left=0.8cm and 0.6cm of v4] (v3) {};
+
+    \diagram* {
+      (a) -- (v1),
+      (v4) -- (b),
+      % Arco inferiore del cerchio grande
+      (v1) -- [bend right=60] (v4),
+      % Pezzetti di arco superiore che portano alla bolla
+      (v1) -- [bend left=30] (v2),
+      (v3) -- [bend left=30] (v4),
+      % La bolla superiore (il piccolo cerchio che interrompe)
+      (v2) -- [bend left=90] (v3),
+      (v2) -- [bend right=90] (v3),
+    };
+    \end{feynman}
+    \end{tikzpicture}\bigg) = -4.
+\end{equation}
+\begin{obs}
+    However, the diagram $\begin{tikzpicture}[
+    baseline={([yshift=-0.2cm]current bounding box.center)},
+    scale=0.3,
+    transform shape]
+    \begin{feynman}
+    % Vertici principali
+    \vertex (a);
+    \vertex [dot, right=0.5cm of a] (v1) {};
+    \vertex [dot, right=2cm of v1] (v4) {};
+    \vertex [dot, right=0.5cm of v4] (b);
+    
+    % Vertici per il loop superiore (posizionati manualmente sopra v1 e v4)
+    \vertex [dot, above right=0.8cm and 0.6cm of v1] (v2) {};
+    \vertex [dot, above left=0.8cm and 0.6cm of v4] (v3) {};
+
+    \diagram* {
+      (a) -- (v1),
+      (v4) -- (b),
+      % Arco inferiore del cerchio grande
+      (v1) -- [bend right=60] (v4),
+      % Pezzetti di arco superiore che portano alla bolla
+      (v1) -- [bend left=30] (v2),
+      (v3) -- [bend left=30] (v4),
+      % La bolla superiore (il piccolo cerchio che interrompe)
+      (v2) -- [bend left=90] (v3),
+      (v2) -- [bend right=90] (v3),
+    };
+    \end{feynman}
+    \end{tikzpicture}$ has 1-loop divergent sub-graph which is cancelled exactly by the counter-term insertion into the 1-loop diagram.
+\end{obs}
+
+This pattern continues to all-loop orders so the 1-loop counter-term is sufficient to render all correlation functions finite. There is one subtlety
+\begin{equation}
+    \omega(\feynmandiagram[inline={([yshift=-0.1cm]current bounding box.center)}, layered layout, horizontal=a to v, scale=0.5, transform shape] { 
+        a -- v -- [half left, looseness=1.5] v1 -- [half left, looseness=1.5] v };) = 4 - 1 - 1 = 2,
+\end{equation}
+so the tadpole graph is also divergent 
+\begin{equation}
+    \begin{split}
+        \feynmandiagram[inline={([yshift=-0.1cm]current bounding box.center)}, layered layout, horizontal=a to v, scale=0.5, transform shape] { a -- v -- [half left, looseness=1.5] v1 -- [half left, looseness=1.5] v }; &= -\frac{i\lambda_R\mu_R^\epsilon}{2}\int_k\frac{i}{D(k,m_R)} \\
+        &= \frac{\lambda_R\mu_R^\epsilon}{2}I_1^{(1)[4 - 2\epsilon]} \\
+        &= -\frac{i\lambda_R\Gamma(-1 + \epsilon)}{2\Gamma(1)}\frac{(m_R)^{1-\epsilon}}{(4\pi)^{2-\epsilon}} \mu_R^\epsilon \\
+        &= \frac{i\lambda_R\mu_R^{-\epsilon}m_R^2}{2(4\pi)^2}\frac{\Gamma(1 + \epsilon)}{(-1 + \epsilon)\epsilon}\frac{1}{(4\pi)^{-\epsilon}}\bigg(\frac{\mu_R^2}{m_R^2}\bigg)^\epsilon \\
+        &= \frac{i\lambda_R\mu_R^{-\epsilon}m_R^2}{2(4\pi)^2}\bigg[\frac{1}{\epsilon} + o(\epsilon^0)\bigg].
+    \end{split}
+\end{equation}
+This graph contributes to the vacuum expectation value 
+\begin{align}
+    \mybrakett{0}{\phi}{0}_{free} &= 0, \\
+    \mybrakett{0}{\phi}{0}_{int.} &= \mybrakett{0}{\phi S_{int}(\phi)}{0}_{free} + \cdots \\
+    = \feynmandiagram[inline={([yshift=-0.1cm]current bounding box.center)}, layered layout, horizontal=a to v, scale=0.5, transform shape] { a -- v -- [half left, looseness=1.5] v1 -- [half left, looseness=1.5] v }; + \cdots.
+\end{align}
+The vacuum energy represents a physical observable and therefore we may renormalize the divergence into the vacuum 
+\begin{equation}
+    \mybrakett{0}{\phi}{0}_R = \vmedio{\phi}_P = \feynmandiagram[inline={([yshift=-0.1cm]current bounding box.center)}, layered layout, horizontal=a to v, scale=0.5, transform shape] { 
+        a -- v -- [half left, looseness=1.5] v1 -- [half left, looseness=1.5] v}; + \feynmandiagram[inline={([yshift=-0.1cm]current bounding box.center)}, layered layout, horizontal=a to v, scale=0.9, transform shape] { 
+        a -- v [crossed dot, pos=0.9]}; = 0 \\.
+\end{equation}
+The counter-term is introduced as a linear term is the Lagrangian in order to correct the quantum corrections exactly
+\begin{equation}
+    \dL = \frac{1}{2}\p_\mu\phi\p^\mu\phi - \frac{1}{2}m_R^2\phi^2 - \frac{\lambda_R\mu_R^\epsilon}{3!}\phi^3 + \frac{1}{2}\delta_{m}\phi^2 + \delta_{\vmedio{\phi}}\phi.
+\end{equation}
+
+\section{Alternative regularization methods}
+Historically, dimensional regularization was introduced in 1972 mainly by 't Hooft and Veltmann. However, there are other options.
+
+\paragraph{Cut-off regularization.} In this case we have
+\begin{equation}
+    \begin{split}
+        \tadpole{2}{1}(\Delta) = \int_k^\Lambda \frac{1}{D(k,m)D(k - p,m)} &= \int_0^1 d\alpha\int_0^\Lambda \frac{d^4k}{(k^2 - \Delta)^2} \\
+        &= i\int_0^1 d\alpha\int_0^\Lambda\frac{d|k_E||k_E|^3}{(k_E + \Delta)^2}\frac{2\pi^2}{(2\pi^4)} \\
+        &= \frac{i}{16\pi^2}\int_0^1d\alpha\int_0^{\Lambda^2} dy\,\frac{y}{(y + \Delta)^2} \\
+        &\simeq \frac{i}{16\pi^2}\int_0^1d\alpha\bigg[\log{\bigg(\frac{\Lambda^2}{\Delta}\bigg)} - 1\bigg].
+    \end{split}
+\end{equation}
+
+\paragraph{Lattice regularization.} Discretising spacetime also regulates UV divergences. We keep gauge invariance but still break Poincaré invariance. If we write
+\begin{equation}
+    \selfint{D}(p^2,m^2) = \int_k\bigg(\frac{1}{D(k,m)D(k - p,m)} - \frac{1}{D(k,\mu)^2} + \frac{1}{D(k,\mu^2)}\bigg),
+\end{equation}
+by subtracting at fixed scale $\mu$ then the divergent integral 
+\begin{equation}
+    \int_k\frac{1}{D(k,\mu)^2} \propto \log{\bigg(\frac{1}{\mu^2a^2}\bigg)},
+\end{equation}
+where $x^\mu = n^\mu a$ with $a$ the lattice spacing and $-\pi/a \le k^\mu \le \pi/a$. 
+
+\paragraph{Pauli-Villars regularization.} In this method we introduce new, large mass states such that the each propagator becomes
+\begin{equation}
+    \frac{1}{D(p,m)} \to \frac{1}{D(p,m)} + \frac{1}{D(p,M)} = \frac{m^2 - M^2}{D(p,m)D(p,M)},\quad M \gg m.
+\end{equation}
+The additional propagator factors enters the Feynman parameters and regulate the integrals but all expressions depend on $M$. 
+
+\subsection{Analytic regularization}
+We start from the observation that 
+\begin{equation}
+    \frac{\p}{\p p^2}\selfen{4}(p^2,m^2)
+\end{equation}
+is finite. From here we can begin to differentiate under the integral, so noting that 
+\begin{equation}
+    \frac{\p}{\p p^2} = \frac{p^\mu}{2p^2}\frac{\p}{\p p^\mu},\quad \frac{\p}{\p p^\mu}\frac{1}{D(k -p,m)} = \frac{(k - p)_\mu}{D(k - p,m)^2},
+\end{equation}
+we get
+\begin{equation}
+    \frac{\p}{\p p^2}\selfen{4}(p^2,m^2) = -\frac{i\lambda^2}{4p^2}\int \frac{d^4k}{(2\pi)^4}\frac{p(k - p)}{D(k,m)D(k - p,m)^2}.
+\end{equation}
+The additional powers of $k$ downstairs are sufficient to regulate the divergence in the UV. We can perform the Feynman parametrisation via
+\begin{equation}
+    \frac{1}{A^2B}  = 2\int_0^1 d\alpha\,\frac{\alpha}{[\alpha A + (1 - \alpha)B]^3},
+\end{equation}
+therefore
+\begin{equation}
+    \begin{split}
+        \int_k\frac{p(k - p)}{D(k,m)D(k - p,m)^2} &= 2\int_0^1d\alpha\,\alpha\int_k\frac{p(k - p)}{[(k - \alpha p)^2 - \Delta]^3} \\
+        &= 2\int_0^1d\alpha\,\alpha\int_k\frac{p(k + \alpha p - p)}{(k^2 - \Delta)^3}.
+    \end{split}
+\end{equation}
+Now rewrite 
+\begin{equation}
+    \begin{split}
+        \frac{\p}{\p p^2}\selfen{4}(p^2,m^2) &= -\frac{i\lambda^2}{2p^2}\int_0^1d\alpha\,\alpha\int_k\frac{kp - (1 - \alpha)p^2}{(k^2 - \Delta)^3} \\
+        &= \frac{i\lambda^2}{2}\int_0^1d\alpha\,\alpha(1 - \alpha)\tadpole{3}{4}(\Delta) \\
+        &= \frac{i\lambda^2}{2}\int_0^1d\alpha\,\alpha(1 - \alpha)\bigg(-\frac{i}{2\Delta(4\pi)^2}\bigg) \\
+        &= -\frac{\lambda^2}{4(4\pi)^2}\frac{\p}{\p p^2}\int_0^1d\alpha\,\log{[-\alpha(1 - \alpha)p^2 + m^2]},
+    \end{split}
+\end{equation}
+where we used the fact that
+\begin{equation}
+    \int_k\frac{kp}{(k^2 - \Delta)^n} = 0
+\end{equation}
+because the integrand is antisymmetric but the integration is done over a symmetric integration range. Therefore, we have
+\begin{equation}
+    \selfen{4}(p^2,m^2) = -\frac{\lambda^2}{4(4\pi)^2}\int_0^1d\alpha\,\alpha\log{(\Delta)} + C.
+\end{equation}
+We can now fix the constant using the renormalization scheme conditions, for example $\selfen{4}(p^2 = m^2) = 0$ in the on-shell scheme, in order to get
+\begin{equation}
+    \begin{split}
+        \selfen{4}(p^2,m^2) &= -\frac{\lambda^2}{4(4\pi)^2}\bigg[\int_0^1d\alpha\,\log{(\Delta)} - \int_0^1d\alpha\,\log{(\Delta|_{p^2 = m^2})}\bigg] \\
+        &= -\frac{\lambda^2}{4(4\pi)^2}\int_0^1d\alpha\,\log{\bigg(\frac{1 - \alpha(1 - \alpha)p^2/m^2}{1 - \alpha(1- \alpha)}\bigg)}
+    \end{split}
+\end{equation}
+
+\section{Renormalization of \texorpdfstring{$\phi^3$}{phi3} in 6D at 1-loop}
+In six dimensions the coupling constant $\lambda$ is dimensionless. The theory is renormalizable but in a more intricate way than in four dimensions. We start with the bare Lagrangian
+\begin{equation}
+    \dL = \frac{1}{2}\p_\mu\phi_0\p^\mu\phi_0 - \frac{1}{2}m_0^2\phi_0^2 - \frac{\lambda_0}{3!}\phi_0^3.
+\end{equation}
+The superficial degree of divergence is $\omega(\Gamma) = 6 - 2E$, so we have
+\begin{equation}
+    \omega(\feynmandiagram[inline={([yshift=-0.1cm]current bounding box.center)}, layered layout, horizontal=a to v, scale=0.5, transform shape] { a -- v -- [half left, looseness=1.5] v1 -- [half left, looseness=1.5] v };) = 4,\quad \omega(\feynmandiagram[inline={([yshift=-0.1cm]current bounding box.center)}, layered layout, horizontal=a to b, scale=0.5, transform shape] { a -- v -- [half left, looseness=1.5] v1 -- [half left, looseness=1.5] v, v1 -- b};) = 2,\quad \omega\bigg(\feynmandiagram [inline={([yshift=-0.1cm]current bounding box.center)}, scale = 0.5] { a -- [bend left=60] b -- [bend left=60] c -- [bend left=60] a, i1 -- a, i2 -- b,i3 -- c }; \bigg) = 0,
+\end{equation}
+and negative values for $E > 3$. This means we must also take care of divergences in the 3-point vertex function. Since $\omega$ is independent from the number of vertices $V$ the higher loop corrections to the 1-, 2- and 3-point functions also diverge, for example $\omega(\feynmandiagram [horizontal=v1 to v3, inline={([yshift=-0.1cm]current bounding box.center)}, scale=0.5] { a [dot] -- v1, v1 -- [quarter right, looseness=1.1] v2 [dot] -- [quarter right, looseness=1.1] v3 -- [quarter right, looseness=1.1] v4 [dot] -- [quarter right, looseness=1.1] v1, v3 -- b [dot], v2 -- v4, }; ) = 2$. We will first compute the divergent graphs and the show how they may be absorbed into a redefinition of the field and parameters in the Lagrangian. 
+
+Computing directly using the bare Lagrangian, for the tadpole integral we have
+\begin{equation}
+    \begin{split}
+        \feynmandiagram[inline={([yshift=-0.1cm]current bounding box.center)}, layered layout, horizontal=a to v, scale=0.5, transform shape] { a -- v -- [half left, looseness=1.5] v1 -- [half left, looseness=1.5] v }; &= -\frac{i\lambda_0}{2}i\tadpole{1}{6 - 2\epsilon}(m_0^2) \\
+        &= -\frac{i\lambda}{2(4\pi)^{3 - \epsilon}}(m_0^2)^{2 - \epsilon}\frac{\Gamma(-2 + \epsilon)}{\Gamma(1)} \\
+        &= -\frac{i\lambda_0}{2(4\pi)^3}\frac{(4\pi)^\epsilon\Gamma(1 + \epsilon)m_0^4(m_0^2)^{-\epsilon}}{\epsilon(1 - \epsilon)(2 - \epsilon)} \\
+        &= -\frac{i\lambda_0m_0^4}{4(4\pi)^3}\bigg[\frac{1}{\epsilon} + \frac{3}{2} - \gamma_E + \log{(4\pi)} - \log{(m_0^2)}\bigg] + o(\epsilon);
+    \end{split}
+\end{equation}
+for the bubble divergence we have
+\begin{equation}
+    \begin{split}
+        \feynmandiagram[inline={([yshift=0cm]current bounding box.center)}, layered layout, horizontal=a to b, scale=0.5, transform shape] { a -- [momentum'={[arrow distance=3.5pt]\ensuremath{\scriptstyle p}}] v -- [half left, looseness=1.5] v1 -- [half left, looseness=1.5] v, v1 -- b}; &= \frac{(-i\lambda_0)^2}{2}\int_0^1d\alpha\,i^2\tadpole{2}{6 - 2\epsilon}\bigg[-\alpha(1 - \alpha)p^2 + m_0^2\bigg] \\
+        &= \frac{i\lambda_0^2}{2(4\pi)^3}\bigg[\frac{1}{\epsilon}\bigg(-m_0^2 + \frac{p^2}{6}\bigg) + o(\epsilon^0)\bigg];
+    \end{split}
+\end{equation}
+instead, for the triangular divergence we have
+\begin{equation}
+    \begin{split}
+        \feynmandiagram[
+        inline=(v1.base), horizontal=a to b, scale=0.8, transform shape] {
+        a -- [reversed momentum'=\(\scriptstyle p_1\)] v1 -- [edge label=\( \alpha_3\), pos=0.5] v -- [edge label=\( \alpha_2\)] v2 -- [momentum'=\(\scriptstyle p_2\)] b, v1 -- [reversed momentum'=\(\scriptstyle k\), edge label'=\( \alpha_1\)] v2, v -- [momentum'=\(\scriptstyle p_3\)] c,
+        }; &= (-i\lambda_0)^3\int_k\frac{i^3}{D(k,m)D(k-p,m)D(k-p_1-p_2,m)} \\
+        &= \lambda_0^3\int_0^1d\alpha_1\int_0^{1-\alpha_1}d\alpha_2 \int_k\frac{2}{(k^2 - \Delta_3)^3} \\
+        &= -2i\lambda_0^3\int_0^1 d\alpha_1\int_0^{1-\alpha_1} d\alpha_2\,\tadpole{3}{6 - 2\epsilon}(\Delta_3) \\
+        &=(-i\lambda_0)(-i\lambda_0^2)\frac{2\Gamma(\epsilon)}{(4\pi)^{3 - \epsilon}\Gamma(3)}\int_0^1d\alpha_1\int_0^{1-\alpha_1}d\alpha_2\,\Delta_3^{-\epsilon},
+    \end{split}
+\end{equation}
+where we defined
+\begin{equation}
+    \Delta_3 := m_0^2 - (1 - \alpha_1)\alpha_1p_1^2 - (1 - \alpha_2)\alpha_2p_2^2 - 2\alpha_1\alpha_2p_1p_2
+\end{equation}
+and used the relation
+\begin{equation}
+    \frac{1}{ABC} = \iiint\prod_{i=1}^3d\alpha_i\frac{2\delta(1 - \alpha_1 - \alpha_2 - \alpha_3)}{(\alpha_1A + \alpha_2B - \alpha_3C)^3}. 
+\end{equation}
+Expanding up to $o(\epsilon^0)$ is quite difficult in closed form, but keeping just $1/\epsilon$ is quite simple
+\begin{equation}
+    \feynmandiagram[
+        inline=(v1.base), horizontal=a to b, scale=0.8, transform shape] {
+        a -- [edge label=\(1\), pos=0.2] v1 -- v -- v2 -- [edge label=\(3\), pos=0.8] b, v1 -- v2, v -- [edge label=\(2\), pos=0.9] c,
+        }; = \frac{(-i\lambda_0)\lambda_0^2}{2(4\pi)^3}\bigg[\frac{1}{\epsilon} + o(\epsilon^0)\bigg].
+\end{equation}
+The tadpole divergence is absorbed into the vacuum expectation value as in the $D = 4$ case, imposed by introducing a linear counter-term matching the tadpole graph
+\begin{equation}
+    \feynmandiagram[inline={([yshift=-0.1cm]current bounding box.center)}, layered layout, horizontal=a to v, scale=0.5, transform shape] { a -- v -- [half left, looseness=1.5] v1 -- [half left, looseness=1.5] v }; + \underbrace{\feynmandiagram[inline={([yshift=-0.1cm]current bounding box.center)}, layered layout, horizontal=a to v, scale=0.9, transform shape] { a -- v [crossed dot]};}_{\propto\,\delta_{\vmedio{\phi}}} = 0.
+\end{equation}
+The bubble divergence has changed it's functional form and is no longer absorbed by a simple mass shift. We saw
+\begin{equation}
+    \feynmandiagram[inline={([yshift=-0.1cm]current bounding box.center)}, layered layout, horizontal=a to b, scale=0.5, transform shape] { a -- v -- [half left, looseness=1.5] v1 -- [half left, looseness=1.5] v, v1 -- b}; \simeq \bigg(-m_0^2 + \frac{p^2}{6}\bigg)\frac{1}{\epsilon}.
+\end{equation}
+The first term can be obtained via a redefinition of the mass and a mass counter-term proportional to $\delta_{m}\phi^2$. The second term can be obtained from a redefinition of the field $\phi$ and the counter-term $(\p_\mu\phi\p^\mu\phi)\delta_\phi$ are called mass and wave function renormalization respectively. This can be written clearly introducing renormalization constants $Z_m$ and $Z_\phi$ defined as
+\begin{equation}
+    m_0^2 = Z_mm_R^2,\quad \phi_0 = \sqrt{Z_\phi}\phi_R,
+\end{equation}
+where $\delta_x = Z_x - 1$ for $x = \{m,\phi\}$. Applying this transformation to the Lagrangian leads to 
+\begin{multline}
+    \dL = \frac{1}{2}\p_\mu\phi_R\p^\mu\phi_R - \frac{1}{2}m_R^2\phi_R^2 + \dL_{int} + \\
+    + \frac{1}{2}(1 - Z_\phi)\p_\mu\phi_R\p^\mu\phi_R - \frac{1}{2}(1 - Z_mZ_\phi)m_R^2\phi_R^2,
+\end{multline}
+from which we obtain a counter-term Feynman rule
+\begin{equation}
+    \feynmandiagram[inline={([yshift=-0.1cm]current bounding box.center)}, layered layout, horizontal=a to v, scale=0.9, transform shape] { a -- v [crossed dot] -- b}; = i(\delta_2p^2 - \delta_3m_R^2),\quad \delta_2 = \delta_\phi,\,\delta_3 = Z_mZ_\phi - 1.
+\end{equation}
+The renormalization constants can then be fixed at 1-loop via
+\begin{equation}
+    \feynmandiagram[inline={([yshift=-0.1cm]current bounding box.center)}, layered layout, horizontal=a to b, scale=0.5, transform shape] { a -- v -- [half left, looseness=1.5] v1 -- [half left, looseness=1.5] v, v1 -- b}; + \feynmandiagram[inline={([yshift=-0.25cm]current bounding box.center)}, layered layout, horizontal=a to v, scale=0.9, transform shape] { a -- v [crossed dot] -- [edge label=\ensuremath{\scriptstyle (1)}, pos=0.2] b }; = \mathrm{UV\,finite},\quad \forall p^2,m_R^2.
+\end{equation}
+The vertex divergence in the triangle function requires another counter-term that can be obtained through a redefinition of the coupling 
+\begin{equation}
+    \lambda_0 = Z_\lambda\lambda_R\mu_R^\epsilon,
+\end{equation}
+so that 
+\begin{equation}
+    \dL_{int} = \frac{\lambda_0\phi_0^3}{3!} = \frac{\lambda_R\mu_R^\epsilon}{3!}Z_\lambda Z_\phi^{3/2}\phi_R^3 \equiv \frac{\lambda_R\mu_R^\epsilon}{3!}Z_1\phi_R^3,
+\end{equation}
+where we defined $Z_1 := Z_\lambda Z_\phi^{3/2}$. This is charge renormalization and leads to a new counter-term with Feynman rule
+\begin{equation}
+    \feynmandiagram [inline={([yshift=-0.1cm]current bounding box.center)}, scale = 0.7] { a -- v[crossed dot], v -- b, v -- c }; = -i\lambda_R\mu^\epsilon_R\delta_1,
+\end{equation}
+which can be fixed at 1-loop using
+\begin{equation}
+    \feynmandiagram [inline={([yshift=-0.1cm]current bounding box.center)}, scale = 0.6, horizontal=v to v1] { a -- v, v -- v1, v1 -- v2, v2 -- v, v1 -- b, v2 -- c }; + \feynmandiagram [inline={([yshift=-0.1cm]current bounding box.center)}, scale = 0.7] { a -- [edge label=\ensuremath{\scriptstyle (1)}]  v [crossed dot], v -- b, v -- c }; = \mathrm{UV\,finite}.
+\end{equation}
+\begin{obs}
+    We have $\delta_3 = \delta_m + \delta_\phi + \delta_n\delta_\phi$, where $\delta_\phi = \delta_2$, but the product term is always of higher order in perturbation theory than the linear terms so
+    \begin{equation}
+        \delta_m^{(1)} = \delta_3^{(1)} - \delta_\phi^{(1)},\quad \delta_m^{(2)} = \delta_3^{(2)} - \delta_\phi^{(2)} - \delta_3^{(1)}\delta_\phi^{(1)};
+    \end{equation}
+    we also have that $Z_1 = Z_\lambda Z_\phi^{3/2}$, therefore
+    \begin{equation}
+        \delta_\lambda^{(1)} = \delta_1^{(1)} - \frac{3}{2}\delta_\phi^{(1)}.
+    \end{equation}
+\end{obs}
+We know have all the ingredients we need to complete the computation of the renormalization constants at 1-loop in the $\MMS$ scheme $\delta_\phi$, $\delta_m$ and $\delta_\lambda$; so from 
+\begin{equation}
+    \feynmandiagram[inline={([yshift=-0.1cm]current bounding box.center)}, layered layout, horizontal=a to b, scale=0.5, transform shape] { a -- v -- [half left, looseness=1.5] v1 -- [half left, looseness=1.5] v, v1 -- b}; + \feynmandiagram[inline={([yshift=-0.25cm]current bounding box.center)}, layered layout, horizontal=a to v, scale=0.9, transform shape] { a -- v [crossed dot] -- [edge label=\ensuremath{\scriptstyle (1)}, pos=0.2] b }; = \mathrm{UV\,finite}
+\end{equation}
+explicitly we get
+\begin{equation}
+    \frac{i\lambda_R^2\mu_R^{2\epsilon}}{2(4\pi)^3}\frac{(4\pi)^\epsilon\Gamma(1 + \epsilon)}{\epsilon}\bigg(-m_R^2 + \frac{p^2}{6}\bigg) + i(\delta_2^{(1)}p^2 - \delta_3^{(1)}m_R^2) = 0,
+\end{equation}
+therefore
+\begin{align}
+    \delta_2^{(1)} &= -\frac{\lambda_R^2\mu_R^{2\epsilon}}{2(4\pi)^3}\frac{r_\Gamma}{6\epsilon}, \\
+    \delta_3^{(1)} &= -\frac{\lambda_R^2\mu_R^{2\epsilon}}{2(4\pi)^3}\frac{r_\Gamma}{\epsilon},
+\end{align}
+and from
+\begin{equation}
+    \feynmandiagram [inline={([yshift=-0.1cm]current bounding box.center)}, scale = 0.6, horizontal=v to v1] { a -- [edge label=\ensuremath{\scriptstyle 1}, pos=0.1] v, v -- v1, v1 -- v2, v2 -- v, v1 -- [edge label=\ensuremath{\scriptstyle 2}, pos=0.6] b, v2 -- [edge label=\ensuremath{\scriptstyle 3}, pos=0.9] c }; + \feynmandiagram [inline={([yshift=-0.1cm]current bounding box.center)}, scale = 0.7] { a -- [edge label=\ensuremath{\scriptstyle (1)}]  v [crossed dot], v -- b, v -- c }; = \mathrm{UV\,finite},
+\end{equation}
+we get
+\begin{equation}
+    (-i\lambda_R\mu_R^\epsilon)\frac{\lambda_R^2\mu_R^{2\epsilon}}{2(4\pi)^3}\frac{r_\Gamma}{\epsilon} + (-i\lambda_R\mu_R^\epsilon)\delta_1^{(1)} = 0,
+\end{equation}
+therefore
+\begin{equation}
+    \delta_1^{(1)} = -\frac{\lambda_R^2\mu_R^{2\epsilon}}{2(4\pi)^3}\frac{r_\Gamma}{\epsilon},
+\end{equation}
+where we defined 
+\begin{equation}
+    r_\Gamma := (4\pi)^\epsilon\Gamma(1 + \epsilon).
+\end{equation}
+Back in terms of $\delta_\phi^{(1)}$, $\delta_m^{(1)}$ and $\delta_\lambda^{(1)}$ we have
+\begin{align}
+    N_\lambda^{-1}\delta_1^{(1)} &= -\frac{1}{6\epsilon}, \\
+    N_\lambda^{-1}\delta_m^{(1)} &= -\frac{1}{\epsilon} + \frac{1}{6\epsilon} = -\frac{5}{6\epsilon}, \\
+    N_\lambda^{-1}\delta_\lambda^{(1)} &= -\frac{1}{\epsilon} -\frac{3}{2}\bigg(-\frac{1}{6\epsilon}\bigg) = -\frac{3}{4\epsilon},
+\end{align}
+where we defined 
+\begin{equation}
+    N_\lambda := \frac{\lambda_R^2\mu_R^{2\epsilon}r_\Gamma}{2(4\pi)^3}.
+\end{equation}
+
+\subsection{Other renormalization schemes}
+For on-shell and momentum subtraction scheme we imposed a stricter condition that determined the finite terms. Since there are now three renormalization constants we must find an extended set of condition. These are
+\begin{align}
+    \lim_{p^2 \to x}\Gamma_{2,R}(p^2,m_R^2;\kappa_2,\kappa_3,\mu_R^2,\lambda_R^2) &= i\smallp, \\
+    \lim_{p^2 \to x}\frac{\p\Gamma_{2,R}}{\p p^2}(p^2,m_R^2;\kappa_2,\kappa_3,\mu_R^2,\lambda_R^2) &= 1,
+\end{align}
+where $x = -M^2$ for the $\MOM$ scheme and $x = m_P^2 = m_R^2$ for the $\OS$ scheme. In $\MOM$ and $\MMS$ schemes we must also derive the relation between $m_R^2$ and $m_P^2$. For $\kappa$ we impose
+\begin{equation}
+    \lim_{p_i \to \substack{value\,where \\ \lambda_P\,measured}} G_{3,R}(p_1,p_2;\kappa_1,\mu_R^2,m_R^2,\lambda_R^2) = -\lambda_P
+\end{equation}
+for on the on-shell scheme and
+\begin{equation}
+    \lim_{p_i \to p_{sym}} G_{3,R}(p_1,p_2;\kappa_1,\mu_R^2,m_R^2,\lambda_R^2) = -\lambda_R
+\end{equation}
+for the $\MOM$ scheme where $p_{sym}$ is just the request that all the momenta are the same; in particular, the symmetric point is defined as
+\begin{equation}
+    p_i^2 = -\frac{2}{3}M^2\quad\Longrightarrow\quad p_i\cdot p_j = \frac{M^2}{3},\quad i \neq j.
+\end{equation}
+
+\subsection{Renormalization scale dependence}
+Having fixed the three scheme constants $\kappa_i$ with the conditions on $\Gamma_{2}$, $\p_{p^2}\Gamma_2$ and $G_3$, we have determined $m_R$ and $\lambda_R$ in terms of some fixed values (physical measurements) $m_P$ and $\lambda_P$ but the dependence on $\mu_R^2$ remains. This is a feature of the re-organized, renormalized perturbative series. Eventually, it must be that the dependences go away as we scan to all the orders. The Lagrangian after all has not changed
+\begin{equation}
+    \dL(\phi_0,m_0,\lambda_0) = \dL(\phi_R,m_R,\lambda_R;\mu_R),
+\end{equation}
+which means the bare correlation functions do not depend on $\mu_R$
+\begin{equation}
+    \begin{split}
+        \tilde{G}_0(p_1,\dots,p_n;\lambda_0) &= FT(\mybrakett{0}{T\{\phi_0(x_1)\cdots\phi_0(x_n)\}}{0}) \\
+        &= Z_\phi^{n/2}(\mu_R,\lambda_R(\mu_R))FT(\mybrakett{0}{T\{\phi_R(x_1)\cdots\phi_R(x_n)\}}) \\
+        &= Z_\phi^{n/2}(\mu_R,\lambda_R(\mu_R))\tilde{G}_R(p_1,\dots,p_n;\lambda_R(\mu_R),\mu_R).
+    \end{split}
+\end{equation}
+So the $\mu_R$ dependence of $\tilde{G}$ must cancel exactly with the $\mu_R$ dependence of $Z_\phi^{3/2}$. In other words
+\begin{equation}
+    \frac{\p\tilde{G}_0}{\p\mu_R} = \frac{\p}{\p\mu_R}(Z_\phi^{n/2}\tilde{G}_R) = Z_\phi^{n/2}\frac{\p}{\p\mu_R}(\tilde{G}_R) + \tilde{G}_R\frac{\p}{\p\mu_R}(Z_\phi^{n/2}) = 0,
+\end{equation}
+whose consequences are going to be discussed later on.
+

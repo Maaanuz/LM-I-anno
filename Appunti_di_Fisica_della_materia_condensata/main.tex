@@ -1,0 +1,174 @@
+\documentclass[openany]{book}
+\usepackage[a4paper,margin=4.72cm]{geometry}
+
+\usepackage{graphicx}
+\usepackage{siunitx} 
+\usepackage{natbib}
+\usepackage{mathtools}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage[italian]{babel}
+\usepackage{stackengine}
+\usepackage{graphicx,ifthen}
+\usepackage{amsmath}
+\usepackage{hyperref}
+\usepackage{upgreek}
+\usepackage{bm}
+\usepackage{braket}
+\usepackage{float}
+\usepackage{cancel}
+\usepackage{anyfontsize}
+\usepackage{scalefnt}
+\usepackage{tipa}
+\usepackage{multirow}
+\usepackage{array}
+\usepackage{makecell}
+\usepackage{subcaption}
+\usepackage{tikz}
+\usetikzlibrary{positioning}
+\usetikzlibrary{calc}
+\usepackage[version = 3]{mhchem}
+
+\newtheorem{lem}{Lemma}
+\newtheorem{axiom}{Assioma}
+\newtheorem{defn}{Definizione}
+\newtheorem{obs}{Osservazione}
+\newtheorem{ex}{Esempio}
+\newtheorem{notz}{Notazione}
+\newtheorem{corl}{Corollario}
+\newtheorem{teo}{Teorema}
+\theoremstyle{remark}
+\newtheorem{caso}{Caso}
+
+% unità di misura
+\DeclareSIUnit\angstrom{\text {Å}}
+\DeclareSIUnit\atm{\text {atm}}
+
+% insiemi
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\Z}{\mathbb{Z}}
+
+% vettori
+\newcommand{\vx}{\bm{x}}
+\newcommand{\vy}{\bm{y}}
+\newcommand{\vz}{\bm{z}}
+\newcommand{\vq}{\bm{q}}
+\newcommand{\vp}{\bm{p}}
+\newcommand{\vr}{\bm{r}}
+\newcommand{\vn}{\bm{n}}
+\newcommand{\vm}{\bm{m}}
+\newcommand{\vf}{\bm{f}}
+\newcommand{\vj}{\bm{j}}
+\newcommand{\vk}{\bm{k}}
+\newcommand{\vv}{\bm{v}}
+\newcommand{\vb}{\bm{b}}
+\newcommand{\va}{\bm{a}}
+\newcommand{\vl}{\bm{l}}
+\newcommand{\vA}{\bm{A}}
+\newcommand{\vL}{\bm{L}}
+\newcommand{\vR}{\bm{R}}
+\newcommand{\vP}{\bm{P}}
+\newcommand{\vJ}{\bm{J}}
+\newcommand{\vM}{\bm{M}}
+\newcommand{\vF}{\bm{F}}
+\newcommand{\vE}{\bm{E}}
+\newcommand{\vB}{\bm{B}}
+\newcommand{\vQ}{\bm{Q}}
+\newcommand{\vH}{\bm{H}}
+\newcommand{\vgamma}{\bm{\gamma}}
+\newcommand{\vdelta}{\bm{\delta}}
+\newcommand{\vSigma}{\bm{\Sigma}}
+\newcommand{\vo}{\bm{0}}
+
+% operatori quantistici
+\newcommand{\hata}{\hat{a}}
+\newcommand{\hataT}{\hat{a}^\dagger}
+\newcommand{\hatd}{\hat{d}}
+\newcommand{\hatdT}{\hat{d}^\dagger}
+\newcommand{\hatT}{\hat{T}}
+\newcommand{\hatV}{\hat{V}}
+\newcommand{\hatPi}{\hat{\Pi}}
+\newcommand{\hatpi}{\hat{\pi}}
+\newcommand{\hatphi}{\hat{\phi}}
+\newcommand{\hatphid}{\hat{\phi}^\dagger}
+\newcommand{\hatR}{\hat{R}}
+\newcommand{\hatb}{\hat{b}}
+\newcommand{\hatbT}{\hat{b}^\dagger}
+\newcommand{\hatx}{\hat{x}}
+\newcommand{\hatp}{\hat{p}}
+\newcommand{\hatq}{\hat{q}}
+\newcommand{\hatH}{\hat{H}}
+\newcommand{\hath}{\hat{h}}
+\newcommand{\hatz}{\hat{z}}
+\newcommand{\hatr}{\hat{r}}
+\newcommand{\hatS}{\hat{S}}
+\newcommand{\hatO}{\hat{O}}
+\newcommand{\hatL}{\hat{L}}
+\newcommand{\hatU}{\hat{U}}
+\newcommand{\hatQ}{\hat{Q}}
+\newcommand{\hatA}{\hat{A}}
+\newcommand{\hatB}{\hat{B}}
+\newcommand{\hatC}{\hat{C}}
+\newcommand{\hatCT}{\hat{C}^\dagger}
+\newcommand{\hatD}{\hat{D}}
+\newcommand{\hatP}{\hat{P}}
+\newcommand{\hatPT}{\hat{P}^\dagger}
+\newcommand{\hatE}{\hat{E}}
+\newcommand{\hatJ}{\hat{J}}
+\newcommand{\hatN}{\hat{N}}
+\newcommand{\hatn}{\hat{n}}
+\newcommand{\hatf}{\hat{f}}
+\newcommand{\hatg}{\hat{g}}
+\newcommand{\hatUT}{\hat{U}(t)}
+\newcommand{\hatheta}{\hat{\theta}}
+\newcommand{\hatfH}{\hat{\mathcal{H}}}
+\newcommand{\upa}{\uparrow}
+\newcommand{\doa}{\downarrow}
+
+% operatori matematici
+\newcommand{\mybraket}[2]{\langle #1 | #2 \rangle}
+\newcommand{\mybrakett}[3]{\langle #1 | #2 | #3 \rangle}
+\newcommand{\nsum}{\sum\nolimits}
+\newcommand{\sump}{\sideset{}{'}\sum}
+\newcommand{\nsump}[1]{\sideset{}{'_{#1}}\sum\nolimits}
+\newcommand{\nprod}{\prod\nolimits}
+\newcommand{\p}{\partial}
+\newcommand{\vmedio}[1]{\langle #1 \rangle}
+\newcommand{\bigvmedio}[1]{\left\langle #1 \right\rangle}
+\newcommand{\comm}[2]{[#1,#2]}
+\newcommand{\acomm}[2]{\{#1,#2\}}
+\newcommand{\dg}{\dagger}
+\newcommand{\diag}[1]{\mathrm{diag}(#1)}
+
+% quantità
+\newcommand{\action}{\mathcal{A}}
+\newcommand{\dL}{\mathcal{L}}
+\newcommand{\MI}{\mathbb{I}}
+
+\newcommand{\ko}{\ket{0}}
+\newcommand{\bo}{\bra{0}}
+
+\newcommand{\kO}{\ket{\Omega}}
+\newcommand{\bO}{\bra{\Omega}}
+
+\newcommand{\zbar}{\bar{z}}
+
+\title{\textbf{APPUNTI DI FISICA} \\ \textbf{DELLA MATERIA CONDENSATA}}
+\author{Manuel Gabriele Moretti}
+\date{Marzo 2026}
+
+\begin{document}
+
+\maketitle
+\pagenumbering{roman}
+\tableofcontents
+\newpage
+
+\pagenumbering{arabic}
+\include{Capitolo 1 - Superfluidità}
+% \include{Capitolo 2 - Superconduttività}
+% \include{Capitolo 3 - Effetto Hall quantistico}
+
+\end{document}

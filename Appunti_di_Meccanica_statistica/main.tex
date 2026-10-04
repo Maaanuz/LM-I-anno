@@ -1,0 +1,155 @@
+\documentclass[openany]{book}
+\usepackage[a4paper,margin=4.72cm]{geometry}
+
+\usepackage{graphicx}
+\usepackage{siunitx} 
+\usepackage{natbib}
+\usepackage{mathtools}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage[italian]{babel}
+\usepackage{stackengine}
+\usepackage{graphicx,ifthen}
+\usepackage{amsmath}
+\usepackage{hyperref}
+\usepackage{upgreek}
+\usepackage{bm}
+\usepackage{braket}
+\usepackage{float}
+\usepackage{cancel}
+\usepackage{anyfontsize}
+\usepackage{scalefnt}
+\usepackage{tipa}
+\usepackage{multirow}
+\usepackage{array}
+\usepackage{makecell}
+\usepackage{tikz}
+\usepackage[version = 3]{mhchem}
+
+\newtheoremstyle{mio_teorema}
+{10pt}   % Spazio sopra
+{10pt}   % Spazio sotto
+{\itshape} % Corpo in corsivo
+{}       % Rientro
+{\bfseries} % TITOLO IN GRASSETTO
+{.}      % Punteggiatura dopo il titolo
+{ }      % Spazio dopo il titolo
+{}       % Specifica del titolo
+\theoremstyle{mio_teorema}
+\newtheorem{teo}{Teorema}
+
+\theoremstyle{plain}
+\newtheorem{lem}{Lemma}
+\newtheorem{axiom}{Assioma}
+\newtheorem{defn}{Definizione}
+\newtheorem{obs}{Osservazione}
+\newtheorem{ex}{Esempio}
+\newtheorem{notz}{Notazione}
+\newtheorem{corl}{Corollario}
+
+\theoremstyle{remark}
+\newtheorem{caso}{Caso}
+
+\numberwithin{lem}{chapter}
+\numberwithin{axiom}{chapter}
+\numberwithin{teo}{chapter}
+\numberwithin{defn}{chapter}
+\numberwithin{obs}{chapter}
+\numberwithin{ex}{chapter}
+\numberwithin{equation}{chapter}
+
+% insiemi
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\Z}{\mathbb{Z}}
+
+% vettori
+\newcommand{\vx}{\bm{x}}
+\newcommand{\vy}{\bm{y}}
+\newcommand{\vz}{\bm{z}}
+\newcommand{\vq}{\bm{q}}
+\newcommand{\vp}{\bm{p}}
+\newcommand{\vr}{\bm{r}}
+\newcommand{\vn}{\bm{n}}
+\newcommand{\vj}{\bm{j}}
+\newcommand{\vk}{\bm{k}}
+\newcommand{\vv}{\bm{v}}
+\newcommand{\vb}{\bm{b}}
+\newcommand{\vL}{\bm{L}}
+\newcommand{\vR}{\bm{R}}
+\newcommand{\vP}{\bm{P}}
+\newcommand{\vM}{\bm{M}}
+\newcommand{\vgamma}{\bm{\gamma}}
+\newcommand{\vdelta}{\bm{\delta}}
+
+% operatori matematici
+\newcommand{\mybraket}[2]{\langle #1 | #2 \rangle}
+\newcommand{\mybrakett}[3]{\langle #1 | #2 | #3 \rangle}
+\newcommand{\nsum}{\sum\nolimits}
+\newcommand{\nprod}{\prod\nolimits}
+\newcommand{\p}{\partial}
+\newcommand{\vmedio}[1]{\langle #1 \rangle}
+\newcommand{\bigvmedio}[1]{\left\langle #1 \right\rangle}
+\newcommand{\comm}[2]{[#1,#2]}
+\newcommand{\acomm}[2]{\{#1,#2\}}
+\DeclareMathOperator*{\sumint}{%
+\mathchoice%
+  {\ooalign{$\displaystyle\sum$\cr\hidewidth$\displaystyle\int$\hidewidth\cr}}
+  {\ooalign{\raisebox{.14\height}{\scalebox{.7}{$\textstyle\sum$}}\cr\hidewidth$\textstyle\int$\hidewidth\cr}}
+  {\ooalign{\raisebox{.2\height}{\scalebox{.6}{$\scriptstyle\sum$}}\cr$\scriptstyle\int$\cr}}
+  {\ooalign{\raisebox{.2\height}{\scalebox{.6}{$\scriptstyle\sum$}}\cr$\scriptstyle\int$\cr}}
+}
+\newcommand{\Tr}[1]{\mathrm{Tr}(#1)}
+\newcommand{\Res}{\mathrm{Res}}
+\newcommand{\circled}[1]{%
+\tikz[baseline=(X.base)] 
+\node (X) [draw, circle, inner sep=1pt] {$#1$};}
+
+% operatori quantistici
+\newcommand{\hatS}{\hat{S}}
+\newcommand{\hatP}{\hat{P}}
+\newcommand{\hatL}{\hat{L}}
+\newcommand{\hatH}{\hat{H}}
+\newcommand{\hatO}{\hat{O}}
+\newcommand{\hatN}{\hat{N}}
+\newcommand{\hatA}{\hat{A}}
+\newcommand{\hatrho}{\hat{\rho}}
+
+% quantità
+\newcommand{\HS}{\mathbb{H}}
+\newcommand{\MI}{\mathbb{I}}
+\newcommand{\SvN}{\mathcal{S}}
+\newcommand{\SG}{\mathfrak{S}}
+\newcommand{\vps}{\mathcal{V}}
+\newcommand{\norm}{\mathcal{N}}
+\newcommand{\region}{\mathcal{R}}
+\newcommand{\TM}{\mathcal{T}}
+\newcommand{\hateta}{\hat{\eta}}
+\newcommand{\hatT}{\hat{T}}
+\newcommand{\intconfig}{\mathcal{C}(N)}
+\newcommand{\intp}{\mathcal{P}(N)}
+
+\title{\textbf{APPUNTI DI \\ MECCANICA STATISTICA}}
+\author{Manuel Gabriele Moretti}
+\date{Settembre 2025}
+
+\begin{document}
+
+\maketitle
+\pagenumbering{roman}
+\tableofcontents
+\newpage
+
+\pagenumbering{arabic}
+\include{Capitoli/Capitolo 1 - Richiami di TD}
+\include{Capitoli/Capitolo 2 - Equilibrio}
+\include{Capitoli/Capitolo 3 - MS}
+\include{Capitoli/Capitolo 4 - QMS}
+\include{Capitoli/Capitolo 5 - Microcanonico}
+\include{Capitoli/Capitolo 6 - Canonico}
+\include{Capitoli/Capitolo 7 - Grancanonico}
+\include{Capitoli/Capitolo 8 - Statistiche}
+\include{Capitoli/Capitolo 9 - Modello di Ising}
+
+\end{document}
