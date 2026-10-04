@@ -1,0 +1,125 @@
+\documentclass[11pt,a4paper]{article}
+
+\usepackage[margin=2.5cm]{geometry}
+\usepackage{amsmath,amssymb}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage{hyperref}
+
+\newcommand{\bepsilon}{\bar{\epsilon}}
+\newcommand{\MMS}{\overline{\mathrm{MS}}}
+
+\title{\textbf{Renormalization of \texorpdfstring{$\phi^4$}{phi4} theory through two loops} \\ AQFT project presentation script}
+\author{Manuel Gabriele Moretti}
+\date{17 September 2026}
+
+\begin{document}
+
+\maketitle
+
+\paragraph{Slide 1: Renormalization of $\phi^4$ theory through two loops.}
+
+In this presentation I will discuss the renormalization of real scalar $\phi^4$ theory through two-loop order. The main goal is to see explicitly how the UV divergences of the two- and four-point functions are removed, first at one loop and then at two loops. The two-loop calculation will also show how sub-divergences are cancelled through the insertion of lower-order counter-terms into higher-order diagrams and why no new operators are required. I will conclude with some considerations on the renormalization group functions obtained from the two-loop renormalization constants.
+
+\paragraph{Slide 2: Bare Lagrangian and Feynman rules.}
+
+We first define the bare Lagrangian. This contains the kinetic term, the mass term and the quartic interaction term. In four-dimensional spacetime the coupling is dimensionless, which is the first indication that the theory is renormalizable. The Lagrangian is also invariant under the global transformation that maps $\phi_0$ into $-\phi_0$. This $\mathbb{Z}_2$ symmetry forbids terms containing an odd number of fields, so in particular there are no cubic vertices. The two Feynman rules that we need are therefore the ones scalar propagator and the four-scalar vertex.
+
+\paragraph{Slide 3: Superficial degree of divergence and divergent diagrams at one loop.}
+
+Before computing any integral, power counting tells us which correlation functions may diverge. For a general $\phi^p$ interaction, the superficial degree of divergence depends on the spacetime dimension, the number of external lines, the number of vertices and the canonical dimensions of the field and coupling. In four dimensions for $\phi^4$ theory, sice the field has mass dimension one and the coupling is dimensionless, the formula simplifies to $\omega(\Gamma) = 4 - E$. Therefore, apart from vacuum diagrams, we can identify the potentially divergent diagrams at one loop, namely the tadpole with $\omega = 2$ and the bubble with $\omega = 0$. Diagrams with six or more external legs are instead superficially convergent.
+
+\paragraph{Slide 4: Bubble contribution and renormalized quantities.}
+
+So, the tadpole contributes to the two-point function, while the bubble contributes to the four-point function. Focusing on the latter, we can see that there are three inequivalent momentum assignments, conventionally called the $s$-, $t$- and $u$-channels. After introducing dimensional regularization, the dimension of $\lambda_0$ becomes $2\epsilon$. Thus, to ensure that $\lambda_R$ remains dimensionless away from four dimensions we introduce the arbitrary scale $\mu_R$ and define the renormalized quantities seen in equation (6).
+
+\paragraph{Slide 5: Renormalized and counter-term Lagrangians.}
+
+Substituting the previous definitions into the bare Lagrangian separates it into a renormalized part and a counter-term part. The renormalized Lagrangian has exactly the same form as the bare one, but it is written in terms of the renormalized quantities, while the counter-term Lagrangian contains the same three local operators as the renormalized one. The counter-term coefficients are denoted by $\delta_1$, $\delta_2$ and $\delta_3$, defined as seen in equation (10). Renormalization will amount to choosing them so that all UV poles cancel.
+
+\paragraph{Slide 6: Counter-term Feynman rules.}
+
+The counter-term Lagrangian gives us two additional vertices. The first is the two-point vertex where the coefficient $\delta_1$ renormalizes the kinetic term, while $\delta_2$ renormalizes the mass term. The second one is the four-point vertex dependent of $\delta_3$. The counter-terms admit a loop expansion, therefore each loop order they are fixed by requiring the renormalized correlation functions to be UV finite.
+
+\paragraph{Slide 7: 2- and 4-point function contributions at one loop.}
+
+We can now compute the one-loop diagrams. The tadpole is independent of the external momentum and its pole is proportional to $m_R^2$. The bubble depends on the channel momentum $q$, but its UV pole is independent of $q$, thus all the momentum dependence is contained in the finite part. 
+% commento utile
+% This is an important example of locality: the divergent part of the four-point function is a momentum-independent constant and can therefore be cancelled by the local operator $\phi_R^4$. 
+The three physical channels are obtained by evaluating the same bubble expression at $q^2 = s $, $t$ and $u$.
+
+\paragraph{Slide 8: 2-point function counter-terms.}
+
+We first renormalize the two-point function in the $\MMS$ scheme. Because the tadpole does not depend on the external momentum, it produces no pole proportional to $p^2$. Therefore, the one-loop field counter-term vanishes, so $\delta_1^{(1)} = 0$. The remaining pole is proportional to $m_R^2$ and is cancelled by the mass counter-term $\Gamma_{2,\mathrm{CT}}^{(1)}$. Matching the pole gives gives us the expression of $\delta_2^{(1)}$.
+
+\paragraph{Slide 9: 4-point function counter-term.}
+
+For the four-point function, each bubble channel has the same UV pole because that pole is independent of the external momentum. Summing the $s$-, $t$- and $u$-channels therefore produces a factor of three. The divergence is then cancelled by the local four-point counter-term $\Gamma_{4,\mathrm{CT}}^{(1)}$ which gives us the expression of $\delta_3^{(1)}$. Notice that the finite momentum-dependent parts of the bubbles are not subtracted in the $\MMS$ scheme, but only the pole is removed.
+
+\paragraph{Slide 10: Renormalization constants at one loop.}
+
+Collecting the one-loop results, we have that $\delta_1^{(1)} = 0$, while $\delta_2^{(1)}$ and $\delta_3^{(1)}$ cancel respectively the tadpole and bubble divergences. Recalling the definition $\delta_x$, these coefficients directly give $Z_1$, $Z_2$ and $Z_3$ at one loop, from which we recover the physical renormalization constants $Z_\phi$, $Z_m$ and $Z_\lambda$. The main result is that the field is not renormalized at one loop, while both the mass and the quartic coupling are.
+
+\paragraph{Slide 11: Running coupling at one loop.}
+
+The introduction of $\mu_R$ does not change the bare theory, so the bare coupling $\lambda_0$ must be independent of this arbitrary scale. So, knowing that $Z_\lambda$ depends on $\mu_R$ only through the running coupling we can obtain the expression for the beta function in four dimensions in terms of $\lambda_R$. Solving the resulting differential equation gives us the expression of $\lambda_R$ in terms of $\mu_R$. Since the coefficient is positive, we can say that the coupling grows with energy.
+
+\paragraph{Slide 12: Divergent 2-point diagrams at two loops.}
+
+We now move at two loops. For a two-point graph, the topological identities implies that the internal lines are three. Thus, there are two potentially divergent diagrams, namely the double tadpole and the sunset. In the double tadpole no external momentum flows through either loop, so its contribution can only be proportional to the mass. In the sunset the external momentum flows through the internal propagators, so its divergent part can contain both a mass term and a term proportional to $p^2$. 
+% This is why the sunset produces the first non-vanishing field renormalization.
+
+\paragraph{Slide 13: Divergent 4-point diagrams at two loops.}
+
+For a four-point graph, we instead have three vertices and four internal lines. Therefore, the potentially divergent diagrams are the double bubble, the wineglass and the tadpole insertion. Their superficial degree of divergence is zero. However, these graphs also contain divergent one-loop sub-graphs: the first two contain one-loop bubbles, while the tadpole-insertion graph contains a one-loop tadpole sub-graph. This leads to the additional issue of sub-divergences.
+
+\paragraph{Slide 14: Sub-divergences at two loops.}
+
+A sub-divergence is a divergence associated with a proper one-particle-irreducible sub-graph of a larger diagram. In the two-point sector, the double tadpole contains both a tadpole and a bubble sub-graph, while the sunset contains three overlapping bubble sub-graphs. In the four-point sector, the double bubble, wineglass and tadpole insertion contain all the sub-graphs listed here. These divergences must be removed before treating the two-loop ones. The one-loop mass counter-term $\delta_2^{(1)}$ cancels tadpole sub-divergences, and the one-loop vertex counter-term $\delta_3^{(1)}$ cancels bubble sub-divergences. Thus, only the remaining local pole is assigned to a two-loop counter-term.
+
+\paragraph{Slide 15: Counter-term Feynman rules at \texorpdfstring{$n$}{n} loops.}
+
+The form of the counter-term vertices does not change at two loops, instead only their perturbative coefficients change. There are now two distinct roles: vertices proportional to one-loop counter-terms are inserted into one-loop diagrams to cancel their sub-divergences; while the two-loop counter-terms cancel the remaining two-loop divergences. 
+% This distinction between lower-order insertions and new higher-order counter-terms is the principle for the calculations that follow.
+
+\paragraph{Slide 16: 2-point function counter-term insertions.}
+
+For the two-point function, there are two one-loop insertions. The first replaces a vertex by the vertex counter-term $\delta_3^{(1)}$. The second inserts the mass counter-term $\delta_2^{(1)}$ into the tadpole propagator. We define $\Sigma_{\mathrm{sub}}^{(2)}(p^2)$ as the sum of the double-tadpole and sunset diagrams together with these two insertions that cancel the sub-divergences. The separate local term is then added to cancel the remaining two-loop divergence.
+
+\paragraph{Slide 17: 4-point function counter-term insertions.}
+
+We can apply the same mechanism to the four-point function. We first insert $\delta_3^{(1)}$ into a one-loop bubble and then insert a mass counter-term on either internal propagator. 
+% This latter contribution may be written as a derivative with respect to $m_R^2$ because differentiating a propagator gives a squared propagator, which is exactly the effect of inserting a mass vertex. Differentiating the product of the two propagators automatically includes both possible insertion positions. Since the pole of the one-loop bubble is mass independent, the derivative acts only on its finite part $F_B(q^2)$. 
+Adding these insertions to the three two-loop diagrams defines $\Gamma_{4,\mathrm{sub}}^{(2)}$ as the sum of the three 2-loop diagrams with the two 1-loop insertions. 
+
+\paragraph{Slide 18: Double tadpole and sunset contributions.}
+
+Now we can compute the two-loop contributions to the two-point function. The double-tadpole integral factorizes into a product of one-loop tadpoles, so it is straightforward to evaluate. On the other hand, the sunset is harder to compute since its loop integrations do not factorize and the result depends non-trivially on the external momentum; therefore, I quote only the part required for renormalization. 
+% da togliere?
+% Its mass-dependent pole includes a logarithm, and its $p^2$-dependent pole is local. The sunset also contains overlapping one-loop bubble sub-divergences, cancelled by the counter-term $\delta_3^{(1)}$.
+
+\paragraph{Slide 19: 2-loop mass and field counter-terms.}
+
+After all one-loop sub-divergences have been subtracted, the remaining UV-divergent part of the two-loop two-point function has precisely the form expected with only local terms proportional to $m_R^2$ and $p^2$. We cancel now the divergence with the local vertex $\Gamma^{(2)}_{2,\mathrm{CT}}$ and match the two structures separately. This gives us the expressions for $\delta_1^{(2)}$ and $\delta_2^{(2)}$. The mass pole receives contributions from all the diagrams and insertions. The $p^2$ pole, however, originates only from the sunset, confirming that field renormalization first appears at two loops.
+
+\paragraph{Slide 20: 2-loop coupling counter-term.}
+
+For the four-point function, the explicit evaluation of all two-loop integrals would be too lengthy for this presentation. Therefore, since we are interested in UV renormalization, I quote their UV-divergent part after all one-loop sub-divergences have been cancelled. 
+% commento utile
+% Locality requires this remaining divergence to be independent of the external momenta, so it has the same structure as the operator $\phi_R^4$. 
+The double pole is generated by one-loop sub-divergences, while the simple pole contains the two-loop contribution. Cancelling the divergence gives us $\delta_3^{(2)}$. Finally, recalling the definition of $Z_3$, we obtain the expression for $Z_\lambda$ at two loops.
+
+\paragraph{Slide 21: Renormalization constants through two loops.}
+
+We can now summarize the results found. Apart from vacuum diagrams, power counting leaves only the two- and four-point functions as superficially divergent. At one loop the tadpole renormalizes the mass and the three bubble channels renormalize the interaction, while field renormalization vanishes. At two loops the momentum dependence of the sunset generates the first field counter-term. The expressions shown here are the renormalization constants $Z_1$, $Z_2$ and $Z_3$ at two loops and together they cancel every remaining UV pole in the two- and four-point functions.
+
+\paragraph{Slide 22: Structure of 2-loop renormalization.}
+
+The 2-loop calculation illustrates the general recursive structure of perturbative renormalization. Firstly, lower-order counter-term insertions remove the sub-divergences of higher-loop graphs. After those subtractions, the remaining divergences are local and can be absorbed by the same operators that are already present in the original Lagrangian. Therefore no new counter-term operators are needed. Using the results for $Z_\lambda$ and $Z_\phi$ and imposing again the scale independence of the bare quantities, gives us the beta and gamma function at two loops. The positive leading coefficient of the beta function means that the coupling increases towards high energies, so the theory considered is not asymptotically free.
+
+\paragraph{Slide 23: Running coupling through two loops.}
+
+We can see that by using the two-loop expression of the beta function, so we can solve the renormalization-group equation. Introducing the quantity $L$ and the denominator $w$, we obtain the one- and two-loop expressions for $\lambda_R$. The graph compares them for the illustrative choice $\lambda_R(\mu_0) = 5$. We can see that both curves increase with the renormalization scale, but the negative two-loop contribution slightly slows the growth of the coupling. Therefore, within the perturbative region, the theory remains non-asymptotically free.
+
+\end{document}
