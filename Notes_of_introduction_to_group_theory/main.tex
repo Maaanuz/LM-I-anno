@@ -1,0 +1,136 @@
+\documentclass[openany]{book}
+\usepackage[a4paper,margin=4.72cm]{geometry}
+
+\usepackage{graphicx}
+\usepackage{siunitx} 
+\usepackage{natbib}
+\usepackage{mathtools}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{stackengine}
+\usepackage{graphicx,ifthen}
+\usepackage{amsmath}
+\usepackage{hyperref}
+\usepackage{upgreek}
+\usepackage{bm}
+\usepackage{braket}
+\usepackage{float}
+\usepackage{cancel}
+\usepackage{anyfontsize}
+\usepackage{scalefnt}
+\usepackage{tipa}
+\usepackage{multirow}
+\usepackage{array}
+\usepackage{makecell}
+\usepackage{tikz}
+\usepackage[version = 3]{mhchem}
+\usepackage{dynkin-diagrams}
+\usepackage{ytableau}
+\usepackage{enumerate}
+
+\newtheorem{lem}{Lemma}
+\newtheorem{axiom}{Axiom}
+\newtheorem{defn}{Definition}
+\newtheorem{obs}{Observation}
+\newtheorem{ex}{Example}
+\newtheorem{notz}{Notation}
+\newtheorem{corl}{Corollary}
+\newtheorem{teo}{Theorem}
+\theoremstyle{remark}
+\newtheorem{caso}{Case}
+
+\numberwithin{lem}{chapter}
+\numberwithin{axiom}{chapter}
+\numberwithin{teo}{chapter}
+\numberwithin{defn}{chapter}
+\numberwithin{obs}{chapter}
+\numberwithin{ex}{chapter}
+\numberwithin{equation}{chapter}
+
+\DeclareMathOperator{\arcsinh}{arcsinh}
+
+% insiemi
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\V}{\mathbb{V}}
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\G}{\mathbb{G}}
+\newcommand{\MI}{\mathbb{I}}
+\newcommand{\MO}{\mathbb{O}}
+
+% algebre
+\newcommand{\sua}{\mathfrak{su}}
+\newcommand{\soa}{\mathfrak{so}}
+\newcommand{\gla}{\mathfrak{gl}}
+\newcommand{\sla}{\mathfrak{sl}}
+\newcommand{\spa}{\mathfrak{sp}}
+\newcommand{\oa}{\mathfrak{o}}
+\newcommand{\ua}{\mathfrak{u}}
+
+% vettori
+\newcommand{\va}{\bm{a}}
+\newcommand{\ve}{\bm{e}}
+\newcommand{\vf}{\bm{f}}
+\newcommand{\vv}{\bm{v}}
+\newcommand{\vw}{\bm{w}}
+\newcommand{\vu}{\bm{u}}
+\newcommand{\vt}{\bm{t}}
+\newcommand{\vs}{\bm{s}}
+\newcommand{\vo}{\bm{0}}
+\newcommand{\vsigma}{\bm{\sigma}}
+\newcommand{\vchi}{\bm{\chi}}
+\newcommand{\vmu}{\bm{\mu}}
+\newcommand{\valpha}{\bm{\alpha}}
+\newcommand{\vbeta}{\bm{\beta}}
+
+% versori
+\newcommand{\hatv}{\hat{v}}
+
+% quantità
+\newcommand{\fH}{\mathcal{H}}
+\newcommand{\basis}{\mathcal{B}}
+\newcommand{\curve}{\mathcal{C}}
+\newcommand{\algebra}{\mathfrak{g}}
+
+% operatori quantistici
+\newcommand{\hatH}{\hat{H}}
+
+% operatori matematici
+\newcommand{\nsum}{\sum\nolimits}
+\newcommand{\dg}{\dagger}
+\newcommand{\p}{\partial}
+\newcommand{\op}{\oplus}
+\newcommand{\ot}{\otimes}
+\newcommand{\comm}[2]{[#1,#2]}
+\newcommand{\acomm}[2]{\{#1,#2\}}
+\newcommand{\Perm}[1]{{Perm}(#1)}
+\newcommand{\sgn}[1]{\mathrm{sgn}(#1)}
+\newcommand{\mybraket}[2]{\langle #1 | #2 \rangle}
+\newcommand{\inner}[2]{\langle #1 , #2 \rangle}
+\newcommand{\mybrakett}[3]{\langle #1 | #2 | #3 \rangle}
+\newcommand{\gasp}[2]{\langle\langle #1 | #2 \rangle\rangle}
+\newcommand{\im}[1]{\mathrm{im}\,{#1}}
+\newcommand{\tr}[1]{\mathrm{tr}\,{#1}}
+\newcommand{\bigket}[1]{\bigg| #1 \bigg\rangle}
+\newcommand{\bigbra}[1]{\bigg\langle #1 \bigg|}
+
+\title{\textbf{NOTES OF INTRODUCTION \\ TO GROUP THEORY}}
+\author{Manuel Gabriele Moretti}
+\date{March 2026}
+
+\begin{document}
+
+\maketitle
+\pagenumbering{roman}
+\tableofcontents
+\newpage
+
+\pagenumbering{arabic}
+\include{Chapter 1 - Group theory}
+\include{Chapter 2 - Representation theory}
+\include{Chapter 3 - Lie groups and algebras}
+
+\end{document}
